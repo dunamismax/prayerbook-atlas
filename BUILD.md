@@ -598,7 +598,7 @@ When the app is demoable:
 
 ## Phase 1: Repository and toolchain
 
-- [ ] **P1.1** Add `.gitignore`: Xcode user data, DerivedData, `build/`, `.build/`, `.swiftpm/`, generated `*.xcodeproj`, `Config/Secrets.xcconfig`, `.env*`, `*.p8`, `*.p12`, `*.cer`, `*.mobileprovision`, `.DS_Store`, `screenshots/`, `research/`, and the generated `Content.sqlite`.
+- [x] **P1.1** Add `.gitignore`: Xcode user data, DerivedData, `build/`, `.build/`, `.swiftpm/`, generated `*.xcodeproj`, `Config/Secrets.xcconfig`, `.env*`, `*.p8`, `*.p12`, `*.cer`, `*.mobileprovision`, `.DS_Store`, `screenshots/`, `research/`, and the generated `Content.sqlite`.
 - [ ] **P1.2** Update `README.md`: prerequisites confirmed on this Mac, a quick start that works, and the real repository layout.
 - [ ] **P1.3 [REVIEW]** Draft `SOUL.md`: the owner's statement of faith as Grace & Footnotes SOUL.md §2 gives it (the owner's words, unaltered), the sources and their authority, the quotation practice for this app (D5), voice and pastoral conduct, and a closing section on serving common prayer in an app (the principles above, D8's fairness among Anglicans, and AGENTS.md §3). The owner approves it (P0.11).
 - [ ] **P1.4** Create `docs/decisions.md` as a numbered, append-only decision log. Seed it with the [Engineering foundations](#engineering-foundations), the deployment target (D2), the Scripture policy (D5), the no-tracking rule, and the reuse rule (D10).
