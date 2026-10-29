@@ -1,0 +1,67 @@
+<% content_for :title, "Components" %>
+
+<%= eyebrow "development only" %>
+<h1>Components</h1>
+<%= title_rule %>
+
+<p>
+  Every shared component (BUILD.md P2.5), in this mode. Bracketed words stand where a prayer
+  book's own text will go; nothing here is a prayer book's text.
+</p>
+
+<%= plate_card "Card", label: "plate-card" do %>
+  <p>A card: card ground inside a double rule in line, with an eyebrow and a heading.</p>
+<% end %>
+
+<%= plate_card "Atlas plate", label: "atlas-plate", plate: true do %>
+  <p>An atlas plate: the same double rule in ink, for compare, book pages, and the lineage map.</p>
+<% end %>
+
+<%= plate_card "Texts", label: "liturgical pieces" do %>
+  <%= initial_paragraph "Here a prayer opens with its initial in rubric, two lines deep, and the text runs on beside it and then beneath it for as long as the paragraph lasts." %>
+  <%= rubric "[A rubric: an instruction as the book prints it.]" %>
+  <p><%= role_label "officiant" %> <%= role_label "people" %> <%= role_label "priest" %> <%= role_label "answer" %></p>
+  <%= versicles [ "℣", "[The versicle, as the book prints it.]" ], [ "℟", "[The response.]" ] %>
+  <%= versicles [ "Priest.", "[A versicle labelled as 1662 labels it.]" ], [ "Answer.", "[Its answer.]" ] %>
+  <p>[The last words of a prayer.] <%= amen "[Amen as printed.]" %></p>
+  <%= repetition "[A line the book directs to be said again.]" %>
+  <p>[A prayer for] <%= name_chip "N." %> [where the book provides for a name.]</p>
+  <div class="with-page-marks">
+    <p>
+      <%= page_mark 123 %>
+      [A paragraph that begins a new printed page. On the full site the page number hangs
+      beside the line where the page begins; on the phone it is inline.]
+    </p>
+  </div>
+  <p>
+    [A text with its source.]
+    <%= source_note do %>
+      [The book], [the printing], p. 123. <%= link_to "About the sources", about_path %>
+    <% end %>
+  </p>
+<% end %>
+
+<%= plate_card "Ribbons", label: "ribbon markers" do %>
+  <ul class="plain-list">
+    <% DesignTokens.ribbons.each_key do |key| %>
+      <li><%= ribbon_marker key %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= plate_card "States", label: "empty, loading, error" do %>
+  <%= render "shared/state", kind: :empty, title: "Nothing to show", message: "[What would be here, and how to add it.]" %>
+  <%= render "shared/state", kind: :loading, title: "Loading", message: "[What is being fetched.]" %>
+  <%= render "shared/state", kind: :error, title: "This page could not be drawn", message: "[What went wrong, in plain words.]", link: [ "Go to Today", root_path ] %>
+<% end %>
+
+<%= plate_card "Actions", label: "primary and quiet" do %>
+  <p>
+    <a class="primary-action" href="#">Primary action</a>
+    <a class="quiet-action" href="#">Quiet action</a>
+  </p>
+<% end %>
+
+<% margin_note "A margin note" do %>
+  <p>On the full site this sits in the margin; on the phone, under "Notes and sources".</p>
+<% end %>

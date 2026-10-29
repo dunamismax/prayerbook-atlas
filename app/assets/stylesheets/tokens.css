@@ -22,6 +22,15 @@
   --ribbon-blue: #3a5cc0;
   --ribbon-array: #cdbf9f;
 
+  --ribbon-violet-edge: var(--ribbon-violet);
+  --ribbon-white-edge: var(--muted);
+  --ribbon-green-edge: var(--ribbon-green);
+  --ribbon-red-edge: var(--ribbon-red);
+  --ribbon-rose-edge: var(--ribbon-rose);
+  --ribbon-black-edge: var(--muted);
+  --ribbon-blue-edge: var(--ribbon-blue);
+  --ribbon-array-edge: var(--muted);
+
   --type-display-size: 1.9375rem;
   --type-display-leading: 1.15;
   --type-title-size: 1.625rem;

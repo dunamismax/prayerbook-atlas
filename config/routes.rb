@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   # The footer's choice between the phone site and the full site.
   resource :site_mode, only: :update
 
-  # Development aids, never routed in production: the type specimen (P2.4).
+  # Development aids, never routed in production: the type specimen (P2.4)
+  # and the component gallery (P2.5).
   if Rails.env.local?
     get "dev/type", to: "dev#type", as: :dev_type
+    get "dev/components", to: "dev#components", as: :dev_components
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

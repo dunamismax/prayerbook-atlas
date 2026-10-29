@@ -17,6 +17,11 @@ class DesignTokens
     OUTPUT.exist? && OUTPUT.read == new.css
   end
 
+  # The ribbons' keys and names, in the tokens' order: { "violet" => "Violet", ... }.
+  def self.ribbons
+    @ribbons ||= new.ribbons
+  end
+
   def initialize(tokens = JSON.parse(SOURCE.read))
     @tokens = tokens
   end
@@ -31,6 +36,8 @@ class DesignTokens
       :root {
         color-scheme: light dark;
       #{declarations(:day)}
+
+      #{ribbon_edge_declarations}
 
       #{type_declarations}
 
@@ -54,6 +61,10 @@ class DesignTokens
     CSS
   end
 
+  def ribbons
+    @tokens.fetch("ribbon").filter_map { |key, value| [ key, value.fetch("name") ] if value.is_a?(Hash) }.to_h.freeze
+  end
+
   private
     def declarations(appearance, indent: 2)
       colors = @tokens.fetch("color").map { |name, value| [ name, value.fetch(appearance.to_s) ] }
@@ -61,6 +72,17 @@ class DesignTokens
         [ "ribbon-#{name}", value.fetch(appearance.to_s) ] if value.is_a?(Hash)
       end
       (colors + ribbons).map { |name, value| "#{" " * indent}--#{kebab(name)}: #{value.downcase};" }.join("\n")
+    end
+
+    # A ribbon too faint against paper is drawn with a hairline edge in muted;
+    # the others are edged in their own colour, so every band is the same size.
+    def ribbon_edge_declarations
+      @tokens.fetch("ribbon").filter_map do |name, value|
+        next unless value.is_a?(Hash)
+
+        edge = value["edge"] ? "var(--#{kebab(value["edge"])})" : "var(--ribbon-#{kebab(name)})"
+        "  --ribbon-#{kebab(name)}-edge: #{edge};"
+      end.join("\n")
     end
 
     def type_declarations

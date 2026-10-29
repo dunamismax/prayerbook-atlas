@@ -17,4 +17,16 @@ class DevPagesTest < ActionDispatch::IntegrationTest
     assert_match(/--face-book: "Cardo", "Atlas Cross",/, base)
     assert_match(/font-family: "Atlas Cross";[^}]*unicode-range: U\+2720;/m, fonts)
   end
+
+  test "the component gallery renders in both modes" do
+    [ SiteModeTest::IPHONE, SiteModeTest::DESKTOP_CHROME ].each do |user_agent|
+      get dev_components_path, headers: { "User-Agent" => user_agent }
+      assert_response :success
+      assert_select "main#main h1", "Components"
+      assert_select ".ribbon-marker", DesignTokens.ribbons.size
+      assert_select ".state[role=alert]", 1
+      assert_select "[popover]"
+      assert_select ".margin-note h2", "A margin note"
+    end
+  end
 end

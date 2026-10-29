@@ -1,0 +1,12 @@
+<%# An empty, loading, or error state, always in words (docs/design.md §12).
+    Locals: kind (:empty, :loading, or :error), title, message, and an optional
+    link, a [text, path] pair to the way on. %>
+<% link = local_assigns[:link] %>
+<div class="state state--<%= kind %>" role="<%= kind.to_sym == :error ? "alert" : "status" %>">
+  <%= eyebrow({ empty: "nothing here", loading: "loading", error: "something went wrong" }.fetch(kind.to_sym)) %>
+  <p class="state-title"><%= title %></p>
+  <p><%= message %></p>
+  <% if link %>
+    <p><%= link_to(*link) %></p>
+  <% end %>
+</div>

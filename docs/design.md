@@ -75,7 +75,8 @@ custom and makes it optional (P4.8). The ribbon is drawn as a short square-ended
 | Lenten array | `#CDBF9F` | `#A89A7E` | muted (day) |
 
 White and Lenten array by day, and black by night, fall below 3:1 against `paper` (1.06, 1.61,
-and 1.92), so the ribbon is drawn with a 1px edge in `muted` for those. Every other ribbon
+and 1.92), so the ribbon is drawn with a 1px edge in `muted` for those, in both appearances
+for simplicity (`--ribbon-<name>-edge`, generated; the others are edged in their own colour). Every other ribbon
 reaches 3:1 against paper in both appearances. Sarum blue is a brighter ultramarine than the
 accent so a blue ribbon never reads as a rubric mark.
 
@@ -232,19 +233,33 @@ export the owner's files. No symbol imitates a church's seal, shield, or logo.
 
 ## 12. Components
 
-In `components.css`, with partials and helpers as P2.5 builds them:
+In `components.css`, drawn by the helpers in `app/helpers/components_helper.rb` and the
+`shared/_state` partial (P2.5). Each draws the same markup in both modes; the stylesheet places
+it for the full site or the phone. No helper supplies a prayer book's words: the caller passes
+the book's own text, labels, and page. `/dev/components` (development and test only) shows them
+all.
 
-| Component | Class | Notes |
-|---|---|---|
-| Eyebrow | `.eyebrow` | Small capitals in `--muted` |
-| Card | `.plate-card` | Double rule in `--line` on `--card` |
-| Atlas plate | `.atlas-plate` | Double rule in `--ink` |
-| Title rule, hairline | `.title-rule`, `.hairline` | Rules, not images |
-| Rubric, source line | `.rubric`, `.source` | Rubrics read as instructions (P2.9) |
-| Notice | `.notice` | A double rule at the left on `--wash`; always in words |
-| Primary and quiet actions | `.primary-action`, `.quiet-action` | Square, outlined |
-| Plain list | `.plain-list` | Hairlines between rows |
-| Shells | `.masthead`, `.section-nav`, `.full-layout`, `.contents`, `.reading`, `.margin`, `.phone-bar`, `.tab-bar`, `.site-footer`, `.mode-switch` | `layout.css` |
+| Component | Helper or partial | Class | Notes |
+|---|---|---|---|
+| Eyebrow | `eyebrow` | `.eyebrow` | Small capitals in `--muted` |
+| Card, atlas plate | `plate_card(title, label:, plate:)` | `.plate-card`, `.atlas-plate` | Double rule in `--line` or `--ink`; labelled by its heading |
+| Title rule, hairline | `title_rule` | `.title-rule`, `.hairline` | Rules, not images |
+| Initial | `initial_paragraph` | `.has-initial` | Two lines deep in rubric: `initial-letter` where supported, an enlarged floated capital otherwise |
+| Rubric | `rubric` | `.rubric` | Announced as "Instruction:" to screen readers |
+| Role label | `role_label` | `.role-label` | Small capitals in rubric; ℣ and ℟ keep the text's size (`.role-label--mark`) |
+| Versicles and responses | `versicles([label, text], ...)` | `.versicles`, `.versicle` | Each line with the label the book prints, hanging |
+| Amen | `amen(text)` | `.amen` | As printed; never breaks inside |
+| Repetition | `repetition` | `.repetition` | Set in; announced as "Repeated:" |
+| Name chip | `name_chip(name)` | `.name-chip` | A person's name, or the book's own placeholder |
+| Ribbon marker | `ribbon_marker(key)` | `.ribbon-marker`, `.ribbon--<key>` | The band and its name together (§4) |
+| Page number | `page_mark(page)` | `.page-mark`, `.with-page-marks` | Hangs in a right gutter on the full site; inline on the phone and below 30rem |
+| Source mark and note | `source_note { ... }` | `.source-mark`, `.source-note` | The `popover` attribute: opens without script, closes with Escape, a click outside, or Close; shown inline where popovers are unsupported |
+| Margin note | `margin_note(title) { ... }` | `.margin-note` | The margin on the full site; "Notes and sources" on the phone |
+| Empty, loading, error | `render "shared/state", kind:` | `.state`, `.state--<kind>` | Words first; the error is an `alert`, the others a `status` |
+| Notice | — | `.notice` | A double rule at the left on `--wash`; always in words |
+| Primary and quiet actions | — | `.primary-action`, `.quiet-action` | Square, outlined |
+| Plain list | — | `.plain-list` | Hairlines between rows |
+| Shells | — | `.masthead`, `.section-nav`, `.full-layout`, `.contents`, `.reading`, `.margin`, `.phone-bar`, `.tab-bar`, `.site-footer`, `.mode-switch` | `layout.css` |
 
 ## 13. Icons and the favicon
 

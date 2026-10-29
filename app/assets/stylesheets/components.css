@@ -155,6 +155,205 @@
   font-variant-numeric: lining-nums;
 }
 
+/* The initial that opens a prayer: two lines deep in rubric. Where the
+   browser has initial-letter it sinks into the text; elsewhere it is an
+   enlarged capital floated beside the first two lines. */
+.has-initial::first-letter {
+  float: left;
+  margin: 0.06em 0.08em 0 0;
+  color: var(--rubric);
+  font-size: 3.1em;
+  line-height: 0.82;
+}
+
+@supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
+  .has-initial::first-letter {
+    float: none;
+    margin: 0 0.1em 0 0;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-initial-letter: 2;
+    initial-letter: 2;
+  }
+}
+
+.versicles {
+  margin: 0 0 var(--space-l);
+}
+
+.versicle {
+  margin: 0;
+  padding-left: 2.5rem;
+  text-indent: -2.5rem;
+}
+
+/* ℣ and ℟ keep the size of the text they mark. */
+.role-label--mark {
+  font-size: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant-caps: normal;
+}
+
+.versicle .role-label {
+  display: inline-block;
+  min-width: 2.25rem;
+  text-indent: 0;
+}
+
+.amen {
+  white-space: nowrap;
+}
+
+.repetition {
+  padding-left: var(--space-xl);
+}
+
+/* A name in the prayers: a quiet chip, square like everything else. */
+.name-chip {
+  padding: 0 var(--space-xs);
+  border: 1px solid var(--line);
+  background: var(--wash);
+  white-space: nowrap;
+}
+
+/* The ribbon marker: a short square-ended band beside its name. */
+.ribbon-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.ribbon-band {
+  display: inline-block;
+  width: 0.5rem;
+  height: 1.25rem;
+  background: var(--ribbon-colour);
+  border: 1px solid var(--ribbon-edge);
+}
+
+.ribbon--violet { --ribbon-colour: var(--ribbon-violet); --ribbon-edge: var(--ribbon-violet-edge); }
+.ribbon--white { --ribbon-colour: var(--ribbon-white); --ribbon-edge: var(--ribbon-white-edge); }
+.ribbon--green { --ribbon-colour: var(--ribbon-green); --ribbon-edge: var(--ribbon-green-edge); }
+.ribbon--red { --ribbon-colour: var(--ribbon-red); --ribbon-edge: var(--ribbon-red-edge); }
+.ribbon--rose { --ribbon-colour: var(--ribbon-rose); --ribbon-edge: var(--ribbon-rose-edge); }
+.ribbon--black { --ribbon-colour: var(--ribbon-black); --ribbon-edge: var(--ribbon-black-edge); }
+.ribbon--blue { --ribbon-colour: var(--ribbon-blue); --ribbon-edge: var(--ribbon-blue-edge); }
+.ribbon--array { --ribbon-colour: var(--ribbon-array); --ribbon-edge: var(--ribbon-array-edge); }
+
+/* The printed page number. A text that carries page numbers is wrapped in
+   .with-page-marks: on the full site that wrapper keeps a gutter on its
+   right, and each page number hangs in it beside the line where the page
+   begins; on the phone, and in a very narrow window, the number is inline. */
+.page-mark {
+  color: var(--muted);
+  font-style: italic;
+  font-size: var(--type-page-number-size);
+  font-variant-numeric: oldstyle-nums;
+  white-space: nowrap;
+}
+
+.site--full .with-page-marks {
+  padding-right: 4.5rem;
+}
+
+.site--full .with-page-marks .page-mark {
+  float: right;
+  width: 4rem;
+  margin-right: -4.5rem;
+  padding-left: var(--space-m);
+  line-height: inherit;
+}
+
+@media (max-width: 30rem) {
+  .site--full .with-page-marks {
+    padding-right: 0;
+  }
+
+  .site--full .with-page-marks .page-mark {
+    float: none;
+    width: auto;
+    margin-right: 0;
+    padding-left: 0;
+  }
+}
+
+/* The source mark and its note. The note is a popover where the browser has
+   them, and plain inline text where it does not. */
+.source-mark {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rubric);
+  font-style: italic;
+  font-size: var(--type-source-mark-size);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.source-note {
+  color: var(--muted);
+  font-style: italic;
+  font-size: var(--type-source-size);
+}
+
+.source-note-close {
+  display: none;
+}
+
+@supports selector(:popover-open) {
+  .source-note {
+    max-width: min(26rem, calc(100vw - 2rem));
+    padding: var(--space-l);
+    border: 3px double var(--line);
+    background: var(--card);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .source-note-close {
+    display: block;
+    margin-top: var(--space-m);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--rubric);
+    font-style: normal;
+    font-family: var(--face-interface);
+    font-size: var(--type-source-size);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.margin-note {
+  margin: 0 0 var(--space-xl);
+}
+
+/* Empty, loading, and error states: words first, on a wash, never colour alone. */
+.state {
+  border: 3px double var(--line);
+  background: var(--wash);
+  padding: var(--space-card-padding);
+  margin: 0 0 var(--space-xl);
+}
+
+.state--error {
+  border-color: var(--rubric);
+}
+
+.state-title {
+  margin-bottom: var(--space-s);
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-leading);
+}
+
+.state p:last-child {
+  margin-bottom: 0;
+}
+
 /* The development type specimen (/dev/type). */
 .specimen-table {
   border-collapse: collapse;
