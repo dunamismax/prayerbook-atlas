@@ -985,9 +985,6 @@ The owner decides priority; promoted items become full phases.
   and `make testflight-status` use the API key in `Config/Secrets.xcconfig`
   (gitignored; key in `~/.appstoreconnect/private_keys`). P1.14 ticks when
   the owner confirms the install.
-- CI is manual only (Actions → Check → Run workflow). The repo stays public,
-  all rights reserved (`LICENSE`).
-- Still the owner's: P0.8 (optional printed books), P0.9 (asking a priest,
-  deferred), and the [GATE DEMO] letters once M2 is demoable.
-- prayerbookatlas.org: registered 2026-10-29; DNS was not answering yet.
+- CI is manual only. Still the owner's: P0.8 (optional), P0.9 (deferred),
+  the [GATE DEMO] letters. prayerbookatlas.org: re-check its DNS.
 - Next app work: P2.2b (B), P2.4 (Cardo), the icon, then P2.5 onward.
