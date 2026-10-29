@@ -76,7 +76,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
-| 2 | Design system and site shell | M1 Foundation | 14 | 3 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 4 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
@@ -627,7 +627,8 @@ When the site is demoable:
 - [x] **P2.2** Carry Engraved Plate to the web: `docs/design.md` for CSS (tokens, contrast, type in rem, layout for both modes, rules, appearance), `design/tokens.json` notes for the web, and `lib/design_tokens.rb` generating `tokens.css` (`bin/rails design:tokens`), with tests that it is current and that no other stylesheet writes a raw colour.
 - [x] **P2.3** Self-host Cardo: the three faces as WOFF2 in `app/assets/fonts/` with the OFL, `@font-face` with `font-display: swap`, recorded in `content/SOURCES.md`.
   - *2026-10-29 result:* converted from the cleared TTFs (SHA-256 prefixes `bcb81f37`, `52c51cfd`, `6c9383b1`, as recorded) with fontTools' `ttLib.woff2 compress`, which recompresses without changing outlines or tables. Small capitals render through `font-variant-caps` in Chrome.
-- [ ] **P2.4** Type in the browser: check Cardo's small capitals (`smcp`), old-style figures (`onum`), ℣ ℟ † ¶, and polytonic Greek in Safari, Chrome, and Firefox; choose the fallback for ✠ (U+2720), which Cardo lacks; tune sizes per mode (the phone a step smaller for display and title); a development-only type specimen page.
+- [x] **P2.4** Type in the browser: check Cardo's small capitals (`smcp`), old-style figures (`onum`), ℣ ℟ † ¶, and polytonic Greek in Safari, Chrome, and Firefox; choose the fallback for ✠ (U+2720), which Cardo lacks; tune sizes per mode (the phone a step smaller for display and title); a development-only type specimen page.
+  - *2026-10-29 result:* `/dev/type` (development and test only). ✠ comes from **Atlas Cross**, a `unicode-range` face of system fonts only (docs/design.md §5). Checked in Chrome (in-app: full site at 1440 and 800 wide, phone emulation, day and night, 200% text, no console errors), Firefox 159 (headless `--screenshot`), and WebKit through `script/webkit_snapshot.swift`. Safari itself was not driven: the owner declined screen access to it this session, so WebKit stands in until P21.5.
 - [ ] **P2.5** Components as partials and helpers, in both modes: card, eyebrow, red initial (`initial-letter` where supported, an enlarged capital otherwise), rubric, role label, versicle and response, Amen, repetition, name chip, ribbon marker (with its name, never colour alone), atlas plate, title rule, page-number mark (in the margin on the full site, inline on the phone), source footnote (the HTML `popover` attribute, so it opens without JavaScript, with a plain link fallback), margin note, and empty, loading, and error states. A development-only gallery at `/dev/components`.
 - [ ] **P2.6** Appearance: Automatic, Day, or Night, chosen from Settings by a plain form, kept in a preference cookie, and applied as `data-appearance` on `<html>` by the server (no flash, no script).
 - [ ] **P2.7** URLs: write `docs/urls.md` (readable, stable, shareable URLs for every destination: a day, an office in a book on a date, a prayer in the Atlas, a compare, a psalm, a passage) and route every placeholder destination by it.

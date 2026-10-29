@@ -86,9 +86,18 @@ accent so a blue ribbon never reads as a rubric mark.
   in `content/SOURCES.md`. It sets liturgical text, Scripture, titles, headings, small-capital
   labels, role labels, and page numbers, through `--face-book`. It has true small capitals
   (`smcp`, the 1979 Psalter's LORD), old-style figures (`onum`), ℣ ℟ † ¶, and polytonic Greek.
-  It has no ✠ (U+2720), which falls back to the next face that has it (P2.4 chooses the
-  fallback). The fallback stack, for the moment before Cardo loads, is Iowan Old Style,
-  Palatino, and Georgia.
+  It has no ✠ (U+2720). That one character is drawn by **Atlas Cross** (`fonts.css`), a
+  `unicode-range` face made only of the system's own fonts through `local()`: STIX Two Math or
+  STIXGeneral on macOS (serif crosses that sit well beside Cardo), then Segoe UI Symbol
+  (Windows), DejaVu Serif (Linux), Noto Sans Symbols 2 (Android), and Zapf Dingbats (iOS).
+  Nothing is downloaded, so no font needs clearing; where none of these is present, the browser
+  takes the glyph from any font it has. The fallback stack, for the moment before Cardo loads,
+  is Iowan Old Style, Palatino, and Georgia.
+- **Checked in three engines** (P2.4, 2026-10-29, on `/dev/type`, the development-only type
+  specimen): Chrome (the in-app browser, full and phone site, day and night, 200% text),
+  Firefox 159 (headless screenshot), and WebKit, Safari's engine (`script/webkit_snapshot.swift`).
+  All three draw Cardo's small capitals, old-style figures, ℣ ℟ † ¶, polytonic Greek, and the
+  ✠ from Atlas Cross. Safari itself and the phones' browsers are checked in P21.5.
 - **The interface face is the system's** (`--face-interface`: `system-ui` and its fallbacks):
   buttons, form controls, and the primary action.
 
@@ -97,8 +106,8 @@ own text size. The scale, as generated (`--type-<style>-size`):
 
 | Style | Face | Size | Use |
 |---|---|---|---|
-| display | Cardo | 1.9375rem | The day's name on Today; page titles (`h1`). The phone uses the title size for `h1` |
-| title | Cardo | 1.625rem | Office and section titles (`h2`) |
+| display | Cardo | 1.9375rem | The day's name on Today; page titles (`h1`). The phone sets `h1` a step smaller, at the title size |
+| title | Cardo | 1.625rem | Office and section titles (`h2`). The phone sets `h2` a step smaller, at the heading size |
 | heading | Cardo | 1.375rem | Headings within an office (`h3`); the wordmark on the full site |
 | reading | Cardo | 1.25rem, leading 1.55 | Prayers, psalms, canticles, Scripture; the body |
 | rubric | Cardo italic, rubric | 1.0625rem | Rubrics, in colour or italic by setting (`.rubric`) |
@@ -172,7 +181,7 @@ atlas without a compass rose is deliberate.
 
 - A sticky phone bar on `--card` with the wordmark.
 - One column with side margins of 1.375rem or the screen's safe area, whichever is larger.
-- `h1` at the title size.
+- `h1` at the title size and `h2` at the heading size: display and title a step smaller.
 - A tab bar fixed to the bottom, five equal cells at least 3.5rem tall in small capitals, the
   current one in rubric with a rule along its top edge, padded for the home indicator
   (`env(safe-area-inset-bottom)`). The page is padded so the tab bar never covers text.

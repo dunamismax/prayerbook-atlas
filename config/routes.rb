@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   # The footer's choice between the phone site and the full site.
   resource :site_mode, only: :update
 
+  # Development aids, never routed in production: the type specimen (P2.4).
+  if Rails.env.local?
+    get "dev/type", to: "dev#type", as: :dev_type
+  end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

@@ -1,0 +1,81 @@
+<% content_for :title, "Type specimen" %>
+
+<span class="eyebrow">development only</span>
+<h1>Type specimen</h1>
+<hr class="title-rule">
+
+<p>
+  Cardo and the site's type scale, for checking in each browser and in both modes. Every sample
+  is the site's own words; no prayer-book text is set here.
+</p>
+
+<section class="plate-card" aria-labelledby="specimen-scale">
+  <span class="eyebrow">the scale</span>
+  <h2 id="specimen-scale">Sizes and their uses</h2>
+  <p class="type-display">Display: the day's name</p>
+  <p class="type-title">Title: an office or a section</p>
+  <p class="type-heading">Heading: a part of an office</p>
+  <p>Reading: the body, in which prayers, psalms, and lessons are set.</p>
+  <p class="rubric">Rubric: an instruction, in rubric and italic.</p>
+  <p><span class="eyebrow">eyebrow: a label above a heading</span></p>
+  <p><span class="role-label">officiant</span> <span class="role-label">people</span> <span class="role-label">minister</span></p>
+  <p class="page-number">Page number: p. 123</p>
+  <p class="source">Source: the book, the printing, and the page</p>
+  <p class="type-ui">Interface: buttons and form controls, in the system's face.</p>
+</section>
+
+<section class="plate-card" aria-labelledby="specimen-caps">
+  <span class="eyebrow">small capitals and figures</span>
+  <h2 id="specimen-caps">Cardo's own features</h2>
+  <p>
+    Small capitals from the face (<code>smcp</code>): the 1979 Psalter sets the divine name as
+    <span class="small-caps">Lord</span>, a capital followed by small capitals.
+  </p>
+  <p>Old-style figures (<code>onum</code>): 1549 · 1552 · 1662 · 1928 · 1979 · 2019</p>
+  <p class="lining-figures">Lining figures, for comparison: 1549 · 1552 · 1662 · 1928 · 1979 · 2019</p>
+  <p><em>Italic: 1549 · 1662 · 1979</em> · <strong>Bold: 1549 · 1662 · 1979</strong></p>
+</section>
+
+<section class="plate-card" aria-labelledby="specimen-marks">
+  <span class="eyebrow">marks</span>
+  <h2 id="specimen-marks">The marks the prayer books print</h2>
+  <table class="specimen-table">
+    <thead>
+      <tr><th scope="col">Mark</th><th scope="col">Italic</th><th scope="col">Name</th><th scope="col">Code point</th></tr>
+    </thead>
+    <tbody>
+      <% [
+        [ "℣", "Versicle", "U+2123" ],
+        [ "℟", "Response", "U+211F" ],
+        [ "†", "Dagger", "U+2020" ],
+        [ "¶", "Pilcrow", "U+00B6" ],
+        [ "*", "Asterisk (a half-verse mark)", "U+002A" ],
+        [ ":", "Colon (a half-verse mark)", "U+003A" ],
+        [ "✠", "Maltese cross (not in Cardo; the system's serif cross)", "U+2720" ]
+      ].each do |mark, name, code_point| %>
+        <tr>
+          <td class="specimen-mark"><%= mark %></td>
+          <td class="specimen-mark"><em><%= mark %></em></td>
+          <td><%= name %></td>
+          <td class="lining-figures"><%= code_point %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section class="plate-card" aria-labelledby="specimen-greek" lang="el">
+  <span class="eyebrow" lang="en">greek</span>
+  <h2 id="specimen-greek" lang="en">Polytonic Greek</h2>
+  <p>ἀ ἁ ἄ ἅ ἂ ἃ ἆ ἇ ὰ ά ᾶ ᾳ ᾴ ᾷ ἐ ἑ ἔ ἕ ἠ ἡ ἤ ἥ ἦ ἧ ῆ ῃ ῇ ἰ ἱ ἴ ἵ ἶ ἷ ῖ ϊ ὀ ὁ ὄ ὅ ὐ ὑ ὔ ὕ ὖ ὗ ῦ ϋ ὠ ὡ ὤ ὥ ὦ ὧ ῶ ῳ ῷ ῤ ῥ</p>
+  <p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω · ἐκκλησία · εὐχαριστία · λόγος</p>
+  <p><em>ἐκκλησία · εὐχαριστία · λόγος</em></p>
+</section>
+
+<% content_for :margin do %>
+  <h2>About this page</h2>
+  <p>
+    Routed only in development and test. Check it in Safari, Chrome, and Firefox, on the full site
+    and the phone site, by day and by night (BUILD.md P2.4).
+  </p>
+<% end %>

@@ -207,8 +207,15 @@
     max(var(--space-margin), env(safe-area-inset-right));
 }
 
+/* The phone sets display and title a step smaller (docs/design.md §5). */
 .site--phone h1 {
   font-size: var(--type-title-size);
+  line-height: var(--type-title-leading);
+}
+
+.site--phone h2 {
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-leading);
 }
 
 .site--phone .phone-margin {

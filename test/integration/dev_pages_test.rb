@@ -1,0 +1,20 @@
+require "test_helper"
+
+class DevPagesTest < ActionDispatch::IntegrationTest
+  test "the type specimen renders in both modes with every mark" do
+    [ SiteModeTest::IPHONE, SiteModeTest::DESKTOP_CHROME ].each do |user_agent|
+      get dev_type_path, headers: { "User-Agent" => user_agent }
+      assert_response :success
+      assert_select "main#main h1", "Type specimen"
+      %w[℣ ℟ † ¶ ✠].each { |mark| assert_select "td.specimen-mark", text: mark }
+      assert_select "[lang=el]"
+    end
+  end
+
+  test "the cross falls back to a system serif before the general fallbacks" do
+    base = Rails.root.join("app/assets/stylesheets/base.css").read
+    fonts = Rails.root.join("app/assets/stylesheets/fonts.css").read
+    assert_match(/--face-book: "Cardo", "Atlas Cross",/, base)
+    assert_match(/font-family: "Atlas Cross";[^}]*unicode-range: U\+2720;/m, fonts)
+  end
+end

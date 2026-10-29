@@ -1,7 +1,7 @@
 /* The page: chart paper, iron-blue ink, Cardo for the book, system-ui for the interface. */
 
 :root {
-  --face-book: "Cardo", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --face-book: "Cardo", "Atlas Cross", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --face-interface: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 

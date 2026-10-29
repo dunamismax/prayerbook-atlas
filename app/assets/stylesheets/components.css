@@ -107,3 +107,69 @@
 .plain-list > li:last-child {
   border-bottom: 0;
 }
+
+/* Type styles by name, for places that need a style without a heading level. */
+.type-display {
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-leading);
+}
+
+.type-title {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-leading);
+}
+
+.type-heading {
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-leading);
+}
+
+.type-ui {
+  font-family: var(--face-interface);
+  font-size: var(--type-ui-size);
+}
+
+/* A role label (Officiant, People): small capitals in rubric. */
+.role-label {
+  color: var(--rubric);
+  font-size: var(--type-role-size);
+  letter-spacing: var(--type-role-tracking);
+  text-transform: lowercase;
+  font-variant-caps: small-caps;
+}
+
+/* A printed page number: italic old-style figures in muted. */
+.page-number {
+  color: var(--muted);
+  font-style: italic;
+  font-size: var(--type-page-number-size);
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* Small capitals as the book prints them: capitals stay, lower case becomes small capitals. */
+.small-caps {
+  font-variant-caps: small-caps;
+}
+
+.lining-figures {
+  font-variant-numeric: lining-nums;
+}
+
+/* The development type specimen (/dev/type). */
+.specimen-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--type-source-size);
+}
+
+.specimen-table th,
+.specimen-table td {
+  border-top: 1px solid var(--line);
+  padding: var(--space-xs) var(--space-s);
+  text-align: left;
+}
+
+.specimen-table .specimen-mark {
+  font-size: var(--type-title-size);
+  line-height: 1.2;
+}

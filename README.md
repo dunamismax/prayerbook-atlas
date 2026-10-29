@@ -116,6 +116,7 @@ GitHub's Linux runners, by manual dispatch.
 | `design/` | `tokens.json`, the owner's generated images and their prompts and registry |
 | `docs/` | Product rules, design, decisions, and deployment |
 | `config/ci.rb` | The local CI steps `bin/ci` runs |
+| `script/webkit_snapshot.swift` | Snapshots a page with WebKit (Safari's engine) for browser checks |
 | `research/` | Gitignored downloads for rights research; never served |
 
 ## Deployment

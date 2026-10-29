@@ -23,3 +23,16 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* The cross (✠, U+2720), which Cardo lacks: a serif cross from the system's
+   own fonts where it has one (STIX on macOS), then Windows', Linux's, and
+   Android's symbol faces. Nothing is downloaded; any font the system has
+   with the glyph serves if none of these is present (BUILD.md P2.4). */
+@font-face {
+  font-family: "Atlas Cross";
+  src: local("STIX Two Math Regular"), local("STIXTwoMath-Regular"),
+    local("STIXGeneral-Regular"), local("Segoe UI Symbol"), local("SegoeUISymbol"),
+    local("DejaVu Serif"), local("DejaVuSerif"), local("Noto Sans Symbols 2"),
+    local("NotoSansSymbols2-Regular"), local("Zapf Dingbats"), local("ZapfDingbatsITC");
+  unicode-range: U+2720;
+}
