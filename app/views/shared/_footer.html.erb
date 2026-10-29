@@ -1,0 +1,27 @@
+<footer class="site-footer">
+  <nav aria-label="About this site">
+    <ul>
+      <li><%= link_to "About", about_path %></li>
+      <li><a href="mailto:support@prayerbookatlas.com">support@prayerbookatlas.com</a></li>
+    </ul>
+  </nav>
+
+  <p>
+    Prayerbook Atlas is personal lay work, the sister project of
+    <a href="https://graceandfootnotes.com">Grace &amp; Footnotes</a>. It is not an official
+    publication of any church, diocese, or parish.
+  </p>
+
+  <div class="mode-line">
+    <% if phone_site? %>
+      You are using the phone site.
+      <%= render "shared/mode_switch", mode: "full", label: "Use the full site" %>
+    <% else %>
+      You are using the full site.
+      <%= render "shared/mode_switch", mode: "phone", label: "Use the phone site" %>
+    <% end %>
+    <% if site_mode_chosen? %>
+      · <%= render "shared/mode_switch", mode: "automatic", label: "Choose for this device automatically" %>
+    <% end %>
+  </div>
+</footer>

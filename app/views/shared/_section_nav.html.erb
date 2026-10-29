@@ -1,0 +1,7 @@
+<nav class="section-nav" aria-label="Sections">
+  <ul>
+    <% SiteSection.all.each do |section| %>
+      <li><%= link_to section.title, section_path_for(section), aria: { current: ("page" if current_section?(section)) } %></li>
+    <% end %>
+  </ul>
+</nav>

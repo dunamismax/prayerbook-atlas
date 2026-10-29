@@ -5,20 +5,22 @@ entry at the end; never renumber or delete one. To reverse a decision, add a
 new entry that supersedes it and mark the old one **Superseded by N**.
 
 Each entry gives the date, the status, what was decided, and why. Owner
-decisions (D1–D26) live in [BUILD.md](../BUILD.md#owner-decisions). An entry
+decisions (D1–D29) live in [BUILD.md](../BUILD.md#owner-decisions). An entry
 that rests on an open owner decision says so and has the status **Working
 default**: it follows that decision's recommendation until the owner answers
 (AGENTS.md §4), and is built so that it is easy to change.
 
-Entries 1–12 record BUILD.md's
-[Engineering foundations](../BUILD.md#engineering-foundations), adapted from
-Beautiful Corner's decision log (entry 16 below).
+Entries 1–20 were made while Prayerbook Atlas was a native iPhone app.
+On 2026-10-29 the owner made it a website built with Ruby on Rails (entry
+21); entries 21–31 record the web foundations, and the iPhone entries they
+replace are marked superseded. The retired app's code is at the Git tag
+`ios-archive`.
 
 ---
 
 ## 1. Generate the Xcode project with XcodeGen
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 21
 - **Decision:** The Xcode project is generated from `project.yml` by
   [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`make generate`). The
   `.xcodeproj` is gitignored and never hand-edited. Local packages are listed
@@ -30,7 +32,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 2. SwiftUI with Observation
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 21
 - **Decision:** The interface is SwiftUI. Shared state uses the Observation
   framework (`@Observable`). UIKit appears only in small wrappers, each with a
   comment explaining why SwiftUI could not do the job.
@@ -39,7 +41,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 3. SwiftData for user data
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 28
 - **Decision:** User data (favorites, intercessions, the rule of life,
   journals, reading-plan progress, and the like) lives in SwiftData, with a
   `VersionedSchema`, a migration plan, and CloudKit-compatible models
@@ -51,7 +53,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 4. A bundled, read-only SQLite content database
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 26
 - **Decision:** `Tools/ContentCompiler` validates `content/` and writes a
   deterministic `Content.sqlite` (system `SQLite3`, FTS5), which the app
   bundles read-only. The compiler refuses content whose source is not
@@ -62,7 +64,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 5. Pure logic in local Swift packages
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 22
 - **Decision:** Calendar, content, Scripture, office, and Atlas logic live in
   local packages under `Packages/` (`ChurchYear`, `ContentKit`,
   `ScriptureKit`, later `OfficeKit`, `AtlasKit`, and `SharedModels`). They
@@ -76,7 +78,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 6. Zero third-party runtime dependencies
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 29
 - **Decision:** The app links no third-party code unless a later entry here
   justifies it. Approved build-time tools: XcodeGen and Apple's bundled
   `swift format`.
@@ -85,7 +87,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 7. Swift Testing, with XCTest for UI tests
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 29
 - **Decision:** Packages and app unit tests use Swift Testing (`@Test`,
   `#expect`, `#require`, `arguments:` for table-driven cases). UI tests use
   XCTest, which Swift Testing does not replace. Every calendar, collect, and
@@ -96,7 +98,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 8. Civil dates, not `Date`
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Accepted; restated for Ruby by 30
 - **Decision:** Church-calendar logic uses a pure `CivilDate` value (year,
   month, day). `Date` and time zones appear only at the interface edge.
 - **Why:** A holy day is a calendar day, not an instant; mixing in time zones
@@ -104,7 +106,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 9. Our own simple content formats
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Accepted (still holds on the web)
 - **Decision:** Content files are UTF-8 text with `key: value` front matter,
   parsed by our own code (no YAML library); tables are JSON.
 - **Why:** Keeps entry 6, and keeps the formats small enough to document
@@ -112,7 +114,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 10. A debug date override
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Superseded by 30 (a date in the URL)
 - **Decision:** Debug builds accept the launch argument `-today YYYY-MM-DD`,
   which pins the app's idea of today. Release builds ignore it.
 - **Why:** UI tests and screenshots must be able to open Easter, Ash
@@ -139,7 +141,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 13. Deployment target: iOS 26
 
-- **Date:** 2026-10-28 · **Status:** Working default (D2 open)
+- **Date:** 2026-10-28 · **Status:** Superseded by 25
 - **Decision:** The app's deployment target is iOS 26.0, built with the
   iOS 27 SDK in Xcode 27. It is set once, in `project.yml`
   (`options.deploymentTarget`), and the packages declare `.iOS(.v26)`.
@@ -164,7 +166,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 15. No analytics, advertising, or tracking
 
-- **Date:** 2026-10-28 · **Status:** Accepted
+- **Date:** 2026-10-28 · **Status:** Accepted; the app-specific lines are restated for the web by 31
 - **Decision:** No analytics, advertising, tracking, crash-reporting,
   affiliate, or remote-font SDKs, in the app or on the website. The app's
   privacy manifest and App Store privacy label declare no data collected.
@@ -175,7 +177,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 16. Reuse from Beautiful Corner
 
-- **Date:** 2026-10-28 · **Status:** Working default (D10 open)
+- **Date:** 2026-10-28 · **Status:** Accepted for history; since 21 the Swift code no longer applies (see D10)
 - **Decision:** Generic engineering is copied from the owner's
   `beautiful-corner` repository and adapted, never changed there. The source
   is its commit `6f8bc4b` ("Add standing git rules to AGENTS.md"). Phase 1
@@ -193,8 +195,7 @@ Beautiful Corner's decision log (entry 16 below).
 
 ## 17. On iPhone, Search is a toolbar button
 
-- **Date:** 2026-10-28 · **Status:** Accepted (agent, found in testing; the
-  owner may revisit it)
+- **Date:** 2026-10-28 · **Status:** Superseded by 24
 - **Decision:** On regular widths (iPad), Search is the system search tab
   beside the five content tabs. On compact widths (iPhone), the tab bar holds
   the five content tabs (Today, Pray, Bible, Kalendar, Atlas), and Search is a
@@ -268,3 +269,184 @@ Beautiful Corner's decision log (entry 16 below).
   icon (A1–A3) is the placeholder again. The owner then chose to keep all
   the current generated icons (A1–A12) unchanged, so no Engraved Plate
   icon is to be made (owner, 2026-10-29).
+
+## 21. A website only, built with Ruby on Rails
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner, D27)
+- **Decision:** Prayerbook Atlas is no longer a mobile app. It is a website
+  at prayerbookatlas.com, built with Ruby on Rails, primarily for desktop
+  browsers, with a dedicated mode for small-screen mobile browsers and a
+  fuller mode with more features for desktop and full-size windows
+  (entry 24). The native iPhone app is retired: its code, the Xcode project
+  setup, the Swift packages, and the TestFlight tooling were removed, and the
+  last app commit is tagged `ios-archive` (`a9be149`). This supersedes
+  entries 1, 2, and 13 outright and replaces 3, 4, 5, 6, 7, 10, and 17 with
+  web equivalents (entries 22–31). Entries 8, 9, 11, 12, 14, 15, 18, 19, and
+  20 still hold.
+- **Why:** The owner's choice. One website serves every computer and phone,
+  needs no store review, and can be self-hosted beside the owner's other
+  sites. What carries over is everything that was not Swift: the faith and
+  voice, the plan's content and rights rules, the Engraved Plate design and
+  its tokens, Cardo, the owner's images, and the research.
+
+## 22. Rails 8.1, as `rails new` makes it
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent, within D27)
+- **Decision:** Rails 8.1.4 on Ruby 4.0.9, generated in the repository root
+  by `rails _8.1.4_ new prayerbook_atlas --skip-git --skip-kamal
+  --skip-thruster --skip-docker --skip-action-mailbox --skip-action-text
+  --skip-active-storage --skip-jbuilder --skip-devcontainer`, which keeps
+  SQLite, Propshaft, importmap, Turbo, Stimulus, Solid Cache, Solid Queue,
+  Solid Cable, Puma, Minitest with Capybara and Selenium, RuboCop
+  (rails-omakase), Brakeman, bundler-audit, the local CI (`bin/ci`,
+  `config/ci.rb`), and the GitHub workflow. The engines that were Swift
+  packages (calendar, offices, Scripture, Atlas) become plain Ruby objects
+  under `app/models/`, with no database access of their own.
+- **Why:** The default stack is the best-documented and best-maintained path,
+  and it needs no Node, no bundler, and no CSS build. Kamal, Thruster, and
+  Docker are for deploying containers behind kamal-proxy; the owner's server
+  already runs Caddy for other sites (entry 27). Mailbox, Action Text, Active
+  Storage, and Jbuilder have no planned use; each can be added with its own
+  entry when one appears. The generated Dependabot configuration is removed:
+  it opens pull requests, and this repository takes none (AGENTS.md, Git
+  rules); bundler-audit and the importmap audit in `bin/ci` flag vulnerable
+  versions instead. Checked against the Rails 8.1 guides (Context7,
+  2026-10-29): request variants and the `bin/ci` DSL.
+
+## 23. Ruby through mise, pinned by `.ruby-version`
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent)
+- **Decision:** The project pins Ruby in `.ruby-version` (`ruby-4.0.9`). On
+  the owner's Mac, mise (already the owner's runtime manager) provides it,
+  set as the global Ruby and set to read `.ruby-version`; Homebrew's Ruby
+  stays installed but off the PATH. The server uses mise the same way
+  (docs/deploy.md), and GitHub's `ruby/setup-ruby` reads the same file.
+- **Why:** One Ruby per machine, chosen by one file in the repository, so the
+  Mac, the server, and CI agree. Two Rubies on the PATH had already put gems
+  in the wrong place on this Mac.
+
+## 24. Two modes: the full site and the phone site
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner for the two modes, D27;
+  agent for how)
+- **Decision:** Each request is drawn in one of two modes. The **phone site**
+  is for small-screen mobile browsers: the `Sec-CH-UA-Mobile` client hint
+  decides where the browser sends it, and otherwise the user agent (phones,
+  not tablets). The **full site** is for everything else. The phone site sets
+  `request.variant = :phone`, so Rails renders `application.html+phone.erb`
+  and any `+phone` view, falling back to the shared view otherwise. A person
+  can choose either mode from every page's footer; the choice is a
+  first-party cookie holding only "phone" or "full", and "automatic" deletes
+  it. Pages send `Vary: Sec-CH-UA-Mobile, User-Agent, Cookie`. Within each
+  mode, CSS adapts to the window: the full site folds its margin and contents
+  columns under the text in a narrow window. The phone site's five sections
+  sit in a tab bar along the bottom; there is no "More" (this replaces 17).
+- **Why:** The owner asked for a dedicated phone experience and a fuller
+  desktop one, not one responsive page stretched across both. The server must
+  choose before it renders, which only request headers allow; the hint is
+  the standard signal, the user agent covers Safari and Firefox, and the
+  person's choice overrides both when the guess is wrong. Same URLs in both
+  modes keep links shareable.
+
+## 25. Every browser welcome; JavaScript only adds
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent)
+- **Decision:** Every page that sets out prayer, Scripture, or the calendar
+  is semantic HTML that works without JavaScript and in old browsers. Rails'
+  default `allow_browser versions: :modern` is removed, so no browser is
+  turned away. Turbo and Stimulus enhance (keyboard, swipes, offline, the
+  person's local data); features that need a modern browser say so plainly
+  where they are missing. Enhancements are tested in the current and
+  previous major versions of Safari, Chrome, Firefox, and Edge (D2).
+- **Why:** People pray on old phones and borrowed computers; a prayer page
+  that refuses a browser fails them. Plain HTML is also the most accessible,
+  the fastest, and the easiest to print.
+
+## 26. SQLite for everything, and a read-only content database
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent); replaces 4
+- **Decision:** The site's own data (and Solid Cache, Queue, and Cable) use
+  SQLite in `storage/`, as Rails 8 sets up. Liturgical content is a separate
+  database, `db/content.sqlite3`, compiled deterministically from `content/`
+  by `bin/rails content:compile`, read-only at runtime through an abstract
+  `ContentRecord`, with FTS5 for search. The compiler refuses content whose
+  source is not `cleared` (development may allow `pending` with a warning).
+  The compiled file is gitignored and rebuilt on every deploy.
+- **Why:** One server, modest traffic, and mostly read-only text: SQLite is
+  fast, needs no service, and backs up as a file. Keeping content apart from
+  user data means content is always rebuilt from the repository's sourced
+  files, never edited in production. The sqlite3 gem bundles SQLite 3.54.1
+  with FTS5 (checked 2026-10-29).
+
+## 27. Hosting: Puma under systemd behind the existing Caddy
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner for self-hosting, D28;
+  agent for the process model)
+- **Decision:** The site runs on the owner's Ubuntu server as a `systemd`
+  service (Puma, with Solid Queue running inside Puma), listening on a local
+  port. The existing Caddy terminates TLS for prayerbookatlas.com and
+  proxies to it; www, prayerbook-atlas.com, prayerbookatlas.org, and their
+  www names redirect permanently to prayerbookatlas.com, and .org can be
+  switched to serve the site directly as the backup domain. Deploys copy a
+  built release from a clean `git archive`, never the checkout, into
+  `/srv/prayerbookatlas/releases/` with a shared `storage/`
+  (docs/deploy.md). No Docker, Kamal, or Thruster.
+- **Why:** Caddy already serves the owner's other sites on that machine, and
+  kamal-proxy would want ports 80 and 443 for itself. A systemd unit is the
+  smallest thing that restarts on failure and logs to the journal.
+
+## 28. Personal data stays in the person's browser
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent, D29); replaces 3
+- **Decision:** Favorites, intercessions, the rule of life, the journal,
+  plan progress, and preparation for confession are kept in the person's
+  own browser (IndexedDB), with export and import. The server never receives
+  them unless the person later turns on account sync (BUILD.md Phase 25),
+  and confession notes never leave the browser at all. Preferences the
+  server needs to draw a page (book, reading settings, appearance, mode) are
+  strictly necessary first-party cookies holding only those choices.
+- **Why:** Privacy is pastoral care (AGENTS.md §3). Keeping the names of the
+  sick and a person's self-examination off the server means there is nothing
+  to leak, subpoena, or back up by mistake.
+
+## 29. Few dependencies; Minitest and system tests
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent); replaces 6 and 7
+- **Decision:** The Gemfile holds what `rails new` put there. Every other gem,
+  JavaScript package pinned by importmap, or external service needs its own
+  entry here, saying why Rails cannot do the job. Never analytics,
+  advertising, tracking, crash-reporting, affiliate, remote-font, or CDN
+  code. Tests are Minitest (`bin/rails test`): table-driven model tests for
+  every calendar, collect, and lectionary rule, each citing its book and
+  page; integration tests for both modes; and system tests (Capybara with
+  headless Chrome) for flows in a phone-sized and a desktop-sized window.
+- **Why:** Every dependency is a supply-chain, privacy, and upgrade cost on a
+  site maintained for years by agents and one owner. Rails' own test stack
+  covers what the site needs.
+
+## 30. Dates are Ruby `Date`s; the date travels in the URL
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent); restates 8, replaces 10
+- **Decision:** Church-calendar logic uses Ruby's `Date` (a civil date,
+  proleptic Gregorian), never `Time`, `DateTime`, or a time zone. The
+  person's local date is settled once per request: from a date in the URL,
+  else from the browser's time zone (a preference cookie a small script
+  sets), else from the owner's default zone, and the page says which date it
+  shows. Any page can be pinned to a date with `?date=YYYY-MM-DD`, which is
+  how tests, screenshots, and shared links reach Easter or an Ember Day.
+- **Why:** A holy day is a calendar day, not an instant. The server cannot
+  know the reader's midnight without being told, so it is told once, at the
+  edge, and every engine below works on plain dates.
+
+## 31. Nothing from anywhere else
+
+- **Date:** 2026-10-29 · **Status:** Accepted (agent); restates 15 for the web
+- **Decision:** The site loads nothing from another host: fonts, scripts,
+  styles, and images are its own. A strict Content Security Policy enforces
+  it (`default-src 'self'`, `object-src 'none'`, `frame-ancestors 'none'`,
+  `base-uri` and `form-action` 'self', a fresh nonce per request for
+  importmap's inline script and Turbo's style), with a Permissions Policy
+  that asks for no device features. Tests fail if a page links a remote
+  asset or the policy allows another host.
+- **Why:** No third party learns who prays, when, or what. It also keeps the
+  site working when other services do not.

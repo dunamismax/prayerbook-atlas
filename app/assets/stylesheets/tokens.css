@@ -1,0 +1,102 @@
+/*
+ * Generated from design/tokens.json by `bin/rails design:tokens`.
+ * Do not edit by hand: change the tokens, regenerate, and commit both.
+ */
+
+:root {
+  color-scheme: light dark;
+  --paper: #f3f1ea;
+  --card: #f8f7f2;
+  --wash: #eceae2;
+  --line: #b9bcc2;
+  --ink: #1a2230;
+  --muted: #545c6a;
+  --rubric: #2a4a7f;
+  --on-rubric: #f8f7f2;
+  --ribbon-violet: #5b3a78;
+  --ribbon-white: #fbf8ef;
+  --ribbon-green: #3f6b3a;
+  --ribbon-red: #8f1d24;
+  --ribbon-rose: #b86a7c;
+  --ribbon-black: #1d1a17;
+  --ribbon-blue: #3a5cc0;
+  --ribbon-array: #cdbf9f;
+
+  --type-display-size: 1.9375rem;
+  --type-display-leading: 1.15;
+  --type-title-size: 1.625rem;
+  --type-title-leading: 1.15;
+  --type-heading-size: 1.375rem;
+  --type-heading-leading: 1.2;
+  --type-reading-size: 1.25rem;
+  --type-reading-leading: 1.55;
+  --type-rubric-size: 1.0625rem;
+  --type-rubric-leading: 1.45;
+  --type-eyebrow-size: 0.8125rem;
+  --type-eyebrow-tracking: 0.12em;
+  --type-role-size: 0.8125rem;
+  --type-role-tracking: 0.1em;
+  --type-tab-size: 0.75rem;
+  --type-tab-tracking: 0.08em;
+  --type-page-number-size: 0.8125rem;
+  --type-source-size: 0.875rem;
+  --type-source-mark-size: 0.8125rem;
+  --type-action-size: 0.875rem;
+  --type-action-tracking: 0.06em;
+  --type-ui-size: 1.0625rem;
+
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 0.75rem;
+  --space-l: 1rem;
+  --space-xl: 1.5rem;
+  --space-xxl: 2rem;
+  --space-margin: 1.375rem;
+  --space-card-padding: 1rem;
+  --space-reading-measure: 40rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-appearance="day"]) {
+    --paper: #0e131a;
+    --card: #151c26;
+    --wash: #121821;
+    --line: #2f3b4c;
+    --ink: #e4e8ee;
+    --muted: #9aa5b4;
+    --rubric: #8fb1e3;
+    --on-rubric: #0e131a;
+    --ribbon-violet: #9677b8;
+    --ribbon-white: #ede7db;
+    --ribbon-green: #76a26a;
+    --ribbon-red: #d65a50;
+    --ribbon-rose: #dc9aa8;
+    --ribbon-black: #4a433c;
+    --ribbon-blue: #4f6cc8;
+    --ribbon-array: #a89a7e;
+  }
+}
+
+:root[data-appearance="day"] {
+  color-scheme: light;
+}
+
+:root[data-appearance="night"] {
+  color-scheme: dark;
+  --paper: #0e131a;
+  --card: #151c26;
+  --wash: #121821;
+  --line: #2f3b4c;
+  --ink: #e4e8ee;
+  --muted: #9aa5b4;
+  --rubric: #8fb1e3;
+  --on-rubric: #0e131a;
+  --ribbon-violet: #9677b8;
+  --ribbon-white: #ede7db;
+  --ribbon-green: #76a26a;
+  --ribbon-red: #d65a50;
+  --ribbon-rose: #dc9aa8;
+  --ribbon-black: #4a433c;
+  --ribbon-blue: #4f6cc8;
+  --ribbon-array: #a89a7e;
+}

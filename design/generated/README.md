@@ -2,7 +2,7 @@
 
 All 54 requested PNGs are in this folder. Open [the gallery](index.html) to browse them, or open a PNG directly. The [prompt set](../image-prompts.md) and [image registry](../image-registry.json) record every source and the actual generation prompts.
 
-These are design sources for the **Ribbon proposal**. D15 remains open; generating the set does not approve the design, assemble an Icon Composer file, create SF Symbols, or enable seasonal plates on Today.
+These are design sources, generated for the **Ribbon proposal** and kept by the owner after choosing Engraved Plate (D15). Since 2026-10-29 the project is a website (BUILD.md D27): the icon serves as the site's placeholder favicon (`public/icon.png`, A1 resized), and the rest wait for the pages that use them. Generating the set does not clear any image for release.
 
 | Family | Files |
 | --- | ---: |
@@ -22,8 +22,8 @@ The tinted icon (`icon-app-tinted.png`) has a rebuilt mask: the generated outlin
 
 ## Next uses
 
-- Assemble A4 and A5 over the solid day/night background in Icon Composer (P21.8).
-- Custom SF Symbols from B1–B16 wait on the owner (decision 20): agents do not trace, redraw, or restyle them. The app uses SF Symbols meanwhile.
-- Add only selected, cleared assets to the app and website; review the registry before release (P3.6).
+- The icon set (A1–A12) for the favicon, the Home Screen icon, and the installable web app (BUILD.md P18.1, P20.7, P22.4), resized only.
+- Symbols B1–B16 are images the owner made; agents do not trace, redraw, or restyle them (decision 20). The site labels everything in words meanwhile.
+- Add only selected, cleared assets to the site; review the registry before release (P3.6).
 
-No app, website, or release integration is claimed. `make check` and simulator flows are not available because this repository has no Makefile or app targets yet. The gallery was checked in a browser over local HTTP on 2026-10-28: all 54 images load at their recorded sizes, and the 31 night samples render.
+The gallery was checked in a browser over local HTTP on 2026-10-28: all 54 images load at their recorded sizes, and the 31 night samples render.

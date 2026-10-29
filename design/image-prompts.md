@@ -6,6 +6,13 @@ ornaments and frames, the illustrated plates, and the website images. Each
 prompt is self-contained, so it can go to its own new ChatGPT chat with
 image generation.
 
+**Since 2026-10-29 the project is a website (BUILD.md D27).** The prompts
+were written for the retired iPhone app; the images keep their uses on the
+web (the icon as favicon and Home Screen icon, the symbols, empty states,
+ornaments, plates, and the website images), but the Icon Composer and SF
+Symbols steps below no longer apply. New prompts for the site are added at
+the end.
+
 Sections A–E follow the **Ribbon** design proposal (BUILD.md), which was
 generated before the owner chose **B · Engraved Plate** for D15 on
 2026-10-29; the owner keeps the generated icons as they are. Agents write and

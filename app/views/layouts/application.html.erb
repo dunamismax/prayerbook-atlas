@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render "layouts/head" %>
+  </head>
+
+  <body class="site site--full" data-site-mode="full">
+    <a class="skip-link" href="#main">Skip to the text</a>
+
+    <header class="masthead">
+      <%= render "shared/wordmark" %>
+      <%= render "shared/section_nav" %>
+    </header>
+
+    <div class="full-layout">
+      <nav class="contents" aria-label="In this section">
+        <%= content_for?(:contents) ? yield(:contents) : render("shared/contents") %>
+      </nav>
+
+      <main id="main" class="reading">
+        <%= yield %>
+      </main>
+
+      <aside class="margin" aria-label="Margin">
+        <%= yield :margin %>
+      </aside>
+    </div>
+
+    <%= render "shared/footer" %>
+  </body>
+</html>

@@ -1,179 +1,122 @@
 # Prayerbook Atlas
 
-**Every Book of Common Prayer, one daily office.**
+A website for Anglican and Episcopal common prayer across the Books of Common
+Prayer, at [prayerbookatlas.com](https://prayerbookatlas.com): the Daily
+Office for any day from the book you pray with, the Christian year kept by
+each book's own rules, and an atlas of how the books compare and descend from
+one another, every text with its book, printing, and page.
 
-Prayerbook Atlas is a native iPhone app, with a public website and a web
-app to follow at [prayerbookatlas.com](https://prayerbookatlas.com), for
-Anglican and Episcopal common prayer. It gathers the Books of Common Prayer
-and their ways of reading Scripture into one quiet, beautiful place: Morning
-and Evening Prayer, Noonday Prayer, and Compline with the day's psalms,
-lessons, canticles, and collects already in place; every lectionary and
-Psalter the books appoint; the Christian year kept by each book's own rules;
-and the books themselves, side by side.
+It is built with Ruby on Rails, desktop first, with a dedicated phone site
+for small-screen mobile browsers. It is personal lay work, the sister project
+of [Grace & Footnotes](https://graceandfootnotes.com), and not an official
+publication of any church.
 
-The name says what it is for. An atlas is a book of maps; this one maps the
-prayer books, from Cranmer's 1549 and 1552 through the 1662 book of the
-Church of England, the American books of 1928 and 1979, the ACNA's 2019 book,
-and the books of other provinces. Pick the book your church uses and pray
-from it as printed. Or open the Atlas and see the same prayer in every book
-that has it, with the differences marked and the page number of each.
-
-It is the sister project of [Grace & Footnotes](https://graceandfootnotes.com),
-the owner's website. It shares the website's Anglican faith, its plain and
-careful voice, and its sources one tap away, and it has a look of its own: an
-engraved plate from an old atlas, chart paper and iron-blue ink, double-rule
-frames and small capitals, one cartographer's blue, and the season's colour
-carried by a ribbon marker.
-
-## Status
-
-**Phase 2: design system and app shell.** The app builds and launches to a
-placeholder Today in the Engraved Plate design (D15), set in Cardo, with
-five tabs, deep links, restored state, the shared components, and the
-`LiturgicalBlock` model the texts will use. No liturgical text is in the app
-yet. Every owner decision in [BUILD.md](BUILD.md) is answered; [AGENTS.md](AGENTS.md)
-and BUILD.md set out the finished app, the research behind it, and thirty
-phases of checklists. The [image gallery](design/generated/index.html)
-holds the owner's 54 generated design sources. BUILD.md's **Build
-status** table and **Handoff notes** always give the current state.
-
-| File | What it is |
-| --- | --- |
-| [BUILD.md](BUILD.md) | The master plan: the finished app, owner decisions, research, phases, checklists, and handoff notes |
-| [AGENTS.md](AGENTS.md) | How every coding session works in this repository, and the faith and voice that govern it |
-| [SOUL.md](SOUL.md) | The owner's statement of faith and the app's voice and conduct guide (draft awaiting the owner's approval, P0.11) |
-| [docs/decisions.md](docs/decisions.md) | The numbered, append-only decision log |
-| [design/image-prompts.md](design/image-prompts.md) | One image-generation prompt per icon, symbol, drawing, ornament, and plate the plan needs |
-| [design/generated/](design/generated/README.md) | 54 generated PNG design sources and a local review gallery |
-| [design/image-registry.json](design/image-registry.json) | Image provenance, exact prompts, hashes, alpha checks, dimensions, and review limits |
-| [content/SOURCES.md](content/SOURCES.md) | Source register, initially covering the generated visual assets |
-
-## Facts at a glance
-
-| | |
-| --- | --- |
-| App name | Prayerbook Atlas (D1) |
-| Website | [prayerbookatlas.com](https://prayerbookatlas.com); prayerbook-atlas.com and prayerbookatlas.org, also held, will redirect to it (D12, P19.2) |
-| Support email | support@prayerbookatlas.com (Cloudflare Email Routing, catch-all to the owner's inbox) |
-| Repository | `github.com/dunamismax/prayerbook-atlas` (public as of 2026-10-28; visibility is D11) |
-| Bundle ID | `com.prayerbookatlas.app` (working default, D1) |
-| Platforms | iPhone first, then iPad, Apple Watch, and widgets; the website and a web app; Android if chosen (D25) |
-| Minimum iOS | iOS 26 (working default, D2) |
-| Prayer books at launch | 1662 (England), 1928 (US), and 1979 (US), the three that are public domain in the US (D3) |
-| By permission | The ACNA's 2019 book, Canada's 1962, Common Worship, the Revised Common Lectionary, and more (D6, Phase 16) |
-| Scripture | Each book's own Psalter in the offices; the KJV with the Apocrypha and the World English Bible in the reader at launch; licensed translations as permission arrives (D5) |
-| Price | Free, donation-supported, no ads or tracking (D7) |
-
-## What it will do
-
-- **Pray the office** from the chosen book for any day, with nothing to
-  look up: sentences, psalms, lessons, canticles, the creed, the collects,
-  the Litany on its days, and the Athanasian Creed on its feasts.
-- **Keep the Christian year** by each book's own rules: Easter and the
-  moveable feasts, Septuagesima where the book keeps it, red-letter and
-  black-letter days, Ember and Rogation days, fasts and days of abstinence,
-  and the collect of the day, tested against the printed tables.
-- **Read the Bible the Church's way**: every lectionary the books appoint,
-  each book's Psalter in its own cycle, and gentle reading plans with no
-  streaks.
-- **Explore the Atlas**: compare a prayer across editions, find where any
-  prayer appears, read each book's history, and follow the lineage of the
-  prayer books on a sourced map.
-- **Keep a rule of life privately**: favorites, an intercession list whose
-  names appear in the prayers, a personal rule, a journal, and preparation
-  for confession that never leaves the device.
-- **Learn**: the catechisms, the creeds, the Articles, a glossary, and a
-  welcome for anyone new to the prayer book.
-- **Work everywhere and offline**: widgets, Siri, Apple Watch, the website,
-  and a web app, with prayer never waiting on the network.
-
-## Principles
-
-Each book is shown on its own terms, as printed, with its source and page
-one tap away. Nothing is typed from memory or quietly borrowed from another
-edition. Every Anglican is welcome, whatever book, province, or
-churchmanship. The app serves prayer and never performs it: no badges,
-streaks, or pressure, and no paywall on prayer. It is not a priest. What a
-person writes stays on the device. AGENTS.md §3 and BUILD.md's Product
-principles give the full rules.
-
-## Not an official publication
-
-Prayerbook Atlas is personal lay work. It is not an official publication of
-the Church of England, The Episcopal Church, the Anglican Church in North
-America, the Anglican Communion, or any other church, diocese, or parish,
-and no bishop or priest has endorsed it unless BUILD.md records that. It
-uses no church's seal, shield, or logo. Each prayer book's text belongs to
-its own church and publisher; the app credits each and uses copyrighted
-texts only with permission.
-
-## Stack
-
-As planned (Phase 1 has built the first part): native iOS in Swift 6 and SwiftUI, with pure logic in local Swift packages
-(`ChurchYear`, `ContentKit`, `ScriptureKit`, `OfficeKit`, `AtlasKit`),
-liturgical texts compiled into a bundled read-only SQLite database whose
-compiler refuses any source not cleared, user data in SwiftData with optional
-iCloud sync, zero third-party runtime dependencies, and no analytics or
-tracking. The public website is a small static site served by Caddy on the
-owner's Ubuntu server (D26). Later phases add a Swift server and a
-server-rendered web app sharing the same packages (D19). Details and reasons
-are in [BUILD.md](BUILD.md#engineering-foundations).
+**Status:** in development; nothing is ready for prayer yet and nothing is
+deployed. [BUILD.md](BUILD.md) is the plan and its current state.
+[AGENTS.md](AGENTS.md) and [SOUL.md](SOUL.md) govern how the work is done.
+The project began as an iPhone app, retired on 2026-10-29 (Git tag
+`ios-archive`).
 
 ## Prerequisites
 
-Checked on the owner's Mac on 2026-10-28 (macOS 27.2) by running `make check`:
+Confirmed on the owner's Mac (macOS 27.2, Apple silicon) on 2026-10-29:
 
-| Tool | Version | Notes |
-| --- | --- | --- |
-| Xcode | 27.1 (27A9275) | iOS 27 SDK; iOS 27.0 and 27.1 simulator runtimes |
-| Swift | 6.4 (swiftlang-6.4.0.34.1) | Ships with Xcode |
-| XcodeGen | 2.46.0 | `brew install xcodegen` |
-| `swift format` | bundled with the Xcode 27 toolchain | Run as `swift format` |
-| iOS simulators | iOS 26.5, 27.0, 27.1 | Any iPhone; `scripts/sim-destination.sh` picks the newest |
-| fontTools | 4.68.0 (Homebrew) | `brew install fonttools`; for checking bundled fonts' glyphs and features |
-| ImageMagick | 7.1 (Homebrew) | `brew install imagemagick`; for image exports and screenshot checks |
-| Colima and Docker | Docker CLI 29.9.2 (Homebrew), Colima | For `make test-linux`, which runs the package tests in the `swift:6.4` container; `brew install colima docker`, then `colima start` |
+- **Ruby 4.0.9**, through [mise](https://mise.jdx.dev) (2026.10.18), which
+  reads `.ruby-version`. With mise installed:
+
+  ```bash
+  mise settings add idiomatic_version_file_enable_tools ruby
+  ```
+
+  ```bash
+  mise install ruby@4.0.9
+  ```
+
+- **Bundler 4.0.23** and **Rails 8.1.4** (the Gemfile pins Rails; `gem
+  install rails -v 8.1.4` gives you the `rails` command outside the project).
+- **Google Chrome**, for system tests (headless).
+- **fontTools** (`brew install fonttools`), only to convert a font to WOFF2,
+  and **ImageMagick** (`brew install imagemagick`), only to resize the
+  owner's images.
+
+SQLite needs nothing installed: the sqlite3 gem bundles SQLite 3.54.1 with
+FTS5. No Node, no CSS build, and no Docker.
 
 ## Quick start
 
-```sh
-brew install xcodegen   # once
-make run                # generate the project, build, boot a simulator, install and launch
-make check              # lint, package tests, content, app tests, Release build
+From a clean checkout:
+
+```bash
+bin/setup
 ```
 
-`make help` lists every target. `SIM_DEVICE="iPhone 17 Pro" make run` picks
-a simulator by name or UDID, and `make screenshot APPEARANCE=dark
-TEXT_SIZE=accessibility-extra-extra-extra-large` saves one to the gitignored
-`screenshots/`. Never edit the `.xcodeproj`: it is generated from
-`project.yml` and gitignored. To sign for a device, see
-`Config/Secrets.xcconfig.example`.
+That installs the gems, prepares the databases, and starts the server at
+<http://localhost:3000>. Afterwards, start it with:
+
+```bash
+bin/dev
+```
+
+The site draws itself in one of two modes: the **full site** for desktop and
+tablet browsers and the **phone site** for phones. To see the phone site on a
+computer, use the browser's device emulation (which sends a phone user agent)
+or the "Use the phone site" button in any page's footer.
+
+## Checks
+
+Before every commit:
+
+```bash
+bin/ci
+```
+
+It runs setup, RuboCop, bundler-audit, the importmap audit, Brakeman, the
+tests, and the seeds (`config/ci.rb`). Separately:
+
+```bash
+bin/rails test
+```
+
+```bash
+bin/rubocop -a
+```
+
+```bash
+bin/rails design:tokens
+```
+
+The last regenerates `app/assets/stylesheets/tokens.css` from
+`design/tokens.json`; a test fails if you forget.
+
+The GitHub workflow (`.github/workflows/ci.yml`) runs the same checks on
+GitHub's Linux runners, by manual dispatch.
 
 ## Layout
 
-```text
-App/                     SwiftUI app target (UI and composition only)
-App/Resources/           Asset catalog (colours, later the icon)
-AppTests/                App unit tests (Swift Testing)
-AppUITests/              App UI tests (XCTest)
-Config/                  Base.xcconfig; Secrets.xcconfig.example for signing
-Packages/ChurchYear      The church year: CivilDate so far; Easter, seasons, holy days, collects to come
-Packages/ContentKit      Content models: the prayer-book identifiers so far; the SQLite reader to come
-Packages/ScriptureKit    Scripture: the translation identifiers so far; references and Psalters to come
-content/                 Sourced texts and tables; SOURCES.md is the rights registry
-design/                  Generated image sources, prompts, and their registry
-docs/                    The decision log
-scripts/                 Simulator picker and the warnings check
-project.yml              The XcodeGen project specification
-Makefile                 Every build, test, and run command
-```
+| Path | What it holds |
+|---|---|
+| `app/controllers/concerns/site_mode.rb` | Chooses the phone site or the full site for each request |
+| `app/views/layouts/application.html.erb` | The full site: masthead, contents, reading column, margin |
+| `app/views/layouts/application.html+phone.erb` | The phone site: phone bar, one column, tab bar |
+| `app/views/sections/` | The five sections: Today, Pray, Bible, Kalendar, Atlas |
+| `app/models/` | `SiteSection`, and later the plain-Ruby engines (`ChurchYear::`, `Office::`, `Scripture::`, `Atlas::`) |
+| `app/assets/stylesheets/` | Vanilla CSS; `tokens.css` is generated |
+| `app/assets/fonts/` | Cardo (SIL OFL 1.1), self-hosted as WOFF2 |
+| `lib/design_tokens.rb`, `lib/tasks/design.rake` | The tokens-to-CSS generator |
+| `content/` | Sourced texts and tables, and `SOURCES.md`, the rights register |
+| `design/` | `tokens.json`, the owner's generated images and their prompts and registry |
+| `docs/` | Product rules, design, decisions, and deployment |
+| `config/ci.rb` | The local CI steps `bin/ci` runs |
+| `research/` | Gitignored downloads for rights research; never served |
 
-Later phases add `Packages/OfficeKit` (Phase 6), `Packages/AtlasKit`
-(Phase 11), `Tools/ContentCompiler` (Phase 3), `Website/` (Phase 19),
-`Widgets/` and `Watch/` (Phase 18), `Packages/SharedModels`, and `Server/`.
+## Deployment
 
-## Further reading
+Self-hosted on the owner's Ubuntu server behind Caddy, at
+prayerbookatlas.com, with prayerbookatlas.org as the backup domain and
+prayerbook-atlas.com redirecting to it. [docs/deploy.md](docs/deploy.md)
+describes the server; every server change waits for the owner.
 
-- [AGENTS.md](AGENTS.md): how work on this repository is done
-- [BUILD.md](BUILD.md): the build plan, owner decisions, research, and handoff notes
-- [Grace & Footnotes](https://graceandfootnotes.com): the sister website
+## License
+
+All rights reserved; see [LICENSE](LICENSE). Texts, Scripture, fonts, and
+images keep their own rights, recorded in `content/SOURCES.md`.

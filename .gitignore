@@ -1,34 +1,33 @@
 # macOS
 .DS_Store
 
-# Xcode (the project is generated from project.yml by XcodeGen)
-*.xcodeproj/
-xcuserdata/
-DerivedData/
-build/
-*.xcresult/
+# Rails (from `rails new`, Rails 8.1.4)
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+/storage/*
+!/storage/.keep
+/public/assets
+/coverage/
 
-# Swift Package Manager
-.build/
-.swiftpm/
-Package.resolved
-
-# Generated content database (make content)
-App/Resources/Content.sqlite
-
-# Secrets and signing (never commit)
-Config/Secrets.xcconfig
+# Secrets (never commit). config/credentials.yml.enc is committed; the key
+# that opens it is not.
+/config/*.key
+/config/credentials/*.key
 .env
 .env.*
-*.p8
-*.p12
-*.cer
-*.mobileprovision
-*.provisionprofile
 
-# Local screenshots and scratch output
-screenshots/
+# Generated content database (bin/rails content:compile, BUILD.md P3.3)
+/db/content*.sqlite3*
 
-# Candidate files downloaded for rights research (D21); never bundled, never
+# Candidate files downloaded for rights research (D21); never served, never
 # committed. content/SOURCES.md records where each came from.
-research/
+/research/

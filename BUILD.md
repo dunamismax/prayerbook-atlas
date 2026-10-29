@@ -1,17 +1,18 @@
 # BUILD.md: The Build Plan
 
-This is the master plan for **Prayerbook Atlas**, a native iPhone app first,
-then a web app, and perhaps one day an Android app, for Anglican and
-Episcopal common prayer. It is built step by step by AI agent sessions
-working under [AGENTS.md](AGENTS.md), within the faith and voice set out
-there (and in SOUL.md once P1.3 writes it).
+This is the master plan for **Prayerbook Atlas**, a website for Anglican and
+Episcopal common prayer across the Books of Common Prayer, at
+[prayerbookatlas.com](https://prayerbookatlas.com). It is built in Ruby on
+Rails, desktop first with a dedicated phone site, step by step by AI agent
+sessions working under [AGENTS.md](AGENTS.md), within the faith and voice set
+out there and in [SOUL.md](SOUL.md).
 
 **Name:** **Prayerbook Atlas** (owner decision D1): a way to navigate the
 Books of Common Prayer and their reading traditions, warm and recognizably
-liturgical. Domain [prayerbookatlas.com](https://prayerbookatlas.com), with
-prayerbook-atlas.com also held; support email
-**support@prayerbookatlas.com** (D12). Repository
-`dunamismax/prayerbook-atlas`. The app is a sister project of
+liturgical. Canonical domain **prayerbookatlas.com**; **prayerbookatlas.org**
+is the backup domain and **prayerbook-atlas.com** is also held, both
+redirecting to it (D12). Support email **support@prayerbookatlas.com**.
+Repository `dunamismax/prayerbook-atlas`. The site is a sister project of
 [Grace & Footnotes](https://graceandfootnotes.com), the owner's website, and
 shares its faith and its plain, careful voice; its visual design is its own
 (D15).
@@ -21,19 +22,23 @@ of England, The Episcopal Church, the Anglican Church in North America, the
 Anglican Communion, or any other church, diocese, or parish.
 
 **Origins:** the owner created this repository on 2026-10-28 and named the
-app the same day. Two earlier projects of the owner's bear on it: the
-retired Anglican Catholic app "Word & Altar" (repository
-`anglican-catholic-app`, tag `anglican-archive`, retired 2026-09-30) and the
-Orthodox app Beautiful Corner (repository `beautiful-corner`), whose
-engineering foundations this plan adapts. Prayerbook Atlas starts empty;
-D10 governs what may be reused from either.
+project the same day. It began as a native iPhone app: a SwiftUI shell, the
+Engraved Plate design system, and a first TestFlight build were finished by
+2026-10-29. That day the owner chose to make it a website only, built with
+Ruby on Rails (D27). The iPhone app is retired and kept in Git at the tag
+`ios-archive` (commit `a9be149`); step ids in commits before that tag
+(P1.1–P2.14 and so on) refer to the retired plan, not to the items below.
+Two earlier projects of the owner's bear on it: the retired Anglican Catholic
+app "Word & Altar" (repository `anglican-catholic-app`, tag
+`anglican-archive`) and the Orthodox app Beautiful Corner (repository
+`beautiful-corner`). D10 governs what may be reused from either.
 
 ---
 
 ## How agents use this file
 
-1. Read AGENTS.md first (and SOUL.md once it exists). Then read this whole
-   file once per session.
+1. Read AGENTS.md and SOUL.md first. Then read this whole file once per
+   session.
 2. Work the **first open `- [ ]` item in the earliest incomplete phase**,
    skipping items whose gate is still closed (AGENTS.md §4). Items marked
    *(parallel-safe)* may be done in any order within their phase.
@@ -41,8 +46,8 @@ D10 governs what may be reused from either.
 4. Tick a box only when AGENTS.md §7 (definition of done) is met. Commit the
    tick with the work, using the step id in the subject (e.g. `P4.2: ...`).
 5. Complete as many items as possible per session. Before stopping, run
-   `make check` (once it exists), update the **Build status** table, push,
-   and replace the **Handoff notes** at the bottom.
+   `bin/ci`, update the **Build status** table, push, and replace the
+   **Handoff notes** at the bottom.
 6. If an item is wrong, too large, or out of order, do not silently skip or
    delete it. Split it into sub-items (`P7.4a`, `P7.4b`), rewrite it, or add
    a note under it, and say what you changed in the Handoff notes.
@@ -53,12 +58,12 @@ D10 governs what may be reused from either.
    keeps the rest.
 
 Markers describe the kind of work: **[OWNER]** accounts, legal, money,
-publishing, and outside contact · **[GATE Dn]** depends on an owner
-decision · **[RIGHTS]** needs cleared entries in `content/SOURCES.md` ·
+publishing, the server, and outside contact · **[GATE Dn]** depends on an
+owner decision · **[RIGHTS]** needs cleared entries in `content/SOURCES.md` ·
 **[REVIEW]** theological or pastoral content · **[GATE DEMO]** begins when the
-app is usable, demoable, and shareable (M2 complete and a TestFlight build),
-when the requests for copyrighted texts go out (D6). D9 decides how far
-agents may act on each; AGENTS.md §4 gives the working rule until it does.
+site is usable, demoable, and shareable (M2 complete and deployed to
+prayerbookatlas.com), when the requests for copyrighted texts go out (D6). D9
+decides how far agents may act on each; AGENTS.md §4 gives the working rule.
 
 ---
 
@@ -69,51 +74,50 @@ top-level items (sub-items roll up into their parent).
 
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
-| 0 | Owner foundations | — | 14 | 9 |
-| 1 | Repository and toolchain | M1 Foundation | 14 | 14 |
-| 2 | Design system and app shell | M1 Foundation | 14 | 10 |
+| 0 | Owner foundations | — | 14 | 8 |
+| 1 | Rails foundation | M1 Foundation | 12 | 9 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 3 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
-| 5 | Today and the Kalendar | M2 The Daily Office | 6 | 0 |
-| 6 | The Daily Office engine | M2 The Daily Office | 6 | 0 |
-| 7 | The 1662 Book of Common Prayer | M2 The Daily Office | 10 | 0 |
-| 8 | The American prayer books: 1928 and 1979 | M2 The Daily Office | 7 | 0 |
-| 9 | Holy Scripture and the Psalter | M3 Word and Atlas | 8 | 0 |
-| 10 | Lectionaries and reading plans | M3 Word and Atlas | 6 | 0 |
-| 11 | The Atlas | M3 Word and Atlas | 7 | 0 |
-| 12 | Holy Communion and the pastoral offices | M3 Word and Atlas | 5 | 0 |
-| 13 | Personal life of prayer | M4 Rule of life | 13 | 0 |
-| 14 | Holy days and the saints | M4 Rule of life | 6 | 0 |
-| 15 | Learn: the Anglican way | M4 Rule of life | 11 | 0 |
-| 16 | More prayer books, by permission | M5 Version 1.0 | 7 | 0 |
-| 17 | Grace & Footnotes, sharing, and finding a church | M5 Version 1.0 | 5 | 0 |
-| 18 | System integration and Apple Watch | M5 Version 1.0 | 8 | 0 |
-| 19 | The public website (prayerbookatlas.com) | M5 Version 1.0 | 10 | 0 |
-| 20 | Quality hardening | M5 Version 1.0 | 9 | 0 |
-| 21 | Version 1.0 release | M5 Version 1.0 | 11 | 0 |
-| 22 | Audio | M6 Voice | 6 | 0 |
-| 23 | AI study assistant | M6 Voice | 8 | 0 |
-| 24 | Server foundation | M7 Web | 6 | 0 |
-| 25 | Web app | M7 Web | 8 | 0 |
-| 26 | Accounts and web sync | M7 Web | 4 | 0 |
-| 27 | Donations and sustainability | M8 Everywhere | 4 | 0 |
-| 28 | Operations and annual maintenance | M8 Everywhere | 7 | 0 |
-| 29 | Android and future platforms | M8 Everywhere | 9 | 0 |
+| 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
+| 6 | Today and the Kalendar | M2 The Daily Office | 7 | 0 |
+| 7 | The Daily Office engine and reader | M2 The Daily Office | 6 | 0 |
+| 8 | The 1662 Book of Common Prayer | M2 The Daily Office | 10 | 0 |
+| 9 | The American prayer books: 1928 and 1979 | M2 The Daily Office | 7 | 0 |
+| 10 | Holy Scripture and the Psalter | M3 Word and Atlas | 8 | 0 |
+| 11 | Lectionaries and reading plans | M3 Word and Atlas | 6 | 0 |
+| 12 | The Atlas | M3 Word and Atlas | 7 | 0 |
+| 13 | Holy Communion and the pastoral offices | M3 Word and Atlas | 5 | 0 |
+| 14 | Personal life of prayer | M4 Rule of life | 11 | 0 |
+| 15 | Holy days and the saints | M4 Rule of life | 6 | 0 |
+| 16 | Learn: the Anglican way | M4 Rule of life | 11 | 0 |
+| 17 | More prayer books, by permission | M5 Version 1.0 | 7 | 0 |
+| 18 | The web platform: offline, install, print, share | M5 Version 1.0 | 9 | 0 |
+| 19 | Grace & Footnotes, sharing, and finding a church | M5 Version 1.0 | 5 | 0 |
+| 20 | Public pages and legal | M5 Version 1.0 | 8 | 0 |
+| 21 | Quality hardening | M5 Version 1.0 | 10 | 0 |
+| 22 | Version 1.0 launch | M5 Version 1.0 | 7 | 0 |
+| 23 | Audio | M6 Voice | 5 | 0 |
+| 24 | AI study assistant | M6 Voice | 8 | 0 |
+| 25 | Accounts and sync | M7 Accounts and sustainability | 5 | 0 |
+| 26 | Donations and sustainability | M7 Accounts and sustainability | 4 | 0 |
+| 27 | Operations and annual maintenance | M8 Ongoing | 8 | 0 |
+| 28 | Future directions | M8 Ongoing | 8 | 0 |
 
-**Current state (2026-10-29):** Phase 1 is done, P1.14 included (the owner
-confirmed the TestFlight install). Phase 2 has P2.1–P2.8, P2.13,
-and P2.14 done: the app runs in Engraved Plate (D15) with Cardo, the shared
-components (Debug `-componentGallery`), and ContentKit's `LiturgicalBlock`.
-No liturgical text is in the app. Every D is decided; agents decide open
-questions (D9), and only the owner makes images (decision 20).
+**Current state (2026-10-29):** the project is now a Rails 8.1.4 website
+(D27). The iPhone app is retired (tag `ios-archive`). The Rails app runs in
+both modes (the full site and the phone site) with placeholder sections, the
+Engraved Plate tokens as CSS, and self-hosted Cardo; `bin/ci` passes. No
+liturgical text is on the site, and nothing is deployed yet.
+
 ---
 
-## The finished app
+## The finished site
 
 This section defines what "complete" means. Every phase below builds toward
-it. When the whole plan is done, the app is:
+it. When the whole plan is done, prayerbookatlas.com is:
 
-**Every prayer book, one daily office.** A person opens the app and the
+**Every prayer book, one daily office.** A person opens the site and the
 right office for the hour is ready: Morning or Evening Prayer (Mattins or
 Evensong), Noonday Prayer, or Compline, with the day's sentences, psalms,
 lessons, canticles, and collects already in place, from the prayer book they
@@ -121,11 +125,21 @@ choose: the Church of England's 1662, the American 1928 or 1979, and, as
 permission allows, the ACNA's 2019, Canada's 1962, Common Worship, and
 others. No ribbons to set, no tables to decode.
 
+**Two ways to the same pages.** On a desktop or tablet browser, the **full
+site**: a wide, unhurried reading column with the book's contents beside it
+and a margin for sources, notes, and parallel texts; the Atlas comparing up to
+three books side by side; the Kalendar as a month grid; keyboard navigation;
+and print-ready booklets. On a phone, the **phone site**: one column sized for
+the hand, a tab bar of the five sections within reach of a thumb, sources and
+notes folded under the text, and an installable, offline-capable web app.
+Both are drawn by the same server from the same content, at the same URLs; a
+person can switch between them from any page (D27, docs/product.md §1).
+
 **An atlas of the prayer books.** Any prayer can be seen in every book that
 has it, side by side, with the differences marked: the General Confession
 from 1552 to 2019, the Prayer of Humble Access, the Te Deum, the Collect for
 Purity. Each book has a page that says who authorized it, where it is used,
-and which printing the app follows. A sourced map shows how the books
+and which printing the site follows. A sourced map shows how the books
 descend from Cranmer's 1549 and 1552. Nothing in one book is quietly filled
 in from another.
 
@@ -138,9 +152,9 @@ the Old Testament once and the New Testament three times a year, the Psalter
 monthly, M'Cheyne's plan, and others.
 
 **Footnoted.** The Grace & Footnotes signature: every text, rule, reading,
-and quotation carries its source one tap away, with the printed page number
-of the book it came from, so the app and the pew book agree. Nothing is typed
-from memory. Nothing is misattributed.
+and quotation carries its source one click away, with the printed page number
+of the book it came from, so the site and the pew book agree. Nothing is
+typed from memory. Nothing is misattributed.
 
 **The Christian year, kept accurately.** Easter and the moveable feasts,
 Advent to the Sunday next before Advent, Septuagesima where a book keeps it,
@@ -150,73 +164,75 @@ tested against the printed tables.
 
 **A rule of life, kept privately.** Favorites, an intercession list whose
 names appear in the prayers, a personal rule, a journal, preparation for
-confession that never leaves the device, and gentle reminders. No streaks,
-no guilt (D16).
+confession that never leaves the person's own browser, and gentle reminders.
+No streaks, no guilt (D16).
 
-**Offline, private, and free.** Prayer never waits on the network. No
-analytics, advertising, affiliate links, or tracking. No paywall on prayer
-(D7).
+**Private and free.** No analytics, advertising, affiliate links, or
+tracking, and no paywall on prayer (D7). Every page that sets out prayer works
+without JavaScript, and once visited it can be prayed again offline.
 
-**Beautiful because it is careful.** The look of a well-kept prayer book:
-India paper, lamp-black ink, one rubric red, a gilt edge, and the season's
-colour carried by a ribbon marker (D15). Quiet on prayer screens.
+**Beautiful because it is careful.** Engraved Plate (D15): chart paper,
+iron-blue ink, double-rule frames, small capitals, and one cartographer's
+blue, with the season's colour carried by a ribbon marker. Quiet on prayer
+pages, by day and by night.
 
 **A welcome for the newcomer.** Plain explanations of Mattins, Evensong,
 collects, rubrics, and the seasons; how to follow along in church with a
 printed book; and a pointer toward a parish and a priest, never toward the
-app as a substitute.
+site as a substitute.
 
-**Everywhere the owner chooses.** iPhone first, then iPad, Apple Watch, and
-widgets; a public website at prayerbookatlas.com; a web app on the same
-engine; and Android if the owner chooses (D25).
+### Feature map: what others offer, and our answer
 
-### Feature map: what other apps offer, and our answer
-
-From the App Store listings checked on 2026-10-28 (Research finding 1).
+From the App Store listings checked on 2026-10-28 (Research finding 1); the
+web resources in that finding are still to be checked (P1.12).
 
 | Seen in | What it offers | Our answer (phase) |
 |---|---|---|
-| The Daily Office (2019 BCP) | Each office on one page, readings resolved, family prayer, searchable Psalter, collects, the Great Litany, calendar | The same ease for every book, with 2019 by permission (P6, P16) |
-| Venite.app | 1979 Rite I and II, Enriching Our Worship, three psalters, read-aloud audio, bulletins, Word export | Read-aloud audio, printable office booklets, every psalter labeled (P6.5, P9.4, P22) |
-| electronic Common Prayer (Church Publishing) | The 1979 book with lectionaries, Lesser Feasts and Fasts, indices, in-app purchases | The 1979 book free and complete; Lesser Feasts and Fasts by permission (P8, P16.5) |
-| Daily Prayer (Church of England, Hymns Ancient & Modern) | Common Worship and BCP offices in full, NRSV readings, podcast audio | 1662 offices complete; Common Worship by permission (P7, P16.3) |
-| Book of Common Prayer - BCP | The 1979 book, WEB and KJV, notes and bookmarks with iCloud backup | The same, plus every other book and the Atlas (P8, P13) |
+| The Daily Office (2019 BCP) | Each office on one page, readings resolved, family prayer, searchable Psalter, collects, the Great Litany, calendar | The same ease for every book, with 2019 by permission (P7, P17) |
+| Venite.app | 1979 Rite I and II, Enriching Our Worship, three psalters, read-aloud audio, bulletins, Word export | Read-aloud audio, printable office booklets, every psalter labeled (P18.3, P10.4, P23) |
+| electronic Common Prayer (Church Publishing) | The 1979 book with lectionaries, Lesser Feasts and Fasts, indices, in-app purchases | The 1979 book free and complete; Lesser Feasts and Fasts by permission (P9, P17.5) |
+| Daily Prayer (Church of England) | Common Worship and BCP offices in full, NRSV readings, podcast audio | 1662 offices complete; Common Worship by permission (P8, P17.3) |
+| Book of Common Prayer - BCP | The 1979 book, WEB and KJV, notes and bookmarks | The same, plus every other book and the Atlas (P9, P14) |
 | Common Prayer App | 1979 Rite II offices, fasting, KJV offline, licensed modern translations | Fasts and abstinence per book as information, never as a rule (P4.7) |
-| The Book of Common Prayer (1789 text) | A historic American book with a KJV reader | The historic books as an honest study layer (P11.6) |
+| The Book of Common Prayer (1789 text) | A historic American book with a KJV reader | The historic books as an honest study layer (P12.6) |
 
-**What none of them does:** every major prayer book in one app, honest
+**What none of them does:** every major prayer book in one place, honest
 sourcing with printed page numbers, side-by-side comparison of the same
-prayer across editions, and the history of the books as a map.
+prayer across editions, and the history of the books as a map, on a site
+that works on any computer and any phone.
 
-### Beyond them: what the finished app adds
+### Beyond them: what the finished site adds
 
 - **The Atlas**: compare any prayer across books, "where is this prayer?",
-  book pages, and the lineage map (P11).
+  book pages, and the lineage map (P12).
+- **A desktop reading experience** with the margin beside the text: sources,
+  page numbers, notes, and the same passage in another book (P2, P7).
 - **Collects resolved by each book's own rubrics**, including first Evensong
   of holy days and the Advent and Lent collects said daily (P4.9).
 - **The BCP's own Easter tables** (Golden Number and Sunday Letter) as a
-  second, independent computation and a teaching screen (P4.2, P5.5).
-- **Printed page numbers** on every block, so the app can follow a pew book
+  second, independent computation and a teaching page (P4.2, P6.6).
+- **Printed page numbers** on every block, so the site can follow a pew book
   (P2.8).
 - **An intercession list** whose names appear in the prayers where a book
-  provides for them (P13.3).
-- **A personal rule of life** shown on Today and never graded (P13.4).
-- **Printable office booklets** with their sources (P6.5).
-- **From Grace & Footnotes**: the website's writing, readable offline (P17).
-- **A citation-bound AI study assistant** that knows it is not a priest (P23).
-- **A public website and a web app** on the same engine (P19, P25).
+  provides for them (P14.3).
+- **Printable office booklets** with their sources, from the browser's own
+  print (P18.3).
+- **Calendar subscriptions** of each book's holy days (P18.4).
+- **From Grace & Footnotes**: the website's writing, linked and summarized
+  (P19).
+- **A citation-bound AI study assistant** that knows it is not a priest (P24).
 
 ---
 
 ## Product principles
 
-`docs/product.md` (P2.1) expands these into rules for every screen.
+`docs/product.md` expands these into rules for every page.
 
-1. **Serve prayer.** Quiet screens while praying; no interruptions.
+1. **Serve prayer.** Quiet pages while praying; no interruptions.
 2. **Each book on its own terms.** Show a book's text, rubrics, calendar, and
    lectionary as printed. Never fill a gap in one book with another's text
    unlabeled, and never "correct" a text toward a more familiar edition.
-3. **Sources one tap away.** Every text shows its book, printing, and page.
+3. **Sources one click away.** Every text shows its book, printing, and page.
 4. **Every Anglican welcome.** Users of every book, province, and
    churchmanship are treated with equal respect; differences are described,
    not ranked (D8).
@@ -224,17 +240,21 @@ prayer across editions, and the history of the books as a map.
    parish priest for personal questions.
 6. **No guilt mechanics.** No shaming, badges, points, or pressure (D16).
 7. **Private by design.** Intentions, names, journals, and confession notes
-   stay on the device unless synced by choice; confession notes never leave.
-8. **Offline first.** The complete prayer, calendar, and reading experience
-   works in airplane mode.
-9. **Free.** No paywall on prayer, no ads, no affiliate links (D7).
-10. **Welcome the newcomer.** Explain terms; never assume.
+   stay in the person's own browser unless synced by choice; confession notes
+   never leave it (D29).
+8. **Works everywhere.** Every prayer page is semantic HTML that works without
+   JavaScript, in any browser, at any text size; JavaScript only adds to it.
+9. **Desktop first, phone well.** The full site is the complete experience;
+   the phone site is a dedicated design for the hand, never a squeezed
+   desktop (D27).
+10. **Free.** No paywall on prayer, no ads, no affiliate links (D7).
+11. **Welcome the newcomer.** Explain terms; never assume.
 
-### Information architecture (proposal for P2.1)
+### Information architecture
 
-Five tabs, each with its own navigation stack, plus the iOS search tab:
+Five sections, the same in both modes (docs/product.md §1):
 
-| Tab | Holds |
+| Section | Holds |
 |---|---|
 | **Today** | The day's name in the chosen book, the season's ribbon, holy days, fasts, the office for the hour, the collect, the psalms and lessons, my rule, the reading-plan portion, the next holy day |
 | **Pray** | The offices, the Litany, prayers and thanksgivings, Holy Communion, the pastoral offices, devotions, my prayers, intercessions, confession preparation |
@@ -242,72 +262,8 @@ Five tabs, each with its own navigation stack, plus the iOS search tab:
 | **Kalendar** | Month and year views, holy days and commemorations, fasts, the Easter tables |
 | **Atlas** | The books and their pages, compare, "where is this prayer?", the lineage map, Learn |
 
-Settings opens from a toolbar button. P2.1 may adjust this if testing shows
-a better shape.
-
----
-
-## Design system: Ribbon (proposal for D15, not chosen)
-
-*2026-10-29 note:* the owner chose **B · Engraved Plate** instead (D15).
-`docs/design.md` and `design/tokens.json` are the authority; this section
-records the original proposal for history only.
-
-D15 was open; this was the recommended direction, to be settled in a design
-session that also showed two alternatives.
-
-The materials come from a well-kept prayer book: India paper, lamp-black ink,
-a single rubric red for rubrics, red-letter days, red initials, source marks,
-and the one primary action; a gilt edge drawn only as a hairline; and ribbon
-markers in the colours of the Church's year, the one place the season's
-colour appears. The Atlas screens borrow the engraved plate of an old atlas:
-double-rule frames, small-capital labels, fine hairlines. At night the page
-turns to warm soot. It should feel like a fine prayer book by lamplight, not
-a game, a poster, or a stained-glass gradient.
-
-| Token | Day | Night | Use |
-|---|---|---|---|
-| `paper` | `#F6F2E9` | `#13110E` | Page background |
-| `card` | `#FBF9F3` | `#1B1814` | Raised surfaces and sheets |
-| `wash` | `#ECE6D8` | `#231F1A` | Grouped backgrounds, chips, wells |
-| `line` | `#DCD3C1` | `#36302A` | Hairlines and borders |
-| `ink` | `#1D1A17` | `#EDE7DB` | Body text and headings |
-| `muted` | `#675F55` | `#A69E91` | Secondary text, captions, sources |
-| `rubric` | `#A42A1E` | `#E2765F` | Rubrics, initials, red-letter days, source marks, primary actions |
-| `onRubric` | `#FBF9F3` | `#13110E` | Text on rubric |
-| `gilt` | `#A3803A` | `#CFAE63` | Ornament only; never text |
-
-Computed contrast (WCAG 2, 2026-10-28): `ink` on `paper`, `card`, and `wash`
-is at least 13.3:1 in both modes; `muted` at least 5.05:1; `rubric` at least
-5.45:1; `onRubric` on `rubric` 6.27:1 or better. P2.3 turns this into a test.
-
-**Ribbons** (season markers, always with words, never colour alone): violet,
-white (ivory with a gilt edge), green, red, rose, and black, with optional
-Sarum blue for Advent and unbleached Lenten array. Most prayer books do not
-prescribe colours; the app labels them as custom (P4.8).
-
-**Type.** One bundled, OFL-licensed book face for liturgical text, Scripture,
-and titles, with SF for the interface; every style scales with Dynamic Type
-to AX5. Candidates: Libre Caslon Text and Baskervville (John Baskerville
-printed the Book of Common Prayer at Cambridge; verify the edition and date
-before telling that story). EB Garamond is Beautiful Corner's face and is
-avoided so the two apps stay distinct. The face must have, or P2.4 must
-supply faithfully, small capitals (the 1979 Psalter's LORD), ℣ and ℟, ✠,
-†, ¶, and the old-style figures used for page references.
-
-**Motifs.** The red initial, the rubric in red (or italic, by setting), the
-source mark and source sheet, the printed page number in the margin, the
-ribbon marker, role labels (Minister, People, Officiant, Answer, each as the
-book prints it), the colon or asterisk at the Psalter's half-verse as each
-book prints it, the gilt hairline, red-letter days in the Kalendar, and the
-atlas plate. Liquid Glass only on the navigation layer.
-
-**App icon (proposal).** A closed prayer book seen at an angle, a small gilt
-cross on the cover, one ribbon marker trailing from the fore-edge. Optional
-seasonal icons (a different ribbon) are chosen by the user in Settings,
-never switched automatically. **No compass rose:** the compass rose is the
-emblem of the Anglican Communion (Research finding 11), so the obvious
-"atlas" symbol would imply an endorsement the app does not have.
+Search and Settings are reachable from every page: in the masthead on the
+full site, from the phone bar on the phone site.
 
 ---
 
@@ -318,56 +274,56 @@ on and record what they checked.
 
 1. **Other Anglican apps** (US App Store, via Apple's public lookup API).
    [The Daily Office](https://apps.apple.com/us/app/id1513851259) (The Daily
-   Office, LLC; the ACNA's 2019 book; 4.9 stars from 314 ratings; version
-   4.0.0 released 2026-10-28) is the strongest single-book app.
+   Office, LLC; the ACNA's 2019 book; 4.9 stars from 314 ratings) is the
+   strongest single-book app.
    [Venite.app](https://apps.apple.com/us/app/venite-app/id1502034358)
    (Gregory Johnston; 1979 Rite I and II, Enriching Our Worship, audio,
-   bulletins; a separate
-   [Common Prayer Canada](https://apps.apple.com/us/app/id1533693577) app).
-   [electronic Common Prayer](https://apps.apple.com/us/app/id552932612)
-   (Church Publishing; 1979 with Lesser Feasts and Fasts; 2.4 stars).
+   bulletins). [electronic Common Prayer](https://apps.apple.com/us/app/id552932612)
+   (Church Publishing; 1979 with Lesser Feasts and Fasts).
    [Daily Prayer](https://apps.apple.com/us/app/id818491760) (Hymns Ancient
-   and Modern; the Church of England's official Common Worship and BCP
-   offices, NRSV). [Book of Common Prayer - BCP](https://apps.apple.com/us/app/id6756549582)
+   and Modern; the Church of England's Common Worship and BCP offices, NRSV).
+   [Book of Common Prayer - BCP](https://apps.apple.com/us/app/id6756549582)
    (1979, WEB and KJV). [Common Prayer App](https://apps.apple.com/us/app/id6767042681)
    (1979 Rite II, fasting). [The Book of Common Prayer](https://apps.apple.com/us/app/id1570678346)
-   (a 1789 text; 1.8 stars). Each serves one book or one church. None spans
-   1662, 1928, 1979, and 2019 together, compares editions, or cites printed
-   pages. Trinity Broadcasting Network's "Atlas - Faith Journeys" uses the
-   word "Atlas" for a devotional app; the names are distinct.
+   (a 1789 text). Each serves one book or one church; none spans 1662, 1928,
+   1979, and 2019 together, compares editions, or cites printed pages.
+   **Websites** to survey in P1.12 (not yet checked): the Daily Office's own
+   site, Venite on the web, Mission St. Clare, Forward Movement's daily
+   office, the Society of Archbishop Justus's online prayer books
+   (justus.anglican.org), Lynda Howell's 1662 transcriptions, and oremus.org.
 2. **Name and domains.** No App Store app is named "Prayerbook Atlas"
    (search API, US store). The owner holds **prayerbookatlas.com**
    (registered 2026-10-28 21:43 UTC) and **prayerbook-atlas.com**
-   (2026-10-28 21:40 UTC), both at Cloudflare. Both resolve to the owner's
-   Ubuntu server, the same address as graceandfootnotes.com and
-   beautifulcorner.app; both have Cloudflare Email Routing MX records and an
-   SPF record; neither answered HTTPS on 2026-10-28 (no Caddy site yet).
-   prayerbookatlas.app and prayerbookatlas.org were unregistered. No
-   trademark search has been done (P0.5).
+   (2026-10-28 21:40 UTC), both at Cloudflare, both resolving to the owner's
+   Ubuntu server (the same address as graceandfootnotes.com and
+   beautifulcorner.app), with Cloudflare Email Routing MX records and an SPF
+   record; neither answered HTTPS on 2026-10-28. The owner added
+   **prayerbookatlas.org** on 2026-10-29 (Cloudflare, created 09:28 UTC); its
+   DNS was not yet answering that day. prayerbookatlas.app was not bought.
 3. **The Episcopal Church's prayer books.** The explanation to General
    Convention 2024 resolution D038 states that the canons make authorized
    versions of the Book of Common Prayer public domain (Canon II.3.6), and
    proposed extending this to translations
    ([D038](https://www.episcopalarchives.org/files/gc_resolutions/2024-D038.pdf)).
-   Read the current canon itself in P8.1 and record its wording. The
+   Read the current canon itself in P9.1 and record its wording. The
    Episcopal Church publishes the 1979 book as a PDF
    ([2007 printing](https://www.episcopalchurch.org/wp-content/uploads/2021/02/book-of-common-prayer-2006.pdf)).
    Lesser Feasts and Fasts, Enriching Our Worship, the Book of Occasional
    Services, and the Hymnal 1982 are separate publications and presumed
-   copyrighted until checked (P16.5). The 1928 book was published in 1928,
-   so it is in the US public domain by age as well (US works published in
-   1928 entered the public domain on 1 January 2024, and those of 1929 on 1
-   January 2025); later printings carrying the revised lectionary need their
+   copyrighted until checked (P17.5). The 1928 book is in the US public
+   domain by age (US works published in 1928 entered the public domain on 1
+   January 2024); later printings carrying the revised lectionary need their
    own check.
 4. **The 1662 Book of Common Prayer and the King James Version.** Both are in
    the US public domain. In the United Kingdom they remain under the Crown's
    prerogative rights, with Cambridge University Press acting as the Crown's
    patentee; UK reproduction needs its permission
    ([LibriVox's 1662 notice](https://librivox.org/the-book-of-common-prayer-1662-selections)).
-   Printings differ: the sovereign's name in the state prayers changes, the
-   three state services were removed in 1859, and the lectionary was
-   replaced by the 1871 Revised Table of Lessons. Each printing used must be
-   identified (P7.1).
+   A website is read in the UK as well as the US, so this bears on launch
+   (D14, P8.1). Printings differ: the sovereign's name in the state prayers
+   changes, the three state services were removed in 1859, and the
+   lectionary was replaced by the 1871 Revised Table of Lessons. Each
+   printing used must be identified (P8.1).
 5. **The ACNA's 2019 Book of Common Prayer.** Anglican House's
    [permissions page](https://anglicanhousepublishers.org/permissions/)
    allows limited liturgical and non-commercial use but says apps and digital
@@ -376,55 +332,55 @@ on and record what they checked.
    ingesting the book into or training any AI tool without written
    permission. Required credit: "Excerpts from The Book of Common Prayer
    (2019), Anglican Church in North America. Used by permission of Anglican
-   House." The Daily Office app reports holding such permission. The New
-   Coverdale Psalter's terms were not on that page; ask about it explicitly.
+   House." The New Coverdale Psalter's terms were not on that page; ask about
+   it explicitly.
 6. **The Church of England's Common Worship.** The
    [copyright page](https://www.churchofengland.org/copyright) says its texts
    may not be used in any software program or app without prior written
    permission from the Copyright and Contracts Administrator of the
-   Archbishops' Council. Some included material belongs to other holders.
+   Archbishops' Council; confirm its terms for websites when asking (P17.3).
 7. **The Anglican Church of Canada.** The 1962 book carries a 1962 copyright
    of the General Synod, which [anglican.ca/texts](https://www.anglican.ca/texts)
-   directs to its publications office; the 1962 book remains authorized. The
-   1918 Canadian book is in the US public domain by age.
+   directs to its publications office. The 1918 Canadian book is in the US
+   public domain by age.
 8. **The Revised Common Lectionary.** The Consultation on Common Texts holds
    the copyright, permits limited local non-commercial reproduction with a
    credit line, and asks publishers and organizations to seek permission
    ([CCT sample notice](https://ms.augsburgfortress.org/downloads/RCL_DailyReadings_Expanded_Sample.pdf)).
-   The Episcopal Church uses the RCL for Sundays; the 1979 book's own Sunday
-   lectionary is public domain with the book.
+   The 1979 book's own Sunday lectionary is public domain with the book.
 9. **Scripture.** The KJV (with the Apocrypha) is US public domain (UK Crown
    rights, finding 4); the World English Bible, which includes the
-   deuterocanonical books, is public domain. The RSV, used on Grace &
-   Footnotes, the ESV, and the NRSV(ue) need licenses for an app's reader and
-   readings. The prayer books' own Psalters belong to the books: Coverdale's
+   deuterocanonical books, is public domain. The RSV, ESV, and NRSV(ue) need
+   licenses. The prayer books' own Psalters belong to the books: Coverdale's
    in 1662 and 1928 (as each prints it), the 1979 Psalter, and the 2019 New
    Coverdale Psalter (licensed separately). Verse divisions in the BCP
    Psalters differ from the KJV's in places.
 10. **Calendar facts.** Western Easter falls between 22 March and 25 April
     by the Gregorian computus; the 1662 book prints its own tables (Golden
-    Number and Sunday Letter) for finding it. Season names differ by book
-    (Sundays after Trinity in 1662 and 1928, after Pentecost with numbered
-    Propers in 1979; Septuagesima, Sexagesima, and Quinquagesima in 1662 and
-    1928 but not 1979). The 1979 Daily Office Lectionary runs on a two-year
-    cycle with Year One beginning on the First Sunday of Advent preceding
-    odd-numbered years (BCP 1979 p. 934; verify in P10.2). The 1662 Psalter
-    is read through monthly, and its rubric appoints the Athanasian Creed on
-    thirteen named feasts and the Litany on Sundays, Wednesdays, and Fridays.
+    Number and Sunday Letter). Season names differ by book (Sundays after
+    Trinity in 1662 and 1928, after Pentecost with numbered Propers in 1979;
+    Septuagesima, Sexagesima, and Quinquagesima in 1662 and 1928 but not
+    1979). The 1979 Daily Office Lectionary runs on a two-year cycle with
+    Year One beginning on the First Sunday of Advent preceding odd-numbered
+    years (BCP 1979 p. 934; verify in P11.2). The 1662 Psalter is read through
+    monthly, and its rubric appoints the Athanasian Creed on thirteen named
+    feasts and the Litany on Sundays, Wednesdays, and Fridays.
 11. **Church emblems.** The compass rose is the emblem of the Anglican
     Communion; the Episcopal Church, the ACNA, and the Church of England have
-    their own shields and marks. The app uses none of them and avoids
-    look-alikes (confirm the Communion's emblem usage terms in P2.2).
+    their own shields and marks. The site uses none of them and avoids
+    look-alikes.
 12. **AI and licensed texts.** Because Anglican House forbids AI use of the
-    2019 book without permission (finding 5), the AI study assistant (P23)
+    2019 book without permission (finding 5), the AI study assistant (P24)
     may only retrieve over texts whose licenses allow it, recorded per source
     in `content/SOURCES.md`.
-13. **App Store rules.** User-generated content needs filtering, reporting,
-    blocking, and published contact details (Guideline 1.2). Apps with
-    account creation must offer in-app account deletion (5.1.1(v)). Nonprofit
-    donations are governed by 3.2.1. A privacy policy URL is required, and a
-    support URL is shown on the product page
-    ([Guidelines](https://developer.apple.com/app-store/review/guidelines/)).
+13. **The web's own rules** (to confirm from primary sources in Phase 20,
+    not yet checked for this plan). A site read in the EU and UK falls under
+    the GDPR and UK GDPR for any personal data it handles, and under the
+    ePrivacy rules for cookies, which exempt strictly necessary cookies (such
+    as the session and preference cookies the site sets) from consent. US
+    state privacy laws (for example California's) turn mostly on selling or
+    sharing data, which the site never does. WCAG 2.2 AA is the accessibility
+    target (Phase 21).
 14. **C. S. Lewis.** His books remain under US copyright (95 years from
     publication; *Mere Christianity*, 1952, until the end of 2047). Use only
     original writing in his spirit and cite titles.
@@ -432,539 +388,503 @@ on and record what they checked.
     hymnals (the Hymnal 1940 and 1982), pointed psalters, arrangements, and
     every recording carry their own rights. Use cleared texts and owner-made
     or licensed recordings only.
-16. **Local toolchain** (this Mac, 2026-10-28): macOS 27.2, Xcode 27.1
-    (27A9275), Swift 6.4 (swiftlang-6.4.0.34.1), XcodeGen 2.46.0, iOS 27.0
-    and 27.1 simulator runtimes, Homebrew 7.0.11. Docker is not on the PATH,
-    so `make test-linux` needs Colima or Docker installed first (P1.13).
+16. **Local toolchain** (this Mac, checked 2026-10-29): macOS 27.2 on Apple
+    silicon; mise 2026.10.18 managing **Ruby 4.0.9** (2026-10-23, the newest
+    stable release; a precompiled build with OpenSSL 3.5.5 and libyaml
+    0.2.5) as the global Ruby; RubyGems and Bundler 4.0.23; **Rails 8.1.4**,
+    the newest Rails; the sqlite3 gem 2.10.2 bundling SQLite 3.54.1 with FTS5;
+    Puma 8.0.2; Homebrew 7.0.11; Google Chrome for system tests; PostgreSQL 17
+    (installed, not used). Homebrew's own Ruby 4.0.9 is still installed but
+    kept off the PATH (decision 23).
 
 ---
 
 ## Owner decisions
 
-Each open decision has a recommendation, which is the working default
-until the owner answers (AGENTS.md §4). Record each answer here as
-`(owner, date)`, or `(agent, date)` with reasons where D9 lets agents
-decide, and record its consequences in `docs/decisions.md`.
+Each decision has a recommendation, which was the working default until the
+owner answered (AGENTS.md §4). Answers are recorded as `(owner, date)`, or
+`(agent, date)` with reasons where D9 lets agents decide; their consequences
+are in `docs/decisions.md`. Decisions overtaken by D27 say so and keep their
+history.
 
 | ID | Question | Recommendation | Decision |
 |---|---|---|---|
-| D1 | App name and identifiers | An original, warm, liturgical name | **Prayerbook Atlas** (owner, 2026-10-28). Working defaults until confirmed: bundle ID **`com.prayerbookatlas.app`** (the domain reversed), used as the prefix for extensions (`com.prayerbookatlas.app.widgets`), App Group `group.com.prayerbookatlas`, iCloud container `iCloud.com.prayerbookatlas`; Xcode project and scheme **`PrayerbookAtlas`**; URL scheme `prayerbookatlas`. App Store name "Prayerbook Atlas"; the Home Screen display name may truncate at 16 characters, so P1.7 checks it on device sizes and proposes a short form if needed. |
-| D2 | Minimum iOS version | iOS 26, as Beautiful Corner | **iOS 26** (owner, 2026-10-29), accepting the recommendation. |
+| D1 | Name and identifiers | An original, warm, liturgical name | **Prayerbook Atlas** (owner, 2026-10-28). The Rails application module is `PrayerbookAtlas`. The iPhone identifiers (bundle ID `com.prayerbookatlas.app`, App Store Connect app 6828358779) were retired with the app (D27). |
+| D2 | Which browsers | (Was: minimum iOS version, iOS 26.) Every browser gets working pages; enhancements target current browsers | **Superseded by D27.** Every browser is served semantic HTML that works without JavaScript; enhancements (offline, install, local data) target the current and previous major versions of Safari, Chrome, Firefox, and Edge, desktop and mobile (agent, 2026-10-29; decision 25). |
 | D3 | Which prayer books, in what order | At launch, the three books that are public domain in the US: **1662** (England), **1928** (US), **1979** (US). By permission (D6): the ACNA's **2019**, Canada's **1962**, the Church of England's **Common Worship**, then other provinces. As a study layer in the Atlas: 1549, 1552, 1559, 1604, the 1637 Scottish book, the 1764 Scottish Communion Office, the 1789 and 1892 American books, the 1918 Canadian, the 1926 Irish, the 1928 English "deposited" book, and the 1929 Scottish book, each once its rights are cleared | **As recommended** (owner, 2026-10-29). |
-| D4 | Default book and first launch | A skippable card on Today (never a modal) asks which book the person's church uses, with a plain line about each; if skipped, the preset is **1662**, the common ancestor; changeable at any time, with per-office overrides | **As recommended, with 1662 as the preset** (owner, 2026-10-29). |
-| D5 | Scripture policy | Each office uses its own book's Psalter. The reader and lessons launch with the **KJV with the Apocrypha** and the **World English Bible**, labeled by name. Request an **RSV** license at the demo stage (matching Grace & Footnotes), and ESV and NRSV licenses for 2019 and 1979 users who expect them. Never mix translations unlabeled | **As recommended** (owner, 2026-10-29). |
-| D6 | When to ask for copyrighted texts | Build with public-domain texts first; send permission requests once the app is demoable ([GATE DEMO]): Anglican House (2019 book, New Coverdale Psalter, lectionaries), the General Synod of Canada (1962), the Archbishops' Council (Common Worship), Cambridge University Press (1662 and KJV in the UK), the Consultation on Common Texts (RCL), Church Publishing (Lesser Feasts and Fasts, Enriching Our Worship), and the Bible publishers (D5). Record wanted sources in `content/SOURCES.md` as the build finds them | **As recommended** (owner, 2026-10-29). |
+| D4 | Default book and first visit | A skippable card on Today (never a modal) asks which book the person's church uses, with a plain line about each; if skipped, the preset is **1662**, the common ancestor; changeable at any time, with per-office overrides | **As recommended, with 1662 as the preset** (owner, 2026-10-29). On the web the choice is kept in a preference cookie, so it works without JavaScript. |
+| D5 | Scripture policy | Each office uses its own book's Psalter. The reader and lessons launch with the **KJV with the Apocrypha** and the **World English Bible**, labeled by name. Request an **RSV** license at the demo stage (matching Grace & Footnotes), and ESV and NRSV licenses for 2019 and 1979 users. Never mix translations unlabeled | **As recommended** (owner, 2026-10-29). |
+| D6 | When to ask for copyrighted texts | Build with public-domain texts first; send permission requests once the site is demoable ([GATE DEMO]): Anglican House (2019 book, New Coverdale Psalter, lectionaries), the General Synod of Canada (1962), the Archbishops' Council (Common Worship), Cambridge University Press (1662 and KJV in the UK), the Consultation on Common Texts (RCL), Church Publishing (Lesser Feasts and Fasts, Enriching Our Worship), and the Bible publishers (D5) | **As recommended** (owner, 2026-10-29). The demo is now the site itself at prayerbookatlas.com. |
 | D7 | Monetization | Everything free, donation-supported: no subscriptions, ads, affiliate links, or "premium" prayers; AI costs capped per user | **As recommended** (owner, 2026-10-29). |
-| D8 | The app's theological voice | Each book is presented faithfully on its own terms. The app's own original teaching follows the creeds, the prayer books, and the historic formularies where Anglicans share them, within the owner's statement of faith (Grace & Footnotes SOUL.md §2), and describes differences among provinces and churchmanships accurately and charitably from their own sources. The owner's personal convictions on questions disputed among Anglicans are not app content unless the owner asks for a page on them | **As recommended** (owner, 2026-10-29). |
-| D9 | Who builds and decides | As Beautiful Corner D21: agents build the app and decide open questions, recording reasons as `(agent, date)`, limited only by their host's safety rules and by honesty (never claim a review, blessing, or permission that did not happen). Until the owner answers, AGENTS.md §4 applies | **Agents decide**, as recommended (owner, 2026-10-29): agents build, do [OWNER] preparation, and settle open questions with reasons as `(agent, date)`; the owner's credentials, payments, and messages in the owner's name still need the owner. |
-| D10 | Reuse from the owner's other repositories | Copy and adapt generic engineering code from `beautiful-corner` (the content compiler, SQLite reader, `CivilDate`, scripts, Makefile and CI patterns), naming the source commit in `docs/decisions.md`. Copy no Orthodox content. Consult `anglican-catholic-app` for lessons only; any text from it must pass this repository's rights and proofreading rules as if new. Never change either repository | **As recommended** (owner, 2026-10-29). |
-| D11 | Repository visibility and license | The repository was created **public** on 2026-10-28, while both sister projects are private. Recommendation: make it private, as they are, until the owner deliberately chooses open source; if it stays public, add a LICENSE (code only; texts keep their own rights) and remember that every push publishes rights research and permission drafts. Agents never change visibility themselves | **Stays public, all rights reserved** (owner, 2026-10-29): no open-source license; `LICENSE` says so, and texts, Scripture, and images keep their own rights. Every push still publishes, so permission drafts stay generic. |
-| D12 | Domain and support email | prayerbookatlas.com as the canonical domain | **prayerbookatlas.com** (owner, 2026-10-28): DNS at Cloudflare, pointing at the owner's Ubuntu server; Cloudflare Email Routing with a **catch-all** forwarding every address at the domain to the owner's inbox. Support email **support@prayerbookatlas.com**; other addresses (privacy@, permissions@) arrive the same way. Receive-only: replies come from the owner's own address unless a sending service is added. **prayerbook-atlas.com** is also the owner's (same day, same server and mail setup) and is to redirect permanently to prayerbookatlas.com (P19.2). **prayerbookatlas.org** was added by the owner on 2026-10-29 (Cloudflare, created 09:28 UTC) and redirects the same way; its DNS was not yet answering when first checked that day. |
-| D13 | Legal entity and Apple account | Develop and ship under the owner's existing individual Apple Developer membership (Team ID `D9QMP3LP8H`, renews March 13; Beautiful Corner D11), transferring later to a nonprofit if the owner forms one. Settle the EU Digital Services Act trader declaration before any EU storefront | **The owner's individual account**, team `D9QMP3LP8H` (owner, 2026-10-29), committed in `Config/Base.xcconfig`. |
-| D14 | App Store territories | The United States first (1662 and KJV carry Crown rights in the UK); others after a rights review per territory, the UK after Cambridge University Press answers | **As recommended** (owner, 2026-10-29). |
-| D15 | Visual identity | The **Ribbon** direction above, settled in a design session that also shows two alternatives, recorded in `docs/design.md` and `design/tokens.json` | **B · Engraved Plate** (owner, 2026-10-29), chosen in the design session (P2.2a) over Ribbon and Quiet Page: chart paper, iron-blue ink, double-rule frames, small capitals, square corners, one cartographer's blue. Book face: the owner chose Libre Caslon Text, which lacks ℣ ℟ ✠, Greek, and small caps; at the owner's direction an agent chose **Cardo** for full coverage (agent, 2026-10-29; docs/decisions.md entry 18). The icon stays the owner's generated set; any new image comes from the owner's image generator, from a prompt an agent writes (owner, 2026-10-29; decision 20). |
+| D8 | The site's theological voice | Each book is presented faithfully on its own terms. The site's own original teaching follows the creeds, the prayer books, and the historic formularies where Anglicans share them, within the owner's statement of faith (Grace & Footnotes SOUL.md §2), and describes differences among provinces and churchmanships accurately and charitably from their own sources. The owner's personal convictions on questions disputed among Anglicans are not site content unless the owner asks for a page on them | **As recommended** (owner, 2026-10-29). |
+| D9 | Who builds and decides | As Beautiful Corner D21: agents build and decide open questions, recording reasons as `(agent, date)`, limited only by their host's safety rules and by honesty | **Agents decide**, as recommended (owner, 2026-10-29): agents build, do [OWNER] preparation, and settle open questions with reasons as `(agent, date)`; the owner's credentials, payments, server changes, and messages in the owner's name still need the owner (AGENTS.md §4). |
+| D10 | Reuse from the owner's other repositories | Copy and adapt generic engineering from `beautiful-corner`, naming the source commit. Copy no Orthodox content. Consult `anglican-catholic-app` for lessons only. Never change either repository | **As recommended** (owner, 2026-10-29). Since D27, Beautiful Corner's Swift code no longer applies directly; this repository's own retired Swift packages (tag `ios-archive`: `CivilDate`, `LiturgicalBlock`, `SourceCitation`, `PrayerBookID`, `TranslationID`) are the reference for their Ruby ports. |
+| D11 | Repository visibility and license | Private until the owner chooses open source; if public, a LICENSE and care that every push publishes | **Stays public, all rights reserved** (owner, 2026-10-29): `LICENSE` says so; texts, Scripture, fonts, and images keep their own rights. Every push still publishes, so permission drafts stay generic. |
+| D12 | Domains and support email | prayerbookatlas.com as the canonical domain | **prayerbookatlas.com** (owner, 2026-10-28): DNS at Cloudflare, pointing at the owner's Ubuntu server; Cloudflare Email Routing with a **catch-all** to the owner's inbox; support email **support@prayerbookatlas.com**. **prayerbookatlas.org** is the backup domain (owner, 2026-10-29): it redirects permanently to .com, and the server is configured so it can serve the site directly if .com ever cannot (docs/deploy.md). **prayerbook-atlas.com** redirects permanently to .com. |
+| D13 | Publisher and accounts | (Was: the owner's individual Apple Developer account, team `D9QMP3LP8H`.) | **Superseded by D27.** The site is published by the owner as an individual; no Apple account is needed for it. The owner may keep or close the retired app's App Store Connect record (P0.6). |
+| D14 | Where texts may be served | (Was: App Store territories, the US first.) A website is read everywhere. Serve public-domain-in-the-US texts while the site is in development; before launch, settle the UK question for 1662 and the KJV (finding 4) by asking Cambridge University Press (D6) and recording its answer | **Open: researched in P8.1, settled before P22** (agent, 2026-10-29). No geo-blocking unless the rights research shows it is required; the site's terms and sources page state the rights basis of every text. |
+| D15 | Visual identity | The Ribbon direction, settled in a design session with two alternatives | **B · Engraved Plate** (owner, 2026-10-29): chart paper, iron-blue ink, double-rule frames, small capitals, square corners, one cartographer's blue; book face **Cardo** (agent, 2026-10-29; decision 18). The tokens carry over to the web unchanged (decision 24). Images come only from the owner's generator (decision 20). |
 | D16 | Office record and streaks | A private record of offices prayed, off by default, with no count of consecutive days | **As recommended** (owner, 2026-10-29). |
-| D17 | Relationship to Grace & Footnotes | Separate name and design; shared voice and source mark; an offline reader for the website's feed; links to its gospel pages; an app page on the website only when the owner authorizes it | **As recommended** (owner, 2026-10-29). |
-| D18 | Clergy review | Ask the owner's own priest about reviewing original teaching and about the app generally; record only what actually happens | **As recommended** (owner, 2026-10-29); the asking is P0.9. |
-| D19 | Server and web-app stack | Self-hosted on the owner's Ubuntu server behind the existing Caddy: a Swift service (Vapor, as Beautiful Corner D7, confirmed from current documentation when Phase 24 starts) rendering semantic HTML from the same packages and content database as the app, working without JavaScript; PostgreSQL only when accounts exist; nightly encrypted backups on owner-controlled infrastructure; CloudKit for users' private sync | **As recommended** (owner, 2026-10-29). |
-| D20 | Calendar and lectionary facts | Facts only (names, dates, ranks, references), never prose, each cited and cross-checked against two independent sources with every difference listed, as Beautiful Corner D20 | **As recommended** (owner, 2026-10-29). |
-| D21 | Rights research downloads | Agents may download candidate scans and files from the Internet Archive, HathiTrust, Google Books, eBible.org, CCEL, Project Canterbury, and first-party church sites into the gitignored `research/` folder; nothing there ships until cleared, as Beautiful Corner D19 | **As recommended** (owner, 2026-10-29). |
-| D22 | Audio | On-device speech for read-aloud at first, clearly labeled as synthetic; recorded readings by the owner or a hired reader later; chant only from owner-made or licensed recordings | **As recommended** (owner, 2026-10-29). |
-| D23 | AI study assistant | Yes, in a later phase: server-proxied Claude API (key never in the app), retrieval only over texts whose licenses allow it (finding 12), strict citations, free with per-user caps | **As recommended** (owner, 2026-10-29). |
-| D24 | Finding a church | Link to each church's own official finder (The Episcopal Church, the ACNA, the Church of England's A Church Near You, the Anglican Church of Canada, and others); no scraped or invented directory. A curated directory only later, with permission | **As recommended** (owner, 2026-10-29). |
-| D25 | Android | Not before the web app ships. Then choose between a native Android app sharing the Swift packages (through the Swift SDK for Android, if mature by then) with a Kotlin UI, and an installable web app, recorded in `docs/decisions.md` | **As recommended** (owner, 2026-10-29). |
-| D26 | Public website stack | A small static site in `Website/` (semantic HTML, vanilla CSS, no JavaScript needed, no trackers, no remote fonts), built by a short script into `build/website/` and served by Caddy on the owner's server; Astro, as on Grace & Footnotes, only if the site outgrows plain pages. The web app (Phase 25) later serves its pages under the same domain | **As recommended** (owner, 2026-10-29). |
+| D17 | Relationship to Grace & Footnotes | Separate name and design; shared voice and source mark; links to its gospel pages; a page about this site on Grace & Footnotes only when the owner authorizes it | **As recommended** (owner, 2026-10-29). |
+| D18 | Clergy review | Ask the owner's own priest about reviewing original teaching; record only what actually happens | **As recommended** (owner, 2026-10-29); the asking is P0.8. |
+| D19 | Server and web stack | (Was: a Swift service with Vapor beside a static site.) | **Superseded by D27 and D28.** |
+| D20 | Calendar and lectionary facts | Facts only (names, dates, ranks, references), never prose, each cited and cross-checked against two independent sources with every difference listed | **As recommended** (owner, 2026-10-29). |
+| D21 | Rights research downloads | Agents may download candidate scans and files from the Internet Archive, HathiTrust, Google Books, eBible.org, CCEL, Project Canterbury, and first-party church sites into the gitignored `research/` folder; nothing there is served until cleared | **As recommended** (owner, 2026-10-29). |
+| D22 | Audio | Read-aloud with the browser's speech synthesis at first, clearly labeled as synthetic; recorded readings by the owner or a hired reader later; chant only from owner-made or licensed recordings | **As recommended** (owner, 2026-10-29; restated for the web by an agent, 2026-10-29). |
+| D23 | AI study assistant | Yes, in a later phase: the Claude API called from the server (the key only in the server's credentials), retrieval only over texts whose licenses allow it (finding 12), strict citations, free with per-user caps | **As recommended** (owner, 2026-10-29). |
+| D24 | Finding a church | Link to each church's own official finder; no scraped or invented directory | **As recommended** (owner, 2026-10-29). |
+| D25 | Android and native apps | (Was: Android after the web app.) | **Superseded by D27.** Phones are served by the phone site and its installable web app (P18). A native app returns only if the owner reopens the question. |
+| D26 | Public website stack | (Was: a static site in `Website/`.) | **Superseded by D27.** The Rails app is the website; there is no separate static site. |
+| D27 | Platform and framework | — | **A website only, built with Ruby on Rails** (owner, 2026-10-29): no native mobile app; Rails 8.1.4 on Ruby 4.0; primarily for desktop browsers, with a dedicated phone mode for small-screen mobile browsers and a fuller full-site mode with more features for desktop and full-size windows. Decisions 21–24 record how. |
+| D28 | Hosting | Self-hosted on the owner's Ubuntu server behind the existing Caddy: Puma under systemd, SQLite in the shared storage directory, deploys of the built release only, no Docker or Kamal | **Self-hosted at prayerbookatlas.com, with .org as backup** (owner, 2026-10-29); the process model as recommended (agent, 2026-10-29; decision 27). |
+| D29 | Where personal data lives | In the person's own browser by default (IndexedDB), exportable; optional account sync later (P25) for what the person chooses; confession notes never leave the browser | **As recommended** (agent, 2026-10-29; decision 28). |
 
 ---
 
 ## Engineering foundations
 
-These adapt Beautiful Corner's foundations (D10). P1.4 records each as an
-entry in `docs/decisions.md`.
+`docs/decisions.md` records each with its reasons (entries 8, 11, 12, and
+21–31).
 
-1. **XcodeGen.** The Xcode project is generated from `project.yml`; the
-   `.xcodeproj` is gitignored and never hand-edited.
-2. **SwiftUI with Observation.** `@Observable` for shared state; UIKit only
-   through small wrappers, each with a comment explaining why.
-3. **SwiftData for user data**, with a `VersionedSchema`, a migration plan,
-   and CloudKit-compatible models (optional or defaulted properties, no
-   unique constraints). Liturgical content never goes in SwiftData.
-4. **A bundled read-only SQLite content database.** `Tools/ContentCompiler`
-   validates `content/` and writes a deterministic `Content.sqlite` (system
-   `SQLite3`, FTS5), refusing any content whose source is not `cleared`.
-5. **Pure logic in local Swift packages**: `ChurchYear` (calendar, Easter,
-   seasons, holy days, precedence, fasts, collects), `ContentKit` (content
-   models, SQLite reader, search), `ScriptureKit` (canon, references,
-   versification), `OfficeKit` (assembling offices and services),
-   `AtlasKit` (the concordance of prayers across books and the text
-   comparison), and later `SharedModels`. Linux-compatible, tested with
-   `swift test` on macOS and in the `swift:6.4` container, so the server,
-   web app, and any Android port share them.
-6. **Zero third-party runtime dependencies** in the app unless a decision
-   entry justifies one. Approved build tools: XcodeGen and Apple's bundled
-   `swift format`. Never analytics, advertising, tracking, crash-reporting,
-   affiliate, or remote-font SDKs.
-7. **Swift Testing** for packages and unit tests; XCTest for UI tests.
-   Table-driven tests across many years for every calendar and lectionary
-   rule, each citing its source.
-8. **Civil dates, not `Date`.** A pure `CivilDate` (year, month, day) for
-   all calendar logic; convert to `Date` at the UI edge only.
-9. **Our own simple formats.** Content files use `key: value` front matter
-   parsed by our code (no YAML library); tables are JSON.
-10. **Debug date override.** Debug builds accept `-today YYYY-MM-DD` so UI
-    tests and screenshots can pin any date.
-11. **Book, printing, and page on everything.** Every liturgical block knows
-    the book it belongs to, the printing it was transcribed from, and its
-    printed page. Texts are never shared between books by reference, even
-    when identical: each book's witness is its own transcription.
-12. **Works and witnesses.** The Atlas links each book's text of a prayer
-    (a *witness*) to the abstract prayer (a *work*), so comparison is a
-    query, not a copy.
-
-Lessons carried from Beautiful Corner's handoff notes:
-
-- xcodebuild prints warnings only for files it recompiles; clean or touch the
-  sources before trusting "zero warnings".
-- Static helpers on SwiftUI views are main-actor isolated; mark pure ones
-  `nonisolated` so tests can call them.
-- The simulator panel's fast swipe does not trigger SwiftUI drag gestures; a
-  sampled `touch_path` does, and so do XCUITest swipes.
-- UI tests must reset the state they change, and unit tests must not leak
-  `UserDefaults` suites.
-- Pin stored raw values (book and option identifiers) with tests so renames
-  never break saved settings.
-- Keep a full year's calendar computation under a measured budget and test
-  it on the hosted runner too; hosted machines are slower.
+1. **Rails 8.1, the Rails way.** Ruby 4.0.9 pinned in `.ruby-version`,
+   Rails 8.1.4, Propshaft, importmap, Turbo, Stimulus, Solid Cache, Solid
+   Queue, Solid Cable, Puma, Minitest, RuboCop (rails-omakase), Brakeman,
+   bundler-audit. Conventions over invention: REST routes, server-rendered
+   views, partials and helpers for components.
+2. **Two modes, one site** (decision 24). `SiteMode` chooses the phone site
+   for small-screen mobile browsers (the `Sec-CH-UA-Mobile` client hint,
+   then the user agent) and the full site for everything else; the person
+   can choose either. The phone site renders `+phone` variants of layouts and
+   views where they exist and the shared templates otherwise; CSS lets the
+   full site fold gracefully in a narrow window.
+3. **Progressive enhancement** (decision 25). Every page works as semantic
+   HTML without JavaScript, in every browser. Stimulus adds keyboard
+   shortcuts, swipes, local data, offline, and the like; Turbo speeds
+   navigation. Nothing needed to pray depends on a script.
+4. **Vanilla CSS from tokens.** `design/tokens.json` → generated
+   `app/assets/stylesheets/tokens.css` (`bin/rails design:tokens`, checked by
+   a test); every other stylesheet uses only the custom properties. No CSS
+   framework, no build step.
+5. **SQLite everywhere** (decision 26): the app's own databases (primary,
+   cache, queue, cable) and a separate, read-only **content database**
+   compiled from `content/` by `bin/rails content:compile`, with FTS5 search,
+   refusing any content whose source is not `cleared`.
+6. **Plain Ruby for the engines.** The church year, offices, Scripture
+   references, and the Atlas are plain Ruby objects under `app/models/`
+   (`ChurchYear::`, `Office::`, `Scripture::`, `Atlas::`) with no database
+   access of their own, tested with fast table-driven Minitest cases.
+7. **Dates are dates** (decision 30). Church-calendar logic uses Ruby's
+   `Date` (a civil date, proleptic Gregorian), never `Time`, `DateTime`, or
+   a time zone. The person's local date is settled once at the request edge.
+8. **Book, printing, and page on everything** (decision 11). Every liturgical
+   block knows its book, the printing it was transcribed from, and its
+   printed page. Texts are never shared between books by reference.
+9. **Works and witnesses** (decision 12). The Atlas links each book's text of
+   a prayer (a *witness*) to the abstract prayer (a *work*).
+10. **Our own simple formats.** Content files use `key: value` front matter
+    parsed by our code; tables are JSON.
+11. **Few dependencies** (decision 29). Only the gems `rails new` installs;
+    every other gem needs a decision entry. No analytics, advertising,
+    tracking, crash-reporting, affiliate, remote-font, or CDN code, ever.
+12. **Nothing from elsewhere** (decision 31). A strict Content Security
+    Policy allows only this site: no remote fonts, scripts, styles, images,
+    or frames.
+13. **A date override for tests.** Pages accept `?date=YYYY-MM-DD` (and a
+    book) so tests and screenshots can pin any day; the date in the URL is
+    also how people share a day.
+14. **Local CI.** `bin/ci` (`config/ci.rb`) is the check before every commit:
+    setup, RuboCop, bundler-audit, importmap audit, Brakeman, tests, seeds,
+    and, as they arrive, system tests, content checks, and the link check.
 
 ### Architecture at a glance
 
 ```
-┌──────────────────── iOS app (SwiftUI, Swift 6) ─────────────────────┐
-│ Today · Pray · Bible · Kalendar · Atlas    Widgets · Watch · Intents  │
-│     │           │         │          │           │                    │
-│ ChurchYear   OfficeKit  ScriptureKit  AtlasKit   SwiftData            │
-│ (Easter,     (offices,  (canon,       (works,    (favorites, rule,    │
-│  seasons,     services,  references,   witnesses, intercessions,      │
-│  holy days,   propers)   psalters)     compare)   journal, plans;     │
-│  collects,         └──── ContentKit ────┘          iCloud private     │
-│  lectionaries)     (read-only SQLite + FTS5)       sync)              │
-└──────────────────────────────┬───────────────────────────────────────┘
-                               │ HTTPS (later phases)
-┌──────────────────────────────▼───────────────────────────────────────┐
-│ Owner server (D19): Caddy → static site (P19) and Swift service (P24) │
-│ prayerbookatlas.com · web app · AI proxy · accounts (optional)        │
-└──────────────────────────────────────────────────────────────────────┘
-Tools/ContentCompiler: content/ (sourced texts) → Content.sqlite (bundled)
+Browser ─ desktop: the full site · phone: the phone site (+phone variants)
+   │  HTML first; Turbo and Stimulus enhance; IndexedDB holds personal data
+   ▼
+Caddy (owner's Ubuntu server): TLS, compression, redirects
+   prayerbook-atlas.com, prayerbookatlas.org, www.* → prayerbookatlas.com
+   │
+   ▼
+Puma (systemd) ─ Rails 8.1 ─ SiteMode → controllers → views (+phone)
+   │                │
+   │      ChurchYear · Office · Scripture · Atlas   (plain Ruby)
+   │                │
+   ├─ storage/production.sqlite3 (+ cache, queue, cable)   app data
+   └─ db/content.sqlite3  read-only, FTS5                   texts, tables
+         ▲
+bin/rails content:compile ← content/ (sourced, proofread texts and facts)
 ```
 
 ### Milestones
 
-- **M1 Foundation** (P1–P4): the app runs in its design, the content
-  pipeline enforces rights, and the church year is correct for every book.
-- **M2 The Daily Office** (P5–P8): Today, the Kalendar, and complete offices
-  from 1662, 1928, and 1979 for any day. The app is demoable here.
-- **M3 Word and Atlas** (P9–P12): Scripture, every lectionary and reading
+- **M1 Foundation** (P1–P5): the site runs in its design in both modes, the
+  content pipeline enforces rights, the church year is correct for every
+  book, and the site is deployed at prayerbookatlas.com.
+- **M2 The Daily Office** (P6–P9): Today, the Kalendar, and complete offices
+  from 1662, 1928, and 1979 for any day. The site is demoable here.
+- **M3 Word and Atlas** (P10–P13): Scripture, every lectionary and reading
   plan, the Atlas, and Holy Communion with the pastoral offices.
-- **M4 Rule of life** (P13–P15): personal prayer, holy days, and Learn.
-- **M5 Version 1.0** (P16–P21): more books by permission, sharing, widgets
-  and Watch, the public website, hardening, and release. P16 never holds up
-  the release; what permission has not cleared ships later.
-- **M6 Voice** (P22–P23): audio and the AI study assistant.
-- **M7 Web** (P24–P26): the server, the web app, and optional accounts.
-- **M8 Everywhere** (P27–P29): sustainability, operations, Android, and more
-  platforms.
+- **M4 Rule of life** (P14–P16): personal prayer, holy days, and Learn.
+- **M5 Version 1.0** (P17–P22): more books by permission, the web platform,
+  public pages, hardening, and launch. P17 never holds up the launch.
+- **M6 Voice** (P23–P24): audio and the AI study assistant.
+- **M7 Accounts and sustainability** (P25–P26).
+- **M8 Ongoing** (P27–P28): operations, maintenance, and future directions.
 
 ---
 
 ## Phase 0: Owner foundations
 
-- [x] **P0.1 [OWNER]** Answer D2–D11 and D13–D26, or accept their recommendations, and record the answers above. *(Owner, 2026-10-29, in an interactive session.)*
-- [x] **P0.2 [OWNER]** Create the repository. *(Owner, 2026-10-28: `dunamismax/prayerbook-atlas`, created public; see D11.)*
-- [x] **P0.3 [OWNER] [GATE D11]** Set the repository's visibility and, if it stays public, its license. *(Owner, 2026-10-29: stays public, all rights reserved; `LICENSE` added.)*
-- [x] **P0.4 [OWNER]** Register the domain and support email (D12). *(Owner, 2026-10-28: prayerbookatlas.com and prayerbook-atlas.com at Cloudflare, DNS pointed at the Ubuntu server, catch-all Email Routing; checked by `dig` the same day.)*
-- [x] **P0.5 [OWNER]** A trademark knockout search for "Prayerbook Atlas" (USPTO), recorded in `docs/decisions.md`; consider registering prayerbookatlas.app and .org defensively. *(2026-10-29: search by an agent at the owner's request, no conflict found, decision 19; the owner registered prayerbookatlas.org and chose not to buy .app.)*
-- [x] **P0.6 [OWNER] [GATE D13]** Put the Team ID in `Config/Base.xcconfig` (a Team ID is not secret) before the first device or TestFlight build, and add the owner's Apple ID in Xcode's Settings → Accounts.
-  - *2026-10-29 note:* the Team ID is committed (D13 decided); Xcode's account signed the first archive on 2026-10-29, and agents now also hold the App Store Connect API key (docs/release.md).
-- [x] **P0.7 [OWNER]** Create the App Store Connect record with the bundle ID from D1, reserving the name, once P1.14 can upload a build. *(2026-10-29: app 6828358779, "Prayerbook Atlas", created through Xcode's Organizer by an agent at the owner's direction.)*
-- [ ] **P0.8 [OWNER]** Have printed copies at hand for proofreading where scans fall short: a current 1662 (Cambridge), a 1928 (US), and a 1979 (US). *(Optional.)*
-- [ ] **P0.9 [OWNER] [GATE D18]** Ask a priest about reviewing original teaching.
-  - *2026-10-29 note:* the owner chose to leave this for later. Original-teaching pages wait in `review: pending` until reviewed; no draft letter was written.
-- [x] **P0.10 [OWNER]** Decide the CI triggers: manual dispatch, plus pushes to `main` if the repository stays public (hosted macOS minutes are billed for private repositories). *(Owner, 2026-10-29: manual dispatch only.)*
-- [x] **P0.11 [OWNER] [REVIEW]** Approve SOUL.md once P1.3 drafts it. *(Owner, 2026-10-29: approved as written.)*
+- [x] **P0.1 [OWNER]** Answer D2–D26, or accept their recommendations, and record the answers above. *(Owner, 2026-10-29.)*
+- [x] **P0.2 [OWNER]** Create the repository. *(Owner, 2026-10-28: `dunamismax/prayerbook-atlas`, public; see D11.)*
+- [x] **P0.3 [OWNER] [GATE D11]** Set the repository's visibility and license. *(Owner, 2026-10-29: public, all rights reserved; `LICENSE`.)*
+- [x] **P0.4 [OWNER]** Register the domains and support email (D12). *(Owner: prayerbookatlas.com and prayerbook-atlas.com on 2026-10-28, prayerbookatlas.org on 2026-10-29, all at Cloudflare; catch-all Email Routing on the first two.)*
+- [x] **P0.5 [OWNER]** A trademark knockout search for "Prayerbook Atlas" (USPTO). *(2026-10-29: no conflict found; decision 19.)*
+- [ ] **P0.6 [OWNER]** Decide what to do with the retired iPhone app's App Store Connect record (app 6828358779, build 0.1.0 in internal TestFlight): leave it unreleased, or remove the app in App Store Connect. Agents do not touch it.
+- [ ] **P0.7 [OWNER]** Have printed copies at hand for proofreading where scans fall short: a current 1662 (Cambridge), a 1928 (US), and a 1979 (US). *(Optional.)*
+- [ ] **P0.8 [OWNER] [GATE D18]** Ask a priest about reviewing original teaching.
+  - *2026-10-29 note:* the owner chose to leave this for later. Original-teaching pages wait in `review: pending` until reviewed.
+- [x] **P0.9 [OWNER]** Decide the CI triggers. *(Owner, 2026-10-29: manual dispatch only. Hosted Linux minutes are free for a public repository, so pushes to `main` could run it too if the owner wishes.)*
+- [x] **P0.10 [OWNER] [REVIEW]** Approve SOUL.md. *(Owner, 2026-10-29: approved as written. Its wording was changed from "app" to "site" with D27 at the owner's direction the same day; §2, the statement of faith, is untouched.)*
+- [x] **P0.11 [OWNER]** Choose the platform and framework (D27) and the hosting (D28). *(Owner, 2026-10-29: a website only, Ruby on Rails 8.1.4, self-hosted at prayerbookatlas.com with prayerbookatlas.org as backup.)*
 
-When the app is demoable:
+When the site is demoable:
 
-- [ ] **P0.12 [GATE DEMO]** Draft the permission requests D6 lists, each describing the app, the free and offline use, the exact texts wanted, the attribution, and the demo. Save them to `docs/owner-drafts/permission-requests.md`.
+- [ ] **P0.12 [GATE DEMO]** Draft the permission requests D6 lists, each describing the site, the free use, the exact texts wanted, the attribution, and the demo. Save them to `docs/owner-drafts/permission-requests.md`.
 - [ ] **P0.13 [GATE DEMO]** Draft the Scripture license requests D5 lists. Save them to `docs/owner-drafts/scripture-licenses.md`.
-- [ ] **P0.14 [OWNER] [GATE DEMO]** Send the requests, with a TestFlight build to show, from the owner's address (replies to permissions@prayerbookatlas.com also reach the owner), and record each response's status in `content/SOURCES.md` (letters stay off-repo).
+- [ ] **P0.14 [OWNER] [GATE DEMO]** Send the requests from the owner's address (replies to permissions@prayerbookatlas.com also reach the owner), and record each response's status in `content/SOURCES.md` (letters stay off-repo).
 
-## Phase 1: Repository and toolchain
+## Phase 1: Rails foundation
 
-- [x] **P1.1** Add `.gitignore`: Xcode user data, DerivedData, `build/`, `.build/`, `.swiftpm/`, generated `*.xcodeproj`, `Config/Secrets.xcconfig`, `.env*`, `*.p8`, `*.p12`, `*.cer`, `*.mobileprovision`, `.DS_Store`, `screenshots/`, `research/`, and the generated `Content.sqlite`.
-- [x] **P1.2** Update `README.md`: prerequisites confirmed on this Mac, a quick start that works, and the real repository layout.
-  - *2026-10-28 note:* done after P1.10, because the quick start needed the Makefile; its commands were run from clean.
-- [x] **P1.3 [REVIEW]** Draft `SOUL.md`: the owner's statement of faith as Grace & Footnotes SOUL.md §2 gives it (the owner's words, unaltered), the sources and their authority, the quotation practice for this app (D5), voice and pastoral conduct, and a closing section on serving common prayer in an app (the principles above, D8's fairness among Anglicans, and AGENTS.md §3). The owner approves it (P0.11).
-  - *2026-10-28 result:* drafted. §2 is Grace & Footnotes SOUL.md §2's statement and closing line (lines 21–43 at its commit fcb2a90), copied by script and checked byte-identical with `diff`. Status line says draft; approval is P0.11, still open.
-- [x] **P1.4** Create `docs/decisions.md` as a numbered, append-only decision log. Seed it with the [Engineering foundations](#engineering-foundations), the deployment target (D2), the Scripture policy (D5), the no-tracking rule, and the reuse rule (D10).
-- [x] **P1.5** Verify the toolchain (Research finding 16) and create `project.yml`: the app target `App` (SwiftUI lifecycle, iPhone and iPad), `AppTests`, and `AppUITests`; Swift 6 language mode; complete strict concurrency; warnings as errors for app code; project, scheme, display name, and bundle ID from D1; settings from `Config/Base.xcconfig` (marketing version, build number, `ITSAppUsesNonExemptEncryption = NO`), with a committed `Config/Secrets.xcconfig.example`.
-  - *2026-10-28 result:* toolchain re-verified (macOS 27.2, Xcode 27.1 27A9275, Swift 6.4, XcodeGen 2.46.0; iOS 26.5, 27.0 and 27.1 runtimes; Colima now installed, Docker CLI not). `DEVELOPMENT_TEAM` is left commented in `Config/Base.xcconfig` for P0.6. Built with zero warnings; one Swift Testing unit test and one XCTest launch test pass.
-- [x] **P1.6** Create the local packages `ChurchYear`, `ContentKit`, and `ScriptureKit` (iOS and macOS platforms, Linux-compatible sources), each with one passing Swift Testing test, and link them into `App`. (`OfficeKit` and `AtlasKit` arrive with Phases 6 and 11.)
-- [x] **P1.7** A minimal app that launches to a placeholder Today showing the date in paper and ink. Run it in the simulator, take a screenshot, and check how the display name sits under the Home Screen icon (D1).
-  - *2026-10-28 result:* the date only, in the Ribbon proposal's `paper`, `ink`, and `muted` (D15 working default; P2.3 regenerates them from tokens). Checked on iPhone Duo (iOS 27.1) in light, dark, and AX5 text. "Prayerbook Atlas" (16 characters) shows untruncated under the icon on iPhone 17 Pro (iOS 27.0) at the default text size, so no short form is proposed; the iPhone Duo's Home Screen could not be reached headlessly.
-- [x] **P1.8** Add `.swift-format` (4-space indent, 120 columns) with `make format` and `make lint` using Xcode's `swift format`.
-- [x] **P1.9** Write `scripts/sim-destination.sh`: the newest available iPhone simulator; `SIM_DEVICE` overrides it.
-- [x] **P1.10** Write the `Makefile`: `help`, `generate`, `content`, `content-release`, `build`, `build-release`, `test-packages`, `test-app`, `test-linux`, `run`, `screenshot`, `check`, `format`, `lint`, and `clean`, each with a one-line description at the top.
-  - *2026-10-28 result:* every target written. `content` and `content-release` print that there is no compiler yet until `Tools/ContentCompiler` exists (P3.3), then run it; `test-linux` waits on P1.13. `make clean && make check` passes with zero warnings; `run` and `screenshot` work.
-- [x] **P1.11** A placeholder app icon, with dark and tinted appearances, and the rubric accent colour. The final icon is P21.8.
-  - *2026-10-28 note (rewritten):* the item first asked for an icon rendered by a script from `design/icon/app-icon.svg`. The generated Ribbon icons (A1–A3, 1024×1024 light, dark, and tinted in `design/generated/`) already serve better as a placeholder, so `scripts/app-icon.sh` (`make icon`) copies them into the asset catalog unchanged, and `make guards` checks the copies stay byte-identical. The sources are untouched and stay `pending` (SOURCES.md); D15 stays open. AccentColor is the proposal's `rubric` (day `#A42A1E`, night `#E2765F`).
-  - *Result:* all three renditions are in the compiled `Assets.car`; the light icon and the untruncated label were seen on the iPhone 17 Pro Home Screen. The simulator's Home Screen kept the light style in dark mode (its icon style is a separate setting `simctl` cannot change), so the dark and tinted icons were not seen rendered there.
-- [x] **P1.12** Add `.github/workflows/check.yml` running `make check` on a macOS runner with Xcode 27, on the triggers P0.10 chooses.
-  - *2026-10-28 result:* triggers are P0.10's recommendation as a working default (manual, and pushes to `main` while the repository is public; skipped on a private one). Hosted run 40810242713 (commit 13a7c7e, `xcode-27` image) passed `make check`. A running check now finishes rather than being cancelled by the next push.
-- [x] **P1.13** Make `make test-linux` run every package's tests in the `swift:6.4` container (install Colima or Docker first; Research finding 16), and add a static guard that packages import only Linux-available modules.
-  - *2026-10-28 result:* the Docker CLI (29.9.2, Homebrew) was linked and Colima started (4 CPUs, 6 GB). `make test-linux` passes every package's tests in `swift:6.4` (aarch64 Linux). `scripts/check-package-imports.sh`, from Beautiful Corner, runs in `make guards`; probes importing UIKit, and SQLite3 without `#if canImport`, made it fail. `make check` does not run `test-linux` (the hosted macOS runner has no Docker).
-- [x] **P1.14** The TestFlight path to the owner's iPhone: `make archive` and `make testflight` (a signed Release archive with release-checked content, uploaded to App Store Connect), the privacy manifest it needs, and `docs/release.md` with the one-time setup. Tick after the first build installs through TestFlight.
-  - *2026-10-29 result:* build 0.1.0 (20261029.0935, commit 513cccf) uploaded and in internal beta testing; group Owner created and both team users invited, through the App Store Connect API key.
-  - *2026-10-29:* the owner confirmed that TestFlight works and the build installs on the owner's iPhone.
-  - *2026-10-28 note:* prepared, waiting on the owner. `make archive`, `make testflight`, `Config/ExportOptions.plist`, the privacy manifest, and `docs/release.md` are in place; an unsigned device archive builds with zero warnings. Signing and uploading need the owner's account: P0.6, P0.7, and the steps in `docs/release.md`.
+- [x] **P1.1** Set up this Mac for Ruby and Rails: Ruby through mise (the owner's existing runtime manager), Rails 8.1.4, and a shell where `ruby`, `gem`, `bundle`, and `rails` are unambiguous.
+  - *2026-10-29 result:* mise installed precompiled Ruby 4.0.9 and set it global (`~/.config/mise/config.toml`); mise now reads `.ruby-version` (`idiomatic_version_file_enable_tools = ["ruby"]`). RubyGems updated to 4.0.23, Bundler 4.0.23, Rails 8.1.4 installed; `~/.gemrc` skips documentation; Bundler installs with 8 jobs. In `~/.zshrc` the Homebrew Ruby PATH line is commented out (Homebrew's Ruby stays installed, unused); `~/.zprofile` adds mise's shims for login shells and GUI apps. Backups: `~/.zshrc.bak-20261029`, `~/.zprofile.bak-20261029`. Checked in a fresh login shell: `which ruby` is mise's 4.0.9.
+- [x] **P1.2** Generate the Rails 8.1.4 app in the repository root with SQLite, Propshaft, importmap, Turbo, Stimulus, the Solid trio, Minitest, RuboCop, Brakeman, bundler-audit, and GitHub CI; without Kamal, Thruster, Docker, Action Mailbox, Action Text, Active Storage, Jbuilder, or a devcontainer (decision 22). Write `.gitignore` (Rails' entries, secrets, the content database, `research/`).
+- [x] **P1.3** Retire the iPhone app: remove `App/`, `AppTests/`, `AppUITests/`, `Packages/`, `project.yml`, `Config/`, `scripts/`, the Makefile, the Xcode CI workflow, and `docs/release.md`; tag the last app commit `ios-archive`.
+  - *2026-10-29 result:* tagged at `a9be149`. The owner's local, gitignored `Config/Secrets.xcconfig` (App Store Connect key id, issuer, and key path; not the key) was moved out of the repository to `~/.config/prayerbook-atlas-ios/Secrets.xcconfig`, because Rails' `config/` is the same folder on a case-insensitive disk.
+- [x] **P1.4** Record the web decisions in `docs/decisions.md` (entries 21–31) and mark the iPhone entries superseded.
+- [x] **P1.5** Rewrite `README.md`: what the site is, prerequisites confirmed on this Mac, a quick start that works from a clean checkout, and the real layout.
+- [x] **P1.6** Rewrite AGENTS.md, SOUL.md's wording, `docs/product.md`, and `docs/design.md` for the website, and add `docs/deploy.md`.
+- [x] **P1.7** The two modes (decision 24): `SiteMode` (client hint, then user agent; the person's choice in a cookie holding only "phone" or "full"), the full-site layout (masthead, contents, reading column, margin) and the phone layout (phone bar, one column, tab bar), the footer switch, and `Vary` headers. Integration tests for phones, tablets, desktops, the hint, the choice, and its undoing.
+- [x] **P1.8** The five sections and the About page as honest placeholders, in both modes; no `allow_browser` gate (decision 25); a strict Content Security Policy and a Permissions Policy (decision 31); production hosts for both domains.
+  - *2026-10-29 result:* checked in the in-app browser at 1440×900 (light and dark), 800×900, and the mobile preset (375×812 with a phone user agent): both layouts, the tab bar, the folded margin, and the mode switch both ways; no console errors or CSP violations.
+- [x] **P1.9** `bin/ci` passes: setup, RuboCop, bundler-audit, importmap audit, Brakeman, tests, and seeds.
+- [ ] **P1.10** GitHub Actions: the generated workflow (`.github/workflows/ci.yml`), on manual dispatch only (P0.9). Tick after the first hosted run passes.
+- [ ] **P1.11** System tests with Capybara and headless Chrome: a phone-sized window with a phone user agent and a desktop-sized window, each visiting every section; `bin/rails test:system` added to `config/ci.rb` and the workflow. Screenshots go to `tmp/screenshots/`, never committed.
+- [ ] **P1.12** Survey the Anglican prayer websites Research finding 1 lists (what each offers, which books, how it sources texts, how it works on a phone), and update finding 1 and the feature map.
 
-## Phase 2: Design system and app shell
+## Phase 2: Design system and site shell
 
-- [x] **P2.1** Write `docs/product.md`: the information architecture (from the proposal above), navigation rules, the tone rules from AGENTS.md §3, "each book on its own terms", no guilt mechanics, privacy by design, and the newcomer principle.
-- [x] **P2.2 [GATE D15]** The design system.
-  - [x] **P2.2a** Hold the design session: render the Ribbon direction and two alternatives as real screens (Today, an office, the Atlas compare view) in day and night; the owner chooses (D15).
-    - *2026-10-29 result:* rendered on a private design canvas (claude.ai artifact) with placeholder lines for all prayer text; the owner chose B · Engraved Plate. P2.2b is redone for B.
-  - [x] **P2.2b** Write `docs/design.md` (tokens, contrast, type scale, motifs, ribbons, the atlas plate, layout and Liquid Glass, appearance, symbols, components, accessibility, the app icon, and the research behind them), `design/tokens.json`, and the icon sources in `design/icon/`.
-    - *2026-10-28 result:* written on the Ribbon working default (D15 open; P2.2a not held). Adds ribbon hues, which BUILD.md did not specify, with computed contrast: white and Lenten array by day and black by night fall below 3:1 on paper and get a gilt edge. The icon sources are the generated A1–A5 in `design/generated/`; `design/icon/` is reserved for P21.8's Icon Composer file. Revisit both files if the owner chooses another direction.
-    - *2026-10-29 result (redone for B):* `docs/design.md` and `design/tokens.json` now describe Engraved Plate with the canvas's exact day and night values; every text pair passes AA (lowest 5.60:1, `muted` on `wash` by day), tested from the compiled assets. Changes from Ribbon: no `gilt` (ornament is drawn with double rules), faint ribbons get a `muted` edge, square corners, small-capital labels in Cardo, an outlined primary action, and Sarum blue moved to `#3A5CC0`/`#4F6CC8` so it is not mistaken for the accent. The icon stays the owner's generated set (A1–A3): an agent-drawn vector icon was rejected by the owner the same day and reverted (decision 20).
-  - [x] **P2.2c** Prepare the owner's requested image set from `design/image-prompts.md`: all 54 PNGs, master-referenced icon variants and layers, genuine alpha masks, the local gallery, and image provenance. This preparation may precede P2.2a at the owner's request; it does not settle D15 or complete Icon Composer/SF Symbols integration.
-    - *2026-10-28 result:* all 54 PNGs generated and registered in `design/image-registry.json` and `content/SOURCES.md`. The generator returned the 38 square files at 1254×1254; they are now exact 1024×1024 exports (ImageMagick, Lanczos), and the tinted icon's mask was rebuilt from its 50% outline in pure white, without the haze or the partial alpha in the cross. The 15 landscape files and the portrait frame met their sizes as generated. The native squares, with their C2PA Content Credentials, stay in commit 2232e7f. Checked: sizes, alpha ranges, no pale pixels in the ink masks, registry hashes, and the gallery in a browser over local HTTP.
-- [x] **P2.3** Generate the colour tokens in the asset catalog (day and night) from `design/tokens.json` by a script, so they cannot drift; expose them as named `Color` values; add the ribbon colours with their words; and test that every text pair in `docs/design.md` meets WCAG AA in both modes.
-- [x] **P2.4** Bundle the chosen OFL book face (with its licence file, recorded in `content/SOURCES.md`), check its glyph coverage (small capitals, ℣ ℟ ✠ † ¶, Greek, old-style figures), and add the type scale: display, title, heading, reading, rubric, red initial, eyebrow, role, page number, source, and source mark, all scaling with Dynamic Type to AX5; SF for interface text.
-  - *2026-10-29 result:* Cardo Regular, Italic, and Bold with OFL.txt in `App/Resources/Fonts/`, registered by `UIAppFonts`, cleared in SOURCES.md (byte-identical to google/fonts `5f99a56`). Coverage: ℣ ℟ † ¶ and Greek in every face; ✠ falls back to the system symbol font; only Regular has `smcp` and Bold has no `onum`, so labels are Regular small caps and page numbers Italic old-style. `TypeStyle` (`.typeStyle(_:)`) holds the scale (initial is drawn by P2.5's component), scaled by `@ScaledMetric`; `TypographyTests` pins it to tokens.json and checks glyphs and features. The placeholder Today uses eyebrow and display; checked on iPhone 17 Pro in light, dark, and AX5.
-- [x] **P2.5** Build the shared components: card, eyebrow, red initial, rubric, role label, versicle and response, Amen, repetition, name chip (intercessions), ribbon marker, gilt hairline, atlas plate, page-number margin mark, `SourceFootnote` (a rubric mark that opens a source sheet with book, printing, and page), margin note (wide layouts), empty/loading/error states, a haptics helper, and a share helper that always attaches attribution.
-  - *2026-10-29 result:* every component listed, in Engraved Plate (docs/design.md §12 maps them to files), plus the title rule and the outlined primary action. `SourceCitation` (book, printing, page) is in ContentKit for P2.8. The initial is inline for now; the two-line drop initial waits for P2.9's TextKit renderer. Custom symbols wait for owner-supplied images (decision 20), so SF Symbols stay. Debug `-componentGallery` shows them all with bracketed placeholders; `ComponentTests` and `ComponentGalleryUITests` cover them; checked on iPhone 17 Pro in light, dark, and AX5.
-- [x] **P2.6** The tab structure with one `NavigationStack` per tab and the search tab; restore the selected tab and paths on relaunch.
-- [x] **P2.7** `AppRoute` for every destination and the custom URL scheme (D1); every tappable destination has a route.
-  - *2026-10-28 result (P2.6 and P2.7 together):* five tabs, each with a `NavigationStack`, plus search; on iPhone the search tab would push two tabs into "More", so Search is a toolbar button there (decision 17). Tab and paths restore from UserDefaults (privacy manifest now declares CA92.1). `AppRoute` covers every destination that exists (Settings, Search); later items add theirs. `prayerbookatlas://` links parse to tabs and routes. Checked: unit and UI tests (deep link to Settings, the Search button), relaunch restoration, light, dark and AX5 on iPhone 17 Pro, and the search tab on iPad.
-- [x] **P2.8** The `LiturgicalBlock` model in ContentKit: heading, paragraph, rubric, role-labeled lines as each book labels them (Minister, Priest, Officiant, People, Answer), versicle and response, Amen, the Gloria Patri marker, psalm verses with the half-verse mark as printed (colon or asterisk) and both verse numberings where they differ, canticle references, collects, alternatives ("or this"), seasonal insertion points, name insertion points (N., the sovereign, the bishop), the book, printing, and printed page of each block, and page-break hints.
-  - *2026-10-29 result:* `LiturgicalBlock` (id, `SourceCitation`, kind) in ContentKit with every kind listed; inline runs keep italics, small capitals, insertion points (name, sovereign, bishop, other, each with what is printed), line breaks, and page breaks. Psalm verses carry the book's number, the KJV's where it differs, and the colon or asterisk. `problems` flags blocks with no words or page, misnumbered verses, and alternatives from another book (for P3.3 and P3.10). Codable and Sendable; tested with placeholder words on macOS and Linux. The app's `VersicleResponse` now takes ContentKit's `RoleLine`.
-- [ ] **P2.9** Build `LiturgicalTextView`, rendering `[LiturgicalBlock]` with Dynamic Type to AX5, VoiceOver that announces roles and reads rubrics as instructions, page numbers in the margin, and text selection and copy.
-- [ ] **P2.10** Reading settings: text size, line spacing, rubrics in red or italic, show or hide rubrics, show page numbers, keep the screen awake while praying, and original or modernized spelling (historic books only, P11.6).
-- [ ] **P2.11 [GATE D4]** First-launch setup, skippable and changeable in Settings: the person's prayer book, with a line about each; nothing is required to begin praying.
-- [ ] **P2.12** Settings: prayer book and per-office overrides, reading settings, notifications, appearance (Automatic, Day, Night), acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, "About this app" (sister of Grace & Footnotes), support (support@prayerbookatlas.com), and version and build.
-- [x] **P2.13** Create a String Catalog (`Localizable.xcstrings`) and route every interface string through it (English only for now).
-  - *2026-10-28 result:* `make strings` syncs the compiler-extracted strings into the catalog (`scripts/sync-strings.sh`, from Beautiful Corner); `make check` fails when it is stale (probed). 17 strings so far. English-only entries compile to nothing in the bundle, as expected; `.lproj` files appear with the first translation.
-- [x] **P2.14** A UI test that launches, visits every tab, opens Settings, and switches appearance, capturing screenshots as attachments.
-  - *2026-10-28 result:* `TourUITests` keeps 12 screenshots (five tabs and Settings, day and night). It switches the device appearance; when P2.12 adds the in-app Appearance setting, extend the test to switch that too. It relaunches per appearance because iOS 27 does not expose the navigation bar's back button to UI tests as a button.
+- [x] **P2.1** Write `docs/product.md` for the website: the five sections, the two modes and what each adds, URLs and navigation, the tone rules, each book on its own terms, no guilt mechanics, privacy by design, and the newcomer.
+- [x] **P2.2** Carry Engraved Plate to the web: `docs/design.md` for CSS (tokens, contrast, type in rem, layout for both modes, rules, appearance), `design/tokens.json` notes for the web, and `lib/design_tokens.rb` generating `tokens.css` (`bin/rails design:tokens`), with tests that it is current and that no other stylesheet writes a raw colour.
+- [x] **P2.3** Self-host Cardo: the three faces as WOFF2 in `app/assets/fonts/` with the OFL, `@font-face` with `font-display: swap`, recorded in `content/SOURCES.md`.
+  - *2026-10-29 result:* converted from the cleared TTFs (SHA-256 prefixes `bcb81f37`, `52c51cfd`, `6c9383b1`, as recorded) with fontTools' `ttLib.woff2 compress`, which recompresses without changing outlines or tables. Small capitals render through `font-variant-caps` in Chrome.
+- [ ] **P2.4** Type in the browser: check Cardo's small capitals (`smcp`), old-style figures (`onum`), ℣ ℟ † ¶, and polytonic Greek in Safari, Chrome, and Firefox; choose the fallback for ✠ (U+2720), which Cardo lacks; tune sizes per mode (the phone a step smaller for display and title); a development-only type specimen page.
+- [ ] **P2.5** Components as partials and helpers, in both modes: card, eyebrow, red initial (`initial-letter` where supported, an enlarged capital otherwise), rubric, role label, versicle and response, Amen, repetition, name chip, ribbon marker (with its name, never colour alone), atlas plate, title rule, page-number mark (in the margin on the full site, inline on the phone), source footnote (the HTML `popover` attribute, so it opens without JavaScript, with a plain link fallback), margin note, and empty, loading, and error states. A development-only gallery at `/dev/components`.
+- [ ] **P2.6** Appearance: Automatic, Day, or Night, chosen from Settings by a plain form, kept in a preference cookie, and applied as `data-appearance` on `<html>` by the server (no flash, no script).
+- [ ] **P2.7** URLs: write `docs/urls.md` (readable, stable, shareable URLs for every destination: a day, an office in a book on a date, a prayer in the Atlas, a compare, a psalm, a passage) and route every placeholder destination by it.
+- [ ] **P2.8** The `LiturgicalBlock` model in Ruby, ported from the retired Swift ContentKit (tag `ios-archive`): heading, paragraph, rubric, role-labeled lines as each book labels them, versicle and response, Amen, the Gloria Patri marker, psalm verses with the half-verse mark as printed and both numberings where they differ, canticle references, collects, alternatives, seasonal and name insertion points, book, printing, and page, and page breaks; with its `problems` checks.
+- [ ] **P2.9** Render `LiturgicalBlock`s as semantic HTML: rubrics marked as instructions for screen readers, role labels announced, page numbers in the margin (full) or inline (phone), insertion points visible, and plain text selection and copy.
+- [ ] **P2.10** Reading settings, kept in a preference cookie and applied by the server: text size, line spacing, rubrics in colour or italic, show or hide rubrics, show page numbers, keep the screen awake while praying (the Screen Wake Lock API, where supported), and original or modernized spelling (historic books only, P12.6).
+- [ ] **P2.11 [GATE D4]** The first visit: a skippable card on Today choosing the person's prayer book, with a line about each; the preset is 1662; nothing is required to begin praying.
+- [ ] **P2.12** Settings (`/settings`): prayer book and per-office overrides, reading settings, appearance, the site mode, acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, about, support, and the running version (the deployed commit).
+- [ ] **P2.13** Route every interface string through Rails I18n (`config/locales/en.yml`), English only for now; a test finds untranslated literal text in views.
+- [ ] **P2.14** A system-test tour: every section and Settings, in both modes and both appearances, saving screenshots to `tmp/screenshots/`.
 
 ## Phase 3: Content pipeline and rights registry
 
-- [ ] **P3.1** Create `content/SOURCES.md` with a documented schema (id, title, book and printing, year, publisher, obtained-from URL or scan, jurisdiction, rights basis per territory, AI-use permission, what was checked, status). Add "Original work (owner)", `pending` entries for the public-domain candidates in Research findings 3, 4, 7, and 9, and a **Wanted** section for the requests in D6.
-- [ ] **P3.2** Write `docs/content-format.md`: UTF-8 text files with `key: value` front matter and a line syntax for every `LiturgicalBlock` kind; ids for books and printings (for example `bcp1662`, `bcp1928us`, `bcp1979us`); the `work` key that links a witness to its work (P11.1); required keys (`id`, `book`, `printing`, `page`, `source`, `kind`, `translation` for Scripture, `review` for original work); JSON tables for calendars and lectionaries.
-- [ ] **P3.3** Build `Tools/ContentCompiler` (a Swift executable package): parse and validate `content/` and write a deterministic `Content.sqlite` with a schema version, text tables, and an FTS5 index. Fail on unknown sources, duplicate ids, unresolved references, and original works without `review`. Release mode fails on uncleared sources; `--allow-pending` downgrades that to a warning for development.
+- [ ] **P3.1** Give `content/SOURCES.md` a documented schema (id, title, book and printing, year, publisher, obtained-from URL or scan, jurisdiction, rights basis per territory, AI-use permission, what was checked, status). Add "Original work (owner)", `pending` entries for the public-domain candidates in Research findings 3, 4, 7, and 9, and a **Wanted** section for the requests in D6.
+- [ ] **P3.2** Write `docs/content-format.md`: UTF-8 text files with `key: value` front matter and a line syntax for every `LiturgicalBlock` kind; ids for books and printings (for example `bcp1662`, `bcp1928us`, `bcp1979us`); the `work` key (P12.1); required keys (`id`, `book`, `printing`, `page`, `source`, `kind`, `translation` for Scripture, `review` for original work); JSON tables for calendars and lectionaries.
+- [ ] **P3.3** Build the content compiler (`lib/content/`, `bin/rails content:compile`): parse and validate `content/` and write a deterministic `db/content.sqlite3` with a schema version, text tables, and an FTS5 index. Fail on unknown sources, duplicate ids, unresolved references, and original works without `review`. Production and `bin/ci` fail on uncleared sources; `ALLOW_PENDING=1` downgrades that to a warning in development.
 - [ ] **P3.4** The book guard: every liturgical text names its book, printing, and page; a text may not be placed in a book it was not transcribed from; and a source cleared for one territory is not treated as cleared for another (D14).
-- [ ] **P3.5** The Scripture guard (D5): every Scripture item names its `translation`; only allowed translations are accepted; licensed translations have verse ceilings (configurable, below each gratis limit) unless `SOURCES.md` records a license, and their notices appear in the acknowledgements.
-- [ ] **P3.6** The quotation and image registries: every quotation names its author, work, edition, and location from a `cleared` source; every image (title pages, engravings, portraits) records its source, creator, date, holder, and rights basis; AI-generated sacred images are rejected.
-- [ ] **P3.7** The ContentKit SQLite reader: read-only, prepared statements, an actor-isolated async API, and tests against a fixture database; confirm FTS5 at runtime on iOS.
-- [ ] **P3.8** Build integration: `make content` writes `App/Resources/Content.sqlite` (gitignored); `make build` and `make check` depend on it; an Xcode build phase fails clearly if it is missing. Generate Settings → Acknowledgements from the database's sources.
-- [ ] **P3.9** Ranked full-text search with highlighted snippets and filters by book and kind (office, prayer, collect, psalm, Scripture, lesson, rubric), with tests.
-- [ ] **P3.10** A content-integrity suite in `make check`: unique ids, resolved references, registered sources, no empty blocks, every block with a book, printing, and page.
-- [ ] **P3.11** Write `docs/proofreading.md`: two independent passes against the page images, a word-level diff between them, how differences are settled, the record in `SOURCES.md`, and the errata process for users' reports (support@prayerbookatlas.com).
+- [ ] **P3.5** The Scripture guard (D5): every Scripture item names its `translation`; only allowed translations are accepted; licensed translations have verse ceilings unless `SOURCES.md` records a license, and their notices appear wherever they are shown.
+- [ ] **P3.6** The quotation and image registries: every quotation names its author, work, edition, and location from a `cleared` source; every image records its source, creator, date, holder, and rights basis; AI-generated sacred images are rejected.
+- [ ] **P3.7** The read-only content database in Rails: a `content` database in `config/database.yml`, an abstract `ContentRecord` connected to it read-only, models for books, printings, blocks, and works, and tests against a fixture database.
+- [ ] **P3.8** Build integration: `bin/setup`, `bin/ci`, and the deploy compile the content; a missing content database fails clearly; the acknowledgements and the sources page are generated from it.
+- [ ] **P3.9** Search (`/search`): ranked FTS5 results with highlighted snippets and filters by book and kind (office, prayer, collect, psalm, Scripture, lesson, rubric). On the full site the search field is in the masthead and the filters in the contents column; on the phone, a search page with the filters folded.
+- [ ] **P3.10** A content-integrity suite in `bin/ci`: unique ids, resolved references, registered sources, no empty blocks, every block with a book, printing, and page.
+- [ ] **P3.11** Write `docs/proofreading.md`: two independent passes against the page images, a word-level diff between them, how differences are settled, the record in `SOURCES.md`, and the errata process for readers' reports (support@prayerbookatlas.com).
 
 ## Phase 4: Church year engine (ChurchYear)
 
-Cite the governing source (book and page) for every rule in
-`docs/calendar-rules.md`. Mark any rule without a printed source as an "app
-convention" and say why it was chosen.
+Plain Ruby under `app/models/church_year/`. Cite the governing source (book
+and page) for every rule in `docs/calendar-rules.md`. Mark any rule without a
+printed source as an "app convention" and say why it was chosen.
 
-- [ ] **P4.1** `CivilDate` (year, month, day) with weekday, day arithmetic, comparisons, `Codable` and `Sendable`, and Julian Day Number conversion (D10 permits adapting Beautiful Corner's). Exhaustive tests.
+- [ ] **P4.1** Civil-date helpers on Ruby's `Date` (proleptic Gregorian): weekday names as each book uses them, Sundays before and after, the nearest Sunday, and the Julian Day Number, with exhaustive tests (the retired Swift `CivilDate` at `ios-archive` is the reference).
 - [ ] **P4.2** Western Easter by the Gregorian computus, tested 1583–4099 against an authoritative table, and independently by the 1662 book's own tables and rules (Golden Number, Sunday Letter), the two required to agree for every year the tables cover.
 - [ ] **P4.3** The moveable cycle per book: Advent Sunday; the Sundays after Christmas and after the Epiphany (and how surplus Sundays are handled); Septuagesima, Sexagesima, and Quinquagesima where the book keeps them; Ash Wednesday and Lent; Holy Week; Easter; Rogation Sunday and the Rogation Days; Ascension; Whitsunday or Pentecost; Trinity Sunday; the Sundays after Trinity or after Pentecost with 1979's Propers by date; and the Sunday next before Advent.
 - [ ] **P4.4** The fixed holy days of each launch book (D3) as facts in `content/calendar/<book>.json` (date, name, rank as the book gives it, page), including red-letter and black-letter days where the book distinguishes them.
 - [ ] **P4.5 [GATE D20]** Compile each book's lesser commemorations as facts only (names, dates, ranks), cited and cross-checked against two independent sources with every difference listed.
-- [ ] **P4.6** Precedence and transfer per book: 1979's rules (Principal Feasts, Sundays, Holy Days, and the rest) as printed; 1662's and 1928's from their rubrics, with app conventions documented where the books are silent (for example a holy day on a Sunday).
+- [ ] **P4.6** Precedence and transfer per book: 1979's rules as printed; 1662's and 1928's from their rubrics, with app conventions documented where the books are silent.
 - [ ] **P4.7** Fasts and abstinence per book, as information only: 1662's Table of Vigils, Fasts, and Days of Abstinence (including Ember and Rogation days), 1928's table, and 1979's days of special devotion, each with the book's own words and page and a line that one's parish priest may counsel differently.
 - [ ] **P4.8** Liturgical colours, as information, labeled as custom where the book prescribes none, with an optional Sarum sequence; off by default.
-- [ ] **P4.9** The collect of the day per book from its rubrics: the Sunday collect serving the week; the Advent and Ash Wednesday collects said daily through their seasons in the books that direct it; holy-day collects and their eves (first Evensong); and precedence between them. A test that every collect key for a year resolves.
-- [ ] **P4.10** The public API `ChurchDay`: (date, book) → the day's name, season, week, colour, holy days and commemorations with ranks, collect keys, fast and abstinence notes, lectionary keys, Ember and Rogation flags, and eve flags. Deterministic, `Sendable`, cached per year.
-- [ ] **P4.11** Golden files: full-year outputs for 2026, 2027, and 2028, an early-Easter year (2008, 23 March), and a late-Easter year (2038, 25 April) for each launch book, checked by `GoldenTests` and confirmed against printed tables.
-- [ ] **P4.12** Performance: a full year for every book computes within a measured budget (start at 50 ms) on the simulator and the hosted runner; the package tests pass on Linux.
+- [ ] **P4.9** The collect of the day per book from its rubrics: the Sunday collect serving the week; the Advent and Ash Wednesday collects said daily through their seasons where directed; holy-day collects and their eves (first Evensong); and precedence between them. A test that every collect key for a year resolves.
+- [ ] **P4.10** The public API `ChurchYear::Day`: (date, book) → the day's name, season, week, colour, holy days and commemorations with ranks, collect keys, fast and abstinence notes, lectionary keys, Ember and Rogation flags, and eve flags. Deterministic, frozen, and cached per year (Solid Cache).
+- [ ] **P4.11** Golden files: full-year outputs for 2026, 2027, and 2028, an early-Easter year (2008, 23 March), and a late-Easter year (2038, 25 April) for each launch book, checked by tests and confirmed against printed tables.
+- [ ] **P4.12** Performance: a full year for every book computes within a measured budget (start at 100 ms per book-year on this Mac), recorded in `docs/performance.md`.
 - [ ] **P4.13** Write `docs/calendar-rules.md`: every rule, its source, and its test.
 
-## Phase 5: Today and the Kalendar
+## Phase 5: Hosting at prayerbookatlas.com [GATE D28]
 
-- [ ] **P5.1** The Today screen: the day's name in the chosen book (with the other launch books' names one tap away), the ribbon, holy days, fast and abstinence notes, the office for the hour, the collect, the psalms and lessons (references now, text from P9), and slots for my rule (P13.4) and the reading-plan portion (P10.4), plus the next holy day with no countdown.
-- [ ] **P5.2** Day navigation: swipe or arrow between days, a date picker, and a Today button; midnight rollover and time-zone changes; the Debug `-today` override.
-- [ ] **P5.3** The Kalendar: a month grid with red-letter days in red and marked by a symbol too (never colour alone), a list mode, a year jump, and quick jumps to Advent, Ash Wednesday, and Easter.
-- [ ] **P5.4** The day page (`prayerbookatlas://kalendar/YYYY-MM-DD`): everything Today shows, for every launch book, with the source of each rule.
-- [ ] **P5.5** The Easter tables screen: Easter and the moveable feasts for any year, the year's Golden Number and Sunday Letter, and the 1662 book's own tables explained.
-- [ ] **P5.6** UI tests: open specific dates (Easter 2027, Ash Wednesday 2028, Septuagesima in 1662, Proper 28 in 1979, an Ember Day) and assert their titles.
+Early, so the owner can watch the site grow. Every step that changes the
+server, DNS, or Caddy is the owner's to approve (AGENTS.md §4); agents
+prepare everything.
 
-## Phase 6: The Daily Office engine (OfficeKit)
+- [x] **P5.1** Write `docs/deploy.md`: the server layout (`/srv/prayerbookatlas` with releases, a shared `storage/`, and an environment file holding `RAILS_MASTER_KEY`), Ruby on the server through mise, the systemd unit for Puma (with Solid Queue in Puma), the Caddy site for prayerbookatlas.com with redirects from www, prayerbook-atlas.com, and prayerbookatlas.org (and how to make .org serve directly as the backup), security headers, logs, and rollback.
+- [ ] **P5.2** `bin/deploy`: build a release from a clean `git archive` of `main`, copy it to the server, `bundle install` (deployment mode), precompile assets, compile the content with release checks, migrate, switch the `current` link, restart Puma, check `/up`, and roll back on failure. Never makes the checkout or the repository a web root.
+- [ ] **P5.3 [OWNER]** Provision the server as `docs/deploy.md` says: a `prayerbookatlas` user, Ruby 4.0.9 through mise, the directories, the environment file with the master key (from the owner's `config/master.key`), the systemd unit, and the Caddy site beside the existing ones (never replacing them).
+- [ ] **P5.4 [OWNER]** The first deploy, then check every name: prayerbookatlas.com serves the site over HTTPS; www, prayerbook-atlas.com, prayerbookatlas.org, and their www names redirect permanently to it; the response headers are right.
+- [ ] **P5.5** Backups: a nightly SQLite `.backup` of the app's databases in `storage/`, encrypted and kept off the server on owner-controlled storage, with a written restore drill run once. (The content database is rebuilt from the repository, not backed up.)
+- [ ] **P5.6** A post-deploy check (`bin/rails site:check_live`): status codes, redirects, TLS, the security headers, and no requests to other hosts.
+- [ ] **P5.7** Robots and preview: until launch (P22), `robots.txt` disallows crawling and every page says the site is in development.
 
-- [ ] **P6.1** The office assembly engine: (date, book, office, options) → an ordered list of content ids with the day's propers (sentences, invitatory and its seasonal forms, psalms, lessons, canticles, the creed, suffrages, collects, the state prayers, the Litany where appointed). Pure and tested. A book without an office (Compline in 1662) returns "not in this book", never another book's office.
-- [ ] **P6.2** The options model per book: Rite I or II (1979), canticle choices, the Athanasian Creed on its days (1662), the Litany days, Suffrages A or B, said or sung forms, and the state prayers' form (the convention P7.9 records).
-- [ ] **P6.3** The office reader: continuous scroll, a section index, page numbers, inline choices, lessons from the Bible store and psalms from the book's own Psalter, a saved position, and keep-awake.
-- [ ] **P6.4** Snapshot tests: the assembled id lists for forty representative days per launch book (ordinary Sundays, holy days, Lent, Holy Week, Easter week, Ember Days, eves), each checked by hand against the printed book, with every id resolving.
-- [ ] **P6.5** Print or export an office as a PDF booklet with its sources and the required notices, for cleared texts only.
-- [ ] **P6.6** Family prayer and short forms where a book provides them (1928's family prayer, 1979's Daily Devotions for Individuals and Families).
+## Phase 6: Today and the Kalendar
 
-## Phase 7: The 1662 Book of Common Prayer
+- [ ] **P6.1** The person's date: the browser's time zone is sent once in a preference cookie by a tiny script; without it the server uses the date in the URL or, failing that, the owner's default zone, and says which date it is showing. Midnight and travel are handled at the request edge only (decision 30).
+- [ ] **P6.2** Today: the day's name in the chosen book (the other launch books' names one click away), the ribbon, holy days, fast and abstinence notes, the office for the hour, the collect, the psalms and lessons (references now, text from P10), slots for my rule (P14.4) and the reading-plan portion (P11.4), and the next holy day with no countdown. The full site sets the other books' names and the lessons in the margin; the phone stacks them.
+- [ ] **P6.3** Day navigation: previous and next links, a date field, and a Today link everywhere; arrow keys on the full site and a swipe on the phone (Stimulus), both only as enhancements of the links.
+- [ ] **P6.4** The Kalendar: a month grid on the full site with red-letter days in rubric and marked by a symbol and words too (never colour alone), a list on the phone, a year view, and quick jumps to Advent, Ash Wednesday, and Easter.
+- [ ] **P6.5** The day page (`/kalendar/YYYY-MM-DD`): everything Today shows, for every launch book, with the source of each rule.
+- [ ] **P6.6** The Easter tables page: Easter and the moveable feasts for any year, the year's Golden Number and Sunday Letter, and the 1662 book's own tables explained.
+- [ ] **P6.7** System tests: open specific dates (Easter 2027, Ash Wednesday 2028, Septuagesima in 1662, Proper 28 in 1979, an Ember Day) in both modes and assert their titles.
 
-- [ ] **P7.1 [RIGHTS]** Identify the printing(s): page images of a printing carrying the 1871 lectionary (Internet Archive or HathiTrust), and the current Cambridge text for comparison; record the edition, scan URLs, and the rights basis (US public domain; UK Crown rights, Research finding 4) as `pending`, then clear for the US.
-- [ ] **P7.2** Transcribe and proofread (P3.11) Morning and Evening Prayer with all canticles, the Litany, and the Prayers and Thanksgivings upon Several Occasions.
-- [ ] **P7.3** The Collects, Epistles, and Gospels for the year, as printed in the book.
-- [ ] **P7.4** The Psalter (Coverdale) in its thirty-day cycle, with the book's rules for the thirty-first day and February and its proper psalms.
-- [ ] **P7.5 [GATE D20]** The Kalendar and lectionary as facts: the 1871 Revised Table of Lessons (default), the 1922 table (option), and the original 1662 table (historical), cross-checked against two sources.
-- [ ] **P7.6** The Order for the Administration of the Lord's Supper, or Holy Communion, to follow and to prepare.
-- [ ] **P7.7** The occasional offices for study and preparation: Baptism (three forms), the Catechism, Confirmation, Matrimony, the Visitation and Communion of the Sick, Burial, the Thanksgiving of Women after Child-birth, the Commination, the Forms of Prayer to be Used at Sea, the Ordinal, the Articles of Religion, and the Table of Kindred and Affinity.
-- [ ] **P7.8** The Creed of Saint Athanasius and the days its rubric appoints.
-- [ ] **P7.9** The state prayers: record in `docs/decisions.md` how the app names the sovereign and offers other forms, and implement it.
-- [ ] **P7.10** The complete proofreading record in `SOURCES.md`, and a book page for the Atlas (P11.3).
+## Phase 7: The Daily Office engine and reader
 
-## Phase 8: The American prayer books: 1928 and 1979
+- [ ] **P7.1** The office assembly engine (`Office::Assembler`): (date, book, office, options) → an ordered list of content ids with the day's propers (sentences, invitatory and its seasonal forms, psalms, lessons, canticles, the creed, suffrages, collects, the state prayers, the Litany where appointed). Pure and tested. A book without an office (Compline in 1662) returns "not in this book", never another book's office.
+- [ ] **P7.2** The options model per book: Rite I or II (1979), canticle choices, the Athanasian Creed on its days (1662), the Litany days, Suffrages A or B, said or sung forms, and the state prayers' form (the convention P8.9 records); chosen by plain forms, remembered in a preference cookie.
+- [ ] **P7.3** The office reader. Full site: the office's sections in the contents column (current section marked as the reader scrolls), the text in the reading column, sources, page numbers, and the alternatives in the margin. Phone: one continuous column with a sections menu at the top. Both: inline choices, lessons from the Bible store and psalms from the book's own Psalter, and keep-awake.
+- [ ] **P7.4** Snapshot tests: the assembled id lists for forty representative days per launch book (ordinary Sundays, holy days, Lent, Holy Week, Easter week, Ember Days, eves), each checked by hand against the printed book, with every id resolving.
+- [ ] **P7.5** Keyboard use on the full site: next and previous section, jump to the psalms or lessons, and a `?` sheet listing the keys, all also reachable without the keyboard.
+- [ ] **P7.6** Family prayer and short forms where a book provides them (1928's family prayer, 1979's Daily Devotions for Individuals and Families).
 
-- [ ] **P8.1 [RIGHTS]** Identify and clear the printings: the 1928 (and which lectionary revision it carries) and the 1979 (the Episcopal Church's PDF of the 2007 printing, checked against a printed copy), reading Canon II.3.6's current text and recording it (Research finding 3).
-- [ ] **P8.2** 1928: Morning and Evening Prayer, family prayer, the Litany, the Prayers and Thanksgivings, the Collects, Epistles, and Gospels, the Psalter in the book's selections and monthly cycle, and the tables of lessons as facts (D20).
-- [ ] **P8.3** 1979: the Daily Office in Rite I and Rite II, Noonday Prayer, An Order of Worship for the Evening, Compline, the Daily Devotions, the Great Litany, the collects in both languages, the Psalter (half-verse asterisks, LORD in small capitals), and the two-year Daily Office Lectionary as facts.
-- [ ] **P8.4** 1979: the Holy Eucharist in Rite I and Rite II, the Proper Liturgies for Special Days, and the 1979 Sunday lectionary as facts (the RCL arrives by permission, P16.6).
-- [ ] **P8.5** 1979 and 1928 pastoral offices and catechisms for study: Holy Baptism, Confirmation, Marriage, the Thanksgiving for the Birth or Adoption of a Child, the Reconciliation of a Penitent, Ministration to the Sick, Burial, the Offices of Instruction (1928), An Outline of the Faith (1979), and the 1979 Historical Documents.
-- [ ] **P8.6** 1928 Holy Communion and its Propers.
-- [ ] **P8.7** The proofreading records and book pages for both.
+## Phase 8: The 1662 Book of Common Prayer
 
-## Phase 9: Holy Scripture and the Psalter
+- [ ] **P8.1 [RIGHTS] [GATE D14]** Identify the printing(s): page images of a printing carrying the 1871 lectionary (Internet Archive or HathiTrust), and the current Cambridge text for comparison; record the edition, scan URLs, and the rights basis (US public domain; UK Crown rights, Research finding 4) as `pending`, then clear for the US. Research what serving it on a website read in the UK requires and record it under D14.
+- [ ] **P8.2** Transcribe and proofread (P3.11) Morning and Evening Prayer with all canticles, the Litany, and the Prayers and Thanksgivings upon Several Occasions.
+- [ ] **P8.3** The Collects, Epistles, and Gospels for the year, as printed in the book.
+- [ ] **P8.4** The Psalter (Coverdale) in its thirty-day cycle, with the book's rules for the thirty-first day and February and its proper psalms.
+- [ ] **P8.5 [GATE D20]** The Kalendar and lectionary as facts: the 1871 Revised Table of Lessons (default), the 1922 table (option), and the original 1662 table (historical), cross-checked against two sources.
+- [ ] **P8.6** The Order for the Administration of the Lord's Supper, or Holy Communion, to follow and to prepare.
+- [ ] **P8.7** The occasional offices for study and preparation: Baptism (three forms), the Catechism, Confirmation, Matrimony, the Visitation and Communion of the Sick, Burial, the Thanksgiving of Women after Child-birth, the Commination, the Forms of Prayer to be Used at Sea, the Ordinal, the Articles of Religion, and the Table of Kindred and Affinity.
+- [ ] **P8.8** The Creed of Saint Athanasius and the days its rubric appoints.
+- [ ] **P8.9** The state prayers: record in `docs/decisions.md` how the site names the sovereign and offers other forms, and implement it.
+- [ ] **P8.10** The complete proofreading record in `SOURCES.md`, and a book page for the Atlas (P12.3).
 
-- [ ] **P9.1** ScriptureKit: the canon as Anglican Bibles print it (Old Testament, the Apocrypha as Article VI lists it, New Testament), every abbreviation the books' tables use, ranges and cross-chapter ranges, and the verse mapping between each BCP Psalter and the KJV. Extensive tests.
-- [ ] **P9.2 [RIGHTS] [GATE D5]** A `ScriptureProvider` protocol with an offline store and attribution metadata, and the launch texts: the KJV with the Apocrypha and the World English Bible from identified digital editions, proofread on samples against printed editions, imported by `make bible`, and cleared in `SOURCES.md`.
-- [ ] **P9.3** The Bible reader: books and chapters, go-to reference, verse selection, share with the required notice, reading settings, and search.
-- [ ] **P9.4** The Psalter for prayer: each book's Psalter in its own cycle (1662 monthly, 1979 seven-week, and the others as printed), switchable, with the book's pointing marks.
-- [ ] **P9.5** Lessons in the offices rendered from the store in the reader's chosen translation, labeled, with each book's own reference style.
-- [ ] **P9.6** Required notices on every screen that shows licensed Scripture, and acknowledgements entries.
-- [ ] **P9.7 [RIGHTS]** Cross references from a cleared public-domain dataset (for example the Treasury of Scripture Knowledge).
-- [ ] **P9.8 [RIGHTS] [GATE DEMO]** Licensed translations as licenses arrive (D5), as options in reading settings, with their notices and the guard's ceilings lifted only as each license allows.
+## Phase 9: The American prayer books: 1928 and 1979
 
-## Phase 10: Lectionaries and reading plans
+- [ ] **P9.1 [RIGHTS]** Identify and clear the printings: the 1928 (and which lectionary revision it carries) and the 1979 (the Episcopal Church's PDF of the 2007 printing, checked against a printed copy), reading Canon II.3.6's current text and recording it (Research finding 3).
+- [ ] **P9.2** 1928: Morning and Evening Prayer, family prayer, the Litany, the Prayers and Thanksgivings, the Collects, Epistles, and Gospels, the Psalter in the book's selections and monthly cycle, and the tables of lessons as facts (D20).
+- [ ] **P9.3** 1979: the Daily Office in Rite I and Rite II, Noonday Prayer, An Order of Worship for the Evening, Compline, the Daily Devotions, the Great Litany, the collects in both languages, the Psalter (half-verse asterisks, LORD in small capitals), and the two-year Daily Office Lectionary as facts.
+- [ ] **P9.4** 1979: the Holy Eucharist in Rite I and Rite II, the Proper Liturgies for Special Days, and the 1979 Sunday lectionary as facts (the RCL arrives by permission, P17.6).
+- [ ] **P9.5** 1979 and 1928 pastoral offices and catechisms for study: Holy Baptism, Confirmation, Marriage, the Thanksgiving for the Birth or Adoption of a Child, the Reconciliation of a Penitent, Ministration to the Sick, Burial, the Offices of Instruction (1928), An Outline of the Faith (1979), and the 1979 Historical Documents.
+- [ ] **P9.6** 1928 Holy Communion and its Propers.
+- [ ] **P9.7** The proofreading records and book pages for both.
 
-- [ ] **P10.1** The lectionary model in ChurchYear: civil-date tables (1662/1871), week-and-day tables (1979), and proper-based tables, all resolving to `(office, lesson, reference)` for a date and book.
-- [ ] **P10.2 [GATE D20]** Golden lectionary files for 2026–2028 per launch lectionary, cross-checked against two independent sources with every difference listed.
-- [ ] **P10.3** Reading plans: each launch lectionary as a plan, the 1662 pattern (Old Testament once, New Testament three times a year), the Psalter monthly and in seven weeks, Robert Murray M'Cheyne's calendar (1842), the Gospels in Lent, and the Bible in a year (an original arrangement, labeled).
-- [ ] **P10.4** The plan screen: today's portion, an optional private mark, "begin from today" at any time, and no streaks, catch-up pressure, or scores (D16).
-- [ ] **P10.5** A lectionary comparison: the same day's readings in every book, side by side.
-- [ ] **P10.6** `docs/lectionaries.md`: each lectionary's source, cycle, rules, and tests.
+## Phase 10: Holy Scripture and the Psalter
 
-## Phase 11: The Atlas
+- [ ] **P10.1** `Scripture::`: the canon as Anglican Bibles print it (Old Testament, the Apocrypha as Article VI lists it, New Testament), every abbreviation the books' tables use, ranges and cross-chapter ranges, and the verse mapping between each BCP Psalter and the KJV. Extensive tests.
+- [ ] **P10.2 [RIGHTS] [GATE D5]** The Scripture store with attribution metadata and the launch texts: the KJV with the Apocrypha and the World English Bible from identified digital editions, proofread on samples against printed editions, imported by `bin/rails content:bible`, and cleared in `SOURCES.md`.
+- [ ] **P10.3** The Bible reader (`/bible/<book>/<chapter>`): books and chapters, go to a reference, verse links, share with the required notice, reading settings, and search. The full site shows a second translation or the cross references in the margin; the phone, one translation with a switch.
+- [ ] **P10.4** The Psalter for prayer: each book's Psalter in its own cycle (1662 monthly, 1979 seven-week, and the others as printed), with the book's pointing marks.
+- [ ] **P10.5** Lessons in the offices rendered from the store in the reader's chosen translation, labeled, with each book's own reference style.
+- [ ] **P10.6** Required notices on every page that shows licensed Scripture, and acknowledgements entries.
+- [ ] **P10.7 [RIGHTS]** Cross references from a cleared public-domain dataset (for example the Treasury of Scripture Knowledge).
+- [ ] **P10.8 [RIGHTS] [GATE DEMO]** Licensed translations as licenses arrive (D5), with their notices and the guard's ceilings lifted only as each license allows.
 
-- [ ] **P11.1** AtlasKit: works and witnesses (Engineering foundation 12), a concordance file mapping the launch books' prayers, canticles, creeds, and rites to works, and tests that every mapped witness resolves.
-- [ ] **P11.2** The compare view: two or three witnesses side by side, word-level differences marked (an alignment that ignores spelling and punctuation variants on request), page references, and sources.
-- [ ] **P11.3 [REVIEW]** Book pages: each book's history, who authorized it and where it is used today, its contents, and the printing the app follows, with sources.
-- [ ] **P11.4 [REVIEW]** The lineage map: a sourced genealogy of the Books of Common Prayer drawn as an atlas plate, every edge citing a source.
-- [ ] **P11.5** "Where is this prayer?": from any prayer, its witnesses in every book, or a plain note of its absence.
-- [ ] **P11.6 [RIGHTS] [GATE D3]** The historic study layer (D3): identify and clear each book's printing (US public domain by age), transcribe, proofread, and show in original spelling with an optional modernized display.
-- [ ] **P11.7 [REVIEW]** A timeline of the prayer book, Cranmer to today, each entry sourced and linked to its book page.
+## Phase 11: Lectionaries and reading plans
 
-## Phase 12: Holy Communion and the pastoral offices
+- [ ] **P11.1** The lectionary model in ChurchYear: civil-date tables (1662/1871), week-and-day tables (1979), and proper-based tables, all resolving to `(office, lesson, reference)` for a date and book.
+- [ ] **P11.2 [GATE D20]** Golden lectionary files for 2026–2028 per launch lectionary, cross-checked against two independent sources with every difference listed.
+- [ ] **P11.3** Reading plans: each launch lectionary as a plan, the 1662 pattern, the Psalter monthly and in seven weeks, Robert Murray M'Cheyne's calendar (1842), the Gospels in Lent, and the Bible in a year (an original arrangement, labeled).
+- [ ] **P11.4** The plan page: today's portion, an optional private mark kept in the browser, "begin from today" at any time, and no streaks, catch-up pressure, or scores (D16).
+- [ ] **P11.5** A lectionary comparison: the same day's readings in every book, side by side on the full site, one book at a time on the phone.
+- [ ] **P11.6** `docs/lectionaries.md`: each lectionary's source, cycle, rules, and tests.
 
-- [ ] **P12.1** Follow-along Holy Communion in each launch book with the day's propers (collect, epistle, gospel, proper preface).
-- [ ] **P12.2** Holy Week and Easter across the books: the propers, the Proper Liturgies (1979), and what each book appoints.
-- [ ] **P12.3** The pastoral offices index for study and preparation, each with a line to speak with the parish priest.
-- [ ] **P12.4 [RIGHTS]** Preparation for Holy Communion and thanksgiving afterwards, from the books and cleared devotional sources, private.
-- [ ] **P12.5 [REVIEW]** A newcomer's guide to the Eucharist in Anglican worship (1662, 1928, Rite I and Rite II): what happens and why, how to take part, and who may receive by the church's own rule (for The Episcopal Church, Canon I.17.7), linking to Grace & Footnotes' next-steps page.
+## Phase 12: The Atlas
 
-## Phase 13: Personal life of prayer
+- [ ] **P12.1** `Atlas::`: works and witnesses (Engineering foundation 9), a concordance file mapping the launch books' prayers, canticles, creeds, and rites to works, and tests that every mapped witness resolves.
+- [ ] **P12.2** The compare page: on the full site, two or three witnesses in columns that scroll together; on the phone, two at a time, one above the other, or one with a switch. Word-level differences marked (underlined and announced, never colour alone), an alignment that can ignore spelling and punctuation variants, page references, and sources.
+- [ ] **P12.3 [REVIEW]** Book pages: each book's history, who authorized it and where it is used today, its contents, and the printing the site follows, with sources.
+- [ ] **P12.4 [REVIEW]** The lineage map: a sourced genealogy of the Books of Common Prayer drawn as an atlas plate (HTML and CSS from the data, so it reflows and reads aloud), every edge citing a source.
+- [ ] **P12.5** "Where is this prayer?": from any prayer, its witnesses in every book, or a plain note of its absence.
+- [ ] **P12.6 [RIGHTS] [GATE D3]** The historic study layer (D3): identify and clear each book's printing, transcribe, proofread, and show in original spelling with an optional modernized display.
+- [ ] **P12.7 [REVIEW]** A timeline of the prayer book, Cranmer to today, each entry sourced and linked to its book page.
 
-- [ ] **P13.1** Versioned SwiftData with a migration plan: Favorite, Bookmark, Intercession, IntercessionGroup, RuleItem, JournalEntry, PlanProgress, ReadingPosition, OfficeRecord, MyPrayer, and Reminder, all CloudKit-compatible; preserve each shipped schema version.
-- [ ] **P13.2** Favorites and bookmarks for every kind of content.
-- [ ] **P13.3** The intercession list: names in groups and cycles (daily, weekly), read in place at the name insertion points a book provides, and a plain list to print.
-- [ ] **P13.4** My rule of life: the offices, Communion, reading, fasting, and giving the person chooses, shown on Today; nothing graded.
-- [ ] **P13.5** A journal with an optional Face ID or passcode lock.
-- [ ] **P13.6 [REVIEW]** Preparation for confession: the Reconciliation of a Penitent (1979) for preparation, an original explanation of private confession in Anglican practice, and an examination of conscience (the Commandments, the Summary of the Law, the Beatitudes). The checklist stays on the device only, is never synced or sent, and can be erased with one tap. The app never pronounces absolution.
-- [ ] **P13.7 [GATE D16]** The office record, as D16 decides.
-- [ ] **P13.8** Local notifications: office times, holy days, plan portions, and custom reminders; permission asked in context; Focus modes respected; wording gentle.
-- [ ] **P13.9 [OWNER]** Create the iCloud container (D1) and enable the capability.
-- [ ] **P13.10** iCloud sync through the CloudKit private database, tested offline and with conflicts; confession notes excluded.
-- [ ] **P13.11** Export my data (JSON) and delete all my data, both in Settings.
-- [ ] **P13.12** My Prayers: user-written prayers, stored locally, that can be ordered and added to a rule.
-- [ ] **P13.13 [RIGHTS] [REVIEW]** Devotions, labeled as private devotion rather than prayer-book text and by the tradition that keeps them (for example the Angelus and the Anglican rosary), from cleared sources only.
+## Phase 13: Holy Communion and the pastoral offices
 
-## Phase 14: Holy days and the saints
+- [ ] **P13.1** Follow-along Holy Communion in each launch book with the day's propers (collect, epistle, gospel, proper preface).
+- [ ] **P13.2** Holy Week and Easter across the books: the propers, the Proper Liturgies (1979), and what each book appoints.
+- [ ] **P13.3** The pastoral offices index for study and preparation, each with a line to speak with the parish priest.
+- [ ] **P13.4 [RIGHTS]** Preparation for Holy Communion and thanksgiving afterwards, from the books and cleared devotional sources.
+- [ ] **P13.5 [REVIEW]** A newcomer's guide to the Eucharist in Anglican worship (1662, 1928, Rite I and Rite II): what happens and why, how to take part, and who may receive by the church's own rule (for The Episcopal Church, Canon I.17.7), linking to Grace & Footnotes' next-steps page.
 
-- [ ] **P14.1** The commemoration model: names, dates per book, rank as each book gives it, collect keys, and sources.
-- [ ] **P14.2 [REVIEW]** Short original notes for the red-letter days (the apostles, evangelists, and the feasts of our Lord), each fact sourced.
-- [ ] **P14.3** Holy-day pages: the collect in each book, the readings, the note, and the sources.
-- [ ] **P14.4 [REVIEW]** The black-letter days of the 1662 Kalendar explained as facts with sources.
-- [ ] **P14.5 [RIGHTS] [GATE DEMO]** Other books' calendars of commemorations as permission allows (Lesser Feasts and Fasts, the 2019 calendar).
-- [ ] **P14.6** Reminders for holy days and for personal days (a baptism or confirmation anniversary), stored privately.
+## Phase 14: Personal life of prayer
 
-## Phase 15: Learn: the Anglican way
+Everything here lives in the person's own browser (D29) unless they later
+choose account sync (P25).
 
-- [ ] **P15.1 [REVIEW]** "New to the prayer book": how the offices work, how the year turns, how to follow a service with a printed book (page numbers), and how to find a parish.
-- [ ] **P15.2 [REVIEW]** The catechisms (1662, the 1928 Offices of Instruction, the 1979 Outline of the Faith) with original notes.
-- [ ] **P15.3 [REVIEW]** The creeds (Apostles', Nicene, Athanasian) in each book's wording, with original line-by-line notes.
-- [ ] **P15.4 [REVIEW]** The Thirty-Nine Articles (the 1662 text and the American form of 1801) with historically careful notes that give each article its place among the formularies today.
-- [ ] **P15.5 [REVIEW]** The Anglican Communion and its churches explained fairly: provinces, The Episcopal Church, the ACNA and its relationships, the Continuing churches, and the Chicago-Lambeth Quadrilateral.
-- [ ] **P15.6 [REVIEW]** A glossary (Mattins, Evensong, collect, canticle, rubric, red-letter day, Ember Days, Rogation, Septuagesima, ordinary, and many more).
-- [ ] **P15.7 [REVIEW]** The history of the prayer book, linked to the Atlas.
-- [ ] **P15.8 [REVIEW]** Common questions, representing other Christian traditions fairly.
-- [ ] **P15.9 [REVIEW]** Reading guides to C. S. Lewis's books: original notes only, no Lewis text (Research finding 14).
-- [ ] **P15.10** The AI-assistance disclosure on every screen of original teaching (AGENTS.md §3).
-- [ ] **P15.11** Unified search across Learn, the books, Scripture, and the Atlas.
+- [ ] **P14.1** The local store: an IndexedDB schema with versions and migrations behind one small Stimulus-facing module (Favorite, Bookmark, Intercession, IntercessionGroup, RuleItem, JournalEntry, PlanProgress, ReadingPosition, OfficeRecord, MyPrayer, Reminder), tested in system tests; a plain message where storage is unavailable.
+- [ ] **P14.2** Favorites and bookmarks for every kind of content.
+- [ ] **P14.3** The intercession list: names in groups and cycles (daily, weekly), shown in place at the name insertion points a book provides, and a plain list to print. The names are filled in by the browser and never sent to the server.
+- [ ] **P14.4** My rule of life: the offices, Communion, reading, fasting, and giving the person chooses, shown on Today; nothing graded.
+- [ ] **P14.5** A journal, optionally locked with a passphrase (Web Crypto; the passphrase never leaves the browser and cannot be recovered, said plainly).
+- [ ] **P14.6 [REVIEW]** Preparation for confession: the Reconciliation of a Penitent (1979) for preparation, an original explanation of private confession in Anglican practice, and an examination of conscience (the Commandments, the Summary of the Law, the Beatitudes). The notes stay in the browser only, are never synced, exported, or sent, and can be erased with one click. The site never pronounces absolution.
+- [ ] **P14.7 [GATE D16]** The office record, as D16 decides.
+- [ ] **P14.8** Reminders without tracking: downloadable calendar files (`.ics`) for office times and holy days, so the person's own calendar reminds them; Web Push only later, if ever, with its own decision entry.
+- [ ] **P14.9** Export my data (JSON) and import it on another browser; delete all my data, from Settings.
+- [ ] **P14.10** My Prayers: user-written prayers, stored locally, that can be ordered and added to a rule.
+- [ ] **P14.11 [RIGHTS] [REVIEW]** Devotions, labeled as private devotion rather than prayer-book text and by the tradition that keeps them (for example the Angelus and the Anglican rosary), from cleared sources only.
 
-## Phase 16: More prayer books, by permission [GATE DEMO]
+## Phase 15: Holy days and the saints
 
-Each item follows Phase 7's pattern: printing identified, permission recorded,
-transcription proofread, calendar and lectionary as facts, golden files, Atlas
-integration, and the required credit line. None holds up version 1.0.
+- [ ] **P15.1** The commemoration model: names, dates per book, rank as each book gives it, collect keys, and sources.
+- [ ] **P15.2 [REVIEW]** Short original notes for the red-letter days (the apostles, evangelists, and the feasts of our Lord), each fact sourced.
+- [ ] **P15.3** Holy-day pages: the collect in each book, the readings, the note, and the sources.
+- [ ] **P15.4 [REVIEW]** The black-letter days of the 1662 Kalendar explained as facts with sources.
+- [ ] **P15.5 [RIGHTS] [GATE DEMO]** Other books' calendars of commemorations as permission allows (Lesser Feasts and Fasts, the 2019 calendar).
+- [ ] **P15.6** Holy-day and personal-day reminders (a baptism or confirmation anniversary) as `.ics` files, kept in the browser.
 
-- [ ] **P16.1 [RIGHTS]** The ACNA's 2019 book: the offices, the New Coverdale Psalter, the lectionaries, the calendar, and Holy Communion; marked as excluded from AI use unless the permission says otherwise (Research finding 12).
-- [ ] **P16.2 [RIGHTS]** Canada's 1962 book (and the 1918 book, which needs no permission, in the study layer).
-- [ ] **P16.3 [RIGHTS]** The Church of England's Common Worship offices and lectionary.
-- [ ] **P16.4 [RIGHTS]** Other provinces' books as permission arrives (for example Ireland, Scotland, Australia, New Zealand, Kenya, and Southern Africa).
-- [ ] **P16.5 [RIGHTS]** The Episcopal Church's supplements from Church Publishing: Lesser Feasts and Fasts, Enriching Our Worship, and the Book of Occasional Services.
-- [ ] **P16.6 [RIGHTS]** The Revised Common Lectionary (the Consultation on Common Texts).
-- [ ] **P16.7 [RIGHTS]** The 1662 book and the KJV for UK users, after Cambridge University Press answers (D14).
+## Phase 16: Learn: the Anglican way
 
-## Phase 17: Grace & Footnotes, sharing, and finding a church
+- [ ] **P16.1 [REVIEW]** "New to the prayer book": how the offices work, how the year turns, how to follow a service with a printed book (page numbers), and how to find a parish.
+- [ ] **P16.2 [REVIEW]** The catechisms (1662, the 1928 Offices of Instruction, the 1979 Outline of the Faith) with original notes.
+- [ ] **P16.3 [REVIEW]** The creeds (Apostles', Nicene, Athanasian) in each book's wording, with original line-by-line notes.
+- [ ] **P16.4 [REVIEW]** The Thirty-Nine Articles (the 1662 text and the American form of 1801) with historically careful notes.
+- [ ] **P16.5 [REVIEW]** The Anglican Communion and its churches explained fairly: provinces, The Episcopal Church, the ACNA and its relationships, the Continuing churches, and the Chicago-Lambeth Quadrilateral.
+- [ ] **P16.6 [REVIEW]** A glossary (Mattins, Evensong, collect, canticle, rubric, red-letter day, Ember Days, Rogation, Septuagesima, ordinary, and many more), linked from where each term appears.
+- [ ] **P16.7 [REVIEW]** The history of the prayer book, linked to the Atlas.
+- [ ] **P16.8 [REVIEW]** Common questions, representing other Christian traditions fairly.
+- [ ] **P16.9 [REVIEW]** Reading guides to C. S. Lewis's books: original notes only, no Lewis text (Research finding 14).
+- [ ] **P16.10** The AI-assistance disclosure on every page of original teaching (AGENTS.md §3).
+- [ ] **P16.11** Unified search across Learn, the books, Scripture, and the Atlas.
 
-- [ ] **P17.1 [GATE D17]** "From Grace & Footnotes": fetch `https://graceandfootnotes.com/feed.xml` with our own parser, cache it for offline reading, show articles in the app's style, and open the full page in Safari.
-- [ ] **P17.2** Link the website's gospel presentation (`/gospel`) and next-steps page from Learn and the newcomer's guides.
-- [ ] **P17.3** Share cards for collects, verses, and prayers, typeset in the app's style with attribution and the app's name.
-- [ ] **P17.4** A bookshelf: plain links to the publishers of the books and to good editions, with no affiliate tracking.
-- [ ] **P17.5 [GATE D24]** "Find a church": links to each church's official finder, opened in Safari, with a line on what to expect at a first visit.
+## Phase 17: More prayer books, by permission [GATE DEMO]
 
-## Phase 18: System integration and Apple Watch
+Each item follows Phase 8's pattern: printing identified, permission
+recorded (including the terms for a website), transcription proofread,
+calendar and lectionary as facts, golden files, Atlas integration, and the
+required credit line. None holds up version 1.0.
 
-- [ ] **P18.1 [OWNER]** Register the App Group identifier (D1).
-- [ ] **P18.2** Widgets: the day and its ribbon, the collect of the day, the lessons, and the next office; Lock Screen accessories.
-- [ ] **P18.3** StandBy and a quiet bedside Compline widget.
-- [ ] **P18.4** App Intents and App Shortcuts: "Pray Morning Prayer", "Pray Evening Prayer", "What is today's collect?", "Today's readings", and "What day is it in the Church's year?".
-- [ ] **P18.5** Control Center and Lock Screen controls and the Action button (open the office for now).
-- [ ] **P18.6** Spotlight indexing of prayers, collects, holy days, and Learn articles.
-- [ ] **P18.7** An Apple Watch app: today, the collect, a short office, and complications.
-- [ ] **P18.8** Deep links through the custom scheme, and universal links through `apple-app-site-association` on prayerbookatlas.com (P19.6).
+- [ ] **P17.1 [RIGHTS]** The ACNA's 2019 book: the offices, the New Coverdale Psalter, the lectionaries, the calendar, and Holy Communion; excluded from AI use unless the permission says otherwise (Research finding 12).
+- [ ] **P17.2 [RIGHTS]** Canada's 1962 book (and the 1918 book, which needs no permission, in the study layer).
+- [ ] **P17.3 [RIGHTS]** The Church of England's Common Worship offices and lectionary.
+- [ ] **P17.4 [RIGHTS]** Other provinces' books as permission arrives (for example Ireland, Scotland, Australia, New Zealand, Kenya, and Southern Africa).
+- [ ] **P17.5 [RIGHTS]** The Episcopal Church's supplements from Church Publishing: Lesser Feasts and Fasts, Enriching Our Worship, and the Book of Occasional Services.
+- [ ] **P17.6 [RIGHTS]** The Revised Common Lectionary (the Consultation on Common Texts).
+- [ ] **P17.7 [RIGHTS]** The 1662 book and the KJV for readers in the UK, after Cambridge University Press answers (D14).
 
-## Phase 19: The public website (prayerbookatlas.com) [GATE D26]
+## Phase 18: The web platform: offline, install, print, share
 
-The public face of the app: what it is, how to get it, how to reach the
-owner, and the legal pages the App Store requires. It is not the web app
-(Phase 25), which later joins it on the same domain. P19.1–P19.5 may be done
-at any time after M1, ahead of their turn, because external TestFlight and
-App Review need a privacy policy and a support page.
+- [ ] **P18.1** An installable web app: the manifest (`/manifest`, Rails' PWA routes) with the owner's icons, name, colours from the tokens, and `display: standalone`; checked on iPhone (Add to Home Screen) and Android.
+- [ ] **P18.2** Offline: a service worker that keeps the site's assets and every prayer page the person has opened, plus an explicit "keep this week offline" for the chosen book, with an honest offline page for anything not kept. Never caches personal data on the server's side.
+- [ ] **P18.3** Print: a print stylesheet that turns any office or service into a clean booklet (paper and ink, page numbers, sources, required notices) through the browser's own print, for cleared texts only.
+- [ ] **P18.4** Calendar subscriptions (`.ics`) of each book's holy days and fasts, per book, with sources in each event.
+- [ ] **P18.5** Sharing: the Web Share API where it exists and a copy-link fallback, always with the text's source and attribution; Open Graph tags per page with the owner's static image (no generated images).
+- [ ] **P18.6** Keyboard shortcuts across the full site (sections, search, day navigation), listed on a `?` sheet and in Settings, never overriding the browser's own keys.
+- [ ] **P18.7** An OpenSearch description so browsers can search the site from the address bar.
+- [ ] **P18.8** Feeds: an Atom feed of each book's day (the day's name, the collect where cleared, the readings as references) for readers who want it.
+- [ ] **P18.9** Structured data (schema.org) only where it is accurate, and a `humans.txt` that credits sources, not AI.
 
-- [ ] **P19.1** The site's decision entry (D26) and `Website/` source: semantic HTML, vanilla CSS from the app's tokens (generated from `design/tokens.json`, never copied by hand), the bundled book face self-hosted, no JavaScript required, no trackers or remote assets, light and dark, readable on phones, and a `make website` target that builds `build/website/` and checks every link.
-- [ ] **P19.2 [OWNER]** Serve it: a Caddy site file for prayerbookatlas.com and www (added beside the server's existing sites, never replacing them), HTTPS, permanent redirects from www, prayerbook-atlas.com, and prayerbookatlas.org (each with its www), security headers, and a deploy that copies only the built site (never the checkout as a web root). Document it in `docs/website.md`.
-- [ ] **P19.3** The home page: what the app is, the books it carries (only those actually shipped or in TestFlight, never promised ones as present), screenshots in day and night, the non-affiliation statement, and the App Store link once it exists.
-- [ ] **P19.4** The support page (`/support`): support@prayerbookatlas.com, how to report a text error (book, page, and what is wrong), what the app collects (nothing, D7), and frequently asked questions.
-- [ ] **P19.5** The privacy policy (`/privacy`) and terms of use (`/terms`) drafted from the real data flows in `docs/legal/` and published here. **[OWNER]** approves them.
-- [ ] **P19.6** `/.well-known/apple-app-site-association` for universal links (P18.8), served with the right content type.
-- [ ] **P19.7** The sources page (`/sources`): the books, printings, translations, and permissions the app uses, generated from `content/SOURCES.md`, with every required credit line.
-- [ ] **P19.8** A press page (`/press`): the icon, screenshots, a short description, and contact, all owner-approved.
-- [ ] **P19.9** Sharing previews (Open Graph and Twitter card tags with a static image), `robots.txt`, a sitemap, a favicon set, and a custom 404 page.
-- [ ] **P19.10** A website check in `make check`: links, HTML validity, the token CSS in step with `design/tokens.json`, and no external requests; and a post-deploy check of the live site's status codes, redirects, and headers.
+## Phase 19: Grace & Footnotes, sharing, and finding a church
 
-## Phase 20: Quality hardening
+- [ ] **P19.1 [GATE D17]** "From Grace & Footnotes": read `https://graceandfootnotes.com/feed.xml` on the server (cached, with our own parser), show recent articles' titles and summaries in the site's style, and link to the full page there.
+- [ ] **P19.2** Link the website's gospel presentation (`/gospel`) and next-steps page from Learn and the newcomer's guides.
+- [ ] **P19.3** Share cards for collects, verses, and prayers as printable, copyable text with attribution and the site's name.
+- [ ] **P19.4** A bookshelf: plain links to the publishers of the books and to good editions, with no affiliate tracking.
+- [ ] **P19.5 [GATE D24]** "Find a church": links to each church's official finder, with a line on what to expect at a first visit.
 
-- [ ] **P20.1** A full VoiceOver pass on every screen: labels, traits, and reading order.
-- [ ] **P20.2** Dynamic Type at AX5 on every screen; Reduce Motion; Reduce Transparency; contrast in both modes.
-- [ ] **P20.3** A pseudo-localization run (double-length strings, right-to-left) to catch layout breakage before other languages arrive.
-- [ ] **P20.4** Performance: launch time, scrolling in long offices, database size, and memory, with baselines in `docs/performance.md`.
-- [ ] **P20.5** An airplane-mode test of every offline feature.
-- [ ] **P20.6** A MetricKit subscriber for on-device crash and hang diagnostics (no third-party crash SDK).
-- [ ] **P20.7** iPad layouts: sidebar navigation, readable widths, margin notes, and the compare view in columns.
-- [ ] **P20.8** A security pass: no secrets in the binary, App Transport Security defaults, Keychain use, file-protection classes, and private data excluded from backups where appropriate.
-- [ ] **P20.9** UI tests covering every critical flow in M1–M5.
+## Phase 20: Public pages and legal
 
-## Phase 21: Version 1.0 release
+- [ ] **P20.1** The home page for visitors: what the site is, the books it carries (only those actually on the site, never promised ones as present), and the non-affiliation statement, beside Today.
+- [ ] **P20.2** The support page (`/support`): support@prayerbookatlas.com, how to report a text error (book, page, and what is wrong), what the site collects (nothing beyond strictly necessary cookies), and frequently asked questions.
+- [ ] **P20.3** The privacy policy (`/privacy`) and terms of use (`/terms`), drafted from the real data flows in `docs/legal/` and the rules in Research finding 13, confirmed from primary sources. **[OWNER]** approves them.
+- [ ] **P20.4** The cookie statement: every cookie the site sets, what it holds, and why it is strictly necessary; no consent banner because no cookie needs consent (re-checked whenever a cookie is added).
+- [ ] **P20.5** The sources page (`/sources`): the books, printings, translations, fonts, images, and permissions the site uses, generated from the content database and `content/SOURCES.md`, with every required credit line.
+- [ ] **P20.6** The accessibility statement (`/accessibility`): the standard aimed at (WCAG 2.2 AA), what was tested, known gaps, and how to report a barrier.
+- [ ] **P20.7** Favicons and app icons from the owner's images (resized only), `robots.txt`, a sitemap, and custom 404, 422, and 500 pages in the site's style (the 404 with the owner's E4 image), served by Rails' public error pages.
+- [ ] **P20.8** A link check in `bin/ci`: every internal link resolves, every page validates as HTML, and no page refers to another host except the external links it means to make.
 
-- [ ] **P21.1 [OWNER]** Confirm the App Store Connect record (P0.7), the bundle ID, and the capabilities (iCloud, App Group).
-- [ ] **P21.2** The privacy manifest (`PrivacyInfo.xcprivacy`) with accurate required-reason API declarations.
-- [ ] **P21.3** Privacy and support URLs live on prayerbookatlas.com (P19.4, P19.5).
-- [ ] **P21.4** The privacy nutrition label (target: "Data Not Collected"), age rating, and export-compliance answers in `docs/app-store/`.
-- [ ] **P21.5** The App Store metadata: name, subtitle (30 characters at most), description with the non-affiliation statement, keywords, support URL `https://prayerbookatlas.com/support`, privacy URL, marketing URL, and review notes.
-- [ ] **P21.6** Automated screenshots by UI tests for the required device sizes, in light and dark.
-- [ ] **P21.7** The rights audit: generate `docs/rights-audit.md` from `SOURCES.md`, with every shipped item `cleared` for every storefront (D14).
-- [ ] **P21.8 [OWNER]** Approve the final app icon as an Icon Composer file.
-  - *2026-10-29 note:* the owner keeps all the current generated icons (A1–A12), not Engraved Plate versions; the final icon is assembled from them (A4 and A5 layers).
-- [ ] **P21.9 [OWNER] [REVIEW]** Theological sign-off on every [REVIEW] item, with a priest where possible (D18).
-- [ ] **P21.10 [OWNER]** A TestFlight beta, internal then external, with users of each launch book. Agents triage feedback into BUILD.md items.
-- [ ] **P21.11 [OWNER]** Submit version 1.0 for review and release, and update the website (P19.3).
+## Phase 21: Quality hardening
 
-## Phase 22: Audio [GATE D22]
+- [ ] **P21.1** Keyboard: every page and control usable with the keyboard alone, visible focus everywhere, a skip link, and a logical order.
+- [ ] **P21.2** Screen readers: VoiceOver on macOS and iOS, and NVDA on Windows where available: landmarks, headings, role labels, rubrics as instructions, and differences in compare announced.
+- [ ] **P21.3** Text and zoom: 200% text and 400% zoom (320 CSS pixels wide) reflow without loss in both modes; forced colours (Windows High Contrast) keep every meaning; reduced motion respected.
+- [ ] **P21.4** Contrast in both appearances, tested from the tokens (WCAG 2 ratios, as `docs/design.md` §3 records).
+- [ ] **P21.5** Browsers: Safari, Chrome, Firefox, and Edge, desktop and mobile, current and previous versions, plus an old browser with JavaScript off, each recorded in `docs/browsers.md`.
+- [ ] **P21.6** Performance budgets in `docs/performance.md`: server time for Today and an office, page weight (HTML, CSS, fonts), and first render on a slow phone connection; checked in `bin/ci` where measurable.
+- [ ] **P21.7** Security: Brakeman and bundler-audit clean, the CSP strict with no `unsafe-*`, rate limits on every form and search (Rails `rate_limit`), request-size limits, secure cookies, and the response headers checked by P5.6.
+- [ ] **P21.8** Errors without third parties: Rails' error reporter writing to the server log, with a daily summary the owner can read; no crash-reporting service.
+- [ ] **P21.9** An offline test of every offline feature (P18.2) with the network off.
+- [ ] **P21.10** System tests covering every critical flow in M1–M5 in both modes.
 
-- [ ] **P22.1** Read-aloud with on-device speech, labeled as synthetic, following the office line by line with the current line marked.
-- [ ] **P22.2** The audio engine: background audio, Now Playing and remote commands, AirPlay, speed, a sleep timer, resume, and offline downloads.
-- [ ] **P22.3** Write `docs/audio-production.md`: scripts, recording guidelines, loudness, encoding, naming, and the work-for-hire checklist.
-- [ ] **P22.4 [OWNER]** Record or commission the first set: Morning and Evening Prayer and Compline in one book.
-- [ ] **P22.5 [RIGHTS]** Chant and sung settings only from owner-made or licensed recordings (Research finding 15).
-- [ ] **P22.6** CarPlay audio (an Apple entitlement request, **[OWNER]**).
+## Phase 22: Version 1.0 launch
 
-## Phase 23: AI study assistant [GATE D23]
+- [ ] **P22.1** The rights audit: generate `docs/rights-audit.md` from `SOURCES.md`, with every served text `cleared` for the readers it reaches (D14).
+- [ ] **P22.2 [OWNER] [REVIEW]** Theological sign-off on every [REVIEW] item, with a priest where possible (D18).
+- [ ] **P22.3 [OWNER]** A private beta: invite users of each launch book to the site; agents triage feedback into BUILD.md items.
+- [ ] **P22.4 [OWNER]** Approve the final icon set and sharing image from the owner's generated images.
+- [ ] **P22.5** Open the site to search engines (remove P5.7's development notice and `robots.txt` block) and submit the sitemap. **[OWNER]** approves the day.
+- [ ] **P22.6 [OWNER]** Announce the site where the owner chooses (for example Grace & Footnotes, with D17's authorization).
+- [ ] **P22.7** Tag `v1.0.0` and record what shipped in the Handoff notes.
 
-- [ ] **P23.1** Write `docs/ai-assistant.md`: scope (study help on Scripture, the prayer books, doctrine, history, and parish life), what it is not (a priest, a confessor, an authority), crisis handling, privacy (retention, deletion, no training use), and cost caps.
-- [ ] **P23.2 [REVIEW]** Draft the system prompt from SOUL.md and D8. **[OWNER]** approves it.
-- [ ] **P23.3** A server proxy to the Claude API (current model ids from the official documentation when building) with streaming, per-user caps, and the key only on the server (after P24).
-- [ ] **P23.4** Retrieval over cleared content whose AI-use permission allows it (Research finding 12), with citations that deep-link into the app.
-- [ ] **P23.5** Text integrity: the model emits reference tags, and the app renders Scripture and prayer-book text from its own store; generated text is never shown as Scripture or as a book's text.
-- [ ] **P23.6** An evaluation suite of 150 or more cases (faithfulness to the creeds, fairness among Anglican traditions and to other Christians, refusing to speak as God or a saint, crisis responses, citation accuracy, humility), run on every prompt or model change.
-- [ ] **P23.7** The chat screen: sources under each answer, an "AI study assistant, not a priest" label, report an answer, and delete a conversation.
-- [ ] **P23.8** An optional on-device helper with Apple's Foundation Models for small offline tasks, adopted only if its quality is verified.
+## Phase 23: Audio [GATE D22]
 
-## Phase 24: Server foundation [GATE D19]
+- [ ] **P23.1** Read-aloud with the browser's speech synthesis, labeled as synthetic, following the office line by line with the current line marked; off unless started.
+- [ ] **P23.2** Recorded audio playback: the Media Session API (lock-screen controls), speed, a sleep timer, resume, and offline keeping through P18.2.
+- [ ] **P23.3** Write `docs/audio-production.md`: scripts, recording guidelines, loudness, encoding, naming, and the work-for-hire checklist.
+- [ ] **P23.4 [OWNER]** Record or commission the first set: Morning and Evening Prayer and Compline in one book.
+- [ ] **P23.5 [RIGHTS]** Chant and sung settings only from owner-made or licensed recordings (Research finding 15).
 
-- [ ] **P24.1** A decision entry for the server: framework and version, database, SQL approach, and every approved dependency, confirmed from current official documentation.
-- [ ] **P24.2** `Packages/SharedModels`; the `Server/` package with environment configuration, structured logging, `/health`, and graceful shutdown.
-- [ ] **P24.3** `make server-run` and `make server-test`; server tests in `make check`.
-- [ ] **P24.4** API conventions: `/v1`, a JSON error envelope, rate limits, request-size limits, ETags, and pagination.
-- [ ] **P24.5** Write `docs/deploy.md` for the owner's Ubuntu server: a systemd unit, the service behind Caddy under prayerbookatlas.com beside the static site (P19.2), log rotation, the firewall, unattended upgrades, backups, and a restore procedure. **[OWNER]** deploys.
-- [ ] **P24.6** The app's `APIClient`: async URLSession, retries with backoff, an offline cache, and typed errors.
+## Phase 24: AI study assistant [GATE D23]
 
-## Phase 25: Web app
+- [ ] **P24.1** Write `docs/ai-assistant.md`: scope (study help on Scripture, the prayer books, doctrine, history, and parish life), what it is not (a priest, a confessor, an authority), crisis handling, privacy (retention, deletion, no training use), and cost caps.
+- [ ] **P24.2 [REVIEW]** Draft the system prompt from SOUL.md and D8. **[OWNER]** approves it.
+- [ ] **P24.3** The server side: the Claude API from Rails (current model ids from the official documentation when building), streamed to the page with Turbo Streams, per-visitor caps, and the key only in the server's credentials.
+- [ ] **P24.4** Retrieval over cleared content whose AI-use permission allows it (Research finding 12), with citations that link into the site.
+- [ ] **P24.5** Text integrity: the model emits reference tags, and the site renders Scripture and prayer-book text from its own store; generated text is never shown as Scripture or as a book's text.
+- [ ] **P24.6** An evaluation suite of 150 or more cases (faithfulness to the creeds, fairness among Anglican traditions and to other Christians, refusing to speak as God or a saint, crisis responses, citation accuracy, humility), run on every prompt or model change.
+- [ ] **P24.7** The assistant page: sources under each answer, an "AI study assistant, not a priest" label, report an answer, and delete a conversation. The full site keeps the conversation in the margin beside the text being studied; the phone gives it its own page.
+- [ ] **P24.8** Its own decision entry for any gem it needs (decision 29).
 
-- [ ] **P25.1** A decision entry: a server-rendered web app from the same server and packages (D19), styled from the same tokens, with no third-party browser dependencies or remote fonts.
-- [ ] **P25.2** Pages that work without JavaScript: Today, the Kalendar and day pages, the offices for any date and book, the Bible and the day's lessons, and the Psalter.
-- [ ] **P25.3** The Atlas on the web: book pages, compare, and the lineage map.
-- [ ] **P25.4** Print styles, so any office prints as a clean booklet with its sources.
-- [ ] **P25.5** Calendar subscriptions (`.ics`) of each book's holy days.
-- [ ] **P25.6** Settings kept in a cookie-free way (the URL or local storage) for the book and options; no account needed.
-- [ ] **P25.7** Accessibility and performance budgets for the web, checked in `make check`.
-- [ ] **P25.8** Cross-links with Grace & Footnotes, authorized by the owner (D17).
+## Phase 25: Accounts and sync
 
-## Phase 26: Accounts and web sync
+- [ ] **P25.1 [OWNER]** Decide whether the site needs accounts at all; if not, mark this phase not needed and stop.
+- [ ] **P25.2** Accounts with Rails' authentication generator: email and password or passkeys, opaque sessions, the minimum stored, rate-limited sign-in, and no third-party sign-in.
+- [ ] **P25.3** Sync of favorites, plans, the rule, and (only if the person turns it on) intercessions, between their browsers; confession notes never leave the browser.
+- [ ] **P25.4** Account deletion that deletes everything at once, and an export first.
+- [ ] **P25.5** Update the privacy policy and cookie statement (P20.3, P20.4). **[OWNER]** approves.
 
-- [ ] **P26.1 [OWNER]** Decide whether the web app needs accounts at all; if not, mark this phase not needed and stop.
-- [ ] **P26.2** Sign in with Apple on the web and in the app; opaque session tokens, hashed at rest; the minimum stored.
-- [ ] **P26.3** Sync of favorites, plans, and the rule between the web and the app; intercessions and confession notes never leave the device.
-- [ ] **P26.4** In-app and web account deletion (Guideline 5.1.1(v)); update the privacy policy and label. **[OWNER]** approves.
+## Phase 26: Donations and sustainability [GATE D7]
 
-## Phase 27: Donations and sustainability [GATE D7]
+- [ ] **P26.1** Research the giving routes open to an individual (and a nonprofit, if the owner forms one) and record the approach.
+- [ ] **P26.2** A quiet "Support this work" page: what gifts pay for, never on a prayer page, never with urgency.
+- [ ] **P26.3 [OWNER]** Set up the giving route.
+- [ ] **P26.4** Per-visitor caps for the AI assistant and other costly services, with honest messages when a cap is reached.
 
-- [ ] **P27.1** Confirm the current App Review rules for donations (Guideline 3.2.1) and record the approach.
-- [ ] **P27.2** A quiet "Support this work" page in the app and on the website: what gifts pay for, never on a prayer screen, never with urgency.
-- [ ] **P27.3 [OWNER]** The giving route (Apple nonprofit approval, or a Safari link).
-- [ ] **P27.4** Per-user caps for the AI assistant and other costly services, with honest messages when a cap is reached.
+## Phase 27: Operations and annual maintenance
 
-## Phase 28: Operations and annual maintenance
+- [ ] **P27.1** Write `docs/operations.md`: the incident runbook, a quarterly backup-restore drill, log rotation, and the support inbox routine.
+- [ ] **P27.2** Annual verification: each autumn, compare next year's computed calendars and lectionaries with printed tables and fix discrepancies with tests.
+- [ ] **P27.3** Keep current: Ruby and Rails patch releases as they come (bundler-audit flags security ones), a minor or major upgrade each year with `bin/ci` green, and the server's Ubuntu updates.
+- [ ] **P27.4** A yearly rights review: every license's term, territory, and credit line still current.
+- [ ] **P27.5** An errata routine: readers' reports of text errors checked against the page images and fixed with a note in `SOURCES.md`.
+- [ ] **P27.6 [OWNER]** Renew prayerbookatlas.com and prayerbook-atlas.com before **October 28** each year (Cloudflare; auto-renew recommended).
+- [ ] **P27.7 [OWNER]** Renew prayerbookatlas.org before **October 29** each year.
+- [ ] **P27.8** Watch the TLS certificates Caddy manages and the uptime of `/up`, with a check the owner controls (no third-party tracking).
 
-- [ ] **P28.1** Write `docs/operations.md`: the incident runbook, a quarterly backup-restore drill, and the support inbox routine.
-- [ ] **P28.2** Annual verification: each autumn, compare next year's computed calendars and lectionaries with printed tables and fix discrepancies with tests.
-- [ ] **P28.3** A yearly platform upgrade after each September Xcode release: new SDK, deprecations, the deployment target (D2), and a full `make check`.
-- [ ] **P28.4** A yearly rights review: every license's term, territory, and credit line still current.
-- [ ] **P28.5** An errata routine: user reports of text errors checked against the page images and fixed with a note in `SOURCES.md`.
-- [ ] **P28.6 [OWNER]** Renew the Apple Developer Program membership before **March 13** each year (D13).
-- [ ] **P28.7 [OWNER]** Renew prayerbookatlas.com and prayerbook-atlas.com before **October 28** each year (Cloudflare; auto-renew recommended).
-
-## Phase 29: Android and future platforms
+## Phase 28: Future directions
 
 The owner decides priority; promoted items become full phases.
 
-- [ ] **P29.1 [GATE D25]** The Android decision entry, then an Android app or installable web app as decided, sharing the engine and content database.
-- [ ] **P29.2** A native Mac app through SwiftUI multiplatform.
-- [ ] **P29.3 [RIGHTS]** Other languages with cleared liturgical texts (for example Spanish, French, Swahili, and Chinese editions of the books) and parallel bilingual display.
-- [ ] **P29.4 [RIGHTS]** Hymns: public-domain texts keyed to the day, with tunes named; modern hymnals only by license.
-- [ ] **P29.5 [RIGHTS]** Pointed psalters and Anglican chant settings.
-- [ ] **P29.6 [RIGHTS]** Research the Anglican Breviary, the Monastic Diurnal, and the Anglican and English Missals (publication dates, renewals, and current holders) before considering them.
-- [ ] **P29.7** Diocesan cycles of prayer, by permission.
-- [ ] **P29.8** A visionOS reading experience.
-- [ ] **P29.9** A curated parish directory, only with the churches' permission (D24).
+- [ ] **P28.1 [RIGHTS]** Other languages with cleared liturgical texts (for example Spanish, French, Swahili, and Chinese editions of the books) and parallel bilingual display.
+- [ ] **P28.2 [RIGHTS]** Hymns: public-domain texts keyed to the day, with tunes named; modern hymnals only by license.
+- [ ] **P28.3 [RIGHTS]** Pointed psalters and Anglican chant settings.
+- [ ] **P28.4 [RIGHTS]** Research the Anglican Breviary, the Monastic Diurnal, and the Anglican and English Missals (publication dates, renewals, and current holders) before considering them.
+- [ ] **P28.5** Diocesan cycles of prayer, by permission.
+- [ ] **P28.6** A curated parish directory, only with the churches' permission (D24).
+- [ ] **P28.7** A public JSON API of the calendar and lectionary facts, for other Anglican projects, if the owner wishes.
+- [ ] **P28.8** Native apps only if the owner reopens D27.
 
 ---
 
@@ -972,24 +892,21 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-29 build session:** P2.2b redone for Engraved Plate (tokens,
-  design.md, colours), P2.4 (Cardo bundled, `TypeStyle`), P2.5 (components),
-  P2.8 (`LiturgicalBlock`). `make check` and `make test-linux` pass.
-- **Images are the owner's only** (owner, decision 20, AGENTS.md §6): an
-  agent-drawn icon was rejected and reverted. Write prompts in
-  `design/image-prompts.md`; never draw, redraw, trace, or restyle. The
-  owner keeps all current generated icons (A1–A12); no Engraved Plate
-  icon. Custom symbols wait on the owner; SF Symbols meanwhile.
-- **Cardo:** only Regular has `smcp`, Bold has no features; labels are
-  Regular small caps, page numbers Italic `onum`. ✠ falls back to system.
-- **Flaky UI test fixed:** iOS 27 sometimes drops tab identifiers; the tour
-  matches by identifier or title. Earlier, 1b90a2b was pushed before its
-  failing check log was read; the code was fine. Read the log before
-  committing.
-- **Next:** P2.9 (`LiturgicalTextView`; likely TextKit for range selection
-  and the two-line drop initial), P2.10, P2.11, P2.12 (Settings, the
-  acknowledgements with Cardo's OFL, the in-app appearance setting, then
-  extend `TourUITests`), then Phase 3.
-- **TestFlight confirmed** on the owner's iPhone (P1.14 ticked).
-- Still the owner's: P0.8 (optional), P0.9 (deferred), the [GATE DEMO]
-  letters.
+- **2026-10-29 pivot session:** the owner made the project a website only,
+  in Ruby on Rails (D27). The iPhone app is removed and tagged
+  `ios-archive` (`a9be149`); this plan was rewritten for the web.
+- **This Mac:** mise's Ruby 4.0.9 is global, Rails 8.1.4 installed, Homebrew
+  Ruby off the PATH (P1.1 has the details and the dotfile backups).
+- **The app:** Rails 8.1.4 in the repository root. `SiteMode` picks the phone
+  site or the full site; layouts `application.html.erb` (full) and
+  `application.html+phone.erb`; five placeholder sections and About; tokens
+  CSS generated from `design/tokens.json`; Cardo self-hosted as WOFF2; strict
+  CSP. `bin/ci` passes. Run it with `bin/dev`.
+- **Secrets:** `config/master.key` is local and gitignored; the server will
+  need it as `RAILS_MASTER_KEY` (P5.3). Keep a copy somewhere safe.
+- **Not deployed.** `docs/deploy.md` is written; P5.2 (`bin/deploy`) is next
+  in that phase, and every server step waits for the owner.
+- **Next:** P1.10 (dispatch the hosted workflow), P1.11 (system tests),
+  P1.12 (web survey), then Phase 2 from P2.4, Phase 3, Phase 4, and P5.2.
+- **Owner:** P0.6 (the retired App Store Connect record), P0.7 (optional),
+  P0.8 (deferred), the [GATE DEMO] letters, and Phase 5's server steps.

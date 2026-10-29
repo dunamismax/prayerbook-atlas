@@ -1,0 +1,7 @@
+/*
+ * Prayerbook Atlas. Every file in app/assets/stylesheets is linked, in
+ * alphabetical order: application, base, components, fonts, layout, tokens.
+ * Colours, sizes, and spacing come from tokens.css (generated from
+ * design/tokens.json); never write a raw colour in any other file.
+ * docs/design.md explains the system.
+ */

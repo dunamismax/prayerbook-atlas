@@ -1,0 +1,25 @@
+<% content_for :title, @section.title unless @section.key == "today" %>
+
+<span class="eyebrow"><%= @section.key == "today" ? "prayerbook atlas" : "section" %></span>
+<h1><%= @section.title %></h1>
+<hr class="title-rule">
+
+<p><%= @section.summary %></p>
+
+<div class="notice">
+  <p>
+    This site is being built. Nothing here is ready for prayer yet, and no prayer-book text has
+    been added: every text will be transcribed from an identified printing and proofread before
+    it appears.
+  </p>
+</div>
+
+<section class="plate-card" aria-labelledby="planned-<%= @section.key %>">
+  <span class="eyebrow">planned</span>
+  <h2 id="planned-<%= @section.key %>">What will be here</h2>
+  <ul>
+    <% planned.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+</section>

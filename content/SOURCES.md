@@ -1,17 +1,18 @@
 # Sources
 
-This initial register covers the generated visual design sources requested on 2026-10-28. It does not complete the content pipeline or rights validation in P3.1 or P3.6. No liturgical text, Bible translation, scanned book page, or third-party illustration is included in this image set.
+The register of every non-original text, font, image, and dataset the site uses (AGENTS.md §6). So far it covers the book face and the owner's generated design images; BUILD.md P3.1 gives it its full schema and P3.6 its image registry. No liturgical text, Bible translation, scanned book page, or third-party illustration is in the repository yet.
 
 ## Fonts
 
-### Cardo (the book face, P2.4)
+### Cardo (the book face, BUILD.md P2.3)
 
-- **Files:** `App/Resources/Fonts/Cardo-Regular.ttf` (version 1.0451), `Cardo-Italic.ttf` (0.991), `Cardo-Bold.ttf` (1.0011), and the licence `Cardo-OFL.txt`, bundled in the app.
+- **Files:** `app/assets/fonts/Cardo-Regular.woff2`, `Cardo-Italic.woff2`, `Cardo-Bold.woff2`, and the licence `Cardo-OFL.txt`, self-hosted by the site. The WOFF2 files were made on 2026-10-29 from the TTFs below with fontTools' `ttLib.woff2 compress`, a lossless recompression that changes no outline, table, or name; the TTFs themselves stay in the gitignored `research/fonts/cardo/`. (Until 2026-10-29 the same TTFs were bundled in the retired iPhone app.)
+- **Source versions:** `Cardo-Regular.ttf` (version 1.0451), `Cardo-Italic.ttf` (0.991), `Cardo-Bold.ttf` (1.0011).
 - **Creator and holder:** David J. Perry; "Copyright (c) 2002-2011, David J. Perry (hospes02@scholarsfonts.net)", as each file's name table and OFL.txt state.
-- **Obtained from:** Google Fonts' repository, `https://github.com/google/fonts/tree/main/ofl/cardo` (latest commit touching the folder: `5f99a56`, 2026-02-26). Checked 2026-10-29 by downloading the four files again and comparing SHA-256: byte-identical to the copies in the gitignored `research/fonts/cardo/` that were bundled. Regular `bcb81f37…7988261`, Italic `52c51cfd…1880f9c`, Bold `6c9383b1…5a272e36`, OFL.txt `8e28b778…0e45bb`.
-- **Rights basis (all territories):** SIL Open Font License 1.1, stated in each font's name table (ID 13) and in OFL.txt; `fsType` 0 (installable embedding). The OFL permits bundling in software, free or sold, provided the licence travels with the font and the font is not sold by itself. The fonts are unmodified, so the Reserved Font Name clause does not bite. The licence ships in the app bundle and will be listed in Settings → Acknowledgements (P2.12, P3.8).
+- **Obtained from:** Google Fonts' repository, `https://github.com/google/fonts/tree/main/ofl/cardo` (latest commit touching the folder: `5f99a56`, 2026-02-26). Checked 2026-10-29 by downloading the four files again and comparing SHA-256: byte-identical to the copies in `research/fonts/cardo/`. Regular `bcb81f37…7988261`, Italic `52c51cfd…1880f9c`, Bold `6c9383b1…5a272e36`, OFL.txt `8e28b778…0e45bb`; the TTF hashes were checked again before conversion on 2026-10-29.
+- **Rights basis (all territories):** SIL Open Font License 1.1, stated in each font's name table (ID 13) and in OFL.txt; `fsType` 0 (installable embedding). The OFL permits use and redistribution, including as web fonts, provided the licence travels with the font and the font is not sold by itself. Converting the format without changing the design is not a modification that triggers the Reserved Font Name clause in practice, but to be safe the family name is kept exactly as published and the files are otherwise unchanged. The licence is served beside the fonts and will be listed on the sources page (P20.5).
 - **AI use:** not applicable (a typeface, not text).
-- **Checked:** names, versions, copyright, licence, and `fsType` with fontTools 4.68; glyphs ℣ ℟ † ¶ and polytonic Greek present in all three faces and ✠ absent (it falls back to the system's symbol font); OpenType features: Regular has `smcp` and `onum`, Italic has `onum` but no `smcp`, Bold has no GSUB features. `TypographyTests` re-checks registration, glyphs, `smcp`, and `onum` in the simulator.
+- **Checked:** names, versions, copyright, licence, and `fsType` with fontTools 4.68; glyphs ℣ ℟ † ¶ and polytonic Greek present in all three faces and ✠ absent; OpenType features: Regular has `smcp` and `onum`, Italic has `onum` but no `smcp`, Bold has no GSUB features. Small capitals seen rendering in Chrome on 2026-10-29; Safari and Firefox are P2.4.
 - **Status:** `cleared` (documentary evidence: the OFL 1.1 in the files themselves).
 
 ## Generated design images
@@ -22,11 +23,11 @@ This initial register covers the generated visual design sources requested on 20
 - **Book, printing, printed page, publisher:** not applicable to these new visual sources.
 - **Holder:** not assessed for release.
 - **Rights basis:** generated from the project prompts; reference images were also generated for this project. No third-party source image was supplied.
-- **Jurisdiction:** United States first is D14's working default. Release review per territory remains pending.
+- **Jurisdiction:** to be reviewed for every territory the site reaches (D14) before release.
 - **AI use:** the owner authorized generation of this set; no licensed prayer-book text was used.
 - **Checked:** all requested filenames; successful PNG decoding; transparency and absence of white paper fills in ink masks; subjects and prohibited-image constraints; native versus requested dimensions; the exact-size square exports and the tinted icon's rebuilt mask (2026-10-28), recorded per image in the registry.
 - **Status:** `pending`, design sources only. D15 and release approval remain open.
-- **Placeholder use (2026-10-28, P1.11):** byte-identical copies of A1, A2, and A3 are the app's placeholder icon in `App/Resources/Assets.xcassets/AppIcon.appiconset`, for development and internal builds; `make check` fails if a copy differs from its source. This does not clear them: they stay `pending` until release review, and the final icon is P21.8.
+- **Placeholder use (2026-10-29):** `public/icon.png` is A1 resized to 512×512 with ImageMagick (`-resize 512x512 -strip`) and otherwise unchanged, as the site's placeholder favicon and Home Screen icon for development. This does not clear it: it stays `pending` until release review (P20.7, P22.4). (From 2026-10-28 to 2026-10-29, A1–A3 were the retired iPhone app's placeholder icon.)
 
 | Image ID | Title | File | Status |
 | --- | --- | --- | --- |

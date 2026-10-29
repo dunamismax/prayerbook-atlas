@@ -1,0 +1,109 @@
+/* The shared pieces of Engraved Plate (docs/design.md §12). */
+
+/* Small-capital labels: set from lower case with the face's own small capitals. */
+.eyebrow {
+  display: block;
+  margin: 0 0 var(--space-xs);
+  color: var(--muted);
+  font-size: var(--type-eyebrow-size);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: lowercase;
+  font-variant-caps: small-caps;
+  font-style: normal;
+}
+
+/* A card: card ground inside a double rule in line. */
+.plate-card {
+  background: var(--card);
+  border: 3px double var(--line);
+  padding: var(--space-card-padding);
+  margin: 0 0 var(--space-xl);
+}
+
+/* The atlas plate: the same double rule in ink. */
+.atlas-plate {
+  background: var(--card);
+  border: 3px double var(--ink);
+  padding: var(--space-xl);
+  margin: 0 0 var(--space-xl);
+}
+
+/* The double rule under a title. */
+.title-rule {
+  border: 0;
+  border-top: 3px double var(--ink);
+  margin: var(--space-s) 0 var(--space-xl);
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: var(--space-l) 0;
+}
+
+.rubric {
+  color: var(--rubric);
+  font-style: italic;
+  font-size: var(--type-rubric-size);
+  line-height: var(--type-rubric-leading);
+}
+
+.source {
+  color: var(--muted);
+  font-style: italic;
+  font-size: var(--type-source-size);
+}
+
+/* A plain notice in words; never colour alone. */
+.notice {
+  border-left: 3px double var(--rubric);
+  padding: var(--space-s) var(--space-l);
+  margin: 0 0 var(--space-xl);
+  background: var(--wash);
+}
+
+.notice p:last-child {
+  margin-bottom: 0;
+}
+
+/* The primary action: outlined in rubric, square, uppercase interface face. */
+.primary-action,
+.quiet-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-l);
+  border: 1px solid var(--rubric);
+  border-radius: 0;
+  background: transparent;
+  color: var(--rubric);
+  font-family: var(--face-interface);
+  font-size: var(--type-action-size);
+  font-weight: 600;
+  letter-spacing: var(--type-action-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.quiet-action {
+  border-color: var(--line);
+  color: var(--ink);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.plain-list {
+  list-style: none;
+  padding: 0;
+}
+
+.plain-list > li {
+  padding: var(--space-s) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.plain-list > li:last-child {
+  border-bottom: 0;
+}

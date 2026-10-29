@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render "layouts/head" %>
+  </head>
+
+  <body class="site site--phone" data-site-mode="phone">
+    <a class="skip-link" href="#main">Skip to the text</a>
+
+    <header class="phone-bar">
+      <%= render "shared/wordmark" %>
+    </header>
+
+    <main id="main" class="reading">
+      <%= yield %>
+
+      <% if content_for?(:margin) %>
+        <details class="phone-margin">
+          <summary>Notes and sources</summary>
+          <%= yield :margin %>
+        </details>
+      <% end %>
+    </main>
+
+    <%= render "shared/footer" %>
+
+    <nav class="tab-bar" aria-label="Sections">
+      <ul>
+        <% SiteSection.all.each do |section| %>
+          <li><%= link_to section.title, section_path_for(section), aria: { current: ("page" if current_section?(section)) } %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </body>
+</html>
