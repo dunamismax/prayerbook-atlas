@@ -451,3 +451,24 @@ replace are marked superseded. The retired app's code is at the Git tag
   asset or the policy allows another host.
 - **Why:** No third party learns who prays, when, or what. It also keeps the
   site working when other services do not.
+
+## 32. The Daily Office 2019 is the model; its code may be ported
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner, D30)
+- **Decision:** [The Daily Office 2019](https://www.dailyoffice2019.com)
+  (github.com/blocher/dailyoffice2019) is this site's model and inspiration.
+  Its code is MIT-licensed (copyright 2020 Benjamin Locher), so agents may
+  port it, Python and Vue into Ruby, ERB, CSS, and Stimulus, keeping the MIT
+  notice in `THIRD_PARTY_NOTICES.md` and a header naming the source file and
+  commit in every file that ports it. The texts it carries (the 2019 book,
+  licensed Bibles, Lesser Feasts and Fasts, hymns, generated biographies,
+  audio) are not covered by that license and are not taken; its calendar
+  data may serve as one of D20's two cross-checks. Its stack (Django, Vue,
+  PostgreSQL, Capacitor) and its analytics are not adopted. Mechanisms are
+  ported; each book's rules stay that book's own data (D8). Phase 2A studies
+  it before Phase 3; docs/dailyoffice2019.md holds the rules and the study.
+- **Why:** It already does well, for the 2019 book, much of what this site
+  sets out to do for the others. Learning from working, tested code is
+  faster and safer than inventing, and crediting it is both the license's
+  condition and plain honesty. The site's distinct gift is the other prayer
+  books and the Atlas between them.

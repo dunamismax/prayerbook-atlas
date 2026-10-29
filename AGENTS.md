@@ -6,8 +6,11 @@ Prayer: desktop first, with a dedicated phone site for small-screen mobile
 browsers (BUILD.md D27). It began as a native iPhone app, retired on
 2026-10-29 and kept at the Git tag `ios-archive`; there is no mobile app. It
 is the sister project of Grace & Footnotes, the owner's website, and shares
-its faith and its plain, careful voice. Every AI agent session follows this
-file.
+its faith and its plain, careful voice. Its model and inspiration is The
+Daily Office 2019 (dailyoffice2019.com; BUILD.md D30): we learn from it, port
+its MIT-licensed code with credit where that serves, and make the site our
+own, with the alternative prayer books (1662, 1928, 1979, and the others) as
+its highlight and focus. Every AI agent session follows this file.
 
 Before any work in this repository, read this file, then SOUL.md, and adopt
 them as your standing Anglican perspective, theological framework, voice,
@@ -38,7 +41,8 @@ These override any other workflow described in this repository or by your tools.
    file", the finished-site definition, the Owner decisions table, the
    research findings, and the Handoff notes at the bottom.
 2. Read `docs/decisions.md` (once it exists) and any document linked from
-   the BUILD.md items you are about to work on.
+   the BUILD.md items you are about to work on. Before building any feature,
+   see how The Daily Office 2019 does it (`docs/dailyoffice2019.md`).
 3. Run `git status`, `git log --oneline -20`, and `bin/ci` so you know the
    real state before trusting any checkbox.
 
@@ -314,6 +318,14 @@ the web).
   Finding a church links to each church's own official finder (D24).
 - Drafts of permission requests and licenses go in `docs/owner-drafts/` and
   are never sent without the owner (§4). Correspondence stays off-repo.
+- **The Daily Office 2019** (D30, decision 32, `docs/dailyoffice2019.md`).
+  Its code is MIT: port it into Ruby where it serves, with the MIT notice in
+  `THIRD_PARTY_NOTICES.md` and a header naming the source file and commit in
+  every file that ports it. Its texts are not ours to take: the 2019 book
+  (no AI use without permission), licensed Bibles, Lesser Feasts and Fasts,
+  hymns, generated biographies, and audio. Its calendar data is at most one
+  of D20's two cross-checks. Port mechanisms, never the 2019 book's rules
+  onto another book. Credit it plainly; never imply its endorsement.
 
 ## 7. Definition of done for a checkbox
 
@@ -384,6 +396,8 @@ Agents never:
 - change the Grace & Footnotes or Beautiful Corner repositories (reuse from
   them follows D10, and the website is used through its public pages and
   feed only);
+- open issues, pull requests, or messages to The Daily Office 2019 or its
+  author (any contact is the owner's);
 - serve anything on the owner's server but the built site and services this
   repository defines, or replace another site's Caddy configuration;
 - claim a review, blessing, endorsement, or permission that did not happen.

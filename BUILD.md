@@ -17,6 +17,12 @@ Repository `dunamismax/prayerbook-atlas`. The site is a sister project of
 shares its faith and its plain, careful voice; its visual design is its own
 (D15).
 
+**Model:** [The Daily Office 2019](https://www.dailyoffice2019.com) (D30), which
+makes the ACNA's 2019 book easy to pray. Prayerbook Atlas learns from it, takes
+its open-source code where that serves, and credits it; this site's own focus
+is the alternative prayer books, 1662, 1928, 1979, and the others, each on its
+own terms ([docs/dailyoffice2019.md](docs/dailyoffice2019.md)).
+
 The product is personal lay work, not an official publication of the Church
 of England, The Episcopal Church, the Anglican Church in North America, the
 Anglican Communion, or any other church, diocese, or parish.
@@ -77,6 +83,7 @@ top-level items (sub-items roll up into their parent).
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
 | 2 | Design system and site shell | M1 Foundation | 14 | 14 |
+| 2A | Learning from The Daily Office 2019 | M1 Foundation | 4 | 0 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 5 |
@@ -488,6 +495,7 @@ history.
 | D27 | Platform and framework | — | **A website only, built with Ruby on Rails** (owner, 2026-10-29): no native mobile app; Rails 8.1.4 on Ruby 4.0; primarily for desktop browsers, with a dedicated phone mode for small-screen mobile browsers and a fuller full-site mode with more features for desktop and full-size windows. Decisions 21–24 record how. |
 | D28 | Hosting | Self-hosted on the owner's Ubuntu server behind the existing Caddy: Puma under systemd, SQLite in the shared storage directory, deploys of the built release only, no Docker or Kamal | **Self-hosted at prayerbookatlas.com, with .org as backup** (owner, 2026-10-29); the process model as recommended (agent, 2026-10-29; decision 27). |
 | D29 | Where personal data lives | In the person's own browser by default (IndexedDB), exportable; optional account sync later (P25) for what the person chooses; confession notes never leave the browser | **As recommended** (agent, 2026-10-29; decision 28). |
+| D30 | A model to learn from | Take [The Daily Office 2019](https://www.dailyoffice2019.com) (blocher/dailyoffice2019, MIT) as the model: study it, port its code with attribution where that is the better path, take none of the texts it carries, and keep the alternative prayer books this site's focus | **As recommended** (owner, 2026-10-29): it is the inspiration; we improve on it and make the site our own, with the alternative prayer books as the highlight and focus. Phase 2A comes next; docs/dailyoffice2019.md and decision 32 say what may be taken. |
 
 ---
 
@@ -568,7 +576,7 @@ bin/rails content:compile ← content/ (sourced, proofread texts and facts)
 
 ### Milestones
 
-- **M1 Foundation** (P1–P5): the site runs in its design in both modes, the
+- **M1 Foundation** (P1–P5, with P2A): the site runs in its design in both modes, the
   content pipeline enforces rights, the church year is correct for every
   book, and the site is deployed at prayerbookatlas.com.
 - **M2 The Daily Office** (P6–P9): Today, the Kalendar, and complete offices
@@ -653,6 +661,21 @@ When the site is demoable:
   - *2026-10-29 result:* views, helpers, the placeholder destinations, and the names of sections, books, translations, and offices come from `config/locales/en.yml` (lazy keys per template, shared `site.*` and `components.*` keys); `raise_on_missing_translations` is on in development and test. `UntranslatedTextTest` finds literal text between tags, in labelling attributes, and in strings passed to helpers, and checks every named key exists (mutation-checked). `/dev/*` pages are exempt as development aids.
 - [x] **P2.14** A system-test tour: every section and Settings, in both modes and both appearances, saving screenshots to `tmp/screenshots/`.
   - *2026-10-29 result:* `TourSystemTest` and `PhoneTourSystemTest` (shared `test/support/tour_steps.rb`) choose Day and then Night in Settings and visit the five sections, About, and Settings, saving 28 window-sized screenshots as `tmp/screenshots/tour-<mode>-<appearance>-<page>.png` (Selenium's Chrome has no full-page capture). Looked over in this session.
+
+## Phase 2A: Learning from The Daily Office 2019 (D30)
+
+Do this phase **next**, before Phase 3, so the foundation is firm. The owner chose
+[The Daily Office 2019](https://www.dailyoffice2019.com) (code:
+[blocher/dailyoffice2019](https://github.com/blocher/dailyoffice2019), MIT) as this site's model
+and inspiration on 2026-10-29. We follow it where it is good, take its code where that is the
+better path, credit it plainly, and make the site our own, with the alternative prayer books as
+its highlight. [docs/dailyoffice2019.md](docs/dailyoffice2019.md) says what may and may not be
+taken; read it first.
+
+- [ ] **P2A.1** Study it thoroughly. Clone it at a pinned commit into the gitignored `research/dailyoffice2019/` (never into the app) and read the calendar (`site/churchcal/`), the offices (`site/office/`), the psalter and readings (`site/psalter/`, `site/bible/`), their tests, the import commands and data, and the reader and settings in `app/src/`. Use the live site too, on a desktop and a phone. Extend docs/dailyoffice2019.md with: (a) a **feature inventory**, every page, setting, and flow, each marked *adopt*, *adapt*, *later*, or *skip* with a reason; (b) a **module map**, each piece of logic worth porting (Easter and the movable feasts, seasons, ranks and precedence, transfers, propers, the office assembly, canticle and suffrage rotations, psalter cycles, one- and two-year lectionaries, Apocrypha alternates, ICS feeds) with its file, size, tests, and the Ruby engine and BUILD.md item it would land in; (c) a **data inventory**, each table or file with its source and rights, sorted into facts usable as a D20 cross-check and texts we may not take; and (d) what it does that we should do differently, and why.
+- [ ] **P2A.2** Fold the study into this plan. For each *adopt* or *adapt*, add or rewrite the BUILD.md item that will do it, in the phase where it belongs (above all Phases 4, 6, 7, 10, 11, 14, and 18), naming the source file to port and its commit. Make the alternative prayer books the visible focus throughout: what the site does for 1662, 1928, and 1979 that The Daily Office 2019 does for 2019, and what the Atlas adds. Where this changes a recommendation or an owner decision, add a dated note and, if it needs the owner, an open question with a recommendation. Say in the Handoff notes what moved.
+- [ ] **P2A.3** Set up attribution before any code comes across: `THIRD_PARTY_NOTICES.md` with the full MIT notice (copyright 2020 Benjamin Locher) and a list of ported files; the header comment convention in docs/dailyoffice2019.md §2; a test that every file carrying the header is listed in the notices; and a short, plain credit on the About page and in README.md ("Inspired by The Daily Office 2019, by Benjamin Locher"), with no suggestion of endorsement or partnership.
+- [ ] **P2A.4 [RIGHTS]** Record in `content/SOURCES.md` (or its Wanted section, until P3.1 gives it a schema) The Daily Office 2019's data as a reference source: which files are usable as calendar and lectionary cross-checks under D20, and which hold texts we may not take (the 2019 book, licensed Bible translations, Lesser Feasts and Fasts 2024, hymns, generated biographies, audio), each with the reason.
 
 ## Phase 3: Content pipeline and rights registry
 
@@ -960,8 +983,9 @@ The owner decides priority; promoted items become full phases.
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
 - **2026-10-29 session 3:** the site is live at https://prayerbookatlas.com
-  (P5.2–P5.4, P5.7). Next: Phase 3 from P3.1, then Phase 4, P5.5 (backups:
-  the server's own backup job does not cover this site), and P5.6.
+  (P5.2–P5.4, P5.7). The owner then made The Daily Office 2019 the model
+  (D30). **Next: Phase 2A from P2A.1** (read docs/dailyoffice2019.md first),
+  then Phase 3, Phase 4, P5.5 (backups), and P5.6.
 - **Deploy loop:** `bin/ci`, commit, `git push origin main`, `bin/deploy`, then
   try it live; `bin/deploy --rollback` returns to the previous release. It
   needs `ssh root@ubuntu-vm` (Tailscale). docs/deploy.md §2 lists where
@@ -976,10 +1000,9 @@ The owner decides priority; promoted items become full phases.
   Also P0.6, P0.7 (optional), P0.8 (deferred), and the [GATE DEMO] letters.
 - **Found:** Rails 8.1 sends the permissions policy as `Feature-Policy`; P5.6
   or P21 may want `Permissions-Policy` too.
-- **Commits are gated:** `bin/ci` must pass first. Hosted CI:
-  `gh workflow run ci.yml`, then `gh run watch <id>`.
-- **Browsers:** Chrome in the in-app browser; Firefox 159 (Homebrew) for
-  JavaScript-off checks; WebKit via `script/webkit_snapshot.swift`.
+- **Checks:** `bin/ci` must pass before a commit (hosted: `gh workflow run
+  ci.yml`). Browsers: the in-app Chrome; Firefox 159 for JavaScript off;
+  WebKit via `script/webkit_snapshot.swift`.
 - **Waiting:** Settings' acknowledgements (P3.8), the spelling setting (P12.6);
   `/dev/*` pages are development aids. Cookies (all strictly necessary):
   `site_mode`, `appearance`, `reading`, `book`, `office_books`, the session.
