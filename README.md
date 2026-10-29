@@ -11,8 +11,9 @@ for small-screen mobile browsers. It is personal lay work, the sister project
 of [Grace & Footnotes](https://graceandfootnotes.com), and not an official
 publication of any church.
 
-**Status:** in development; nothing is ready for prayer yet and nothing is
-deployed. [BUILD.md](BUILD.md) is the plan and its current state.
+**Status:** in development; nothing is ready for prayer yet. The work in
+progress is live at <https://prayerbookatlas.com>, marked as in development
+and kept out of search indexes. [BUILD.md](BUILD.md) is the plan and its current state.
 [AGENTS.md](AGENTS.md) and [SOUL.md](SOUL.md) govern how the work is done.
 The project began as an iPhone app, retired on 2026-10-29 (Git tag
 `ios-archive`).
@@ -120,15 +121,26 @@ GitHub's Linux runners, by manual dispatch.
 | `design/` | `tokens.json`, the owner's generated images and their prompts and registry |
 | `docs/` | Product rules, design, URLs, decisions, and deployment |
 | `config/ci.rb` | The local CI steps `bin/ci` runs |
+| `bin/deploy`, `deploy/` | Deploys to the server: build, cutover, rollback, the systemd unit, and the Caddy site |
 | `script/webkit_snapshot.swift` | Snapshots a page with WebKit (Safari's engine) for browser checks |
 | `research/` | Gitignored downloads for rights research; never served |
 
 ## Deployment
 
-Self-hosted on the owner's Ubuntu server behind Caddy, at
-prayerbookatlas.com, with prayerbookatlas.org as the backup domain and
-prayerbook-atlas.com redirecting to it. [docs/deploy.md](docs/deploy.md)
-describes the server; every server change waits for the owner.
+Self-hosted on the owner's Ubuntu server (`ubuntu-vm`) behind its shared
+Caddy, at <https://prayerbookatlas.com>; www, prayerbookatlas.org (the backup
+domain), and prayerbook-atlas.com redirect to it. After `bin/ci` passes and
+`main` is pushed:
+
+```bash
+bin/deploy
+```
+
+builds a release of `origin/main` on the server from `git archive`, migrates,
+checks it, switches to it, and rolls back if anything fails;
+`bin/deploy --rollback` returns to the previous release. It needs SSH as root
+to `ubuntu-vm` over Tailscale. [docs/deploy.md](docs/deploy.md) describes the
+server and where everything lives.
 
 ## License
 

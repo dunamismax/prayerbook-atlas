@@ -111,6 +111,8 @@ en:
     holy-communion: "Holy Communion"
 
   shared:
+    development_notice:
+      text: "Prayerbook Atlas is still being built. Its pages are unfinished and will change; please do not rely on it yet for prayer or worship."
     footer:
       about_nav: "About this site"
       about: "About"

@@ -6,6 +6,7 @@
 
   <body <%= tag.attributes(class: "site site--phone", data: { site_mode: "phone", controller: ("wake-lock" if reading_settings[:keep_awake] == "yes") }) %>>
     <a class="skip-link" href="#main"><%= t("site.skip_link") %></a>
+    <%= render "shared/development_notice" %>
 
     <header class="phone-bar">
       <%= render "shared/wordmark" %>

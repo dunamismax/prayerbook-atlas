@@ -1,1 +1,4 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# Prayerbook Atlas is in development; nothing is to be indexed until launch
+# (BUILD.md P5.7, P22). See https://www.robotstxt.org/robotstxt.html.
+User-agent: *
+Disallow: /

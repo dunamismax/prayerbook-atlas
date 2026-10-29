@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# Deploy origin/main to prayerbookatlas.com (docs/deploy.md, BUILD.md P5.2).
+#
+#   bin/deploy                      build and activate origin/main
+#   bin/deploy --rollback [COMMIT]  switch back to the previous (or named) release
+#
+# Run from the Mac after pushing main. On the server it fast-forwards the
+# owner's clone, builds a release from `git archive` as the owner's login user
+# (deploy/build.sh), then, inside the server's shared deploy lock, migrates,
+# checks the release on a spare port, switches `current`, restarts the
+# service, and checks the live site, restoring the previous release if any
+# step fails (deploy/cutover.sh). Only the built release is ever served.
+set -Eeuo pipefail
+
+host=${DEPLOY_HOST:-root@ubuntu-vm}
+builder=${DEPLOY_BUILDER:-sawyer}
+clone=/home/$builder/github/prayerbook-atlas
+remote_url=git@github.com-dunamismax:dunamismax/prayerbook-atlas.git
+base=/srv/www/prayerbookatlas.com
+lock=/usr/local/sbin/with-deploy-lock
+
+remote() { ssh -o BatchMode=yes "$host" "$@"; }
+as_builder() { remote "sudo -H -u $builder $*"; }
+
+case "${1:-}" in
+  --rollback)
+    remote "$lock bash $base/current/deploy/rollback.sh ${2:-}"
+    curl -fsS -o /dev/null https://prayerbookatlas.com/up
+    exit
+    ;;
+  "") ;;
+  *)
+    sed -n '4,5p' "$0" | sed 's/^# //' >&2
+    exit 64
+    ;;
+esac
+
+cd "$(dirname "$0")/.."
+git fetch --quiet origin main
+commit=$(git rev-parse origin/main)
+if test "$(git rev-parse HEAD)" != "$commit" || test -n "$(git status --porcelain)"; then
+  echo "bin/deploy: note: this checkout differs from origin/main; only what is pushed is deployed." >&2
+fi
+ruby_version=$(git show "$commit:.ruby-version" | tr -d '[:space:]')
+echo "Deploying ${commit:0:12} to prayerbookatlas.com"
+
+echo "-> Fast-forwarding the server's clone"
+remote "test -d $clone" || as_builder git clone --quiet "$remote_url" "$clone"
+as_builder git -C "$clone" fetch --quiet origin
+as_builder git -C "$clone" merge --ff-only --quiet origin/main
+test "$(as_builder git -C "$clone" rev-parse HEAD)" = "$commit" ||
+  { echo "bin/deploy: the server's origin/main is not ${commit:0:12}; push, then run again" >&2; exit 1; }
+
+echo "-> Ruby ${ruby_version#ruby-}"
+remote "test -x /opt/mise/installs/ruby/${ruby_version#ruby-}/bin/ruby ||
+  $lock env MISE_DATA_DIR=/opt/mise MISE_CACHE_DIR=/var/cache/mise MISE_CONFIG_DIR=/etc/mise MISE_STATE_DIR=/var/lib/mise \
+    /usr/local/bin/mise install ruby@${ruby_version#ruby-}"
+
+echo "-> Building the release"
+as_builder bash "$clone/deploy/build.sh" "$commit" >/dev/null
+candidate=/home/$builder/prayerbookatlas-build/$commit
+
+echo "-> Activating it"
+remote "$lock bash $candidate/deploy/cutover.sh $commit $candidate"
+
+curl -fsS -o /dev/null https://prayerbookatlas.com/up
+echo "Live: https://prayerbookatlas.com (${commit:0:12})"

@@ -326,3 +326,15 @@
     padding: 0;
   }
 }
+
+/* Until launch, a quiet line above every page (BUILD.md P5.7). */
+.development-notice {
+  margin: 0;
+  padding: var(--space-xs) var(--space-l);
+  border-bottom: 1px solid var(--line);
+  background: var(--wash);
+  color: var(--ink);
+  font-size: var(--type-source-size);
+  line-height: 1.5;
+  text-align: center;
+}

@@ -1,213 +1,168 @@
 # Deploying prayerbookatlas.com
 
-How the site is served from the owner's Ubuntu server (BUILD.md D28, docs/decisions.md
-entry 27). **Every step on the server, in Caddy, or in DNS is the owner's to approve**
-(AGENTS.md §4): agents prepare the files and commands here, the owner runs or confirms them.
-Nothing below has been done yet; BUILD.md Phase 5 tracks it.
+How the site is served from the owner's Ubuntu server, `ubuntu-vm` (BUILD.md D28,
+docs/decisions.md entry 27). The owner approved the provisioning and the first deploy on
+2026-10-29 (BUILD.md P5.3, P5.4). Changes to the server beyond `bin/deploy` (DNS, Caddy's main
+file, other sites) are still the owner's to approve (AGENTS.md §4).
+
+**The everyday loop:** run `bin/ci`, commit, `git push origin main`, then `bin/deploy`, and try
+the change at <https://prayerbookatlas.com>.
 
 ## 1. The shape
 
 ```
-Internet ─ Caddy (TLS, compression, redirects; the server's existing Caddy)
-             │  prayerbookatlas.com
+Internet ─ Caddy (TLS, compression, redirects; the server's shared Caddy)
+             │  prayerbookatlas.com  (/etc/caddy/sites/prayerbookatlas.caddy)
              ▼
-           Puma on 127.0.0.1:<port>  (systemd: prayerbookatlas.service)
+           Puma on 127.0.0.1:4315  (systemd: prayerbookatlas.service, user prayerbookatlas)
              │  Rails 8.1, RAILS_ENV=production, Solid Queue inside Puma
-             ├─ /srv/prayerbookatlas/shared/storage/   the app's SQLite databases
-             └─ db/content.sqlite3 in each release      rebuilt from content/ on deploy
+             ├─ /srv/www/prayerbookatlas.com/shared/storage/   the app's SQLite databases
+             └─ db/content.sqlite3 in each release              rebuilt from content/ (P3.3)
 ```
 
 - **One canonical name**: `https://prayerbookatlas.com`. These redirect to it permanently
   (308, keeping the path): `www.prayerbookatlas.com`, `prayerbook-atlas.com`,
   `www.prayerbook-atlas.com`, `prayerbookatlas.org`, and `www.prayerbookatlas.org` (D12).
-- **The backup domain**: Rails already accepts `prayerbookatlas.org` as a host
-  (`config/environments/production.rb`), so if `.com` ever cannot be used, Caddy can serve the
-  site at `.org` directly (§4).
-- **Only a built release is served.** The checkout, the repository, and `research/` are never a
+- **DNS** is at Cloudflare and is the owner's. Every name is an A record for the server's
+  public address, **not proxied** (DNS only), like the owner's other sites; Caddy obtains the
+  certificates itself. The server's Cloudflare DDNS job keeps every A record in the account
+  pointed at the server, so these names follow it automatically.
+- **Only a built release is served.** The clone, the repository, and `research/` are never a
   web root.
 
-## 2. On the server (once) [OWNER]
+## 2. Where everything lives
 
-Run as an administrator. Choose a free local port first (`ss -ltnp`); the examples use 3100.
+The server already hosts the owner's other sites; this one follows their conventions (see
+`/home/sawyer/github/AGENTS.md` and `ubuntu-vm-backup/docs/astro-migration.md` on the server).
 
-1. A user and directories:
+| What | Where |
+|---|---|
+| The owner's clone (fast-forwarded by `bin/deploy`) | `/home/sawyer/github/prayerbook-atlas` (remote `git@github.com-dunamismax:…`) |
+| Build candidates (owner's login user, no secrets) | `/home/sawyer/prayerbookatlas-build/<commit>` |
+| Releases, one per commit, root-owned, read-only | `/srv/www/prayerbookatlas.com/releases/<commit>` |
+| The live release | `/srv/www/prayerbookatlas.com/current` (a link) |
+| The release to roll back to | `/srv/www/prayerbookatlas.com/previous` (a file naming it) |
+| The app's databases (`storage/` in each release links here) | `/srv/www/prayerbookatlas.com/shared/storage` |
+| Bootsnap and other scratch files (`tmp/` links here) | `/srv/www/prayerbookatlas.com/shared/tmp` |
+| The secret: `RAILS_MASTER_KEY` only, root, mode 600 | `/srv/www/prayerbookatlas.com/shared/env` |
+| Ruby (`.ruby-version`), installed by mise | `/opt/mise/installs/ruby/<version>`; mise is `/usr/local/bin/mise` |
+| The service (from `deploy/prayerbookatlas.service`) | `/etc/systemd/system/prayerbookatlas.service` |
+| The Caddy site (from `deploy/prayerbookatlas.caddy`) | `/etc/caddy/sites/prayerbookatlas.caddy`, imported by `/etc/caddy/Caddyfile` |
+| Access log | `/var/log/caddy/prayerbookatlas-access.log` |
+| Application log | the journal: `journalctl -u prayerbookatlas` |
+| Rollback copies of the unit, the Caddy site, and the Caddyfile (last three) | `/root/prayerbookatlas-rollback.*` |
 
-   ```bash
-   sudo adduser --system --group --home /home/prayerbookatlas --shell /bin/bash prayerbookatlas
-   ```
+The unit and the Caddy site live in this repository under `deploy/` and are installed by each
+deploy when they change; edit them here, never on the server. Ports 4311–4314 belong to the
+owner's other sites; this site uses **4315**, and the release check during a deploy uses 4395.
+The service runs as the system user `prayerbookatlas` (no login, no home) with systemd's
+filesystem protections; it can write only `shared/storage` and `shared/tmp`.
 
-   ```bash
-   sudo mkdir -p /srv/prayerbookatlas/releases /srv/prayerbookatlas/shared/storage
-   ```
+## 3. Deploying: `bin/deploy`
 
-   ```bash
-   sudo chown -R prayerbookatlas:prayerbookatlas /srv/prayerbookatlas
-   ```
+From the Mac, after `bin/ci` passes and `main` is pushed:
 
-2. Ruby 4.0.9 through mise, as the `prayerbookatlas` user (the same version `.ruby-version`
-   pins; decision 23). Install mise from its official instructions (<https://mise.jdx.dev>),
-   then:
+```bash
+bin/deploy
+```
 
-   ```bash
-   mise settings add idiomatic_version_file_enable_tools ruby
-   ```
+It deploys `origin/main` (it warns if the Mac's checkout differs, since only what is pushed is
+deployed). Over `ssh root@ubuntu-vm` (Tailscale) it:
 
-   ```bash
-   mise use --global ruby@4.0.9
-   ```
+1. **Fast-forwards the clone** as `sawyer` (cloning it the first time) and checks that it is at
+   the same commit.
+2. **Installs Ruby** with mise if `.ruby-version` names one the server does not have yet.
+3. **Builds a candidate** as `sawyer`, outside the lock (`deploy/build.sh`): the commit's files
+   from `git archive`, `REVISION` (Settings shows it), `bundle install` in deployment mode
+   (starting from the live release's gems), and `assets:precompile`. It needs no secret.
+4. **Activates it** as root inside the server's shared deploy lock,
+   `/usr/local/sbin/with-deploy-lock` (`deploy/cutover.sh`): moves the candidate into
+   `releases/`, links `storage/` and `tmp/`, runs `bin/rails db:prepare` as the service user,
+   boots the release on port 4395 and checks `/up`, `/`, `/settings`, `/pray`, and `/about`,
+   installs the unit and Caddy site if they changed (`caddy validate` first, every time),
+   switches `current`, restarts the service, reloads Caddy if its site changed, and checks
+   `https://prayerbookatlas.com/up` and `/`.
+5. **Rolls back on failure.** If any step of the activation fails, it puts back the previous
+   release, unit, and Caddy site, restarts, and exits non-zero. A failed release is removed.
 
-   Precompiled Ruby needs no build tools; gems with native extensions (Puma, bootsnap's msgpack)
-   need `build-essential` installed once.
+It keeps the newest five releases (and always the previous one). Deploying a commit that is
+already live changes nothing; deploying one whose release is still kept switches back to it.
 
-3. The environment file, `/srv/prayerbookatlas/shared/env`, owned by `prayerbookatlas` with
-   mode `600`:
+**Rollback by hand:**
 
-   ```
-   RAILS_ENV=production
-   RAILS_MASTER_KEY=<the contents of the owner's config/master.key>
-   PORT=3100
-   SOLID_QUEUE_IN_PUMA=true
-   RAILS_LOG_LEVEL=info
-   ```
+```bash
+bin/deploy --rollback
+```
 
-   `config/master.key` exists only on the owner's Mac (it is gitignored). Copy its contents by
-   hand; never commit it, paste it into a chat, or print it in a log.
+switches to the release named in `previous` (or `bin/deploy --rollback <full commit>` to a kept
+one), restarts, checks the site, and switches forward again if the older release does not
+answer. It changes only the code that runs: migrations are not undone, and the installed unit
+and Caddy site stay as they are, so a migration that an older release cannot run with needs a
+forward fix instead. Run `bin/deploy` to return to `origin/main`.
 
-4. The service, `/etc/systemd/system/prayerbookatlas.service`:
+**Content.** Once the content compiler exists (P3.3), the build will run
+`bin/rails content:compile` with release checks, so each release carries its own
+`db/content.sqlite3`.
 
-   ```ini
-   [Unit]
-   Description=Prayerbook Atlas (Rails on Puma)
-   After=network.target
+## 4. Provisioning (done 2026-10-29)
 
-   [Service]
-   Type=simple
-   User=prayerbookatlas
-   Group=prayerbookatlas
-   WorkingDirectory=/srv/prayerbookatlas/current
-   EnvironmentFile=/srv/prayerbookatlas/shared/env
-   ExecStart=/home/prayerbookatlas/.local/bin/mise exec -- bundle exec puma -C config/puma.rb
-   Restart=always
-   RestartSec=2
-   TimeoutStopSec=30
-   NoNewPrivileges=true
-   PrivateTmp=true
-   ProtectSystem=strict
-   ProtectHome=read-only
-   ReadWritePaths=/srv/prayerbookatlas
+`deploy/cutover.sh` creates the `prayerbookatlas` user and the directories itself, so a fresh
+server needs only these, as root:
 
-   [Install]
-   WantedBy=multi-user.target
-   ```
+- **Ruby through mise**, system-wide: mise from its official installer
+  (`curl -fsSL https://mise.run`, run with `MISE_INSTALL_PATH=/usr/local/bin/mise`), then
+  `bin/deploy` installs the pinned Ruby into `/opt/mise`. Precompiled Ruby needs no build
+  tools; the gems' native extensions use `build-essential`, already installed.
+- **The environment file**, from the owner's `config/master.key` (gitignored, on the Mac only),
+  never printed, pasted, or committed:
 
-   Then `sudo systemctl daemon-reload` and, after the first release exists,
-   `sudo systemctl enable --now prayerbookatlas`. Logs go to the journal
-   (`journalctl -u prayerbookatlas`), because production Rails logs to standard output.
+  ```bash
+  tr -d '\n' < config/master.key | ssh root@ubuntu-vm 'umask 077; key=$(cat); printf "RAILS_MASTER_KEY=%s\n" "$key" > /srv/www/prayerbookatlas.com/shared/env'
+  ```
 
-5. The Caddy site, added **beside** the server's existing sites (for example as
-   `/etc/caddy/sites/prayerbookatlas.caddy`, imported from the main Caddyfile), never replacing
-   another site's configuration:
+  Everything else the service needs (`RAILS_ENV`, `PORT`, `SOLID_QUEUE_IN_PUMA`,
+  `RAILS_LOG_LEVEL`) is set in the unit, so the file holds only the secret.
+- **DNS**: the six names as A records for the server, DNS only (§1).
 
-   ```caddy
-   prayerbookatlas.com {
-   	encode zstd gzip
+Before the first install, `/etc/caddy` was archived to
+`/root/caddy-backup-20261029-153016-before-prayerbookatlas.tar.gz`. The main Caddyfile was not
+changed: it already imports every file in `/etc/caddy/sites/`.
 
-   	# Fingerprinted assets straight from the release; Rails serves everything else.
-   	@assets path /assets/*
-   	handle @assets {
-   		root * /srv/prayerbookatlas/current/public
-   		header Cache-Control "public, max-age=31536000, immutable"
-   		file_server
-   	}
+## 5. Headers
 
-   	handle {
-   		reverse_proxy 127.0.0.1:3100
-   	}
+Rails sends HSTS (`config.force_ssl`), the Content Security Policy, the Permissions Policy, and
+the other security headers; Caddy removes its `Server` header and adds `nosniff` and a year's
+immutable caching to the fingerprinted files under `/assets/`, which it serves straight from
+the release. Until launch (P5.7, P22), `robots.txt` disallows everything and every page carries
+`<meta name="robots" content="noindex, nofollow">` and a line saying the site is in development.
 
-   	log {
-   		output file /var/log/caddy/prayerbookatlas.log {
-   			roll_size 50MiB
-   			roll_keep 10
-   		}
-   	}
-   }
+## 6. Serving the backup domain directly
 
-   www.prayerbookatlas.com, prayerbook-atlas.com, www.prayerbook-atlas.com, prayerbookatlas.org, www.prayerbookatlas.org {
-   	redir https://prayerbookatlas.com{uri} 308
-   }
-   ```
+If `prayerbookatlas.com` cannot be used, in `deploy/prayerbookatlas.caddy` move
+`prayerbookatlas.org` from the redirect block to the first site block's address
+(`prayerbookatlas.org {`), redirect the others to it instead, change the checks in
+`deploy/cutover.sh` and `deploy/rollback.sh` to the `.org` name, and deploy. Rails accepts both
+names already. Move it back when `.com` returns.
 
-   Check with `caddy validate --config /etc/caddy/Caddyfile`, then `sudo systemctl reload caddy`.
-   Rails itself sends HSTS (`config.force_ssl`), the Content Security Policy, the Permissions
-   Policy, and the other security headers, so Caddy does not repeat them. Caddy obtains the
-   certificates; DNS at Cloudflare must point every name above at the server (if a record is
-   proxied by Cloudflare, its SSL mode must be Full (strict)).
+## 7. Backups
 
-## 3. A release
+The app's own databases are the files in `/srv/www/prayerbookatlas.com/shared/storage/`. Back
+them up nightly with SQLite's online backup (`sqlite3 <db> ".backup '<copy>'"`), encrypt the
+copies, and keep them off the server on owner-controlled storage; run a restore drill once and
+then quarterly (P5.5, P27.1). The server's own `ubuntu-vm-backup` job does not cover this site
+yet. The content database is never backed up: it is rebuilt from the repository on every
+deploy. Personal data (intercessions, journals, confession notes) is never on the server at all
+(D29).
 
-Until `bin/deploy` exists (BUILD.md P5.2), a release is made by hand like this; `bin/deploy`
-will do the same and roll back on failure.
+## 8. After each deploy
 
-1. On the Mac, from a clean, pushed `main` that passes `bin/ci`:
-
-   ```bash
-   git archive --format=tar.gz --prefix=release/ -o /tmp/prayerbookatlas.tar.gz main
-   ```
-
-2. On the server, as `prayerbookatlas`, unpack it into a new directory named for the commit
-   and time, for example `/srv/prayerbookatlas/releases/20261029-1200-a1b2c3d/`, and link the
-   shared storage into it (`ln -s /srv/prayerbookatlas/shared/storage storage`).
-3. In the release directory, with the environment file loaded:
-
-   ```bash
-   bundle config set --local deployment true
-   ```
-
-   ```bash
-   bundle config set --local without "development test"
-   ```
-
-   ```bash
-   bundle install
-   ```
-
-   ```bash
-   bin/rails assets:precompile
-   ```
-
-   ```bash
-   bin/rails db:prepare
-   ```
-
-   and, once the content compiler exists (P3.3), `bin/rails content:compile` with release
-   checks.
-4. Point `current` at the new release (`ln -sfn <release> /srv/prayerbookatlas/current`),
-   restart (`sudo systemctl restart prayerbookatlas`), and check
-   `curl -fsS https://prayerbookatlas.com/up`.
-5. **Rollback**: point `current` back at the previous release and restart. Keep the last five
-   releases.
-
-## 4. Serving the backup domain directly
-
-If `prayerbookatlas.com` cannot be used, move `prayerbookatlas.org` from the redirect block to
-the first site block's address (`prayerbookatlas.org {`), redirect the others to it instead,
-and reload Caddy. Rails accepts both names already. Move it back when `.com` returns.
-
-## 5. Backups
-
-The app's own databases are the files in `/srv/prayerbookatlas/shared/storage/`. Back them up
-nightly with SQLite's online backup (`sqlite3 <db> ".backup '<copy>'"`), encrypt the copies,
-and keep them off the server on owner-controlled storage; run a restore drill once and then
-quarterly (P5.5, P27.1). The content database is never backed up: it is rebuilt from the
-repository on every deploy. Personal data (intercessions, journals, confession notes) is never
-on the server at all (D29).
-
-## 6. After each deploy
+`bin/deploy` checks `/up` and the home page itself. By hand:
 
 - `https://prayerbookatlas.com/up` answers 200.
 - Each redirecting name answers 308 to the same path on `.com`.
 - The home page sends `Content-Security-Policy`, `Strict-Transport-Security`,
   `Permissions-Policy`, and `Vary: Sec-CH-UA-Mobile, User-Agent, Cookie`.
 - A phone user agent gets the phone site and a desktop one the full site.
+- The owner's other sites still answer as before.
 
 `bin/rails site:check_live` (P5.6) will check all of this in one command.

@@ -4,6 +4,8 @@
 <meta name="description" content="<%= content_for(:description) || t("site.description") %>">
 <meta name="application-name" content="<%= t("site.name") %>">
 <meta name="color-scheme" content="light dark">
+<%# Until launch (BUILD.md P5.7, P22) no page is indexed. %>
+<meta name="robots" content="noindex, nofollow">
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 

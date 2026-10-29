@@ -1,0 +1,41 @@
+# Installed by deploy/cutover.sh as /etc/systemd/system/prayerbookatlas.service
+# (docs/deploy.md). Puma on the loopback port, with Solid Queue inside Puma.
+# The Ruby path follows .ruby-version; test/deploy/deploy_files_test.rb checks.
+[Unit]
+Description=Prayerbook Atlas (Rails on Puma, prayerbookatlas.com)
+After=network.target
+
+[Service]
+Type=notify
+User=prayerbookatlas
+Group=prayerbookatlas
+WorkingDirectory=/srv/www/prayerbookatlas.com/current
+Environment=RAILS_ENV=production PORT=4315 SOLID_QUEUE_IN_PUMA=true RAILS_LOG_LEVEL=info
+Environment=PATH=/opt/mise/installs/ruby/4.0.9/bin:/usr/bin:/bin
+# Only the secret: RAILS_MASTER_KEY, root-owned, mode 600.
+EnvironmentFile=/srv/www/prayerbookatlas.com/shared/env
+ExecStart=/opt/mise/installs/ruby/4.0.9/bin/bundle exec puma -C config/puma.rb
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=60
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/www/prayerbookatlas.com/shared/storage /srv/www/prayerbookatlas.com/shared/tmp
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+MemoryHigh=384M
+MemoryMax=768M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

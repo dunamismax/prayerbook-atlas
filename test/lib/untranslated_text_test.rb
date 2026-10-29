@@ -8,7 +8,7 @@ require "test_helper"
 class UntranslatedTextTest < ActiveSupport::TestCase
   EXEMPT = %r{\Aapp/views/(dev|pwa)/|\Aapp/views/layouts/mailer}
   LABELLING = /\b(aria-label|title|alt|placeholder|content)="([^"<]*[A-Za-z][^"<]*)"/
-  ALLOWED_ATTRIBUTES = [ "width=device-width,initial-scale=1,viewport-fit=cover", "light dark" ].freeze
+  ALLOWED_ATTRIBUTES = [ "width=device-width,initial-scale=1,viewport-fit=cover", "light dark", "noindex, nofollow" ].freeze
   ERB_LITERALS = [
     /(?:\A|[\s(,])"([A-Z][^"#]*\s[^"#]*|[A-Z][a-z]+)"/, # "Save", "Go home"
     /(?:eyebrow\s*\(?\s*|label:\s*)"([^"#]+)"/ # eyebrow "welcome", label: "planned"
