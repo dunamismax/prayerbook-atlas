@@ -12,7 +12,7 @@ This initial register covers the generated visual design sources requested on 20
 - **Rights basis:** generated from the project prompts; reference images were also generated for this project. No third-party source image was supplied.
 - **Jurisdiction:** United States first is D14's working default. Release review per territory remains pending.
 - **AI use:** the owner authorized generation of this set; no licensed prayer-book text was used.
-- **Checked:** all requested filenames; successful PNG decoding; transparency and absence of white paper fills in ink masks; subjects and prohibited-image constraints; native versus requested dimensions.
+- **Checked:** all requested filenames; successful PNG decoding; transparency and absence of white paper fills in ink masks; subjects and prohibited-image constraints; native versus requested dimensions; the exact-size square exports and the tinted icon's rebuilt mask (2026-10-28), recorded per image in the registry.
 - **Status:** `pending`, design sources only. D15 and release approval remain open.
 
 | Image ID | Title | File | Status |

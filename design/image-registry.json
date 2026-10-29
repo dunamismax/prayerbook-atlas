@@ -34,8 +34,8 @@
       "generation_prompt": "Create the artwork for an iOS app icon for a Book of Common Prayer app. Subject: a closed prayer book seen from the front, tilted about 8 degrees, filling about 60% of the canvas. Lamp-black leather cover (#1D1A17) with a thin gilt border line and a small, plain gilt Latin cross (#A3803A) on the upper half of the cover. One rubric-red ribbon marker (#A42A1E) with a swallow-tail end hangs from the bottom edge of the pages and curls gently. Solid warm ivory background (#F6F2E9). Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. Flat, simple shapes with crisp edges and at most a soft hint of shading; it must read clearly at 60 px. No text or letters, no logos or emblems, no compass rose.\n\nProduction correction: truly flat vector-like illustration, broad perfectly solid colour shapes, no leather grain, no fabric grain, no photographic detail, no dimensional lighting. Keep the entire book and hanging ribbon comfortably inside the middle 60% of the square. Export exactly 1024×1024 pixels.",
       "reference_images": [],
       "original_sha256": "7be866e7ec513eb4289e5da9d32a5a9fe09d38fb45248ba699d885ea84302c3e",
-      "file_sha256": "7be866e7ec513eb4289e5da9d32a5a9fe09d38fb45248ba699d885ea84302c3e",
-      "bytes": 1100614,
+      "file_sha256": "634c559078daf38d157146b70f9e8de56e22a093f17d355e78b53e3574da13e2",
+      "bytes": 662623,
       "native_size": [
         1254,
         1254
@@ -45,25 +45,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -98,8 +100,8 @@
         }
       ],
       "original_sha256": "6226dd77de69d55b4847c2ad4ab1fdb6f512327a7498d06b2b11331649e8e7f7",
-      "file_sha256": "6226dd77de69d55b4847c2ad4ab1fdb6f512327a7498d06b2b11331649e8e7f7",
-      "bytes": 1206646,
+      "file_sha256": "512eed846e280a1d90ffef60bdd19cf69a3077760ad44750f0a790b4d5ca7eba",
+      "bytes": 701433,
       "native_size": [
         1254,
         1254
@@ -109,25 +111,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -166,8 +170,8 @@
         }
       ],
       "original_sha256": "27cd505ce1aba9c87c27f8c0c4d5e4723a2ddf572bbd0fe09045967617610f0d",
-      "file_sha256": "27cd505ce1aba9c87c27f8c0c4d5e4723a2ddf572bbd0fe09045967617610f0d",
-      "bytes": 540349,
+      "file_sha256": "6ba3fee8111c87e0062140473969c03dbae67eb6713ce9292b8d507dff1f817e",
+      "bytes": 21808,
       "native_size": [
         1254,
         1254
@@ -177,26 +181,28 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: alpha mask rebuilt with ImageMagick 7.1.2-34: the native 1254x1254 alpha was upsampled to 8192x8192 (bilinear), thresholded at 50%, and box-filtered to 1024x1024, giving 8x8-supersampled edges; RGB set to pure white (#FFFFFF). This removes the faint alpha haze around the book and the partial alpha inside the cross cutout. The silhouette matches the native 50% outline to within 76 of 1,048,576 pixels.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
-        "state": "draft-needs-mask-cleanup",
+        "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "genuine transparent background verified"
+          "genuine transparent background verified",
+          "exact 1024x1024 export verified",
+          "mask cleanup verified: four mask regions only (background, book, cross cutout, separate ribbon), 65 alpha levels confined to edges, no alpha haze, pure white RGB"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
-          "Draft: reference-based generation left ragged alpha edges and small opaque remnants within the cross cutout. Deterministic mask cleanup is pending owner approval."
-        ]
+        "limitations": []
       }
     },
     {
@@ -231,8 +237,8 @@
         }
       ],
       "original_sha256": "6c2694183fab94cb77009829c76e1162116c753e6f2b3cde7657b95e7855405f",
-      "file_sha256": "6c2694183fab94cb77009829c76e1162116c753e6f2b3cde7657b95e7855405f",
-      "bytes": 563831,
+      "file_sha256": "3b43eaf8bd21b8d70515f0361189c0c7654fb647c19ac9169c4c90946bdc189d",
+      "bytes": 357174,
       "native_size": [
         1254,
         1254
@@ -242,24 +248,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "genuine transparent background verified"
+          "genuine transparent background verified",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Generated layers are close to the master placement; verify alignment during Icon Composer assembly (P21.8)."
         ]
       }
@@ -296,8 +305,8 @@
         }
       ],
       "original_sha256": "22a13b174671e13d01671396b08be86811ae23616c4fb0e32e0db1e53a66eb1b",
-      "file_sha256": "22a13b174671e13d01671396b08be86811ae23616c4fb0e32e0db1e53a66eb1b",
-      "bytes": 79552,
+      "file_sha256": "0c5421eb83126a71aa05afad63003c800f1cb17cd62d8ac15eb07722586dc261",
+      "bytes": 29146,
       "native_size": [
         1254,
         1254
@@ -307,24 +316,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "genuine transparent background verified"
+          "genuine transparent background verified",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Generated layers are close to the master placement; verify alignment during Icon Composer assembly (P21.8)."
         ]
       }
@@ -361,8 +373,8 @@
         }
       ],
       "original_sha256": "de17ba6c621712181c5ffd0cdc3a99cc17de7a4c4e7b0d268250d12bb306eab3",
-      "file_sha256": "de17ba6c621712181c5ffd0cdc3a99cc17de7a4c4e7b0d268250d12bb306eab3",
-      "bytes": 1265468,
+      "file_sha256": "8ef210afc478291f438b67231366fce401ca2b53df7b0b8201e88fa13782093a",
+      "bytes": 741342,
       "native_size": [
         1254,
         1254
@@ -372,25 +384,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -425,8 +439,8 @@
         }
       ],
       "original_sha256": "a475756e95f05cf6a27036dd81c15adaf1c807b84c6bfcb1287d3989437267c1",
-      "file_sha256": "a475756e95f05cf6a27036dd81c15adaf1c807b84c6bfcb1287d3989437267c1",
-      "bytes": 1165033,
+      "file_sha256": "f551674fb03b105d18eb99f983f6c06137a47d2444c8dd0104fa8b85b06e6f39",
+      "bytes": 696161,
       "native_size": [
         1254,
         1254
@@ -436,25 +450,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -489,8 +505,8 @@
         }
       ],
       "original_sha256": "202eaba8096baf320a574785d207459ad95bcfa2d7618d3138d64af63b900d83",
-      "file_sha256": "202eaba8096baf320a574785d207459ad95bcfa2d7618d3138d64af63b900d83",
-      "bytes": 1264994,
+      "file_sha256": "34404f504f1de9a265a5ba11e27676fa5d5a56d8737a1abb1c2f2a7eb2da41bd",
+      "bytes": 739636,
       "native_size": [
         1254,
         1254
@@ -500,25 +516,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -553,8 +571,8 @@
         }
       ],
       "original_sha256": "f40eb14ebfefa09e3176b5d3f25be3e18a5191c9418c6e7863685f89c8f76507",
-      "file_sha256": "f40eb14ebfefa09e3176b5d3f25be3e18a5191c9418c6e7863685f89c8f76507",
-      "bytes": 1371358,
+      "file_sha256": "40ca207f9fe96fd2822e48941440faa16c403a22af9cac24926bd4ac67df08b4",
+      "bytes": 785949,
       "native_size": [
         1254,
         1254
@@ -564,25 +582,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -617,8 +637,8 @@
         }
       ],
       "original_sha256": "07726738564215e42a72e19e73128606dd3584f554dc9175a598f5ddad5fb14a",
-      "file_sha256": "07726738564215e42a72e19e73128606dd3584f554dc9175a598f5ddad5fb14a",
-      "bytes": 1355831,
+      "file_sha256": "887023a76e3c9daf81070572fe340d7f9f631b78727a23e9eff8fac45da62874",
+      "bytes": 778040,
       "native_size": [
         1254,
         1254
@@ -628,25 +648,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -681,8 +703,8 @@
         }
       ],
       "original_sha256": "d5c769dea79a2dedaf2c1738f714abf0e59f6dcf6feb09f221cde6b9f176a3fa",
-      "file_sha256": "d5c769dea79a2dedaf2c1738f714abf0e59f6dcf6feb09f221cde6b9f176a3fa",
-      "bytes": 1264558,
+      "file_sha256": "7adf66d8e1d01c15e406d424dcbc73682f13e60ec87de2546e1d0759354dcd54",
+      "bytes": 741815,
       "native_size": [
         1254,
         1254
@@ -692,25 +714,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": false,
       "alpha_range": [
         255,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGB.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "opaque RGB export verified"
+          "opaque RGB export verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -745,8 +769,8 @@
         }
       ],
       "original_sha256": "a17217fbd77e89eef293bfe88a2f9532c082a1504f5435fac450ab7bf2c0e04b",
-      "file_sha256": "a17217fbd77e89eef293bfe88a2f9532c082a1504f5435fac450ab7bf2c0e04b",
-      "bytes": 431305,
+      "file_sha256": "ed75cce38dd5aa14a11ee0ad914072a07528e3058ebd90f93b61eb7f7331b441",
+      "bytes": 252935,
       "native_size": [
         1254,
         1254
@@ -756,25 +780,27 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
           "PNG decoded successfully",
           "requested subject and absence of lettering or prohibited figures reviewed",
-          "genuine transparent background verified"
+          "genuine transparent background verified",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -804,8 +830,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: an open book seen from above whose two pages carry three faint curved meridian lines and two curved parallel lines, like a map printed across the spread. Not a compass rose, no needle, no star. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.\nOutput file must be exactly 1024 pixels wide by 1024 pixels high, with a genuinely transparent alpha background.",
       "reference_images": [],
       "original_sha256": "acddcdc7060f66df829c52fe0fc32e0e703b2974bc5b5b60db40385efbd356c4",
-      "file_sha256": "acddcdc7060f66df829c52fe0fc32e0e703b2974bc5b5b60db40385efbd356c4",
-      "bytes": 277522,
+      "file_sha256": "2675c8e308b1f88aa2e7fcc2430dec04ecc3b88fd01933b19a63ae346b7b4e17",
+      "bytes": 187338,
       "native_size": [
         1254,
         1254
@@ -815,15 +841,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -831,10 +860,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -866,8 +895,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: a closed book seen from the front with a small plain cross on its cover and a single ribbon marker with a swallow-tail end hanging from its bottom edge. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.\nOutput file must be exactly 1024 pixels wide by 1024 pixels high, with a genuinely transparent alpha background.",
       "reference_images": [],
       "original_sha256": "614f679d98c536bd8d666a9bc39d4c2d73f33462318c98803fc46f3837704b74",
-      "file_sha256": "614f679d98c536bd8d666a9bc39d4c2d73f33462318c98803fc46f3837704b74",
-      "bytes": 161112,
+      "file_sha256": "73a2cc52917abd97f3fd46853aee778b0ce028d26b9aea811edbcdc04cefc2bc",
+      "bytes": 95857,
       "native_size": [
         1254,
         1254
@@ -877,15 +906,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -893,10 +925,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -928,8 +960,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry. Subject: a single bookmark ribbon hanging straight down with a swallow-tail (V-notched) end, drawn as a solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "7bdb529eee00d45159246e992c17058065622d2eb0d287ad93dd714aa7a45d10",
-      "file_sha256": "7bdb529eee00d45159246e992c17058065622d2eb0d287ad93dd714aa7a45d10",
-      "bytes": 245203,
+      "file_sha256": "81bc52736afe6d642af58bb0f926b92489eae48ae775d90f117e02adcf76f989",
+      "bytes": 144161,
       "native_size": [
         1254,
         1254
@@ -939,15 +971,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -955,10 +990,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -990,8 +1025,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two tall narrow pages side by side, each with five short horizontal lines of \"text\"; the third line on the left page is joined to the third line on the right page by a thin bridging line, suggesting the same passage compared in two books. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No letters.",
       "reference_images": [],
       "original_sha256": "44a7b82291c53c49fd9558c9393b24d66375c00a7ee3551836fb9ca6a0da92b9",
-      "file_sha256": "44a7b82291c53c49fd9558c9393b24d66375c00a7ee3551836fb9ca6a0da92b9",
-      "bytes": 194300,
+      "file_sha256": "20af9713493d40dc71b8182adedc319333714bde3cd2e67f7f647dc3a231b98c",
+      "bytes": 117417,
       "native_size": [
         1254,
         1254
@@ -1001,15 +1036,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1017,10 +1055,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1052,8 +1090,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a small family tree of books: one closed book at the top joined by thin lines to two books below it, one of which is joined to two more books beneath. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "06938837f1f7721917da5c73281c72fb865f4e6ef3a5ee6b51400149c4a2a8b1",
-      "file_sha256": "06938837f1f7721917da5c73281c72fb865f4e6ef3a5ee6b51400149c4a2a8b1",
-      "bytes": 175588,
+      "file_sha256": "fe8b279697595eb73f6ebc75275b2535ac65efe77988f7f2c6461efba27fc456",
+      "bytes": 106972,
       "native_size": [
         1254,
         1254
@@ -1063,15 +1101,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1079,10 +1120,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1114,8 +1155,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple lyre-shaped harp with five strings, the traditional emblem of the Psalms of David. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "ace4676d1ffa80c037cfcad274bb1ff174f274262ac90fc298097ce7944e3678",
-      "file_sha256": "ace4676d1ffa80c037cfcad274bb1ff174f274262ac90fc298097ce7944e3678",
-      "bytes": 232688,
+      "file_sha256": "587aac03ebe908ab6921497ac36c304ff6cb03b386f466a587a0e68ca90f0ebf",
+      "bytes": 153376,
       "native_size": [
         1254,
         1254
@@ -1125,15 +1166,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1141,10 +1185,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1176,8 +1220,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: crisp, simple geometry. Subject: a small cross pattée, whose four equal arms flare outward toward their ends, drawn as one solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 18% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "2694118e491d9a37cc15d17747b58858d6eaa63ccd9d1b0cd8b7bcfe9ac251c0",
-      "file_sha256": "2694118e491d9a37cc15d17747b58858d6eaa63ccd9d1b0cd8b7bcfe9ac251c0",
-      "bytes": 168484,
+      "file_sha256": "fa37f73b0c478a01ec4fee08e842f24416475d29c49a63f63a765367096762fa",
+      "bytes": 96792,
       "native_size": [
         1254,
         1254
@@ -1187,15 +1231,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1203,10 +1250,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1238,8 +1285,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an empty shallow bowl seen from the side, resting on a short horizontal line. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "ff9a43ed1ecbe068aa974c5546c2dd8a2cfdbc7b694b27fe5ee4274c2df8bf95",
-      "file_sha256": "ff9a43ed1ecbe068aa974c5546c2dd8a2cfdbc7b694b27fe5ee4274c2df8bf95",
-      "bytes": 109340,
+      "file_sha256": "62b3bd6573f1d320abcfb24717a26c2038d866b1968266a8ae2a9b92bf45bf41",
+      "bytes": 48835,
       "native_size": [
         1254,
         1254
@@ -1249,15 +1296,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1265,10 +1315,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1300,8 +1350,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple fish in profile, drawn as the early Christian ichthys: two arcs that meet at the head and cross to form the tail. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "6e7bc93ad85014e904bd04cdd7f681e53a533707ecf5d851ce0764afe5f5e23f",
-      "file_sha256": "6e7bc93ad85014e904bd04cdd7f681e53a533707ecf5d851ce0764afe5f5e23f",
-      "bytes": 130162,
+      "file_sha256": "e37574692ebb6532528191292d99be1df48a40bc420f7502ecdd04286f1c9037",
+      "bytes": 61555,
       "native_size": [
         1254,
         1254
@@ -1311,15 +1361,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1327,10 +1380,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1362,8 +1415,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a Gothic quatrefoil, four equal rounded lobes arranged around a small center, standing for the four seasons of the year. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "c410149b159dfeebee9a79c2423e35869a288ee4996108bda42cb475f03e51d8",
-      "file_sha256": "c410149b159dfeebee9a79c2423e35869a288ee4996108bda42cb475f03e51d8",
-      "bytes": 157824,
+      "file_sha256": "e550666228cd86a82dae3dffc6de2e8f516fdbac4a9eddc7e210ddb2031957d6",
+      "bytes": 89672,
       "native_size": [
         1254,
         1254
@@ -1373,15 +1426,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1389,10 +1445,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1424,8 +1480,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an upright sheaf of wheat bound with a cord around its middle, the ears fanning out at the top. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "a0e8252462938cc7c519c435a186d2a075b471b153b5721b7144b13aa8d5e73d",
-      "file_sha256": "a0e8252462938cc7c519c435a186d2a075b471b153b5721b7144b13aa8d5e73d",
-      "bytes": 301672,
+      "file_sha256": "60e402ef46e054d5f06b6978ca60516ebd889202e83e0575e208ac3dff70f762",
+      "bytes": 198928,
       "native_size": [
         1254,
         1254
@@ -1435,15 +1491,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1451,10 +1510,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1486,8 +1545,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single tall candle in a simple round holder with a small, still flame. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "72622a0a4e07d8f4aea2b766e819ff83a68163fb1cc041c7f4d09465290f10d5",
-      "file_sha256": "72622a0a4e07d8f4aea2b766e819ff83a68163fb1cc041c7f4d09465290f10d5",
-      "bytes": 135087,
+      "file_sha256": "54e8d68c021ff718b771a985dc6a45cb08f748e02caa2a95e61283151033d768",
+      "bytes": 76488,
       "native_size": [
         1254,
         1254
@@ -1497,15 +1556,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1513,10 +1575,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1548,8 +1610,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two hands folded in prayer, seen from the side, fingers together and pointing upward. Hands only, no arms or figure. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "5313436364a63a172e43b96a0935c7faff6f5942351ba99794dfbfe7413e75c5",
-      "file_sha256": "5313436364a63a172e43b96a0935c7faff6f5942351ba99794dfbfe7413e75c5",
-      "bytes": 162485,
+      "file_sha256": "1d754167b93a7ccaffa8aef83ea1f3f82ed429e4b59c9ebfea415fe2be5e65ca",
+      "bytes": 95819,
       "native_size": [
         1254,
         1254
@@ -1559,15 +1621,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1575,10 +1640,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1610,8 +1675,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single old-fashioned key with a round bow and a simple bit, set diagonally. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "feab36bf9a796ec6865e6cbb402c80e4829ec69551b91cdda75df7dc3b292d0f",
-      "file_sha256": "feab36bf9a796ec6865e6cbb402c80e4829ec69551b91cdda75df7dc3b292d0f",
-      "bytes": 143034,
+      "file_sha256": "17590f4ed566edb5a5662f1a094e486fa1bb238d98b73201f746be1307650517",
+      "bytes": 76163,
       "native_size": [
         1254,
         1254
@@ -1621,15 +1686,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1637,10 +1705,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1672,8 +1740,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a processional cross on a tall straight staff, the cross plain with slightly flared ends. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "451442d680b0fa2658c9605b2d29b07240b0c1ed31016490a52da336f8bb3f4b",
-      "file_sha256": "451442d680b0fa2658c9605b2d29b07240b0c1ed31016490a52da336f8bb3f4b",
-      "bytes": 90017,
+      "file_sha256": "75ebfc4bd0a78289794cf47c8fa83efa9554fce2ba6dd8d962d67cde36023b19",
+      "bytes": 38953,
       "native_size": [
         1254,
         1254
@@ -1683,15 +1751,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1699,10 +1770,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1734,8 +1805,8 @@
       "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an open book seen from above with a ribbon marker laid across the right-hand page, keeping a place. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
       "reference_images": [],
       "original_sha256": "f7743b68a0801599ead14d7a9fe3b25202a54472fb30f1c0f5f33a2737c618de",
-      "file_sha256": "f7743b68a0801599ead14d7a9fe3b25202a54472fb30f1c0f5f33a2737c618de",
-      "bytes": 203542,
+      "file_sha256": "21a1d34e8ef265c49f5a47848b47ca274c4008c1e2f6b0c1a7f9ca7c85a7aecd",
+      "bytes": 126266,
       "native_size": [
         1254,
         1254
@@ -1745,15 +1816,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1761,10 +1835,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
         "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
           "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
         ]
       }
@@ -1796,8 +1870,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose bookmark ribbon with a swallow-tail end, lying in a gentle S-curve on an otherwise empty surface. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: deliver exactly 1024 pixels wide by 1024 pixels high. Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including areas inside the ribbon outline and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "e731bc7244565e6177c5c7c977902cf342c2d7932fad21edf28ca469191b8c28",
-      "file_sha256": "e731bc7244565e6177c5c7c977902cf342c2d7932fad21edf28ca469191b8c28",
-      "bytes": 387760,
+      "file_sha256": "a98675a125abd6284500713896dbe5ca8d34cdaac54f1011f50ffa9d08176b6d",
+      "bytes": 222271,
       "native_size": [
         1254,
         1254
@@ -1807,15 +1881,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1823,11 +1900,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -1857,8 +1933,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a small blank card propped against a closed book, with a pencil lying beside it. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "37325ea72bf792ccdf645bc5e5c25c215f01fa56412f9ada8e6f151469b4974f",
-      "file_sha256": "37325ea72bf792ccdf645bc5e5c25c215f01fa56412f9ada8e6f151469b4974f",
-      "bytes": 645302,
+      "file_sha256": "709965166782ee3e3bcafc7fc0f6de281ff093935022069b7d098bb4481d597d",
+      "bytes": 355424,
       "native_size": [
         1254,
         1254
@@ -1868,15 +1944,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1884,11 +1963,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -1918,8 +1996,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed notebook with a ribbon marker and a fountain pen resting diagonally across its cover. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "2bc72ef93dd744d5345ba5353ce9c1350e194de6eb1d3c6276c5295b882d7550",
-      "file_sha256": "2bc72ef93dd744d5345ba5353ce9c1350e194de6eb1d3c6276c5295b882d7550",
-      "bytes": 971568,
+      "file_sha256": "769be587e40faf38a6b77a35947b1894276476ade47eff181c599a4111399004",
+      "bytes": 564440,
       "native_size": [
         1254,
         1254
@@ -1929,15 +2007,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -1945,11 +2026,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -1979,8 +2059,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a round magnifying glass resting on an open book whose pages show only faint, unreadable lines. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.\nDo not paint any white highlight or reflective glass area; leave the lens and every highlight area completely transparent. Keep the full magnifying glass and open book within generous margins, about 20% empty space on every side.",
       "reference_images": [],
       "original_sha256": "fb2f5dd655fbcdbca4cffde5d1549499e0a99ad1580e386c86e88c4a3a7744a6",
-      "file_sha256": "fb2f5dd655fbcdbca4cffde5d1549499e0a99ad1580e386c86e88c4a3a7744a6",
-      "bytes": 584281,
+      "file_sha256": "45d6b56b3a621e807614c5f38bc8cd8168ba208caa5f6154bff521eb125443d6",
+      "bytes": 347100,
       "native_size": [
         1254,
         1254
@@ -1990,15 +2070,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2006,11 +2089,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2040,8 +2122,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed book lying flat, its ribbon marker laid neatly along the cover. Quiet, warm, restful, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "2094242de5f7ce2fa029832647d45c7c621d938370621a1ab08d180521bdbf94",
-      "file_sha256": "2094242de5f7ce2fa029832647d45c7c621d938370621a1ab08d180521bdbf94",
-      "bytes": 807485,
+      "file_sha256": "10fc785efd0fe37fb402f4c192e53895b3ff82368ce27accf9339f79a5a83d97",
+      "bytes": 452702,
       "native_size": [
         1254,
         1254
@@ -2051,15 +2133,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2067,11 +2152,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2101,8 +2185,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: two closed books standing upright side by side on a shelf, with a narrow empty gap between them where a third book would stand. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering on the spines, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "e4c23e91dd8926ce5098cea4719bf6c13dbe1004c51586447bedf90b9b4d703a",
-      "file_sha256": "e4c23e91dd8926ce5098cea4719bf6c13dbe1004c51586447bedf90b9b4d703a",
-      "bytes": 957361,
+      "file_sha256": "11d9ac1107dc5a8cb5d2e5890473e801fb4e183d87c14ce9098eb7bfe5b66290",
+      "bytes": 565070,
       "native_size": [
         1254,
         1254
@@ -2112,15 +2196,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2128,11 +2215,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2162,8 +2248,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose page, gently curled at one corner, resting at a slight angle. Calm rather than alarming, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "712d6dd484dd0aaf70db8c087884052d942102421bce9397c9cf2cbb2cb04109",
-      "file_sha256": "712d6dd484dd0aaf70db8c087884052d942102421bce9397c9cf2cbb2cb04109",
-      "bytes": 355569,
+      "file_sha256": "a01a51775c9f0712c10cfe2be70885adea201e2142405c109c0819c197d371aa",
+      "bytes": 207311,
       "native_size": [
         1254,
         1254
@@ -2173,15 +2259,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2189,11 +2278,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2287,8 +2375,8 @@
         }
       ],
       "original_sha256": "5e83a0a1a8f4f9616b78905ef2ea7d2d7f9927d03063d1a3c765f3146f5e2f72",
-      "file_sha256": "5e83a0a1a8f4f9616b78905ef2ea7d2d7f9927d03063d1a3c765f3146f5e2f72",
-      "bytes": 69127,
+      "file_sha256": "d14dba85b769dd4cd08aae3de3cd11cb284a869b7b0646066b1a6ab1357e8170",
+      "bytes": 15839,
       "native_size": [
         1254,
         1254
@@ -2298,15 +2386,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2314,11 +2405,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2466,8 +2556,8 @@
       "generation_prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a delicate rectangular frame for a quotation card: one fine outer rule and one inner hairline close to it, with a small four-petal fleuron at each of the four corners. The interior is completely empty and fills about 80% of the canvas. Square 1024×1024. No text or letters, no emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "3a198a91267b130e7cdde3a88413bd9d16759a1b2462b65c07894fb3ba84c994",
-      "file_sha256": "3a198a91267b130e7cdde3a88413bd9d16759a1b2462b65c07894fb3ba84c994",
-      "bytes": 149645,
+      "file_sha256": "eee0b439e5492c16a4f6c8b3b0f882c796071e9f75c6bff243dd525bda9b9809",
+      "bytes": 85997,
       "native_size": [
         1254,
         1254
@@ -2477,15 +2567,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2493,11 +2586,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {
@@ -2825,8 +2917,8 @@
       "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: an open book with blank pages and a ribbon marker lying loosely across them, as if the place has been lost. Gentle, a little wry, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
       "reference_images": [],
       "original_sha256": "84d4d4a4981d19b6c89ded733e752d96012ec32576101c543a007c4da6bb4558",
-      "file_sha256": "84d4d4a4981d19b6c89ded733e752d96012ec32576101c543a007c4da6bb4558",
-      "bytes": 702064,
+      "file_sha256": "d02d668bb61764b657ac9a5e7a249d63a3f203bd1b489f9918bfa2fced46b4f4",
+      "bytes": 410401,
       "native_size": [
         1254,
         1254
@@ -2836,15 +2928,18 @@
         1024
       ],
       "saved_size": [
-        1254,
-        1254
+        1024,
+        1024
       ],
       "has_transparency": true,
       "alpha_range": [
         0,
         255
       ],
-      "export_processing": [],
+      "export_processing": [
+        "2026-10-28: resized from the native 1254x1254 output to 1024x1024 with ImageMagick 7.1.2-34 (Lanczos filter), keeping 8-bit RGBA.",
+        "Metadata stripped: the generator's embedded C2PA Content Credentials (caBX chunk) describe the native file and are not carried over; the native file, matching original_sha256, is in commit 2232e7f."
+      ],
       "review": {
         "state": "reviewed-design-source",
         "checks": [
@@ -2852,11 +2947,10 @@
           "requested subject and absence of lettering or prohibited figures reviewed",
           "genuine transparent background verified",
           "no pale or white fill pixels at alpha above 8",
-          "opacity diagnostic reviewed on white"
+          "opacity diagnostic reviewed on white",
+          "exact 1024x1024 export verified"
         ],
-        "limitations": [
-          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
-        ]
+        "limitations": []
       }
     },
     {

@@ -100,11 +100,11 @@ top-level items (sub-items roll up into their parent).
 | 28 | Operations and annual maintenance | M8 Everywhere | 7 | 0 |
 | 29 | Android and future platforms | M8 Everywhere | 9 | 0 |
 
-**Current state (2026-10-28, image preparation):** planning plus 54 generated
+**Current state (2026-10-28, image exports):** planning plus 54 generated
 PNG design sources in `design/generated/`, with a local gallery, prompts,
 and image/source registers. The owner requested this image work ahead of
-Phase 1; D15 remains open. Exact-size square exports and tinted-icon mask
-cleanup await the owner's answer about using local image tools (P2.2c).
+Phase 1; D15 remains open. Every image is now at its requested size and the
+tinted icon's mask is rebuilt, which finishes P2.2c (P2.2 stays open).
 There is no code, Makefile, or app target. D1 and D12 are decided; the other
 decisions retain their recommendations. Next app work remains P0.1, then
 Phase 1 on the working defaults (AGENTS.md §4).
@@ -619,8 +619,8 @@ When the app is demoable:
 - [ ] **P2.2 [GATE D15]** The design system.
   - [ ] **P2.2a** Hold the design session: render the Ribbon direction and two alternatives as real screens (Today, an office, the Atlas compare view) in day and night; the owner chooses (D15).
   - [ ] **P2.2b** Write `docs/design.md` (tokens, contrast, type scale, motifs, ribbons, the atlas plate, layout and Liquid Glass, appearance, symbols, components, accessibility, the app icon, and the research behind them), `design/tokens.json`, and the icon sources in `design/icon/`.
-  - [ ] **P2.2c** Prepare the owner's requested image set from `design/image-prompts.md`: all 54 PNGs, master-referenced icon variants and layers, genuine alpha masks, the local gallery, and image provenance. This preparation may precede P2.2a at the owner's request; it does not settle D15 or complete Icon Composer/SF Symbols integration.
-    - *2026-10-28 result:* all 54 PNGs generated and registered in `design/image-registry.json` and `content/SOURCES.md`. The 38 square files are native 1254×1254 rather than requested 1024×1024; 15 landscape and one portrait file meet their dimensions. Local resizing and tinted-icon mask cleanup await the owner's answer. Browser review is unavailable (local browser use disabled); PNG and alpha diagnostics were inspected. This box remains open until the exports are finished.
+  - [x] **P2.2c** Prepare the owner's requested image set from `design/image-prompts.md`: all 54 PNGs, master-referenced icon variants and layers, genuine alpha masks, the local gallery, and image provenance. This preparation may precede P2.2a at the owner's request; it does not settle D15 or complete Icon Composer/SF Symbols integration.
+    - *2026-10-28 result:* all 54 PNGs generated and registered in `design/image-registry.json` and `content/SOURCES.md`. The generator returned the 38 square files at 1254×1254; they are now exact 1024×1024 exports (ImageMagick, Lanczos), and the tinted icon's mask was rebuilt from its 50% outline in pure white, without the haze or the partial alpha in the cross. The 15 landscape files and the portrait frame met their sizes as generated. The native squares, with their C2PA Content Credentials, stay in commit 2232e7f. Checked: sizes, alpha ranges, no pale pixels in the ink masks, registry hashes, and the gallery in a browser over local HTTP.
 - [ ] **P2.3** Generate the colour tokens in the asset catalog (day and night) from `design/tokens.json` by a script, so they cannot drift; expose them as named `Color` values; add the ribbon colours with their words; and test that every text pair in `docs/design.md` meets WCAG AA in both modes.
 - [ ] **P2.4** Bundle the chosen OFL book face (with its licence file, recorded in `content/SOURCES.md`), check its glyph coverage (small capitals, ℣ ℟ ✠ † ¶, Greek, old-style figures), and add the type scale: display, title, heading, reading, rubric, red initial, eyebrow, role, page number, source, and source mark, all scaling with Dynamic Type to AX5; SF for interface text.
 - [ ] **P2.5** Build the shared components: card, eyebrow, red initial, rubric, role label, versicle and response, Amen, repetition, name chip (intercessions), ribbon marker, gilt hairline, atlas plate, page-number margin mark, `SourceFootnote` (a rubric mark that opens a source sheet with book, printing, and page), margin note (wide layouts), empty/loading/error states, a haptics helper, and a share helper that always attaches attribution.
@@ -948,24 +948,24 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-28, image preparation:** owner requested all images ahead of the
-  build loop, using image-generation subagents. All 54 PNG filenames exist
-  in `design/generated/`, including optional E5–E12 seasonal plates.
-- Added P2.2c for this preparation; it remains open. No phase totals changed.
-  D15 stays open; Ribbon is the working proposal, not an approved identity.
-- `design/generated/index.html` is a local gallery; `design/image-registry.json`
-  records prompts, references, hashes, dimensions, and limits.
-  `content/SOURCES.md` registers the design sources as pending release review.
-- 35 images have real alpha. B/C/D/E4 ink masks have no pale fills; subjects
-  were checked through opacity diagnostics. All source PNGs are unmodified.
-- 38 squares are native 1254×1254; 15 landscape files are 1536×1024 and the
-  portrait frame is 1024×1536. Local export resizing awaits owner approval.
-- A3 tinted icon is a draft: alpha specks and a partly imperfect cross cutout
-  persisted through generation. Local mask cleanup is also awaiting approval.
-  A4/A5 placement still needs Icon Composer verification at P21.8.
-- No Makefile or app exists: `make check`, builds, and simulator flows cannot
-  run. Local browser use is disabled in Work settings, so browser QA could
-  not run; direct PNG inspection and alpha metadata/plots were used.
-- Initial `git pull --ff-only origin main` found no remote main (empty repo).
+- **2026-10-28, image exports:** finished P2.2c. The 38 square PNGs, which
+  the generator returned at 1254×1254, are now exact 1024×1024 exports
+  (ImageMagick 7.1.2-34, Lanczos, metadata stripped). The 15 landscape files
+  and the portrait frame were already the requested size and are unchanged.
+- A3's mask was rebuilt: native alpha upsampled to 8192 px, thresholded at
+  50%, box-filtered to 1024; RGB pure white. Four regions only (background,
+  book, cross cutout, ribbon); the outline differs from the native one by 76
+  pixels. The haze and the partial alpha in the cross are gone.
+- `design/image-registry.json` records new hashes, sizes, and each export
+  step; `original_sha256` names the native files, which stay in commit
+  2232e7f with their C2PA Content Credentials (the exports drop that chunk).
+- Re-checked all 38: 1024×1024, alpha 0–255 where transparent, still no pale
+  pixels in the B/C/D/E4 ink masks, and registry hashes match.
+- The gallery now loads in a browser over local HTTP: 54 images at their
+  recorded sizes, 31 night samples. Fixed its CSS so A3 shows on the night
+  colour instead of the checkerboard.
+- Still open: A4/A5 alignment in Icon Composer (P21.8); tracing the symbols
+  (P2.5); D15; release clearance for every image (P3.6).
+- No Makefile or app exists, so `make check` and simulator flows cannot run.
 - Next app work: P0.1, then P1.1 on working defaults. D1/D12 decided; all
   other decisions open. Repository visibility remains D11; no settings changed.

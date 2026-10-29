@@ -28,8 +28,8 @@ rubric red, a gilt edge, and the season's colour carried by a ribbon marker.
 
 **Planning, with generated design artwork.** No code exists yet. The
 [image gallery](design/generated/index.html) contains the 54 requested PNG
-design sources; [its README](design/generated/README.md) records export
-limits and the remaining work. D15 is still open. This README, [AGENTS.md](AGENTS.md), and
+design sources; [its README](design/generated/README.md) records how
+they were exported and the remaining work. D15 is still open. This README, [AGENTS.md](AGENTS.md), and
 [BUILD.md](BUILD.md) set out the finished app, the owner decisions, the
 research behind them, and thirty phases of checklists. The app name (D1) and
 the domains and support email (D12) are decided; the other decisions carry
