@@ -30,7 +30,7 @@ module ComponentsHelper
   # A rubric: an instruction, not words to be said, and announced as one.
   def rubric(text = nil, &block)
     tag.p(class: "rubric") do
-      safe_join([ tag.span("Instruction: ", class: "visually-hidden"), text || capture(&block) ])
+      safe_join([ tag.span("Instruction: ", class: "visually-hidden no-copy"), text || capture(&block) ])
     end
   end
 
@@ -56,7 +56,7 @@ module ComponentsHelper
   # A line the book directs to be said again, set in from the margin.
   def repetition(text = nil, &block)
     tag.p(class: "repetition") do
-      safe_join([ tag.span("Repeated: ", class: "visually-hidden"), text || capture(&block) ])
+      safe_join([ tag.span("Repeated: ", class: "visually-hidden no-copy"), text || capture(&block) ])
     end
   end
 

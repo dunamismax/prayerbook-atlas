@@ -29,4 +29,12 @@ class DevPagesTest < ActionDispatch::IntegrationTest
       assert_select ".margin-note h2", "A margin note"
     end
   end
+
+  test "the block sample renders in both modes" do
+    [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
+      get dev_liturgy_path, headers: { "User-Agent" => user_agent }
+      assert_response :success
+      assert_select ".liturgy [data-block]", minimum: SampleBlocks.all.size
+    end
+  end
 end

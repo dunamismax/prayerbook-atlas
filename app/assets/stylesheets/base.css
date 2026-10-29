@@ -95,6 +95,13 @@ textarea {
   top: var(--space-l);
 }
 
+/* Announced or shown, but not part of the text: left out of a copy. */
+.no-copy,
+.page-mark {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

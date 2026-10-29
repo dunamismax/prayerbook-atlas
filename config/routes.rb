@@ -61,10 +61,11 @@ Rails.application.routes.draw do
   resource :site_mode, only: :update
 
   # Development aids, never routed in production: the type specimen (P2.4)
-  # and the component gallery (P2.5).
+  # the component gallery (P2.5), and the block sample (P2.9).
   if Rails.env.local?
     get "dev/type", to: "dev#type", as: :dev_type
     get "dev/components", to: "dev#components", as: :dev_components
+    get "dev/liturgy", to: "dev#liturgy", as: :dev_liturgy
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

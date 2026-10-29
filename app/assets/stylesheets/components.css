@@ -246,6 +246,7 @@
    right, and each page number hangs in it beside the line where the page
    begins; on the phone, and in a very narrow window, the number is inline. */
 .page-mark {
+  margin: 0 0.3em;
   color: var(--muted);
   font-style: italic;
   font-size: var(--type-page-number-size);
@@ -273,7 +274,7 @@
   .site--full .with-page-marks .page-mark {
     float: none;
     width: auto;
-    margin-right: 0;
+    margin: 0 0.3em;
     padding-left: 0;
   }
 }
@@ -352,6 +353,88 @@
 
 .state p:last-child {
   margin-bottom: 0;
+}
+
+/* A prayer book's text, set by LiturgyHelper (BUILD.md P2.9). */
+.liturgy {
+  margin: 0 0 var(--space-xl);
+}
+
+.liturgy-heading {
+  margin-top: var(--space-xl);
+}
+
+.liturgy .versicles,
+.liturgy .role-lines {
+  margin: 0 0 var(--space-l);
+}
+
+.role-lines .versicle {
+  padding-left: 0;
+  text-indent: 0;
+}
+
+.amen-line {
+  margin-top: calc(-1 * var(--space-m));
+}
+
+/* A psalm verse: the book's number, the KJV's where it differs, and the
+   half-verse mark the book prints, in rubric. */
+.psalm-verse {
+  margin: 0 0 var(--space-s);
+  padding-left: 2rem;
+  text-indent: -2rem;
+}
+
+.verse-number {
+  display: inline-block;
+  min-width: 1.75rem;
+  color: var(--muted);
+  font-size: var(--type-source-size);
+  text-indent: 0;
+}
+
+.verse-number-kjv {
+  margin-right: var(--space-xs);
+  color: var(--muted);
+  font-style: italic;
+  font-size: var(--type-page-number-size);
+}
+
+.half-verse-mark {
+  color: var(--rubric);
+}
+
+.collect-title {
+  margin-bottom: var(--space-xs);
+  font-style: italic;
+}
+
+/* Alternatives: each choice set off by a hairline, labelled as the book labels it. */
+.alternatives {
+  margin: 0 0 var(--space-l);
+}
+
+.alternative + .alternative {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-m);
+}
+
+.alternative-label {
+  margin-bottom: var(--space-xs);
+  color: var(--rubric);
+  font-style: italic;
+  font-size: var(--type-rubric-size);
+}
+
+/* Where the day's proper or seasonal text will go: visible, with the book's own words. */
+.seasonal-insertion {
+  border-left: 1px dashed var(--rubric);
+  padding-left: var(--space-m);
+}
+
+.insertion {
+  font-style: normal;
 }
 
 /* Settings' plain forms: a fieldset of choices and one primary action. */

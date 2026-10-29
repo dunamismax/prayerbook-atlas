@@ -258,6 +258,7 @@ all.
 | Source mark and note | `source_note { ... }` | `.source-mark`, `.source-note` | The `popover` attribute: opens without script, closes with Escape, a click outside, or Close; shown inline where popovers are unsupported |
 | Margin note | `margin_note(title) { ... }` | `.margin-note` | The margin on the full site; "Notes and sources" on the phone |
 | Empty, loading, error | `render "shared/state", kind:` | `.state`, `.state--<kind>` | Words first; the error is an `alert`, the others a `status` |
+| A prayer book's text | `liturgy(blocks)` (`LiturgyHelper`) | `.liturgy` and one element per block | Sets `LiturgicalBlock`s (P2.9): headings under the page's `h1`, rubrics announced, page numbers where each printed page begins, insertion points as printed. The announced prefixes, page numbers, and KJV verse numbers are `user-select: none`, so a copy gives the words alone. `/dev/liturgy` shows every kind |
 | Notice | — | `.notice` | A double rule at the left on `--wash`; always in words |
 | Primary and quiet actions | — | `.primary-action`, `.quiet-action` | Square, outlined |
 | Plain list | — | `.plain-list` | Hairlines between rows |
