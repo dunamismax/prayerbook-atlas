@@ -75,7 +75,7 @@ top-level items (sub-items roll up into their parent).
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
-| 1 | Rails foundation | M1 Foundation | 12 | 9 |
+| 1 | Rails foundation | M1 Foundation | 12 | 10 |
 | 2 | Design system and site shell | M1 Foundation | 14 | 3 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
@@ -570,7 +570,8 @@ When the site is demoable:
   - *2026-10-29 result:* checked in the in-app browser at 1440×900 (light and dark), 800×900, and the mobile preset (375×812 with a phone user agent): both layouts, the tab bar, the folded margin, and the mode switch both ways; no console errors or CSP violations.
 - [x] **P1.9** `bin/ci` passes: setup, RuboCop, bundler-audit, importmap audit, Brakeman, tests, and seeds.
 - [ ] **P1.10** GitHub Actions: the generated workflow (`.github/workflows/ci.yml`), on manual dispatch only (P0.9). Tick after the first hosted run passes.
-- [ ] **P1.11** System tests with Capybara and headless Chrome: a phone-sized window with a phone user agent and a desktop-sized window, each visiting every section; `bin/rails test:system` added to `config/ci.rb` and the workflow. Screenshots go to `tmp/screenshots/`, never committed.
+- [x] **P1.11** System tests with Capybara and headless Chrome: a phone-sized window with a phone user agent and a desktop-sized window, each visiting every section; `bin/rails test:system` added to `config/ci.rb` and the workflow. Screenshots go to `tmp/screenshots/`, never committed.
+  - *2026-10-29 result:* `ApplicationSystemTestCase` (1440×900) and `PhoneSystemTestCase` (Chrome's mobile emulation at 390×844: a phone user agent and `Sec-CH-UA-Mobile: ?1`, since a bare user-agent override still sends `?0`, which `SiteMode` reads first). Each driver is registered under its own name; with one shared name the last class's driver wins. Small-capital labels render lower-case, so visible-text assertions match case-insensitively.
 - [ ] **P1.12** Survey the Anglican prayer websites Research finding 1 lists (what each offers, which books, how it sources texts, how it works on a phone), and update finding 1 and the feature map.
 
 ## Phase 2: Design system and site shell

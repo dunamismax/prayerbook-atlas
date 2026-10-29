@@ -71,10 +71,14 @@ bin/ci
 ```
 
 It runs setup, RuboCop, bundler-audit, the importmap audit, Brakeman, the
-tests, and the seeds (`config/ci.rb`). Separately:
+tests, the system tests, and the seeds (`config/ci.rb`). Separately:
 
 ```bash
 bin/rails test
+```
+
+```bash
+bin/rails test:system
 ```
 
 ```bash
@@ -85,7 +89,12 @@ bin/rubocop -a
 bin/rails design:tokens
 ```
 
-The last regenerates `app/assets/stylesheets/tokens.css` from
+The system tests drive headless Chrome through every section twice: as a
+desktop window on the full site, and as a phone (Chrome's mobile emulation,
+which sends a phone user agent and the mobile client hint) on the phone site.
+Their screenshots go to `tmp/screenshots/`, which is never committed.
+
+`bin/rails design:tokens` regenerates `app/assets/stylesheets/tokens.css` from
 `design/tokens.json`; a test fails if you forget.
 
 The GitHub workflow (`.github/workflows/ci.yml`) runs the same checks on
