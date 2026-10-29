@@ -70,7 +70,7 @@ top-level items (sub-items roll up into their parent).
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 9 |
-| 1 | Repository and toolchain | M1 Foundation | 14 | 13 |
+| 1 | Repository and toolchain | M1 Foundation | 14 | 14 |
 | 2 | Design system and app shell | M1 Foundation | 14 | 10 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
@@ -100,8 +100,8 @@ top-level items (sub-items roll up into their parent).
 | 28 | Operations and annual maintenance | M8 Everywhere | 7 | 0 |
 | 29 | Android and future platforms | M8 Everywhere | 9 | 0 |
 
-**Current state (2026-10-29):** Phase 1 is done except P1.14 (waiting for
-the owner to confirm the TestFlight install). Phase 2 has P2.1–P2.8, P2.13,
+**Current state (2026-10-29):** Phase 1 is done, P1.14 included (the owner
+confirmed the TestFlight install). Phase 2 has P2.1–P2.8, P2.13,
 and P2.14 done: the app runs in Engraved Plate (D15) with Cardo, the shared
 components (Debug `-componentGallery`), and ContentKit's `LiturgicalBlock`.
 No liturgical text is in the app. Every D is decided; agents decide open
@@ -622,8 +622,9 @@ When the app is demoable:
   - *2026-10-28 result:* triggers are P0.10's recommendation as a working default (manual, and pushes to `main` while the repository is public; skipped on a private one). Hosted run 40810242713 (commit 13a7c7e, `xcode-27` image) passed `make check`. A running check now finishes rather than being cancelled by the next push.
 - [x] **P1.13** Make `make test-linux` run every package's tests in the `swift:6.4` container (install Colima or Docker first; Research finding 16), and add a static guard that packages import only Linux-available modules.
   - *2026-10-28 result:* the Docker CLI (29.9.2, Homebrew) was linked and Colima started (4 CPUs, 6 GB). `make test-linux` passes every package's tests in `swift:6.4` (aarch64 Linux). `scripts/check-package-imports.sh`, from Beautiful Corner, runs in `make guards`; probes importing UIKit, and SQLite3 without `#if canImport`, made it fail. `make check` does not run `test-linux` (the hosted macOS runner has no Docker).
-- [ ] **P1.14** The TestFlight path to the owner's iPhone: `make archive` and `make testflight` (a signed Release archive with release-checked content, uploaded to App Store Connect), the privacy manifest it needs, and `docs/release.md` with the one-time setup. Tick after the first build installs through TestFlight.
-  - *2026-10-29 result:* build 0.1.0 (20261029.0935, commit 513cccf) uploaded and in internal beta testing; group Owner created and both team users invited, through the App Store Connect API key. Tick when the owner confirms the install.
+- [x] **P1.14** The TestFlight path to the owner's iPhone: `make archive` and `make testflight` (a signed Release archive with release-checked content, uploaded to App Store Connect), the privacy manifest it needs, and `docs/release.md` with the one-time setup. Tick after the first build installs through TestFlight.
+  - *2026-10-29 result:* build 0.1.0 (20261029.0935, commit 513cccf) uploaded and in internal beta testing; group Owner created and both team users invited, through the App Store Connect API key.
+  - *2026-10-29:* the owner confirmed that TestFlight works and the build installs on the owner's iPhone.
   - *2026-10-28 note:* prepared, waiting on the owner. `make archive`, `make testflight`, `Config/ExportOptions.plist`, the privacy manifest, and `docs/release.md` are in place; an unsigned device archive builds with zero warnings. Signing and uploading need the owner's account: P0.6, P0.7, and the steps in `docs/release.md`.
 
 ## Phase 2: Design system and app shell
@@ -882,6 +883,7 @@ App Review need a privacy policy and a support page.
 - [ ] **P21.6** Automated screenshots by UI tests for the required device sizes, in light and dark.
 - [ ] **P21.7** The rights audit: generate `docs/rights-audit.md` from `SOURCES.md`, with every shipped item `cleared` for every storefront (D14).
 - [ ] **P21.8 [OWNER]** Approve the final app icon as an Icon Composer file.
+  - *2026-10-29 note:* the owner keeps all the current generated icons (A1–A12), not Engraved Plate versions; the final icon is assembled from them (A4 and A5 layers).
 - [ ] **P21.9 [OWNER] [REVIEW]** Theological sign-off on every [REVIEW] item, with a priest where possible (D18).
 - [ ] **P21.10 [OWNER]** A TestFlight beta, internal then external, with users of each launch book. Agents triage feedback into BUILD.md items.
 - [ ] **P21.11 [OWNER]** Submit version 1.0 for review and release, and update the website (P19.3).
@@ -976,8 +978,8 @@ The owner decides priority; promoted items become full phases.
 - **Images are the owner's only** (owner, decision 20, AGENTS.md §6): an
   agent-drawn icon was rejected and reverted. Write prompts in
   `design/image-prompts.md`; never draw, redraw, trace, or restyle. The
-  icon is still the Ribbon A1–A3 set; Engraved Plate icon prompts (F1–F3)
-  await the owner. Custom symbols likewise; SF Symbols meanwhile.
+  owner keeps all current generated icons (A1–A12); no Engraved Plate
+  icon. Custom symbols wait on the owner; SF Symbols meanwhile.
 - **Cardo:** only Regular has `smcp`, Bold has no features; labels are
   Regular small caps, page numbers Italic `onum`. ✠ falls back to system.
 - **Flaky UI test fixed:** iOS 27 sometimes drops tab identifiers; the tour
@@ -988,5 +990,6 @@ The owner decides priority; promoted items become full phases.
   and the two-line drop initial), P2.10, P2.11, P2.12 (Settings, the
   acknowledgements with Cardo's OFL, the in-app appearance setting, then
   extend `TourUITests`), then Phase 3.
-- Still the owner's: confirm the TestFlight install (P1.14), P0.8, P0.9,
-  the [GATE DEMO] letters, and whether to generate the F1–F3 icon.
+- **TestFlight confirmed** on the owner's iPhone (P1.14 ticked).
+- Still the owner's: P0.8 (optional), P0.9 (deferred), the [GATE DEMO]
+  letters.

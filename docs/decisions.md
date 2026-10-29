@@ -265,4 +265,6 @@ Beautiful Corner's decision log (entry 16 below).
   the placeholder icon would be redrawn as original vector art.
 - **Why:** An agent-drawn Engraved Plate icon was made on 2026-10-29 and the
   owner rejected it; it was reverted the same day, and the owner's generated
-  icon (A1–A3) is the placeholder again.
+  icon (A1–A3) is the placeholder again. The owner then chose to keep all
+  the current generated icons (A1–A12) unchanged, so no Engraved Plate
+  icon is to be made (owner, 2026-10-29).

@@ -8,8 +8,8 @@ image generation.
 
 Sections A–E follow the **Ribbon** design proposal (BUILD.md), which was
 generated before the owner chose **B · Engraved Plate** for D15 on
-2026-10-29. Section F holds Engraved Plate versions. Agents write and revise
-these prompts; only the owner generates images (decision 20).
+2026-10-29; the owner keeps the generated icons as they are. Agents write and
+revise these prompts; only the owner generates images (decision 20).
 
 ## How to use them
 
@@ -405,32 +405,4 @@ Fine engraved line illustration with a soft ink wash, like a hand-coloured plate
 
 ```text
 Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, greens leaning toward #3E6A48. Subject: a summer footpath through green fields and hedgerows leading toward the small stone tower of a distant country parish church. Peaceful, ordinary, still. Landscape 1536×1024. No text or lettering, no people, no signs, no flags, no logos or emblems.
-```
-
----
-
-## F. Engraved Plate versions (added 2026-10-29)
-
-The owner chose **B · Engraved Plate** for D15 (docs/design.md): chart paper,
-iron-blue ink, double-rule frames, square corners, and one cartographer's
-blue. These prompts are for the owner to generate if the icon should follow
-the new palette; until then the A1–A3 Ribbon icon stays the placeholder.
-Agents write prompts only and never draw images (decision 20).
-
-### F1. App icon, light, Engraved Plate · `icon-app-plate-light.png` · *Attach A1*
-
-```text
-Recreate the attached app icon as an engraved plate from an old atlas, keeping the same book, angle, size, cross, ribbon, and composition. Change the palette and finish: the cover in deep iron-blue ink (#1A2230) with a thin double-rule border in pale chart paper (#F3F1EA) and a small, plain Latin cross in the same pale colour; the ribbon marker in cartographer's blue (#2A4A7F) with a swallow-tail end; the background solid chart paper (#F3F1EA) with a few very faint, thin graticule lines (gently curved lines of latitude and longitude, #B9BCC2) behind the book. Fine engraved linework, crisp edges, at most a hint of hatched shading; it must read clearly at 60 px. Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. No text or letters, no logos or emblems, no compass rose, no compass points or star.
-```
-
-### F2. App icon, dark, Engraved Plate · `icon-app-plate-dark.png` · *Attach F1*
-
-```text
-Recreate the attached app icon exactly for dark mode: the same book, cross, ribbon, graticule, and composition. Background solid night-chart blue-black (#0E131A) with the graticule lines very faint (#2F3B4C); the cover pale ink (#E4E8EE) with its double-rule border and cross in the blue-black (#0E131A); the ribbon in pale cartographer's blue (#8FB1E3). Square 1024×1024, full-bleed, no rounded corners or shadow. Crisp edges. No text or letters, no logos or emblems, no compass rose.
-```
-
-### F3. App icon, tinted, Engraved Plate · `icon-app-plate-tinted.png` · *Attach F1*
-
-```text
-Recreate the attached app icon as a single-colour silhouette for iOS tinted mode: the same book, cross, and ribbon, in pure white with the cross and border cut out as transparent, on a fully transparent background. No graticule, no other colours, no shadow. Square 1024×1024. Crisp edges. No text or letters.
 ```
