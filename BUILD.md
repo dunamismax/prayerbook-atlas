@@ -599,7 +599,8 @@ When the app is demoable:
 ## Phase 1: Repository and toolchain
 
 - [x] **P1.1** Add `.gitignore`: Xcode user data, DerivedData, `build/`, `.build/`, `.swiftpm/`, generated `*.xcodeproj`, `Config/Secrets.xcconfig`, `.env*`, `*.p8`, `*.p12`, `*.cer`, `*.mobileprovision`, `.DS_Store`, `screenshots/`, `research/`, and the generated `Content.sqlite`.
-- [ ] **P1.2** Update `README.md`: prerequisites confirmed on this Mac, a quick start that works, and the real repository layout.
+- [x] **P1.2** Update `README.md`: prerequisites confirmed on this Mac, a quick start that works, and the real repository layout.
+  - *2026-10-28 note:* done after P1.10, because the quick start needed the Makefile; its commands were run from clean.
 - [x] **P1.3 [REVIEW]** Draft `SOUL.md`: the owner's statement of faith as Grace & Footnotes SOUL.md §2 gives it (the owner's words, unaltered), the sources and their authority, the quotation practice for this app (D5), voice and pastoral conduct, and a closing section on serving common prayer in an app (the principles above, D8's fairness among Anglicans, and AGENTS.md §3). The owner approves it (P0.11).
   - *2026-10-28 result:* drafted. §2 is Grace & Footnotes SOUL.md §2's statement and closing line (lines 21–43 at its commit fcb2a90), copied by script and checked byte-identical with `diff`. Status line says draft; approval is P0.11, still open.
 - [x] **P1.4** Create `docs/decisions.md` as a numbered, append-only decision log. Seed it with the [Engineering foundations](#engineering-foundations), the deployment target (D2), the Scripture policy (D5), the no-tracking rule, and the reuse rule (D10).

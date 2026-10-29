@@ -26,9 +26,11 @@ rubric red, a gilt edge, and the season's colour carried by a ribbon marker.
 
 ## Status
 
-**Planning, with generated design artwork.** No code exists yet. The
-[image gallery](design/generated/index.html) contains the 54 requested PNG
-design sources; [its README](design/generated/README.md) records how
+**Phase 1: repository and toolchain.** The app builds and launches to a
+placeholder Today that shows the date; the three foundation packages, the
+Makefile, and `make check` are in place. No liturgical text is in the app
+yet. The [image gallery](design/generated/index.html) contains 54 generated
+PNG design sources; [its README](design/generated/README.md) records how
 they were exported and the remaining work. D15 is still open. This README, [AGENTS.md](AGENTS.md), and
 [BUILD.md](BUILD.md) set out the finished app, the owner decisions, the
 research behind them, and thirty phases of checklists. The app name (D1) and
@@ -40,8 +42,8 @@ status** table and **Handoff notes** always give the current state.
 | --- | --- |
 | [BUILD.md](BUILD.md) | The master plan: the finished app, owner decisions, research, phases, checklists, and handoff notes |
 | [AGENTS.md](AGENTS.md) | How every coding session works in this repository, and the faith and voice that govern it |
-| SOUL.md | The statement of faith, voice, and conduct guide, adapted from Grace & Footnotes (BUILD.md P1.3) |
-| `docs/decisions.md` | The numbered, append-only decision log (P1.4) |
+| [SOUL.md](SOUL.md) | The owner's statement of faith and the app's voice and conduct guide (draft awaiting the owner's approval, P0.11) |
+| [docs/decisions.md](docs/decisions.md) | The numbered, append-only decision log |
 | [design/image-prompts.md](design/image-prompts.md) | One image-generation prompt per icon, symbol, drawing, ornament, and plate the plan needs |
 | [design/generated/](design/generated/README.md) | 54 generated PNG design sources and a local review gallery |
 | [design/image-registry.json](design/image-registry.json) | Image provenance, exact prompts, hashes, alpha checks, dimensions, and review limits |
@@ -106,9 +108,9 @@ uses no church's seal, shield, or logo. Each prayer book's text belongs to
 its own church and publisher; the app credits each and uses copyrighted
 texts only with permission.
 
-## Stack (planned)
+## Stack
 
-Native iOS in Swift 6 and SwiftUI, with pure logic in local Swift packages
+As planned (Phase 1 has built the first part): native iOS in Swift 6 and SwiftUI, with pure logic in local Swift packages
 (`ChurchYear`, `ContentKit`, `ScriptureKit`, `OfficeKit`, `AtlasKit`),
 liturgical texts compiled into a bundled read-only SQLite database whose
 compiler refuses any source not cleared, user data in SwiftData with optional
@@ -120,7 +122,7 @@ are in [BUILD.md](BUILD.md#engineering-foundations).
 
 ## Prerequisites
 
-Checked on the owner's Mac on 2026-10-28 (macOS 27.2):
+Checked on the owner's Mac on 2026-10-28 (macOS 27.2) by running `make check`:
 
 | Tool | Version | Notes |
 | --- | --- | --- |
@@ -128,46 +130,46 @@ Checked on the owner's Mac on 2026-10-28 (macOS 27.2):
 | Swift | 6.4 (swiftlang-6.4.0.34.1) | Ships with Xcode |
 | XcodeGen | 2.46.0 | `brew install xcodegen` |
 | `swift format` | bundled with the Xcode 27 toolchain | Run as `swift format` |
-| Docker or Colima | not installed yet | Optional, for `make test-linux` in the `swift:6.4` container |
+| iOS simulators | iOS 26.5, 27.0, 27.1 | Any iPhone; `scripts/sim-destination.sh` picks the newest |
+| Colima and Docker | Colima installed; Docker CLI not yet | Optional, for `make test-linux` in the `swift:6.4` container (P1.13) |
 
 ## Quick start
 
-There is nothing to build until Phase 1. Once P1.10 writes the Makefile:
-
 ```sh
 brew install xcodegen   # once
-make generate           # generate PrayerbookAtlas.xcodeproj from project.yml
-make run                # build, boot a simulator, install and launch the app
-make check              # lint, guards, package tests, content, app tests
+make run                # generate the project, build, boot a simulator, install and launch
+make check              # lint, package tests, content, app tests, Release build
 ```
 
-`make help` will list every target. Never edit the `.xcodeproj`: it is
-generated from `project.yml` and gitignored.
+`make help` lists every target. `SIM_DEVICE="iPhone 17 Pro" make run` picks
+a simulator by name or UDID, and `make screenshot APPEARANCE=dark
+TEXT_SIZE=accessibility-extra-extra-extra-large` saves one to the gitignored
+`screenshots/`. Never edit the `.xcodeproj`: it is generated from
+`project.yml` and gitignored. To sign for a device, see
+`Config/Secrets.xcconfig.example`.
 
-## Layout (planned)
+## Layout
 
 ```text
 App/                     SwiftUI app target (UI and composition only)
+App/Resources/           Asset catalog (colours, later the icon)
 AppTests/                App unit tests (Swift Testing)
 AppUITests/              App UI tests (XCTest)
 Config/                  Base.xcconfig; Secrets.xcconfig.example for signing
-Packages/ChurchYear      Easter, seasons, holy days, precedence, fasts, collects, lectionaries
-Packages/ContentKit      Content models, the SQLite reader, search
-Packages/ScriptureKit    The canon, references, and the Psalters' verse numbering
-Packages/OfficeKit       Assembling the offices and services for a day and a book
-Packages/AtlasKit        Works and witnesses: the same prayer across books, compared
-Tools/ContentCompiler    Checks content/ and writes Content.sqlite
+Packages/ChurchYear      The church year: CivilDate so far; Easter, seasons, holy days, collects to come
+Packages/ContentKit      Content models: the prayer-book identifiers so far; the SQLite reader to come
+Packages/ScriptureKit    Scripture: the translation identifiers so far; references and Psalters to come
 content/                 Sourced texts and tables; SOURCES.md is the rights registry
-Website/                 The public website for prayerbookatlas.com
-design/                  Design tokens and app icon sources
-docs/                    Decision log and design documents
-scripts/                 Simulator picker, guards, importers, renderers
+design/                  Generated image sources, prompts, and their registry
+docs/                    The decision log
+scripts/                 Simulator picker and the warnings check
 project.yml              The XcodeGen project specification
 Makefile                 Every build, test, and run command
 ```
 
-Later phases add `Widgets/` and `Watch/` (extensions), `Packages/SharedModels`,
-and `Server/`.
+Later phases add `Packages/OfficeKit` (Phase 6), `Packages/AtlasKit`
+(Phase 11), `Tools/ContentCompiler` (Phase 3), `Website/` (Phase 19),
+`Widgets/` and `Watch/` (Phase 18), `Packages/SharedModels`, and `Server/`.
 
 ## Further reading
 
