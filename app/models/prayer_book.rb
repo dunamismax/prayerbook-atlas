@@ -16,6 +16,10 @@ class PrayerBook < Data.define(:id, :title, :year)
     ALL
   end
 
+  def self.ids
+    ALL.map(&:id)
+  end
+
   def self.find(id)
     ALL.find { |book| book.id == id } or raise KeyError, "no prayer book #{id}"
   end
