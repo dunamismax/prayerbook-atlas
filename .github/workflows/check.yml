@@ -15,9 +15,11 @@ on:
 permissions:
   contents: read
 
+# A running check finishes; only the newest waiting push runs after it (older waiting
+# runs are replaced), so frequent pushes to main still get a completed check.
 concurrency:
   group: check-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   check:
