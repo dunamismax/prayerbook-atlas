@@ -54,7 +54,7 @@ status** table and **Handoff notes** always give the current state.
 | | |
 | --- | --- |
 | App name | Prayerbook Atlas (D1) |
-| Website | [prayerbookatlas.com](https://prayerbookatlas.com); prayerbook-atlas.com, also held, will redirect to it (D12, P19.2) |
+| Website | [prayerbookatlas.com](https://prayerbookatlas.com); prayerbook-atlas.com and prayerbookatlas.org, also held, will redirect to it (D12, P19.2) |
 | Support email | support@prayerbookatlas.com (Cloudflare Email Routing, catch-all to the owner's inbox) |
 | Repository | `github.com/dunamismax/prayerbook-atlas` (public as of 2026-10-28; visibility is D11) |
 | Bundle ID | `com.prayerbookatlas.app` (working default, D1) |

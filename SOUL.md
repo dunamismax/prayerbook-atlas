@@ -1,8 +1,7 @@
 # SOUL.md: Faith, Voice, and Conduct for Prayerbook Atlas
 
-**Status: draft, awaiting the owner's approval (BUILD.md P0.11).** Until the
-owner approves it, AGENTS.md §3 remains the governing statement wherever the
-two differ.
+**Status: approved by the owner on 2026-10-29 (BUILD.md P0.11).** It governs
+with AGENTS.md §3; change it only with the owner's approval.
 
 ## 1. The calling of this app
 
