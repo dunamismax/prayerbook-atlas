@@ -5,18 +5,18 @@
   </head>
 
   <body <%= tag.attributes(class: "site site--full", data: { site_mode: "full", controller: ("wake-lock" if reading_settings[:keep_awake] == "yes") }) %>>
-    <a class="skip-link" href="#main">Skip to the text</a>
+    <a class="skip-link" href="#main"><%= t("site.skip_link") %></a>
 
     <header class="masthead">
       <%= render "shared/wordmark" %>
       <%= render "shared/section_nav" %>
-      <nav class="masthead-tools" aria-label="Tools">
-        <%= link_to "Settings", settings_path, aria: { current: ("page" if current_page?(settings_path)) } %>
+      <nav class="masthead-tools" aria-label="<%= t("site.tools") %>">
+        <%= link_to t("site.settings"), settings_path, aria: { current: ("page" if current_page?(settings_path)) } %>
       </nav>
     </header>
 
     <div class="full-layout">
-      <nav class="contents" aria-label="In this section">
+      <nav class="contents" aria-label="<%= t("site.in_this_section") %>">
         <%= content_for?(:contents) ? yield(:contents) : render("shared/contents") %>
       </nav>
 
@@ -24,7 +24,7 @@
         <%= yield %>
       </main>
 
-      <aside class="margin" aria-label="Margin">
+      <aside class="margin" aria-label="<%= t("site.margin") %>">
         <%= yield :margin %>
       </aside>
     </div>

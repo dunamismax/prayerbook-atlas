@@ -3,7 +3,7 @@
     link, a [text, path] pair to the way on. %>
 <% link = local_assigns[:link] %>
 <div class="state state--<%= kind %>" role="<%= kind.to_sym == :error ? "alert" : "status" %>">
-  <%= eyebrow({ empty: "nothing here", loading: "loading", error: "something went wrong" }.fetch(kind.to_sym)) %>
+  <%= eyebrow(t(".#{kind}")) %>
   <p class="state-title"><%= title %></p>
   <p><%= message %></p>
   <% if link %>

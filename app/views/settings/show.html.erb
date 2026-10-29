@@ -1,118 +1,84 @@
-<% content_for :title, "Settings" %>
+<% content_for :title, t(".title") %>
 
-<%= eyebrow "your choices" %>
-<h1>Settings</h1>
+<%= eyebrow t(".eyebrow") %>
+<h1><%= t(".title") %></h1>
 <%= title_rule %>
 
-<p>
-  Your choices are kept in this browser only, as small cookies that hold nothing but the choice.
-</p>
+<p><%= t(".intro") %></p>
 
-<%= plate_card "Prayer book", label: "the book you pray from" do %>
+<%= plate_card t(".book.title"), label: t(".book.eyebrow") do %>
   <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
     <%= render "settings/book_choices", form: form %>
-    <%= form.button "Save prayer book", type: "submit", class: "primary-action", name: nil %>
+    <%= form.button t(".book.save"), type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<%= plate_card "Offices from another book", label: "for particular offices" do %>
-  <p>
-    Pray a particular office from another book: for example, Compline, which the 1662 book does
-    not have. Each book is shown on its own terms; nothing from one book fills a gap in another.
-  </p>
+<%= plate_card t(".offices.title"), label: t(".offices.eyebrow") do %>
+  <p><%= t(".offices.intro") %></p>
   <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
-    <% Office::NAMES.each do |office, name| %>
+    <% Office::SLUGS.each do |office| %>
       <div class="setting-row">
-        <%= label_tag "office_books_#{office}", name %>
+        <%= label_tag "office_books_#{office}", Office.name_for(office) %>
         <%= select_tag "office_books[#{office}]",
-              options_for_select([ [ "My prayer book (#{prayer_book.year})", "same" ] ] + PrayerBook.all.map { [ _1.title, _1.id ] },
+              options_for_select([ [ t(".offices.same", year: prayer_book.year), "same" ] ] + PrayerBook.all.map { [ _1.title, _1.id ] },
                 office_book_overrides.fetch(office, "same")),
               id: "office_books_#{office}" %>
       </div>
     <% end %>
-    <%= form.button "Save offices", type: "submit", class: "primary-action", name: nil %>
+    <%= form.button t(".offices.save"), type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<%= plate_card "Appearance", label: "day and night" do %>
+<%= plate_card t(".appearance.title"), label: t(".appearance.eyebrow") do %>
   <%# A full page load, not Turbo: Turbo swaps the body and keeps <html>, where the
       appearance is written. %>
   <%= form_with url: appearance_path, method: :patch, class: "settings-form", data: { turbo: false } do |form| %>
     <fieldset>
-      <legend class="visually-hidden">Appearance</legend>
-      <% { "automatic" => "Automatic: follow this device's light or dark setting",
-           "day" => "Day: chart paper and iron-blue ink",
-           "night" => "Night: a night chart, deep blue-black with pale ink" }.each do |value, label| %>
+      <legend class="visually-hidden"><%= t(".appearance.title") %></legend>
+      <% AppearancePreference::CHOICES.each do |value| %>
         <div class="choice">
           <%= form.radio_button :appearance, value, checked: appearance == value %>
-          <%= form.label :appearance, label, value: value %>
+          <%= form.label :appearance, t(".appearance.#{value}"), value: value %>
         </div>
       <% end %>
     </fieldset>
-    <%= form.button "Save appearance", type: "submit", class: "primary-action", name: nil %>
+    <%= form.button t(".appearance.save"), type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<%= plate_card "Reading", label: "how texts are set" do %>
+<%= plate_card t(".reading.title"), label: t(".reading.eyebrow") do %>
   <%= liturgy SampleBlocks.all.values_at(1, 2, 4), heading_level: 3 %>
 
   <%= form_with url: reading_settings_path, method: :patch, class: "settings-form", data: { turbo: false } do |form| %>
-    <%= render "settings/choices", form: form, field: :text_size, legend: "text size", current: reading_settings[:text_size],
-          choices: { "standard" => "Standard: your browser's own size", "smaller" => "Smaller", "larger" => "Larger", "largest" => "Largest" } %>
-    <%= render "settings/choices", form: form, field: :line_spacing, legend: "line spacing", current: reading_settings[:line_spacing],
-          choices: { "standard" => "Standard", "compact" => "Closer", "relaxed" => "More open" } %>
-    <%= render "settings/choices", form: form, field: :rubrics, legend: "rubrics", current: reading_settings[:rubrics],
-          choices: { "colour" => "In colour and italic", "italic" => "In italic only" } %>
-    <%= render "settings/choices", form: form, field: :show_rubrics, legend: "the book's instructions", current: reading_settings[:show_rubrics],
-          choices: { "yes" => "Show the rubrics", "no" => "Hide the rubrics while praying" } %>
-    <%= render "settings/choices", form: form, field: :page_numbers, legend: "printed page numbers", current: reading_settings[:page_numbers],
-          choices: { "shown" => "Show the page numbers of the printed book", "hidden" => "Hide them" } %>
-    <%= render "settings/choices", form: form, field: :keep_awake, legend: "the screen", current: reading_settings[:keep_awake],
-          choices: { "no" => "Let the screen sleep as usual", "yes" => "Keep the screen awake while a prayer page is open, where this browser allows it" } %>
-    <%= render "settings/choices", form: form, field: :spelling, legend: "spelling of the historic books", current: reading_settings[:spelling],
-          choices: { "original" => "Original spelling", "modernized" => "Modernized spelling" } %>
-    <p class="source">
-      The spelling choice is for the historic books in the Atlas, which are not on the site yet
-      (BUILD.md P12.6). The books for prayer are always shown as printed.
-    </p>
-    <%= form.button "Save reading settings", type: "submit", class: "primary-action", name: nil %>
+    <% ReadingSettings::OPTIONS.each do |field, values| %>
+      <%= render "settings/choices", form: form, field: field, legend: t(".reading.legends.#{field}"), current: reading_settings[field],
+            choices: values.index_with { t(".reading.choices.#{field}.#{_1}") } %>
+    <% end %>
+    <p class="source"><%= t(".reading.spelling_note") %></p>
+    <%= form.button t(".reading.save"), type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<%= plate_card "Phone site or full site", label: "this device" do %>
+<%= plate_card t(".mode.title"), label: t(".mode.eyebrow") do %>
   <%= form_with url: site_mode_path, method: :patch, class: "settings-form" do |form| %>
     <fieldset>
-      <legend class="visually-hidden">Phone site or full site</legend>
+      <legend class="visually-hidden"><%= t(".mode.title") %></legend>
       <% current = site_mode_chosen? ? site_mode : "automatic" %>
-      <% { "automatic" => "Choose for this device automatically",
-           "full" => "The full site, with the contents and the margin beside the text",
-           "phone" => "The phone site, one column with the sections along the bottom" }.each do |value, label| %>
+      <% %w[automatic full phone].each do |value| %>
         <div class="choice">
           <%= form.radio_button :mode, value, checked: current == value %>
-          <%= form.label :mode, label, value: value %>
+          <%= form.label :mode, t(".mode.#{value}"), value: value %>
         </div>
       <% end %>
     </fieldset>
-    <%= form.button "Save", type: "submit", class: "primary-action", name: nil %>
+    <%= form.button t(".mode.save"), type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<%= plate_card "About this site", label: "sources and support" do %>
-  <p>
-    Prayerbook Atlas is personal lay work, the sister project of
-    <a href="https://graceandfootnotes.com">Grace &amp; Footnotes</a>. It is not an official
-    publication of any church, diocese, or parish, and it does not speak for any of them.
-    <%= link_to "More about the site", about_path %>.
-  </p>
-  <p>
-    Write to <a href="mailto:support@prayerbookatlas.com">support@prayerbookatlas.com</a> with a
-    question, or to report an error in a text (the book, the page, and what is wrong).
-  </p>
-  <h3 class="eyebrow">acknowledgements</h3>
-  <p>
-    The book face is Cardo, by David J. Perry, under the SIL Open Font License 1.1. No prayer-book
-    text is on the site yet; as texts arrive, each one's book, printing, and required credit will
-    be listed here from the site's own sources register.
-  </p>
-  <p class="source">Version <%= SiteVersion.current %></p>
+<%= plate_card t(".about.title"), label: t(".about.eyebrow") do %>
+  <p><%= t(".about.affiliation_html", link: link_to(t("shared.footer.grace_and_footnotes"), "https://graceandfootnotes.com"), more: link_to(t(".about.more"), about_path)) %></p>
+  <p><%= t(".about.support_html", email: mail_to("support@prayerbookatlas.com")) %></p>
+  <h3 class="eyebrow"><%= t(".about.acknowledgements") %></h3>
+  <p><%= t(".about.cardo") %></p>
+  <p class="source"><%= t(".about.version", version: SiteVersion.current) %></p>
 <% end %>

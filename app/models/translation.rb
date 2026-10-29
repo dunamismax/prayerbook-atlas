@@ -3,11 +3,8 @@
 # translation (D5). Licensed translations are added only when
 # content/SOURCES.md records the license. The prayer books' own Psalters are
 # not translations here: they belong to each book.
-class Translation < Data.define(:id, :title)
-  ALL = [
-    new(id: "kjva", title: "King James Version, with the Apocrypha"),
-    new(id: "web", title: "World English Bible")
-  ].freeze
+class Translation < Data.define(:id)
+  ALL = %w[kjva web].map { new(id: _1) }.freeze
 
   def self.all
     ALL
@@ -16,4 +13,6 @@ class Translation < Data.define(:id, :title)
   def self.find_by_id(id)
     ALL.find { |translation| translation.id == id }
   end
+
+  def title = I18n.t("translations.#{id}")
 end

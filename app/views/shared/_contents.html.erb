@@ -1,4 +1,4 @@
-<h2>Sections</h2>
+<h2><%= t("site.sections") %></h2>
 <ul class="plain-list">
   <% SiteSection.all.each do |section| %>
     <li><%= link_to section.title, section_path_for(section), aria: { current: ("page" if current_section?(section)) } %></li>

@@ -1,6 +1,6 @@
 <%# The prayer books as radio choices, each with its line. Locals: form. %>
 <fieldset>
-  <legend class="visually-hidden">Prayer book</legend>
+  <legend class="visually-hidden"><%= t("settings.show.book.title") %></legend>
   <% PrayerBook.all.each do |book| %>
     <div class="choice">
       <%= form.radio_button :book, book.id, checked: prayer_book == book %>

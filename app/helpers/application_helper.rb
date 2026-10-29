@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def page_title
-    [ content_for(:title), "Prayerbook Atlas" ].compact_blank.join(" · ")
+    [ content_for(:title), t("site.name") ].compact_blank.join(" · ")
   end
 end

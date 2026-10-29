@@ -29,7 +29,7 @@ module LiturgyHelper
       when LiturgicalBlock::Paragraph
         tag.p(safe_join([ mark, inlines(block.text) ]), data: data)
       when LiturgicalBlock::Rubric
-        tag.p(safe_join([ mark, announced("Instruction: "), inlines(block.text) ]), class: "rubric", data: data)
+        tag.p(safe_join([ mark, announced(t("components.instruction")), inlines(block.text) ]), class: "rubric", data: data)
       when LiturgicalBlock::RoleLines, LiturgicalBlock::Versicles
         role_lines(block, mark, data)
       when LiturgicalBlock::Amen
@@ -61,7 +61,7 @@ module LiturgyHelper
 
     def psalm_verse(block, mark, data)
       numbers = [ tag.span(block.verse.to_s, class: "verse-number") ]
-      numbers << tag.span("KJV #{block.kjv_verse}", class: "verse-number-kjv no-copy") if block.kjv_verse
+      numbers << tag.span(t("components.kjv_verse", verse: block.kjv_verse), class: "verse-number-kjv no-copy") if block.kjv_verse
       tag.p(class: "psalm-verse", data: data.merge(psalm: block.psalm, verse: block.verse)) do
         safe_join([ mark, *numbers, " ", inlines(block.first_half), " ",
           tag.span(LiturgicalBlock::HALF_VERSE_MARKS.fetch(block.mark), class: "half-verse-mark", aria: { hidden: true }),
@@ -85,7 +85,7 @@ module LiturgyHelper
             *option.blocks.map { liturgical_block(_1) } ])
         end
       end
-      tag.div(safe_join([ mark, *options ]), class: "alternatives", role: "group", aria: { label: "Choices the book offers" }, data: data)
+      tag.div(safe_join([ mark, *options ]), class: "alternatives", role: "group", aria: { label: t("components.alternatives") }, data: data)
     end
 
     def inlines(list)

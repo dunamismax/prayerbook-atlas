@@ -1,8 +1,8 @@
 <meta charset="utf-8">
 <title><%= page_title %></title>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="<%= content_for(:description) || "Common prayer from the Books of Common Prayer, each book on its own terms." %>">
-<meta name="application-name" content="Prayerbook Atlas">
+<meta name="description" content="<%= content_for(:description) || t("site.description") %>">
+<meta name="application-name" content="<%= t("site.name") %>">
 <meta name="color-scheme" content="light dark">
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>

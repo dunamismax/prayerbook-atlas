@@ -8,7 +8,7 @@ class BookPreferencesController < ApplicationController
     end
 
     if params[:office_books].respond_to?(:to_unsafe_h)
-      overrides = self.class.parse_office_books(params[:office_books].permit(*Office::NAMES.keys).to_h.map { _1.join(":") }.join(","))
+      overrides = self.class.parse_office_books(params[:office_books].permit(*Office::SLUGS).to_h.map { _1.join(":") }.join(","))
       if overrides.any?
         cookies.permanent[BookPreference::OFFICE_COOKIE] = { value: overrides.map { _1.join(":") }.join(","), httponly: true, same_site: :lax }
       else

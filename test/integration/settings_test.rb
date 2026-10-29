@@ -8,7 +8,7 @@ class SettingsTest < ActionDispatch::IntegrationTest
       [ "Prayer book", "Offices from another book", "Appearance", "Reading", "Phone site or full site", "About this site" ].each do |title|
         assert_select ".plate-card h2", title
       end
-      assert_select "select[name^=office_books]", Office::NAMES.size
+      assert_select "select[name^=office_books]", Office::SLUGS.size
       assert_select "a[href='mailto:support@prayerbookatlas.com']"
       assert_select ".source", /Version \S+/
     end
@@ -20,7 +20,7 @@ class SettingsTest < ActionDispatch::IntegrationTest
     assert_select "select[name='office_books[compline]'] option[selected][value=bcp1979us]"
     assert_select "select[name='office_books[litany]'] option[selected][value=same]"
 
-    patch book_preference_path, params: { office_books: Office::NAMES.keys.index_with("same") }
+    patch book_preference_path, params: { office_books: Office::SLUGS.index_with("same") }
     get settings_path
     assert_select "select[name='office_books[compline]'] option[selected][value=same]"
   end

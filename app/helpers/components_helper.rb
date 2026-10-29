@@ -30,7 +30,7 @@ module ComponentsHelper
   # A rubric: an instruction, not words to be said, and announced as one.
   def rubric(text = nil, &block)
     tag.p(class: "rubric") do
-      safe_join([ tag.span("Instruction: ", class: "visually-hidden no-copy"), text || capture(&block) ])
+      safe_join([ tag.span(t("components.instruction"), class: "visually-hidden no-copy"), text || capture(&block) ])
     end
   end
 
@@ -56,7 +56,7 @@ module ComponentsHelper
   # A line the book directs to be said again, set in from the margin.
   def repetition(text = nil, &block)
     tag.p(class: "repetition") do
-      safe_join([ tag.span("Repeated: ", class: "visually-hidden no-copy"), text || capture(&block) ])
+      safe_join([ tag.span(t("components.repeated"), class: "visually-hidden no-copy"), text || capture(&block) ])
     end
   end
 
@@ -77,21 +77,21 @@ module ComponentsHelper
   # wrapped in .with-page-marks, inline on the phone (components.css).
   def page_mark(page)
     tag.span(class: "page-mark") do
-      safe_join([ tag.span("page ", class: "visually-hidden"), tag.span("p. ", aria: { hidden: true }), page.to_s ])
+      safe_join([ tag.span(t("components.page"), class: "visually-hidden"), tag.span(t("components.page_abbreviation"), aria: { hidden: true }), page.to_s ])
     end
   end
 
   # A source mark that opens its note through the HTML popover attribute, so
   # it needs no script. A browser without popovers shows the note inline after
   # the mark instead.
-  def source_note(label: "source", &block)
+  def source_note(label: t("components.source"), &block)
     id = component_id("source")
     safe_join([
       tag.button(label, type: "button", class: "source-mark", popovertarget: id),
       tag.span(id: id, popover: "auto", class: "source-note") do
         safe_join([
           capture(&block),
-          tag.button("Close", type: "button", class: "source-note-close", popovertarget: id, popovertargetaction: "hide")
+          tag.button(t("components.close"), type: "button", class: "source-note-close", popovertarget: id, popovertargetaction: "hide")
         ])
       end
     ])

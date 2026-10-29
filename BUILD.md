@@ -76,7 +76,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
-| 2 | Design system and site shell | M1 Foundation | 14 | 12 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 13 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
@@ -645,7 +645,8 @@ When the site is demoable:
   - *2026-10-29 result:* a card on Today after the title (never a dialog), with a plain line about each book (`PrayerBook#summary`), "Use this book" and "Skip for now"; skipping records the preset, 1662, so the card does not return. The choice is a cookie holding only the book's id (`BookPreference`), also chosen in Settings. Checked in Chrome on the full site (and Skip), and as a phone with JavaScript off in headless Firefox.
 - [x] **P2.12** Settings (`/settings`): prayer book and per-office overrides, reading settings, appearance, the site mode, acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, about, support, and the running version (the deployed commit).
   - *2026-10-29 result:* `/settings` holds the prayer book, offices from another book (an `office_books` cookie of office and book ids, read by `prayer_book_for`), appearance, reading, the site mode, about and support with the non-affiliation statement, acknowledgements (Cardo, for now), and the version (`SiteVersion`: `REVISION`, written by `bin/deploy`, or the checkout's commit). The acknowledgements come from the content database once P3.8 lands. Checking at 200% text on the phone found the tab bar, phone bar, buttons, and e-mail address running off the screen (since P1.8); all now wrap. Checked in Chrome in both modes.
-- [ ] **P2.13** Route every interface string through Rails I18n (`config/locales/en.yml`), English only for now; a test finds untranslated literal text in views.
+- [x] **P2.13** Route every interface string through Rails I18n (`config/locales/en.yml`), English only for now; a test finds untranslated literal text in views.
+  - *2026-10-29 result:* views, helpers, the placeholder destinations, and the names of sections, books, translations, and offices come from `config/locales/en.yml` (lazy keys per template, shared `site.*` and `components.*` keys); `raise_on_missing_translations` is on in development and test. `UntranslatedTextTest` finds literal text between tags, in labelling attributes, and in strings passed to helpers, and checks every named key exists (mutation-checked). `/dev/*` pages are exempt as development aids.
 - [ ] **P2.14** A system-test tour: every section and Settings, in both modes and both appearances, saving screenshots to `tmp/screenshots/`.
 
 ## Phase 3: Content pipeline and rights registry

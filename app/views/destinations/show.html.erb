@@ -1,18 +1,14 @@
 <% content_for :title, @title %>
 
-<%= eyebrow(@section ? @section.title.downcase : "prayerbook atlas") %>
+<%= eyebrow(@section ? @section.title.downcase : t("site.name").downcase) %>
 <h1><%= @title %></h1>
 <%= title_rule %>
 
 <div class="notice">
-  <p>
-    This page is planned and not yet built. Nothing here is ready for prayer, and no prayer-book
-    text has been added: every text will be transcribed from an identified printing and
-    proofread before it appears.
-  </p>
+  <p><%= t(".not_built") %></p>
 </div>
 
-<%= plate_card "What will be here", label: "planned" do %>
+<%= plate_card t(".what_will_be_here"), label: t(".planned") do %>
   <p><%= @summary %></p>
-  <p class="source">This address will stay the same when the page arrives (BUILD.md <%= @phase %>).</p>
+  <p class="source"><%= t(".stays", phase: @phase) %></p>
 <% end %>

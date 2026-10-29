@@ -35,7 +35,7 @@ module BookPreference
   class_methods do
     def parse_office_books(value)
       value.to_s.split(",").filter_map { _1.split(":", 2) if _1.include?(":") }.to_h
-        .select { |office, book| Office::NAMES.key?(office) && book.in?(PrayerBook.ids) }
+        .select { |office, book| Office::SLUGS.include?(office) && book.in?(PrayerBook.ids) }
     end
   end
 end

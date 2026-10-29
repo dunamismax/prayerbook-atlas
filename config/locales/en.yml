@@ -1,31 +1,309 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
+# Every interface string of the site (BUILD.md P2.13), in English only for
+# now. Views use lazy lookups (t(".key")) where the string belongs to one
+# template, and the shared keys below where several use it. A test finds
+# literal text left in views (test/lib/untranslated_text_test.rb).
 #
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
+# Prayer-book text never comes from here: it is transcribed, sourced content
+# (AGENTS.md §6). These are the site's own words.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      day: "%-d %B %Y"
+      month: "%B %Y"
+
+  site:
+    name: "Prayerbook Atlas"
+    tagline: "the books of common prayer"
+    description: "Common prayer from the Books of Common Prayer, each book on its own terms."
+    skip_link: "Skip to the text"
+    tools: "Tools"
+    settings: "Settings"
+    sections: "Sections"
+    in_this_section: "In this section"
+    margin: "Margin"
+    notes_and_sources: "Notes and sources"
+    not_ready: "This site is being built. Nothing here is ready for prayer yet, and no prayer-book text has been added: every text will be transcribed from an identified printing and proofread before it appears."
+
+  sections:
+    placeholder:
+      eyebrow_today: "prayerbook atlas"
+      eyebrow_section: "section"
+      planned: "planned"
+      what_will_be_here: "What will be here"
+    first_visit:
+      eyebrow: "welcome"
+      title: "Which prayer book does your church use?"
+      intro_html: "The site follows one book at a time, on its own terms. Choose yours, or skip this and begin with 1662; you can change it at any time in %{settings}."
+      use_this_book: "Use this book"
+      skip: "Skip for now"
+    today:
+      title: "Today"
+      summary: "The day in the Church's year and the office for the hour, from your prayer book."
+      planned:
+        - "The day's name in your prayer book, with the other books' names beside it."
+        - "The office for the hour, with its psalms, lessons, canticles, and collect in place."
+        - "Holy days, fasts, and the season, each in the book's own words."
+        - "Your rule of life and reading-plan portion, kept in your browser and never graded."
+      your_book: "Your prayer book"
+      change_it: "Change it in Settings"
+      the_books: "The books"
+      the_books_note: "The first books will be the three in the public domain in the United States: the Church of England's 1662, and the American 1928 and 1979. Others follow as permission allows."
+    pray:
+      title: "Pray"
+      summary: "The offices, the Litany, prayers and thanksgivings, Holy Communion, and the pastoral offices."
+      planned:
+        - "Morning and Evening Prayer, Noonday Prayer, and Compline, from each book that has them."
+        - "The Litany, the prayers and thanksgivings, and the collects."
+        - "Holy Communion and the pastoral offices, to follow along and to prepare."
+        - "Intercessions and preparation for confession, kept in your browser only."
+    bible:
+      title: "Bible"
+      summary: "Holy Scripture, the day's lessons, each book's Psalter, the lectionaries, and reading plans."
+      planned:
+        - "The King James Version with the Apocrypha and the World English Bible, each labeled."
+        - "Each prayer book's own Psalter, in its own cycle."
+        - "The day's lessons from every lectionary the books appoint."
+        - "Gentle reading plans, with no streaks and no scores."
+    kalendar:
+      title: "Kalendar"
+      summary: "The Christian year by month and year: holy days, commemorations, fasts, and the Easter tables."
+      planned:
+        - "Month and year views, with red-letter days marked in words and symbols, never colour alone."
+        - "Holy days, commemorations, fasts, and Ember and Rogation days, by each book's rules."
+        - "Easter and the moveable feasts for any year, with the 1662 book's own tables explained."
+        - "Calendar subscriptions of each book's holy days."
+      the_word: "The word"
+      the_word_note: "\"Kalendar\" is the prayer books' own spelling for the table of the Church's year."
+    atlas:
+      title: "Atlas"
+      summary: "The prayer books themselves: each book's page, any prayer compared across books, and their lineage."
+      planned:
+        - "A page for each prayer book: who authorized it, where it is used, and which printing the site follows."
+        - "Any prayer compared across the books that have it, side by side, with the differences marked."
+        - "\"Where is this prayer?\": every book's witness to a prayer, or a plain note of its absence."
+        - "A sourced map of how the books descend from Cranmer's 1549 and 1552."
+      compare: "Compare"
+      compare_note: "On the full site, up to three books stand side by side. On the phone site, two at a time, one above the other."
+
+  prayer_books:
+    bcp1662:
+      title: "The Book of Common Prayer (1662, Church of England)"
+      summary: "The Church of England's Book of Common Prayer, from which most later Anglican prayer books descend."
+    bcp1928us:
+      title: "The Book of Common Prayer (1928, The Episcopal Church)"
+      summary: "The Episcopal Church's book from 1928 until 1979, still used by many Anglicans in North America."
+    bcp1979us:
+      title: "The Book of Common Prayer (1979, The Episcopal Church)"
+      summary: "The Book of Common Prayer of The Episcopal Church today."
+
+  translations:
+    kjva: "King James Version, with the Apocrypha"
+    web: "World English Bible"
+
+  offices:
+    morning-prayer: "Morning Prayer"
+    evening-prayer: "Evening Prayer"
+    noonday-prayer: "Noonday Prayer"
+    compline: "Compline"
+    family-prayer: "Family Prayer"
+    litany: "The Litany"
+    holy-communion: "Holy Communion"
+
+  shared:
+    footer:
+      about_nav: "About this site"
+      about: "About"
+      grace_and_footnotes: "Grace & Footnotes"
+      affiliation_html: "Prayerbook Atlas is personal lay work, the sister project of %{link}. It is not an official publication of any church, diocese, or parish."
+      using_phone: "You are using the phone site."
+      using_full: "You are using the full site."
+      use_full: "Use the full site"
+      use_phone: "Use the phone site"
+      automatic: "Choose for this device automatically"
+    state:
+      empty: "nothing here"
+      loading: "loading"
+      error: "something went wrong"
+
+  components:
+    instruction: "Instruction: "
+    repeated: "Repeated: "
+    page: "page "
+    page_abbreviation: "p. "
+    source: "source"
+    close: "Close"
+    alternatives: "Choices the book offers"
+    kjv_verse: "KJV %{verse}"
+
+  pages:
+    about:
+      title: "About"
+      eyebrow: "about"
+      heading: "About Prayerbook Atlas"
+      purpose: "Prayerbook Atlas is for Anglican and Episcopal common prayer across the Books of Common Prayer. It sets each book before you on its own terms: its text, rubrics, calendar, and lectionary as printed, with the book, printing, and page beside every text."
+      affiliation_html: "It is personal lay work and the sister project of %{link}. It is not an official publication of the Church of England, The Episcopal Church, the Anglican Church in North America, the Anglican Communion, or any other church, diocese, or parish, and it does not speak for any of them."
+      privacy: "It collects nothing about you: no analytics, advertising, or tracking. It sets only its own strictly necessary cookies: one that protects its forms, and, if you make a choice in Settings or between the phone site and the full site, one for each choice that remembers it."
+      write_html: "Write to %{email}."
+
+  settings:
+    show:
+      title: "Settings"
+      eyebrow: "your choices"
+      intro: "Your choices are kept in this browser only, as small cookies that hold nothing but the choice."
+      book:
+        title: "Prayer book"
+        eyebrow: "the book you pray from"
+        save: "Save prayer book"
+      offices:
+        title: "Offices from another book"
+        eyebrow: "for particular offices"
+        intro: "Pray a particular office from another book: for example, Compline, which the 1662 book does not have. Each book is shown on its own terms; nothing from one book fills a gap in another."
+        same: "My prayer book (%{year})"
+        save: "Save offices"
+      appearance:
+        title: "Appearance"
+        eyebrow: "day and night"
+        automatic: "Automatic: follow this device's light or dark setting"
+        day: "Day: chart paper and iron-blue ink"
+        night: "Night: a night chart, deep blue-black with pale ink"
+        save: "Save appearance"
+      reading:
+        title: "Reading"
+        eyebrow: "how texts are set"
+        legends:
+          text_size: "text size"
+          line_spacing: "line spacing"
+          rubrics: "rubrics"
+          show_rubrics: "the book's instructions"
+          page_numbers: "printed page numbers"
+          keep_awake: "the screen"
+          spelling: "spelling of the historic books"
+        choices:
+          text_size:
+            standard: "Standard: your browser's own size"
+            smaller: "Smaller"
+            larger: "Larger"
+            largest: "Largest"
+          line_spacing:
+            standard: "Standard"
+            compact: "Closer"
+            relaxed: "More open"
+          rubrics:
+            colour: "In colour and italic"
+            italic: "In italic only"
+          show_rubrics:
+            "yes": "Show the rubrics"
+            "no": "Hide the rubrics while praying"
+          page_numbers:
+            shown: "Show the page numbers of the printed book"
+            hidden: "Hide them"
+          keep_awake:
+            "no": "Let the screen sleep as usual"
+            "yes": "Keep the screen awake while a prayer page is open, where this browser allows it"
+          spelling:
+            original: "Original spelling"
+            modernized: "Modernized spelling"
+        spelling_note: "The spelling choice is for the historic books in the Atlas, which are not on the site yet (BUILD.md P12.6). The books for prayer are always shown as printed."
+        save: "Save reading settings"
+      mode:
+        title: "Phone site or full site"
+        eyebrow: "this device"
+        automatic: "Choose for this device automatically"
+        full: "The full site, with the contents and the margin beside the text"
+        phone: "The phone site, one column with the sections along the bottom"
+        save: "Save"
+      about:
+        title: "About this site"
+        eyebrow: "sources and support"
+        affiliation_html: "Prayerbook Atlas is personal lay work, the sister project of %{link}. It is not an official publication of any church, diocese, or parish, and it does not speak for any of them. %{more}."
+        more: "More about the site"
+        support_html: "Write to %{email} with a question, or to report an error in a text (the book, the page, and what is wrong)."
+        acknowledgements: "acknowledgements"
+        cardo: "The book face is Cardo, by David J. Perry, under the SIL Open Font License 1.1. No prayer-book text is on the site yet; as texts arrive, each one's book, printing, and required credit will be listed here from the site's own sources register."
+        version: "Version %{version}"
+
+  destinations:
+    show:
+      planned: "planned"
+      not_built: "This page is planned and not yet built. Nothing here is ready for prayer, and no prayer-book text has been added: every text will be transcribed from an identified printing and proofread before it appears."
+      what_will_be_here: "What will be here"
+      stays: "This address will stay the same when the page arrives (BUILD.md %{phase})."
+    today: " today"
+    on_date: " on %{date}"
+    in_translation: " in the %{translation}"
+    prayer_book:
+      title: "%{book}"
+      summary: "The offices, prayers, and services this book sets out, in its own order."
+    office:
+      title: "%{office} · %{year}"
+      summary: "%{office} from %{book}%{day}, with the day's psalms, lessons, and collects in place; or, if this book has no such office, a plain note saying so."
+    collect:
+      title: "A collect: %{key}"
+      summary: "This collect as %{book} prints it, with its source and page."
+    prayer:
+      title: "A prayer: %{key}"
+      summary: "This prayer or thanksgiving as %{book} prints it, with its source and page."
+    pastoral_office:
+      title: "A pastoral office: %{key}"
+      summary: "This office from %{book}, for study and preparation, with a line to speak with your parish priest."
+    intercessions:
+      title: "Intercessions"
+      summary: "Your list of people and intentions, kept in this browser only and shown in the prayers where a book provides for names."
+    my_prayers:
+      title: "My prayers"
+      summary: "Prayers you write yourself, kept in this browser only."
+    confession:
+      title: "Preparation for confession"
+      summary: "Help in preparing for confession. Any notes stay in this browser and are never sent anywhere."
+    psalter:
+      title: "The Psalter of %{book}"
+      summary: "This book's own Psalter, in its own wording, numbering, and pointing."
+    psalm:
+      title: "Psalm %{psalm}"
+      summary: "This psalm in the Psalter of %{book}, by that book's numbering."
+    psalter_day:
+      title: "Day %{day} of the Psalter"
+      summary: "The psalms appointed for this day in the cycle of %{book}."
+    lectionary:
+      title: "A lectionary: %{key}"
+      summary: "A lectionary, its source, its cycle, and its readings day by day."
+    reading_plan:
+      title: "A reading plan: %{key}"
+      summary: "A reading plan, with today's portion and no streaks or scores."
+    passage:
+      title: "%{reference}"
+      summary: "This passage%{translation}, with its translation named."
+    kalendar_day:
+      title: "%{date}"
+      summary: "This day in the Christian year, in every launch book, with the source of each rule."
+    kalendar_month:
+      title: "%{month}"
+      summary: "This month's holy days, commemorations, and fasts."
+    kalendar_year:
+      title: "%{year}"
+      summary: "This year's holy days and seasons."
+    easter:
+      title: "Easter %{year}"
+      summary: "Easter and the moveable feasts for this year, with the Golden Number, the Sunday Letter, and the tables."
+    atlas_book:
+      title: "%{book}"
+      summary: "Who authorized this book, where it is used today, its contents, and the printing this site follows."
+    atlas_prayer:
+      title: "Where is this prayer? %{key}"
+      summary: "This prayer in every book that has it, or a plain note where a book does not."
+    compare:
+      title: "Compare: %{key}"
+      summary: "This prayer side by side in %{books}, with the differences marked in words as well as by underline."
+    lineage:
+      title: "The lineage of the prayer books"
+      summary: "How the Books of Common Prayer descend from 1549 and 1552, every line sourced."
+    learn:
+      title: "Learn"
+      summary: "Plain explanations of the offices, the year, the books, and the Anglican way."
+    learn_page:
+      title: "Learn: %{key}"
+      summary: "A page of Learn, researched and drafted with AI assistance and reviewed before release."
+    search:
+      title: "Search"
+      summary: "Search across the books, Scripture, and the Atlas."
