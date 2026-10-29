@@ -27,17 +27,14 @@ carried by a ribbon marker.
 
 ## Status
 
-**Phase 1: repository and toolchain.** The app builds and launches to a
-placeholder Today that shows the date; the three foundation packages, the
-Makefile, and `make check` are in place. No liturgical text is in the app
-yet. The [image gallery](design/generated/index.html) contains 54 generated
-PNG design sources; [its README](design/generated/README.md) records how
-they were exported and the remaining work. D15 is decided: Engraved Plate
-([docs/design.md](docs/design.md)). This README, [AGENTS.md](AGENTS.md), and
-[BUILD.md](BUILD.md) set out the finished app, the owner decisions, the
-research behind them, and thirty phases of checklists. The app name (D1) and
-the domains and support email (D12) are decided; the other decisions carry
-recommendations awaiting the owner (BUILD.md P0.1). BUILD.md's **Build
+**Phase 2: design system and app shell.** The app builds and launches to a
+placeholder Today in the Engraved Plate design (D15), set in Cardo, with
+five tabs, deep links, restored state, the shared components, and the
+`LiturgicalBlock` model the texts will use. No liturgical text is in the app
+yet. Every owner decision in [BUILD.md](BUILD.md) is answered; [AGENTS.md](AGENTS.md)
+and BUILD.md set out the finished app, the research behind it, and thirty
+phases of checklists. The [image gallery](design/generated/index.html)
+holds the owner's 54 generated design sources. BUILD.md's **Build
 status** table and **Handoff notes** always give the current state.
 
 | File | What it is |

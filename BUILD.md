@@ -71,7 +71,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 9 |
 | 1 | Repository and toolchain | M1 Foundation | 14 | 13 |
-| 2 | Design system and app shell | M1 Foundation | 14 | 6 |
+| 2 | Design system and app shell | M1 Foundation | 14 | 10 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Today and the Kalendar | M2 The Daily Office | 6 | 0 |
@@ -100,14 +100,12 @@ top-level items (sub-items roll up into their parent).
 | 28 | Operations and annual maintenance | M8 Everywhere | 7 | 0 |
 | 29 | Android and future platforms | M8 Everywhere | 9 | 0 |
 
-**Current state (2026-10-28, first build session):** Phase 1 is done except
-P1.14 (TestFlight, waiting on the owner's account). The app builds with zero
-warnings and launches to a placeholder Today showing the date, with five tabs,
-routes, deep links, restored state, generated colour tokens, and a placeholder
-icon; `make check` passes locally and on GitHub's hosted Xcode 27 runner.
-Phase 2 has P2.1, P2.2b, P2.3, P2.6, P2.7, P2.13, and P2.14 done. No liturgical
-text is in the app. D1 and D12 are decided; every other decision is built on its
-recommendation (AGENTS.md §4).
+**Current state (2026-10-29):** Phase 1 is done except P1.14 (waiting for
+the owner to confirm the TestFlight install). Phase 2 has P2.1–P2.8, P2.13,
+and P2.14 done: the app runs in Engraved Plate (D15) with Cardo, the shared
+components (Debug `-componentGallery`), and ContentKit's `LiturgicalBlock`.
+No liturgical text is in the app. Every D is decided; agents decide open
+questions (D9), and only the owner makes images (decision 20).
 ---
 
 ## The finished app
@@ -972,26 +970,23 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-29, owner decisions session:** the owner answered P0.1 (every D
-  recorded), P0.3, P0.5, P0.10, P0.11; P0.6 and P0.7 done. **D9: agents
-  decide** from now on; AGENTS.md §9 also gives standing permission to
-  install developer tools and to run the whole TestFlight process.
-- **D15 is B · Engraved Plate** (decision 18). `design/tokens.json`,
-  `docs/design.md`, and the colour assets are still Ribbon: **redo P2.2b for
-  B first**, then regenerate with `make tokens` (contrast tests must pass).
-  The design canvas (private claude.ai artifact) shows B's palette.
-- **Book face: Cardo** (decision 18). Its files and OFL.txt are in the
-  gitignored `research/fonts/cardo/`; P2.4 bundles them, records them in
-  `content/SOURCES.md`, and supplies ✠ from the system symbol font.
-- **Icon:** the placeholder is still the Ribbon-coloured generated set; the
-  owner asked for a B-palette icon. No image generator was available, so draw
-  it as original vector art (SVG rendered by script) and swap
-  `scripts/app-icon.sh` to it.
-- **TestFlight works:** app 6828358779; build 0.1.0 (20261029.0935) is in
-  internal testing; group Owner invites both team users. `make testflight`
-  and `make testflight-status` use the API key in `Config/Secrets.xcconfig`
-  (gitignored; key in `~/.appstoreconnect/private_keys`). P1.14 ticks when
-  the owner confirms the install.
-- CI is manual only. Still the owner's: P0.8 (optional), P0.9 (deferred),
-  the [GATE DEMO] letters. prayerbookatlas.org: re-check its DNS.
-- Next app work: P2.2b (B), P2.4 (Cardo), the icon, then P2.5 onward.
+- **2026-10-29 build session:** P2.2b redone for Engraved Plate (tokens,
+  design.md, colours), P2.4 (Cardo bundled, `TypeStyle`), P2.5 (components),
+  P2.8 (`LiturgicalBlock`). `make check` and `make test-linux` pass.
+- **Images are the owner's only** (owner, decision 20, AGENTS.md §6): an
+  agent-drawn icon was rejected and reverted. Write prompts in
+  `design/image-prompts.md`; never draw, redraw, trace, or restyle. The
+  icon is still the Ribbon A1–A3 set; Engraved Plate icon prompts (F1–F3)
+  await the owner. Custom symbols likewise; SF Symbols meanwhile.
+- **Cardo:** only Regular has `smcp`, Bold has no features; labels are
+  Regular small caps, page numbers Italic `onum`. ✠ falls back to system.
+- **Flaky UI test fixed:** iOS 27 sometimes drops tab identifiers; the tour
+  matches by identifier or title. Earlier, 1b90a2b was pushed before its
+  failing check log was read; the code was fine. Read the log before
+  committing.
+- **Next:** P2.9 (`LiturgicalTextView`; likely TextKit for range selection
+  and the two-line drop initial), P2.10, P2.11, P2.12 (Settings, the
+  acknowledgements with Cardo's OFL, the in-app appearance setting, then
+  extend `TourUITests`), then Phase 3.
+- Still the owner's: confirm the TestFlight install (P1.14), P0.8, P0.9,
+  the [GATE DEMO] letters, and whether to generate the F1–F3 icon.
