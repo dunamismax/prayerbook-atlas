@@ -70,8 +70,8 @@ top-level items (sub-items roll up into their parent).
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 2 |
-| 1 | Repository and toolchain | M1 Foundation | 14 | 0 |
-| 2 | Design system and app shell | M1 Foundation | 14 | 0 |
+| 1 | Repository and toolchain | M1 Foundation | 14 | 13 |
+| 2 | Design system and app shell | M1 Foundation | 14 | 6 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Today and the Kalendar | M2 The Daily Office | 6 | 0 |
@@ -100,15 +100,14 @@ top-level items (sub-items roll up into their parent).
 | 28 | Operations and annual maintenance | M8 Everywhere | 7 | 0 |
 | 29 | Android and future platforms | M8 Everywhere | 9 | 0 |
 
-**Current state (2026-10-28, image exports):** planning plus 54 generated
-PNG design sources in `design/generated/`, with a local gallery, prompts,
-and image/source registers. The owner requested this image work ahead of
-Phase 1; D15 remains open. Every image is now at its requested size and the
-tinted icon's mask is rebuilt, which finishes P2.2c (P2.2 stays open).
-There is no code, Makefile, or app target. D1 and D12 are decided; the other
-decisions retain their recommendations. Next app work remains P0.1, then
-Phase 1 on the working defaults (AGENTS.md §4).
-
+**Current state (2026-10-28, first build session):** Phase 1 is done except
+P1.14 (TestFlight, waiting on the owner's account). The app builds with zero
+warnings and launches to a placeholder Today showing the date, with five tabs,
+routes, deep links, restored state, generated colour tokens, and a placeholder
+icon; `make check` passes locally and on GitHub's hosted Xcode 27 runner.
+Phase 2 has P2.1, P2.2b, P2.3, P2.6, P2.7, P2.13, and P2.14 done. No liturgical
+text is in the app. D1 and D12 are decided; every other decision is built on its
+recommendation (AGENTS.md §4).
 ---
 
 ## The finished app
@@ -962,24 +961,25 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-28, image exports:** finished P2.2c. The 38 square PNGs, which
-  the generator returned at 1254×1254, are now exact 1024×1024 exports
-  (ImageMagick 7.1.2-34, Lanczos, metadata stripped). The 15 landscape files
-  and the portrait frame were already the requested size and are unchanged.
-- A3's mask was rebuilt: native alpha upsampled to 8192 px, thresholded at
-  50%, box-filtered to 1024; RGB pure white. Four regions only (background,
-  book, cross cutout, ribbon); the outline differs from the native one by 76
-  pixels. The haze and the partial alpha in the cross are gone.
-- `design/image-registry.json` records new hashes, sizes, and each export
-  step; `original_sha256` names the native files, which stay in commit
-  2232e7f with their C2PA Content Credentials (the exports drop that chunk).
-- Re-checked all 38: 1024×1024, alpha 0–255 where transparent, still no pale
-  pixels in the B/C/D/E4 ink masks, and registry hashes match.
-- The gallery now loads in a browser over local HTTP: 54 images at their
-  recorded sizes, 31 night samples. Fixed its CSS so A3 shows on the night
-  colour instead of the checkerboard.
-- Still open: A4/A5 alignment in Icon Composer (P21.8); tracing the symbols
-  (P2.5); D15; release clearance for every image (P3.6).
-- No Makefile or app exists, so `make check` and simulator flows cannot run.
-- Next app work: P0.1, then P1.1 on working defaults. D1/D12 decided; all
-  other decisions open. Repository visibility remains D11; no settings changed.
+- **2026-10-28, first build session:** P1.1–P1.13, P2.1, P2.2b, P2.3, P2.6,
+  P2.7, P2.13, P2.14 done; `make check` passes with zero warnings (45 tests),
+  hosted CI passes, `make test-linux` passes in Colima (Docker CLI linked).
+- Working defaults used (open decisions): D2 iOS 26; D5 KJV+Apocrypha and WEB;
+  D10 reuse from Beautiful Corner commit 6f8bc4b; D15 Ribbon tokens (new ribbon
+  hues added, three with a gilt edge); P0.10 CI on manual and on pushes while
+  public (skipped if private); D13 team in ExportOptions, Team ID still
+  commented in `Config/Base.xcconfig`.
+- Rewritten: P1.11 uses copies of the generated icons A1–A3 (guarded
+  byte-identical; still `pending`). P1.2 was done after P1.10.
+- Decision 17: on iPhone, Search is a toolbar button, because the search tab
+  pushed Atlas and Search into "More".
+- SOUL.md drafted with the statement byte-identical to G&F §2; awaits P0.11.
+- **Blocked on the owner:** P1.14 (sign and upload; steps in `docs/release.md`,
+  then P0.6, P0.7); P2.2a (choose a design direction, D15); P2.4 (approve
+  downloading the two candidate fonts from github.com/google/fonts).
+- **Not done:** P2.5 (components; waits on P2.4's face), P2.8–P2.12, Phase 3.
+  Next agent: P2.8 (`LiturgicalBlock`, pure ContentKit) can start now.
+- Gotchas: iPhone Duo (iOS 27.1) is the default simulator and ignores Home in
+  UI tests; deep links via `simctl openurl` raise a system prompt (use
+  `XCUIApplication.open` or `-route`); ad-hoc `xcodebuild test` without
+  `-collect-test-diagnostics never` hangs 10 min on a failure.
