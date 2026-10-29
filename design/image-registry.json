@@ -1,0 +1,3319 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-28",
+  "design_direction": "Ribbon proposal; D15 remains open",
+  "scope": "54 requested PNG design sources, including optional seasonal plates. This is the visual-source register prepared ahead of P3.6; runtime validation and release clearance remain future work.",
+  "generation_method": "built-in image generation tool; parallel image-generation subagents",
+  "prompt_set": "design/image-prompts.md",
+  "asset_count": 54,
+  "assets": [
+    {
+      "id": "image-a1",
+      "prompt_id": "A1",
+      "title": "App icon, light (the master)",
+      "path": "design/generated/icon-app-light.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Create the artwork for an iOS app icon for a Book of Common Prayer app. Subject: a closed prayer book seen from the front, tilted about 8 degrees, filling about 60% of the canvas. Lamp-black leather cover (#1D1A17) with a thin gilt border line and a small, plain gilt Latin cross (#A3803A) on the upper half of the cover. One rubric-red ribbon marker (#A42A1E) with a swallow-tail end hangs from the bottom edge of the pages and curls gently. Solid warm ivory background (#F6F2E9). Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. Flat, simple shapes with crisp edges and at most a soft hint of shading; it must read clearly at 60 px. No text or letters, no logos or emblems, no compass rose.",
+      "generation_prompt": "Create the artwork for an iOS app icon for a Book of Common Prayer app. Subject: a closed prayer book seen from the front, tilted about 8 degrees, filling about 60% of the canvas. Lamp-black leather cover (#1D1A17) with a thin gilt border line and a small, plain gilt Latin cross (#A3803A) on the upper half of the cover. One rubric-red ribbon marker (#A42A1E) with a swallow-tail end hangs from the bottom edge of the pages and curls gently. Solid warm ivory background (#F6F2E9). Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. Flat, simple shapes with crisp edges and at most a soft hint of shading; it must read clearly at 60 px. No text or letters, no logos or emblems, no compass rose.\n\nProduction correction: truly flat vector-like illustration, broad perfectly solid colour shapes, no leather grain, no fabric grain, no photographic detail, no dimensional lighting. Keep the entire book and hanging ribbon comfortably inside the middle 60% of the square. Export exactly 1024×1024 pixels.",
+      "reference_images": [],
+      "original_sha256": "7be866e7ec513eb4289e5da9d32a5a9fe09d38fb45248ba699d885ea84302c3e",
+      "file_sha256": "7be866e7ec513eb4289e5da9d32a5a9fe09d38fb45248ba699d885ea84302c3e",
+      "bytes": 1100614,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a2",
+      "prompt_id": "A2",
+      "title": "App icon, dark appearance",
+      "path": "design/generated/icon-app-dark.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly (same book, cross, ribbon, angle, size, and composition) as its dark-mode version: background warm soot black (#13110E), book cover warm charcoal (#2A2622), border line and cross in bright gilt (#CFAE63), ribbon in warm vermilion (#E2765F). Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. Flat shapes, crisp edges. No text or letters, no logos or emblems.",
+      "generation_prompt": "Recreate the attached app icon exactly (same book, cross, ribbon, angle, size, and composition) as its dark-mode version: background warm soot black (#13110E), book cover warm charcoal (#2A2622), border line and cross in bright gilt (#CFAE63), ribbon in warm vermilion (#E2765F). Square 1024×1024, full-bleed, no rounded corners, border, or drop shadow. Flat shapes, crisp edges. No text or letters, no logos or emblems.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "6226dd77de69d55b4847c2ad4ab1fdb6f512327a7498d06b2b11331649e8e7f7",
+      "file_sha256": "6226dd77de69d55b4847c2ad4ab1fdb6f512327a7498d06b2b11331649e8e7f7",
+      "bytes": 1206646,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a3",
+      "prompt_id": "A3",
+      "title": "App icon, tinted mode",
+      "path": "design/generated/icon-app-tinted.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon as a single flat silhouette for iOS's tinted icon mode: the book and the ribbon in pure white (#FFFFFF), with the cross and the thin gap between the ribbon and the book cut out as transparent, all on a fully transparent background. Same composition, size, and position. Square 1024×1024. No shading, no outlines, no text.",
+      "generation_prompt": "Input image 1 is the target stencil to repair. Input image 2 is the original book composition reference. Repair the first image into a clean flat white app-icon stencil: remove all mottled opacity, little white flecks, border details, spine details, and page-edge details. Fill the entire book and ribbon footprint with completely opaque pure #FFFFFF. Cut out one completely transparent smooth Latin cross in the upper half of the book, at the position of the original gold cross in image 2, with no white marks inside the cross. Cut one slim transparent gap where ribbon attaches. Keep the original book size, tilt, shape, and ribbon position from image 2. Everything outside the silhouette transparent. White and transparent only. No texture, no outlines, no shading. Square1024×1024.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        },
+        {
+          "kind": "earlier-generated-draft",
+          "sha256": "b38c30fa9eb8cc04be2c6893192dbcfdf87fa34605800437be8e2c2b867f19b4"
+        }
+      ],
+      "original_sha256": "27cd505ce1aba9c87c27f8c0c4d5e4723a2ddf572bbd0fe09045967617610f0d",
+      "file_sha256": "27cd505ce1aba9c87c27f8c0c4d5e4723a2ddf572bbd0fe09045967617610f0d",
+      "bytes": 540349,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "draft-needs-mask-cleanup",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Draft: reference-based generation left ragged alpha edges and small opaque remnants within the cross cutout. Deterministic mask cleanup is pending owner approval."
+        ]
+      }
+    },
+    {
+      "id": "image-a4",
+      "prompt_id": "A4",
+      "title": "Icon Composer layer: the book",
+      "path": "design/generated/icon-layer-book.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate only the book from the attached app icon: the lamp-black cover (#1D1A17), its thin gilt border, and the gilt cross (#A3803A), at the same angle, size, and position on a square 1024×1024 canvas, on a fully transparent background. No ribbon, no background colour, no shadow, no text. Flat shapes, crisp edges.",
+      "generation_prompt": "Recreate only the book from the attached app icon: the lamp-black cover (#1D1A17), its thin gilt border, and the gilt cross (#A3803A), at the same angle, size, and position on a square 1024×1024 canvas, on a fully transparent background. No ribbon, no background colour, no shadow, no text. Flat shapes, crisp edges.\n\nTargeted layer correction: retain the FULL original square canvas and original book alignment; do not zoom or recenter the object after removing the background. At 1024×1024, the whole book spans approximately x=218 to 800 and y=126 to 824. Remove only the ribbon and background. The book upper edge remains 12.5% from top, its leftmost edge 21.5% from left. Keep all remaining empty margins transparent.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "6c2694183fab94cb77009829c76e1162116c753e6f2b3cde7657b95e7855405f",
+      "file_sha256": "6c2694183fab94cb77009829c76e1162116c753e6f2b3cde7657b95e7855405f",
+      "bytes": 563831,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Generated layers are close to the master placement; verify alignment during Icon Composer assembly (P21.8)."
+        ]
+      }
+    },
+    {
+      "id": "image-a5",
+      "prompt_id": "A5",
+      "title": "Icon Composer layer: the ribbon",
+      "path": "design/generated/icon-layer-ribbon.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate only the red ribbon marker from the attached app icon, with the same shape, swallow-tail end, size, and position, on a square 1024×1024 canvas with a fully transparent background. Nothing else: no book, no shadow, no text. Flat colour #A42A1E, crisp edges.",
+      "generation_prompt": "Recreate only the red ribbon marker from the attached app icon, with the same shape, swallow-tail end, size, and position, on a square 1024×1024 canvas with a fully transparent background. Nothing else: no book, no shadow, no text. Flat colour #A42A1E, crisp edges.\n\nTargeted layer correction: do NOT center or enlarge the ribbon. Retain the FULL original square canvas. The ribbon is SMALL in the LOWER LEFT part of the square: its entire visible outline occupies approximately x=354 to 466 and y=756 to 924 on a 1024×1024 canvas. Its top begins at the page edge 74% down the canvas; the swallowtail tip is at 90% down. Everything outside that small original ribbon footprint is fully transparent, especially all of the top 73% of canvas.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "22a13b174671e13d01671396b08be86811ae23616c4fb0e32e0db1e53a66eb1b",
+      "file_sha256": "22a13b174671e13d01671396b08be86811ae23616c4fb0e32e0db1e53a66eb1b",
+      "bytes": 79552,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Generated layers are close to the master placement; verify alignment during Icon Composer assembly (P21.8)."
+        ]
+      }
+    },
+    {
+      "id": "image-a6",
+      "prompt_id": "A6",
+      "title": "Seasonal icon: violet (Advent and Lent)",
+      "path": "design/generated/icon-season-violet.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep liturgical violet (#5A3E7D). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep liturgical violet (#5A3E7D). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "de17ba6c621712181c5ffd0cdc3a99cc17de7a4c4e7b0d268250d12bb306eab3",
+      "file_sha256": "de17ba6c621712181c5ffd0cdc3a99cc17de7a4c4e7b0d268250d12bb306eab3",
+      "bytes": 1265468,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a7",
+      "prompt_id": "A7",
+      "title": "Seasonal icon: white and gold (Christmas and Easter)",
+      "path": "design/generated/icon-season-white.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon: make it a warm white silk ribbon (#EFE7D2) with a thin gilt edge (#A3803A) on both sides so it stands clearly apart from the ivory background. Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon: make it a warm white silk ribbon (#EFE7D2) with a thin gilt edge (#A3803A) on both sides so it stands clearly apart from the ivory background. Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "a475756e95f05cf6a27036dd81c15adaf1c807b84c6bfcb1287d3989437267c1",
+      "file_sha256": "a475756e95f05cf6a27036dd81c15adaf1c807b84c6bfcb1287d3989437267c1",
+      "bytes": 1165033,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a8",
+      "prompt_id": "A8",
+      "title": "Seasonal icon: green (the seasons after Epiphany and Trinity)",
+      "path": "design/generated/icon-season-green.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep liturgical green (#3E6A48). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep liturgical green (#3E6A48). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "202eaba8096baf320a574785d207459ad95bcfa2d7618d3138d64af63b900d83",
+      "file_sha256": "202eaba8096baf320a574785d207459ad95bcfa2d7618d3138d64af63b900d83",
+      "bytes": 1264994,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a9",
+      "prompt_id": "A9",
+      "title": "Seasonal icon: rose (Gaudete and Laetare Sundays)",
+      "path": "design/generated/icon-season-rose.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a soft liturgical rose (#C68690). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a soft liturgical rose (#C68690). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "f40eb14ebfefa09e3176b5d3f25be3e18a5191c9418c6e7863685f89c8f76507",
+      "file_sha256": "f40eb14ebfefa09e3176b5d3f25be3e18a5191c9418c6e7863685f89c8f76507",
+      "bytes": 1371358,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a10",
+      "prompt_id": "A10",
+      "title": "Seasonal icon: Sarum blue (Advent)",
+      "path": "design/generated/icon-season-blue.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep Sarum blue (#2E4A7A). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon's colour to a deep Sarum blue (#2E4A7A). Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "07726738564215e42a72e19e73128606dd3584f554dc9175a598f5ddad5fb14a",
+      "file_sha256": "07726738564215e42a72e19e73128606dd3584f554dc9175a598f5ddad5fb14a",
+      "bytes": 1355831,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a11",
+      "prompt_id": "A11",
+      "title": "Seasonal icon: Lenten array",
+      "path": "design/generated/icon-season-array.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Recreate the attached app icon exactly, changing only the ribbon: make it unbleached linen (#CDBFA2) with a hairline lamp-black edge (#1D1A17) so it stands apart from the ivory background, like the plain Lenten array of an English parish church. Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "generation_prompt": "Recreate the attached app icon exactly, changing only the ribbon: make it unbleached linen (#CDBFA2) with a hairline lamp-black edge (#1D1A17) so it stands apart from the ivory background, like the plain Lenten array of an English parish church. Keep the book, cross, background, angle, size, and composition identical. Square 1024×1024, full-bleed, no rounded corners or shadow. Flat shapes, crisp edges. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "d5c769dea79a2dedaf2c1738f714abf0e59f6dcf6feb09f221cde6b9f176a3fa",
+      "file_sha256": "d5c769dea79a2dedaf2c1738f714abf0e59f6dcf6feb09f221cde6b9f176a3fa",
+      "bytes": 1264558,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-a12",
+      "prompt_id": "A12",
+      "title": "Small mark (favicon and tiny sizes)",
+      "path": "design/generated/mark-small.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Simplify the attached app icon into a minimal mark for a website favicon and tiny interface sizes: a front-facing closed book in lamp-black (#1D1A17) with a small gilt cross (#A3803A) and one rubric-red ribbon (#A42A1E) hanging below it. Bold shapes, no border line, no fine detail; it must read at 16×16 px. Fully transparent background, square 1024×1024, centered with about 8% padding. No text or letters.",
+      "generation_prompt": "Simplify the attached app icon into a minimal mark for a website favicon and tiny interface sizes: a front-facing closed book in lamp-black (#1D1A17) with a small gilt cross (#A3803A) and one rubric-red ribbon (#A42A1E) hanging below it. Bold shapes, no border line, no fine detail; it must read at 16×16 px. Fully transparent background, square 1024×1024, centered with about 8% padding. No text or letters.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        }
+      ],
+      "original_sha256": "a17217fbd77e89eef293bfe88a2f9532c082a1504f5435fac450ab7bf2c0e04b",
+      "file_sha256": "a17217fbd77e89eef293bfe88a2f9532c082a1504f5435fac450ab7bf2c0e04b",
+      "bytes": 431305,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-b1",
+      "prompt_id": "B1",
+      "title": "The Atlas (tab)",
+      "path": "design/generated/symbol-atlas.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: an open book seen from above whose two pages carry three faint curved meridian lines and two curved parallel lines, like a map printed across the spread. Not a compass rose, no needle, no star. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: an open book seen from above whose two pages carry three faint curved meridian lines and two curved parallel lines, like a map printed across the spread. Not a compass rose, no needle, no star. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.\nOutput file must be exactly 1024 pixels wide by 1024 pixels high, with a genuinely transparent alpha background.",
+      "reference_images": [],
+      "original_sha256": "acddcdc7060f66df829c52fe0fc32e0e703b2974bc5b5b60db40385efbd356c4",
+      "file_sha256": "acddcdc7060f66df829c52fe0fc32e0e703b2974bc5b5b60db40385efbd356c4",
+      "bytes": 277522,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b2",
+      "prompt_id": "B2",
+      "title": "The prayer book (Pray tab, launch screen)",
+      "path": "design/generated/symbol-prayerbook.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: a closed book seen from the front with a small plain cross on its cover and a single ribbon marker with a swallow-tail end hanging from its bottom edge. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading or texture. Subject: a closed book seen from the front with a small plain cross on its cover and a single ribbon marker with a swallow-tail end hanging from its bottom edge. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.\nOutput file must be exactly 1024 pixels wide by 1024 pixels high, with a genuinely transparent alpha background.",
+      "reference_images": [],
+      "original_sha256": "614f679d98c536bd8d666a9bc39d4c2d73f33462318c98803fc46f3837704b74",
+      "file_sha256": "614f679d98c536bd8d666a9bc39d4c2d73f33462318c98803fc46f3837704b74",
+      "bytes": 161112,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b3",
+      "prompt_id": "B3",
+      "title": "The ribbon (season marker)",
+      "path": "design/generated/symbol-ribbon.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry. Subject: a single bookmark ribbon hanging straight down with a swallow-tail (V-notched) end, drawn as a solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry. Subject: a single bookmark ribbon hanging straight down with a swallow-tail (V-notched) end, drawn as a solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "7bdb529eee00d45159246e992c17058065622d2eb0d287ad93dd714aa7a45d10",
+      "file_sha256": "7bdb529eee00d45159246e992c17058065622d2eb0d287ad93dd714aa7a45d10",
+      "bytes": 245203,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b4",
+      "prompt_id": "B4",
+      "title": "Compare",
+      "path": "design/generated/symbol-compare.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two tall narrow pages side by side, each with five short horizontal lines of \"text\"; the third line on the left page is joined to the third line on the right page by a thin bridging line, suggesting the same passage compared in two books. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two tall narrow pages side by side, each with five short horizontal lines of \"text\"; the third line on the left page is joined to the third line on the right page by a thin bridging line, suggesting the same passage compared in two books. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No letters.",
+      "reference_images": [],
+      "original_sha256": "44a7b82291c53c49fd9558c9393b24d66375c00a7ee3551836fb9ca6a0da92b9",
+      "file_sha256": "44a7b82291c53c49fd9558c9393b24d66375c00a7ee3551836fb9ca6a0da92b9",
+      "bytes": 194300,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b5",
+      "prompt_id": "B5",
+      "title": "Lineage of the books",
+      "path": "design/generated/symbol-lineage.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a small family tree of books: one closed book at the top joined by thin lines to two books below it, one of which is joined to two more books beneath. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a small family tree of books: one closed book at the top joined by thin lines to two books below it, one of which is joined to two more books beneath. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "06938837f1f7721917da5c73281c72fb865f4e6ef3a5ee6b51400149c4a2a8b1",
+      "file_sha256": "06938837f1f7721917da5c73281c72fb865f4e6ef3a5ee6b51400149c4a2a8b1",
+      "bytes": 175588,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b6",
+      "prompt_id": "B6",
+      "title": "The Psalter",
+      "path": "design/generated/symbol-psalter.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple lyre-shaped harp with five strings, the traditional emblem of the Psalms of David. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple lyre-shaped harp with five strings, the traditional emblem of the Psalms of David. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "ace4676d1ffa80c037cfcad274bb1ff174f274262ac90fc298097ce7944e3678",
+      "file_sha256": "ace4676d1ffa80c037cfcad274bb1ff174f274262ac90fc298097ce7944e3678",
+      "bytes": 232688,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b7",
+      "prompt_id": "B7",
+      "title": "Red-letter day",
+      "path": "design/generated/symbol-red-letter.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: crisp, simple geometry. Subject: a small cross pattée, whose four equal arms flare outward toward their ends, drawn as one solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 18% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: crisp, simple geometry. Subject: a small cross pattée, whose four equal arms flare outward toward their ends, drawn as one solid filled shape. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 18% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "2694118e491d9a37cc15d17747b58858d6eaa63ccd9d1b0cd8b7bcfe9ac251c0",
+      "file_sha256": "2694118e491d9a37cc15d17747b58858d6eaa63ccd9d1b0cd8b7bcfe9ac251c0",
+      "bytes": 168484,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b8",
+      "prompt_id": "B8",
+      "title": "Fast day",
+      "path": "design/generated/symbol-fast.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an empty shallow bowl seen from the side, resting on a short horizontal line. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an empty shallow bowl seen from the side, resting on a short horizontal line. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "ff9a43ed1ecbe068aa974c5546c2dd8a2cfdbc7b694b27fe5ee4274c2df8bf95",
+      "file_sha256": "ff9a43ed1ecbe068aa974c5546c2dd8a2cfdbc7b694b27fe5ee4274c2df8bf95",
+      "bytes": 109340,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b9",
+      "prompt_id": "B9",
+      "title": "Day of abstinence",
+      "path": "design/generated/symbol-abstinence.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple fish in profile, drawn as the early Christian ichthys: two arcs that meet at the head and cross to form the tail. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a simple fish in profile, drawn as the early Christian ichthys: two arcs that meet at the head and cross to form the tail. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "6e7bc93ad85014e904bd04cdd7f681e53a533707ecf5d851ce0764afe5f5e23f",
+      "file_sha256": "6e7bc93ad85014e904bd04cdd7f681e53a533707ecf5d851ce0764afe5f5e23f",
+      "bytes": 130162,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b10",
+      "prompt_id": "B10",
+      "title": "Ember Days",
+      "path": "design/generated/symbol-ember.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a Gothic quatrefoil, four equal rounded lobes arranged around a small center, standing for the four seasons of the year. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a Gothic quatrefoil, four equal rounded lobes arranged around a small center, standing for the four seasons of the year. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "c410149b159dfeebee9a79c2423e35869a288ee4996108bda42cb475f03e51d8",
+      "file_sha256": "c410149b159dfeebee9a79c2423e35869a288ee4996108bda42cb475f03e51d8",
+      "bytes": 157824,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b11",
+      "prompt_id": "B11",
+      "title": "Rogation Days",
+      "path": "design/generated/symbol-rogation.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an upright sheaf of wheat bound with a cord around its middle, the ears fanning out at the top. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an upright sheaf of wheat bound with a cord around its middle, the ears fanning out at the top. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "a0e8252462938cc7c519c435a186d2a075b471b153b5721b7144b13aa8d5e73d",
+      "file_sha256": "a0e8252462938cc7c519c435a186d2a075b471b153b5721b7144b13aa8d5e73d",
+      "bytes": 301672,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b12",
+      "prompt_id": "B12",
+      "title": "Vigil or eve",
+      "path": "design/generated/symbol-vigil.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single tall candle in a simple round holder with a small, still flame. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single tall candle in a simple round holder with a small, still flame. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "72622a0a4e07d8f4aea2b766e819ff83a68163fb1cc041c7f4d09465290f10d5",
+      "file_sha256": "72622a0a4e07d8f4aea2b766e819ff83a68163fb1cc041c7f4d09465290f10d5",
+      "bytes": 135087,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b13",
+      "prompt_id": "B13",
+      "title": "Intercessions",
+      "path": "design/generated/symbol-intercessions.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two hands folded in prayer, seen from the side, fingers together and pointing upward. Hands only, no arms or figure. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: two hands folded in prayer, seen from the side, fingers together and pointing upward. Hands only, no arms or figure. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "5313436364a63a172e43b96a0935c7faff6f5942351ba99794dfbfe7413e75c5",
+      "file_sha256": "5313436364a63a172e43b96a0935c7faff6f5942351ba99794dfbfe7413e75c5",
+      "bytes": 162485,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b14",
+      "prompt_id": "B14",
+      "title": "Preparation for confession",
+      "path": "design/generated/symbol-confession.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single old-fashioned key with a round bow and a simple bit, set diagonally. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a single old-fashioned key with a round bow and a simple bit, set diagonally. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "feab36bf9a796ec6865e6cbb402c80e4829ec69551b91cdda75df7dc3b292d0f",
+      "file_sha256": "feab36bf9a796ec6865e6cbb402c80e4829ec69551b91cdda75df7dc3b292d0f",
+      "bytes": 143034,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b15",
+      "prompt_id": "B15",
+      "title": "The Litany",
+      "path": "design/generated/symbol-litany.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a processional cross on a tall straight staff, the cross plain with slightly flared ends. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: a processional cross on a tall straight staff, the cross plain with slightly flared ends. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "451442d680b0fa2658c9605b2d29b07240b0c1ed31016490a52da336f8bb3f4b",
+      "file_sha256": "451442d680b0fa2658c9605b2d29b07240b0c1ed31016490a52da336f8bb3f4b",
+      "bytes": 90017,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-b16",
+      "prompt_id": "B16",
+      "title": "Reading plan",
+      "path": "design/generated/symbol-plan.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an open book seen from above with a ribbon marker laid across the right-hand page, keeping a place. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "generation_prompt": "Draw one icon glyph in the style of Apple's SF Symbols, regular weight: even monoline strokes, rounded caps and joins, simple geometry, no shading. Subject: an open book seen from above with a ribbon marker laid across the right-hand page, keeping a place. Pure black (#000000) on a transparent background, centered in a square 1024×1024 canvas with about 12% padding. No text or letters.",
+      "reference_images": [],
+      "original_sha256": "f7743b68a0801599ead14d7a9fe3b25202a54472fb30f1c0f5f33a2737c618de",
+      "file_sha256": "f7743b68a0801599ead14d7a9fe3b25202a54472fb30f1c0f5f33a2737c618de",
+      "bytes": 203542,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool.",
+          "Bitmap design source; harmonize stroke weight and padding when tracing SVG and SF Symbols (P2.5)."
+        ]
+      }
+    },
+    {
+      "id": "image-c1",
+      "prompt_id": "C1",
+      "title": "No favorites yet",
+      "path": "design/generated/empty-favorites.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose bookmark ribbon with a swallow-tail end, lying in a gentle S-curve on an otherwise empty surface. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose bookmark ribbon with a swallow-tail end, lying in a gentle S-curve on an otherwise empty surface. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: deliver exactly 1024 pixels wide by 1024 pixels high. Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including areas inside the ribbon outline and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "e731bc7244565e6177c5c7c977902cf342c2d7932fad21edf28ca469191b8c28",
+      "file_sha256": "e731bc7244565e6177c5c7c977902cf342c2d7932fad21edf28ca469191b8c28",
+      "bytes": 387760,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c2",
+      "prompt_id": "C2",
+      "title": "No intercessions yet",
+      "path": "design/generated/empty-intercessions.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a small blank card propped against a closed book, with a pencil lying beside it. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a small blank card propped against a closed book, with a pencil lying beside it. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "37325ea72bf792ccdf645bc5e5c25c215f01fa56412f9ada8e6f151469b4974f",
+      "file_sha256": "37325ea72bf792ccdf645bc5e5c25c215f01fa56412f9ada8e6f151469b4974f",
+      "bytes": 645302,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c3",
+      "prompt_id": "C3",
+      "title": "No journal entries yet",
+      "path": "design/generated/empty-journal.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed notebook with a ribbon marker and a fountain pen resting diagonally across its cover. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed notebook with a ribbon marker and a fountain pen resting diagonally across its cover. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "2bc72ef93dd744d5345ba5353ce9c1350e194de6eb1d3c6276c5295b882d7550",
+      "file_sha256": "2bc72ef93dd744d5345ba5353ce9c1350e194de6eb1d3c6276c5295b882d7550",
+      "bytes": 971568,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c4",
+      "prompt_id": "C4",
+      "title": "No search results",
+      "path": "design/generated/empty-search.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a round magnifying glass resting on an open book whose pages show only faint, unreadable lines. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a round magnifying glass resting on an open book whose pages show only faint, unreadable lines. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.\nDo not paint any white highlight or reflective glass area; leave the lens and every highlight area completely transparent. Keep the full magnifying glass and open book within generous margins, about 20% empty space on every side.",
+      "reference_images": [],
+      "original_sha256": "fb2f5dd655fbcdbca4cffde5d1549499e0a99ad1580e386c86e88c4a3a7744a6",
+      "file_sha256": "fb2f5dd655fbcdbca4cffde5d1549499e0a99ad1580e386c86e88c4a3a7744a6",
+      "bytes": 584281,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c5",
+      "prompt_id": "C5",
+      "title": "Nothing appointed today",
+      "path": "design/generated/empty-plan.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed book lying flat, its ribbon marker laid neatly along the cover. Quiet, warm, restful, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a closed book lying flat, its ribbon marker laid neatly along the cover. Quiet, warm, restful, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "2094242de5f7ce2fa029832647d45c7c621d938370621a1ab08d180521bdbf94",
+      "file_sha256": "2094242de5f7ce2fa029832647d45c7c621d938370621a1ab08d180521bdbf94",
+      "bytes": 807485,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c6",
+      "prompt_id": "C6",
+      "title": "Not in this book",
+      "path": "design/generated/empty-not-in-book.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: two closed books standing upright side by side on a shelf, with a narrow empty gap between them where a third book would stand. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering on the spines, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: two closed books standing upright side by side on a shelf, with a narrow empty gap between them where a third book would stand. Quiet, warm, still, with generous empty space. Square 1024×1024. No text or lettering on the spines, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "e4c23e91dd8926ce5098cea4719bf6c13dbe1004c51586447bedf90b9b4d703a",
+      "file_sha256": "e4c23e91dd8926ce5098cea4719bf6c13dbe1004c51586447bedf90b9b4d703a",
+      "bytes": 957361,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-c7",
+      "prompt_id": "C7",
+      "title": "Something went wrong",
+      "path": "design/generated/empty-error.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose page, gently curled at one corner, resting at a slight angle. Calm rather than alarming, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: a single loose page, gently curled at one corner, resting at a slight angle. Calm rather than alarming, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "712d6dd484dd0aaf70db8c087884052d942102421bce9397c9cf2cbb2cb04109",
+      "file_sha256": "712d6dd484dd0aaf70db8c087884052d942102421bce9397c9cf2cbb2cb04109",
+      "bytes": 355569,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-d1",
+      "prompt_id": "D1",
+      "title": "Divider",
+      "path": "design/generated/ornament-divider.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a horizontal ornamental rule running the full width of the canvas at its vertical center: one fine hairline with a small central fleuron (a simple four-petal flower) and a tiny dot on each side of it. Nothing else on the canvas. Landscape 1536×1024. No text or letters, no emblems.",
+      "generation_prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a horizontal ornamental rule running the full width of the canvas at its vertical center: one fine hairline with a small central fleuron (a simple four-petal flower) and a tiny dot on each side of it. Nothing else on the canvas. Landscape 1536×1024. No text or letters, no emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.\nPlacement constraint: the rule is perfectly horizontal at y=512 pixels, the exact vertical center. The central four-petal fleuron is very small, no more than 36 pixels tall, and the two dots are tiny. All ink is confined to the narrow band y=494 through530; the remaining canvas is empty transparent space.",
+      "reference_images": [],
+      "original_sha256": "18b5d96ac8463328359658eb0305d9d72e5dec79f9cae476524bac6fba1ae6b5",
+      "file_sha256": "18b5d96ac8463328359658eb0305d9d72e5dec79f9cae476524bac6fba1ae6b5",
+      "bytes": 364472,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        254
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-d2",
+      "prompt_id": "D2",
+      "title": "Corner ornament",
+      "path": "design/generated/ornament-corner.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a single corner ornament for the top-left corner of a frame: two fine parallel rules meeting at a right angle, with a small leaf-scroll flourish where they meet. The ornament sits in the top-left quarter of the canvas; the rest is empty. Square 1024×1024. No text or letters, no emblems.",
+      "generation_prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a single corner ornament for the top-left corner of a frame: two fine parallel rules meeting at a right angle, with a small leaf-scroll flourish where they meet. The ornament sits in the top-left quarter of the canvas; the rest is empty. Square 1024×1024. No text or letters, no emblems.\nEdit the reference image. Change only the ornament's size and placement: reduce the existing complete ornament to HALF of its current width and height, keeping the corner's top-left anchor near 10% from the left and10% from the top. Every visible stroke must remain within the top-left quarter of the overall square canvas, with a large transparent expanse everywhere else. Preserve the engraved line style, two fine parallel rules and small leaf-scroll flourish. Use ONLY pure black strokes on actual transparency, no white/grey fills, no text.",
+      "reference_images": [
+        {
+          "kind": "earlier-generated-draft",
+          "sha256": "671693f17a7f17f86881d2eb88f7986369b45ab497376a7324402086c55ab4f7"
+        }
+      ],
+      "original_sha256": "5e83a0a1a8f4f9616b78905ef2ea7d2d7f9927d03063d1a3c765f3146f5e2f72",
+      "file_sha256": "5e83a0a1a8f4f9616b78905ef2ea7d2d7f9927d03063d1a3c765f3146f5e2f72",
+      "bytes": 69127,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-d3",
+      "prompt_id": "D3",
+      "title": "Atlas plate frame",
+      "path": "design/generated/frame-atlas-plate.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of an antique atlas plate: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a rectangular double-rule border near the edges of the canvas, with a narrow band of alternating black and white segments (like an old map's degree scale) between the two rules and a small square block with a simple four-petal flower at each corner. The whole interior is completely empty. Landscape 1536×1024. No text, numbers, or letters; no compass rose, no emblems.",
+      "generation_prompt": "Fine engraved ornament in the manner of an antique atlas plate: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a rectangular double-rule border near the edges of the canvas, with a narrow band of alternating black and white segments (like an old map's degree scale) between the two rules and a small square block with a simple four-petal flower at each corner. The whole interior is completely empty. Landscape 1536×1024. No text, numbers, or letters; no compass rose, no emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "d00f3cdb5b72af605d01db1df47192b539837eee771eb826ff71788768c317db",
+      "file_sha256": "d00f3cdb5b72af605d01db1df47192b539837eee771eb826ff71788768c317db",
+      "bytes": 887330,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        254
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-d4",
+      "prompt_id": "D4",
+      "title": "Cartouche",
+      "path": "design/generated/frame-cartouche.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of the title cartouche on an antique map: pure black (#000000) lines with light hatching, no colour, on a fully transparent background. Subject: an empty horizontal oval panel framed by scrolled strapwork and small leafy flourishes, centered on the canvas; the panel's interior completely blank. Landscape 1536×1024. No text or letters, no figures or faces, no emblems, no compass rose.",
+      "generation_prompt": "Fine engraved ornament in the manner of the title cartouche on an antique map: pure black (#000000) lines with light hatching, no colour, on a fully transparent background. Subject: an empty horizontal oval panel framed by scrolled strapwork and small leafy flourishes, centered on the canvas; the panel's interior completely blank. Landscape 1536×1024. No text or letters, no figures or faces, no emblems, no compass rose.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "b788d44f7130c4b178524a4a1c7fd0ef4520dff4cf57bcbead1828cedb83edcb",
+      "file_sha256": "b788d44f7130c4b178524a4a1c7fd0ef4520dff4cf57bcbead1828cedb83edcb",
+      "bytes": 1668108,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        254
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-d5",
+      "prompt_id": "D5",
+      "title": "Share card frame, square",
+      "path": "design/generated/frame-share-square.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a delicate rectangular frame for a quotation card: one fine outer rule and one inner hairline close to it, with a small four-petal fleuron at each of the four corners. The interior is completely empty and fills about 80% of the canvas. Square 1024×1024. No text or letters, no emblems.",
+      "generation_prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a delicate rectangular frame for a quotation card: one fine outer rule and one inner hairline close to it, with a small four-petal fleuron at each of the four corners. The interior is completely empty and fills about 80% of the canvas. Square 1024×1024. No text or letters, no emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "3a198a91267b130e7cdde3a88413bd9d16759a1b2462b65c07894fb3ba84c994",
+      "file_sha256": "3a198a91267b130e7cdde3a88413bd9d16759a1b2462b65c07894fb3ba84c994",
+      "bytes": 149645,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-d6",
+      "prompt_id": "D6",
+      "title": "Share card frame, portrait",
+      "path": "design/generated/frame-share-portrait.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a delicate rectangular frame for a tall quotation card: one fine outer rule and one inner hairline close to it, with a small four-petal fleuron at each of the four corners. The interior is completely empty and fills about 80% of the canvas. Portrait 1024×1536. No text or letters, no emblems.",
+      "generation_prompt": "Fine engraved ornament in the manner of a 19th-century prayer book: pure black (#000000) lines, no fills or shading, on a fully transparent background. Subject: a delicate rectangular frame for a tall quotation card: one fine outer rule and one inner hairline close to it, with a small four-petal fleuron at each of the four corners. The interior is completely empty and fills about 80% of the canvas. Portrait 1024×1536. No text or letters, no emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "6ced4cadc0b5f3c9aa4007fda036c61f0cb3c2235a6e7a11c3ba5132556610c4",
+      "file_sha256": "6ced4cadc0b5f3c9aa4007fda036c61f0cb3c2235a6e7a11c3ba5132556610c4",
+      "bytes": 467416,
+      "native_size": [
+        1024,
+        1536
+      ],
+      "requested_size": [
+        1024,
+        1536
+      ],
+      "saved_size": [
+        1024,
+        1536
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        254
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-d7",
+      "prompt_id": "D7",
+      "title": "Map graticule (behind the lineage map)",
+      "path": "design/generated/background-graticule.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "A very faint graticule like the curved grid on an antique world map projection: evenly spaced thin meridians and parallels, gently curved, in pure black (#000000) on a fully transparent background, filling the canvas edge to edge. No land, coastlines, labels, numbers, compass rose, or decoration; just the grid, for use at low opacity behind a diagram. Landscape 1536×1024.",
+      "generation_prompt": "A very faint graticule like the curved grid on an antique world map projection: evenly spaced thin meridians and parallels, gently curved, in pure black (#000000) on a fully transparent background, filling the canvas edge to edge. No land, coastlines, labels, numbers, compass rose, or decoration; just the grid, for use at low opacity behind a diagram. Landscape 1536×1024.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "c5e99ff3f13b0a44ff1159f2c3004c44b751294cb84fd18e0c20abc015532ba9",
+      "file_sha256": "c5e99ff3f13b0a44ff1159f2c3004c44b751294cb84fd18e0c20abc015532ba9",
+      "bytes": 732182,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        247
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e1",
+      "prompt_id": "E1",
+      "title": "Welcome (first launch)",
+      "path": "design/generated/plate-welcome.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: an open prayer book resting on a wooden lectern, with three ribbon markers (red, green, and violet) hanging from its pages; soft morning light from a window to the left; an unlit brass candlestick behind it against a plain plastered wall. Quiet, warm, still, reverent, with generous empty space. Landscape 1536×1024. No text or lettering on the pages, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: an open prayer book resting on a wooden lectern, with three ribbon markers (red, green, and violet) hanging from its pages; soft morning light from a window to the left; an unlit brass candlestick behind it against a plain plastered wall. Quiet, warm, still, reverent, with generous empty space. Landscape 1536×1024. No text or lettering on the pages, no people, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "edd5bb7a527238e3b987d168b7cf52dd0a9d12f4a7629680855a6abcf819c019",
+      "file_sha256": "edd5bb7a527238e3b987d168b7cf52dd0a9d12f4a7629680855a6abcf819c019",
+      "bytes": 3232754,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e2",
+      "prompt_id": "E2",
+      "title": "Website hero",
+      "path": "design/generated/web-hero.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book or atlas: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: a still life on a wooden table: an open prayer book with a red ribbon (#A42A1E), a small closed black prayer book beside it, and an old folded map lying partly open beneath them, its surface showing only faint lines with no place names; warm evening lamplight from the right. Quiet, warm, still. Landscape 1536×1024. No text or lettering anywhere, no people, no logos, emblems, or compass rose.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book or atlas: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: a still life on a wooden table: an open prayer book with a red ribbon (#A42A1E), a small closed black prayer book beside it, and an old folded map lying partly open beneath them, its surface showing only faint lines with no place names; warm evening lamplight from the right. Quiet, warm, still. Landscape 1536×1024. No text or lettering anywhere, no people, no logos, emblems, or compass rose.",
+      "reference_images": [],
+      "original_sha256": "2a7c36ff4c555921bfb3a7e4fa078fc4770d28482175205acec9e5aa92d82d78",
+      "file_sha256": "2a7c36ff4c555921bfb3a7e4fa078fc4770d28482175205acec9e5aa92d82d78",
+      "bytes": 3594964,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e3",
+      "prompt_id": "E3",
+      "title": "Website sharing image (Open Graph)",
+      "path": "design/generated/web-og.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9). Subject: the closed black prayer book with the gilt cross and red ribbon from the attached app icon, redrawn as an engraved illustration, standing in the left third of the canvas. The right two-thirds is plain ivory and completely empty, reserved for a title added later. Landscape 1536×1024. No text or lettering anywhere, no people, no logos or emblems.",
+      "generation_prompt": "Input image 1 is the Open Graph artwork to edit. Input image 2 is the original book design reference. Keep image 1 style, ivory paper, gilt cross, red ribbon, engraved hatching, and composition. Change ONLY the scale of the illustrated book and its surrounding hatch marks: make that whole illustration 25 percent smaller, anchored near the left edge and vertically centered. The complete illustration must lie entirely inside the LEFT THIRD of the1536×1024 canvas, no more than x=480. Everything from x=512 to x=1536 must be totally plain empty ivory paper #F6F2E9. The right two-thirds reserved for a title added later. No words, letters, people, emblems, or logos. Landscape1536×1024.",
+      "reference_images": [
+        {
+          "kind": "selected-master",
+          "path": "design/generated/icon-app-light.png"
+        },
+        {
+          "kind": "earlier-generated-draft",
+          "sha256": "07f9d33df68538882eb47f9b9c9604ea6f25b59873bcc06a346acb17acd75b84"
+        }
+      ],
+      "original_sha256": "32744a13e035ae662fc43d643bb62ba3f3fa29e3fade7756885021571a19b145",
+      "file_sha256": "32744a13e035ae662fc43d643bb62ba3f3fa29e3fade7756885021571a19b145",
+      "bytes": 1762673,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e4",
+      "prompt_id": "E4",
+      "title": "Website 404 page",
+      "path": "design/generated/web-404.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: an open book with blank pages and a ribbon marker lying loosely across them, as if the place has been lost. Gentle, a little wry, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line art in the manner of a 19th-century prayer book illustration: pure black (#000000) lines with light cross-hatching and no colour fills, on a fully transparent background. Subject: an open book with blank pages and a ribbon marker lying loosely across them, as if the place has been lost. Gentle, a little wry, with generous empty space. Square 1024×1024. No text or lettering, no people, no logos or emblems.\nOutput constraint: Use ONLY pure black ink strokes with varying alpha for antialiasing; all negative space, including the interiors of outlined objects and gaps between the engraved hatch lines, must be transparent, with no white or grey painted fill. The image will be tinted by an app, so it must be an ink-only alpha mask.",
+      "reference_images": [],
+      "original_sha256": "84d4d4a4981d19b6c89ded733e752d96012ec32576101c543a007c4da6bb4558",
+      "file_sha256": "84d4d4a4981d19b6c89ded733e752d96012ec32576101c543a007c4da6bb4558",
+      "bytes": 702064,
+      "native_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "saved_size": [
+        1254,
+        1254
+      ],
+      "has_transparency": true,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "genuine transparent background verified",
+          "no pale or white fill pixels at alpha above 8",
+          "opacity diagnostic reviewed on white"
+        ],
+        "limitations": [
+          "Native square output is 1254x1254; exact-size export is pending owner approval to use a local image tool."
+        ]
+      }
+    },
+    {
+      "id": "image-e5",
+      "prompt_id": "E5",
+      "title": "Advent",
+      "path": "design/generated/plate-advent.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: an evergreen Advent wreath on a dark wooden table holding three violet candles (#5A3E7D) and one rose candle (#C68690), with one violet candle lit, early winter dusk at a window behind. Quiet, expectant, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: an evergreen Advent wreath on a dark wooden table holding three violet candles (#5A3E7D) and one rose candle (#C68690), with one violet candle lit, early winter dusk at a window behind. Quiet, expectant, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "daec937308cc2a3bf920ee8f4d8ab144ad0ae40ec52a6b601ed9dd8cf940cac3",
+      "file_sha256": "daec937308cc2a3bf920ee8f4d8ab144ad0ae40ec52a6b601ed9dd8cf940cac3",
+      "bytes": 3858676,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e6",
+      "prompt_id": "E6",
+      "title": "Christmas",
+      "path": "design/generated/plate-christmas.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: a single lit white candle on a deep windowsill with sprigs of holly and red berries, snow falling faintly beyond the glass at night. Quiet, warm, joyful, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: a single lit white candle on a deep windowsill with sprigs of holly and red berries, snow falling faintly beyond the glass at night. Quiet, warm, joyful, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "9eccf6450b219e343d405a67f021f8483ad9cb1b946370c44962bec7256ec5b6",
+      "file_sha256": "9eccf6450b219e343d405a67f021f8483ad9cb1b946370c44962bec7256ec5b6",
+      "bytes": 4349032,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e7",
+      "prompt_id": "E7",
+      "title": "Epiphany",
+      "path": "design/generated/plate-epiphany.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: one bright star low over a deep blue night horizon of hills; in the foreground, on a stone ledge, three small gifts: a gilt casket, a brass censer, and a small flask. Quiet, luminous, still. Landscape 1536×1024. No text or lettering, no people or figures, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: one bright star low over a deep blue night horizon of hills; in the foreground, on a stone ledge, three small gifts: a gilt casket, a brass censer, and a small flask. Quiet, luminous, still. Landscape 1536×1024. No text or lettering, no people or figures, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "9651889ada261436092bf57ef491f616dc6a77a8269e347c3aa5ea7e96c16a68",
+      "file_sha256": "9651889ada261436092bf57ef491f616dc6a77a8269e347c3aa5ea7e96c16a68",
+      "bytes": 4334128,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e8",
+      "prompt_id": "E8",
+      "title": "Lent",
+      "path": "design/generated/plate-lent.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: a bare thorn branch laid across a folded violet cloth (#5A3E7D), beside a small earthenware bowl of grey ashes, on a plain wooden table in cool morning light. Sober, quiet, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: a bare thorn branch laid across a folded violet cloth (#5A3E7D), beside a small earthenware bowl of grey ashes, on a plain wooden table in cool morning light. Sober, quiet, still. Landscape 1536×1024. No text or lettering, no people, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "290965cbbb9234b54f562725512613a019faff45c5cdb3eda939ec90e2c4f66a",
+      "file_sha256": "290965cbbb9234b54f562725512613a019faff45c5cdb3eda939ec90e2c4f66a",
+      "bytes": 3767916,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e9",
+      "prompt_id": "E9",
+      "title": "Holy Week",
+      "path": "design/generated/plate-holy-week.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: green palm fronds laid on worn stone steps, a deep red cloth (#9C2B2C) draped over the top step, low early light casting long shadows. Solemn, quiet, still. Landscape 1536×1024. No text or lettering, no people or figures, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: green palm fronds laid on worn stone steps, a deep red cloth (#9C2B2C) draped over the top step, low early light casting long shadows. Solemn, quiet, still. Landscape 1536×1024. No text or lettering, no people or figures, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "4f4b945c9dcd772c8a72861b08440631f212133271018fb1aef58844f59e2796",
+      "file_sha256": "4f4b945c9dcd772c8a72861b08440631f212133271018fb1aef58844f59e2796",
+      "bytes": 4003495,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e10",
+      "prompt_id": "E10",
+      "title": "Easter",
+      "path": "design/generated/plate-easter.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: white lilies growing in a garden beside a large round stone rolled away from a dark rock-cut doorway, the sky brightening at dawn. Joyful, quiet, luminous. Landscape 1536×1024. No text or lettering, no people, figures, or angels, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, gilt (#A3803A) only as thin lines. Subject: white lilies growing in a garden beside a large round stone rolled away from a dark rock-cut doorway, the sky brightening at dawn. Joyful, quiet, luminous. Landscape 1536×1024. No text or lettering, no people, figures, or angels, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "a31b6362949883c99c9df32065d151dd5cd3118b0bb306e0279452483577d9d0",
+      "file_sha256": "a31b6362949883c99c9df32065d151dd5cd3118b0bb306e0279452483577d9d0",
+      "bytes": 4218459,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e11",
+      "prompt_id": "E11",
+      "title": "Whitsunday or Pentecost",
+      "path": "design/generated/plate-pentecost.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: seven lit candles in a row whose flames all lean the same way as if in a rushing wind, standing on a deep red cloth (#9C2B2C) that lifts at its edge in the same wind. Bright, quiet, alive. Landscape 1536×1024. No text or lettering, no people, no birds, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing. Subject: seven lit candles in a row whose flames all lean the same way as if in a rushing wind, standing on a deep red cloth (#9C2B2C) that lifts at its edge in the same wind. Bright, quiet, alive. Landscape 1536×1024. No text or lettering, no people, no birds, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "07c3913ff14151c5abdee6774699cbe9886855630b3f2f73a9b71ee24c4cf423",
+      "file_sha256": "07c3913ff14151c5abdee6774699cbe9886855630b3f2f73a9b71ee24c4cf423",
+      "bytes": 4205766,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    },
+    {
+      "id": "image-e12",
+      "prompt_id": "E12",
+      "title": "The season after Trinity or Pentecost",
+      "path": "design/generated/plate-trinity.png",
+      "source_type": "AI-generated",
+      "creator": "AI image generation tool",
+      "date": "2026-10-28",
+      "publisher": null,
+      "holder": null,
+      "book": null,
+      "printing": null,
+      "page": null,
+      "source": "design/image-prompts.md",
+      "rights_basis": "Generated for this project from the owner-supplied prompt; supporting references are project-generated artwork. No third-party image was supplied.",
+      "rights_by_territory": {
+        "US": "pending release review"
+      },
+      "ai_use": "Generation authorized by the owner on 2026-10-28; no licensed prayer-book text was used.",
+      "status": "pending",
+      "shipped": false,
+      "owner_approved": false,
+      "depicts_sacred_person": false,
+      "prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, greens leaning toward #3E6A48. Subject: a summer footpath through green fields and hedgerows leading toward the small stone tower of a distant country parish church. Peaceful, ordinary, still. Landscape 1536×1024. No text or lettering, no people, no signs, no flags, no logos or emblems.",
+      "generation_prompt": "Fine engraved line illustration with a soft ink wash, like a hand-coloured plate in a 19th-century prayer book: lamp-black linework (#1D1A17) on warm ivory paper (#F6F2E9), colour muted and sparing, greens leaning toward #3E6A48. Subject: a summer footpath through green fields and hedgerows leading toward the small stone tower of a distant country parish church. Peaceful, ordinary, still. Landscape 1536×1024. No text or lettering, no people, no signs, no flags, no logos or emblems.",
+      "reference_images": [],
+      "original_sha256": "12c65418af9c9902b9663c98c09a8a8a99f102242b7294ea33b8d882c96c70c3",
+      "file_sha256": "12c65418af9c9902b9663c98c09a8a8a99f102242b7294ea33b8d882c96c70c3",
+      "bytes": 4431202,
+      "native_size": [
+        1536,
+        1024
+      ],
+      "requested_size": [
+        1536,
+        1024
+      ],
+      "saved_size": [
+        1536,
+        1024
+      ],
+      "has_transparency": false,
+      "alpha_range": [
+        255,
+        255
+      ],
+      "export_processing": [],
+      "review": {
+        "state": "reviewed-design-source",
+        "checks": [
+          "PNG decoded successfully",
+          "requested subject and absence of lettering or prohibited figures reviewed",
+          "opaque RGB export verified"
+        ],
+        "limitations": []
+      }
+    }
+  ]
+}
