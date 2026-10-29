@@ -608,7 +608,7 @@ When the app is demoable:
 - [x] **P1.6** Create the local packages `ChurchYear`, `ContentKit`, and `ScriptureKit` (iOS and macOS platforms, Linux-compatible sources), each with one passing Swift Testing test, and link them into `App`. (`OfficeKit` and `AtlasKit` arrive with Phases 6 and 11.)
 - [x] **P1.7** A minimal app that launches to a placeholder Today showing the date in paper and ink. Run it in the simulator, take a screenshot, and check how the display name sits under the Home Screen icon (D1).
   - *2026-10-28 result:* the date only, in the Ribbon proposal's `paper`, `ink`, and `muted` (D15 working default; P2.3 regenerates them from tokens). Checked on iPhone Duo (iOS 27.1) in light, dark, and AX5 text. "Prayerbook Atlas" (16 characters) shows untruncated under the icon on iPhone 17 Pro (iOS 27.0) at the default text size, so no short form is proposed; the iPhone Duo's Home Screen could not be reached headlessly.
-- [ ] **P1.8** Add `.swift-format` (4-space indent, 120 columns) with `make format` and `make lint` using Xcode's `swift format`.
+- [x] **P1.8** Add `.swift-format` (4-space indent, 120 columns) with `make format` and `make lint` using Xcode's `swift format`.
 - [ ] **P1.9** Write `scripts/sim-destination.sh`: the newest available iPhone simulator; `SIM_DEVICE` overrides it.
 - [ ] **P1.10** Write the `Makefile`: `help`, `generate`, `content`, `content-release`, `build`, `build-release`, `test-packages`, `test-app`, `test-linux`, `run`, `screenshot`, `check`, `format`, `lint`, and `clean`, each with a one-line description at the top.
 - [ ] **P1.11** A placeholder app icon rendered by a script from `design/icon/app-icon.svg`, with dark and tinted appearances, and the rubric accent colour. The final icon is P21.8.
