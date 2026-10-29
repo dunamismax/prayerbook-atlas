@@ -14,6 +14,7 @@ This initial register covers the generated visual design sources requested on 20
 - **AI use:** the owner authorized generation of this set; no licensed prayer-book text was used.
 - **Checked:** all requested filenames; successful PNG decoding; transparency and absence of white paper fills in ink masks; subjects and prohibited-image constraints; native versus requested dimensions; the exact-size square exports and the tinted icon's rebuilt mask (2026-10-28), recorded per image in the registry.
 - **Status:** `pending`, design sources only. D15 and release approval remain open.
+- **Placeholder use (2026-10-28, P1.11):** byte-identical copies of A1, A2, and A3 are the app's placeholder icon in `App/Resources/Assets.xcassets/AppIcon.appiconset`, for development and internal builds; `make check` fails if a copy differs from its source. This does not clear them: they stay `pending` until release review, and the final icon is P21.8.
 
 | Image ID | Title | File | Status |
 | --- | --- | --- | --- |

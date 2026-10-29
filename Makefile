@@ -10,7 +10,9 @@
 #   test-linux     Run every package's tests on Linux in the swift:6.4 container
 #   run            Build, boot the simulator, install, and launch the app
 #   screenshot     Relaunch the app and save a screenshot to screenshots/ (APPEARANCE, TEXT_SIZE)
-#   check          Lint, package tests, content, app tests, and a Release build
+#   icon           Copy the placeholder app icon from design/generated/ into the asset catalog
+#   guards         Check that the app icon matches its design sources
+#   check          Lint, guards, package tests, content, app tests, and a Release build
 #   format         Format every Swift file in place with swift format
 #   lint           Check formatting and style with swift format (fails on any finding)
 #   clean          Remove build output and the generated project
@@ -47,7 +49,7 @@ define compile_content
 endef
 
 .PHONY: help generate content content-release build build-release test-packages test-app test-linux run screenshot \
-	check format lint clean
+	icon guards check format lint clean
 
 help:
 	@sed -n 's/^#   //p' $(MAKEFILE_LIST)
@@ -113,7 +115,13 @@ screenshot:
 	xcrun simctl io $$udid screenshot "$$file" 2> /dev/null; \
 	echo "$$file"
 
-check: lint test-packages content test-app build-release
+icon:
+	scripts/app-icon.sh
+
+guards:
+	scripts/app-icon.sh --check
+
+check: lint guards test-packages content test-app build-release
 
 format:
 	swift format format --in-place --recursive --parallel $(SWIFT_SOURCES)
