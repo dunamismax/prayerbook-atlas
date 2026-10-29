@@ -14,7 +14,9 @@ PrivateTmp=true
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=/var/backups /run/astro-deploy /srv/www/prayerbookatlas.com/shared/tmp
+# storage/ is writable because SQLite must create a WAL database's -shm file
+# even to read it; the backup itself changes nothing there.
+ReadWritePaths=/var/backups /run/astro-deploy /srv/www/prayerbookatlas.com/shared/storage /srv/www/prayerbookatlas.com/shared/tmp
 MemoryHigh=256M
 MemoryMax=512M
 TasksMax=64

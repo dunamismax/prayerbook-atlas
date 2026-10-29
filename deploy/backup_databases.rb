@@ -30,9 +30,17 @@ when "copy"
     source = SQLite3::Database.new(path)
     target = SQLite3::Database.new(destination)
     backup = SQLite3::Backup.new(target, "main", source, "main")
-    backup.step(-1)
+    status = backup.step(-1)
+    expected_pages = backup.pagecount
     backup.finish
+    # A step that does not finish leaves an empty file that would still pass
+    # integrity_check, so refuse anything but a complete copy.
+    unless status == SQLite3::Constants::ErrorCode::DONE
+      abort "backup: #{File.basename(path)}: SQLite's online backup stopped with code #{status}"
+    end
     target.execute("PRAGMA journal_mode = DELETE")
+    pages = target.get_first_value("PRAGMA page_count")
+    abort "backup: #{File.basename(path)}: copied #{pages} of #{expected_pages} pages" if pages.zero? || pages != expected_pages
     target.close
     source.close
     line = describe(destination)

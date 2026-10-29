@@ -42,6 +42,18 @@ class BackupTest < ActiveSupport::TestCase
     assert_match(/differs from the manifest/, output)
   end
 
+  test "a copy SQLite cannot finish is an error, never an empty file that passes" do
+    @live.close
+    @live = SQLite3::Database.new(":memory:")
+    FileUtils.rm_f(Dir[@dir.join("storage/*-{wal,shm}")])
+    File.chmod(0o555, @dir.join("storage")) # a WAL database cannot be read where its -shm cannot be made
+    output, status = run_script("copy", @dir.join("storage"), @dir.join("copy"))
+    assert_not status.success?
+    assert_match(/online backup stopped|copied 0 of/, output)
+  ensure
+    File.chmod(0o755, @dir.join("storage"))
+  end
+
   test "an empty storage directory is an error, not an empty backup" do
     _, status = run_script("copy", @dir.join("copy"), @dir.join("storage"))
     assert_not status.success?

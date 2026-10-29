@@ -59,7 +59,7 @@ as_service --unit="$unit" --property=WorkingDirectory="$scratch/release" \
   --setenv=RAILS_ENV=production --setenv=PORT="$port" "$ruby_bin/bundle" exec puma -C config/puma.rb
 for path in /up / /settings /sources; do
   for _ in {1..60}; do
-    if curl -fsS -o /dev/null --max-time 5 -H "Host: prayerbookatlas.com" "http://127.0.0.1:$port$path"; then continue 2; fi
+    if curl -fs -o /dev/null --max-time 5 -H "Host: prayerbookatlas.com" "http://127.0.0.1:$port$path"; then continue 2; fi
     sleep 0.5
   done
   echo "drill: the restored release did not answer $path" >&2
