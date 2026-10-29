@@ -18,13 +18,14 @@ and kept out of search indexes. [BUILD.md](BUILD.md) is the plan and its current
 The project began as an iPhone app, retired on 2026-10-29 (Git tag
 `ios-archive`).
 
-**Inspiration:** [The Daily Office 2019](https://www.dailyoffice2019.com), by
-Benjamin Locher ([source](https://github.com/blocher/dailyoffice2019), MIT
+**Inspired by [The Daily Office 2019](https://www.dailyoffice2019.com), by
+Benjamin Locher** ([source](https://github.com/blocher/dailyoffice2019), MIT
 License), which makes the ACNA's 2019 prayer book easy to pray. This site
 learns from it and focuses on the other Books of Common Prayer, each on its
 own terms. It is an independent project, not affiliated with or endorsed by
 The Daily Office 2019. [docs/dailyoffice2019.md](docs/dailyoffice2019.md)
-says what is taken from it and how it is credited.
+says what is taken from it and how it is credited; code ported from it keeps
+its MIT notice in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Prerequisites
 

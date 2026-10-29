@@ -1,6 +1,63 @@
 # Sources
 
-The register of every non-original text, font, image, and dataset the site uses (AGENTS.md §6). So far it covers the book face and the owner's generated design images; BUILD.md P3.1 gives it its full schema and P3.6 its image registry. No liturgical text, Bible translation, scanned book page, or third-party illustration is in the repository yet.
+The register of every non-original text, font, image, and dataset the site uses (AGENTS.md §6). So far it covers the book face, the owner's generated design images, and one reference source; BUILD.md P3.1 gives it its full schema and P3.6 its image registry. No liturgical text, Bible translation, scanned book page, or third-party illustration is in the repository yet.
+
+## Reference sources
+
+Sources consulted, not served. Nothing from them reaches a page; they are recorded so that each use
+as a cross-check can be cited (D20) and so that what may not be taken is plain.
+
+### The Daily Office 2019 (BUILD.md D30, P2A.4)
+
+- **What:** the code and data of [The Daily Office 2019](https://www.dailyoffice2019.com), by
+  Benjamin Locher; repository [blocher/dailyoffice2019](https://github.com/blocher/dailyoffice2019),
+  commit `51e61877c941705f7fc44d7801642c6e94c8bea4` (2026-10-28), cloned on 2026-10-29 into the
+  gitignored `research/dailyoffice2019/`.
+- **Rights basis:** its code is under the MIT License ("Copyright 2020 Benjamin Locher"), kept in
+  [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for any file ported from it. The MIT License
+  covers the code he wrote, not the texts the project carries, which belong to their publishers.
+  Facts (names, dates, ranks, references) are not anyone's text, but under D20 they are used only
+  as one of two independent cross-checks, cited by file and commit, after the book itself.
+- **AI use:** its code, by the MIT License; its facts, as cross-checks. The 2019 book's texts: no,
+  without Anglican House's written permission (Research finding 5), so agents do not read them
+  from this repository either.
+- **Checked:** the repository's `LICENSE`; the import commands (the calendar and lectionary come
+  from Google Sheets); the schema and row counts of `site/dailyoffice_2020_04_18.sql`; the data
+  files in `site/`. docs/dailyoffice2019.md §5c lists every table.
+- **Usable as D20 cross-checks** (facts only, each cited as "The Daily Office 2019, `<table>`,
+  `51e6187`"):
+  - the `TEC_BCP1979_LFF2006` calendar in the 2020 SQL dumps: its ranks and precedence
+    (`churchcal_commemorationrank`), moveable days (`churchcal_temporalecommemoration`, days from
+    Easter), fixed days (`churchcal_sanctoralecommemoration`, the 1979 book's holy days only; the
+    Lesser Feasts and Fasts 2006 selection is Church Publishing's and waits for P17.5),
+    weekday-relative days (`churchcal_sanctoralebasedcommemoration`), and Proper date ranges
+    (`churchcal_proper`), for 1979 (P4.3–P4.6);
+  - the Eucharistic lectionary's references (`churchcal_massreading`, never its texts), for
+    1979's Sunday lectionary (P9.4);
+  - the thirty-day psalter table (`office_thirtydaypsalterday`), for 1662's monthly division
+    (P8.4);
+  - its Easter algorithm (`site/churchcal/utils.py`), as one computation beside our own tests
+    and the 1662 tables (P4.2).
+- **Not taken, with the reason:**
+  - the 2019 Book of Common Prayer's prayers, rubrics, collects, and lectionary
+    (`site/office/api/texts/`, `templates/office/`, `office_collect`, `office_officeday`): Anglican
+    House's, no AI use without permission; it waits for P17.1;
+  - the New Coverdale Psalter and the other psalter texts (`psalter_psalmverse`): the 2019 book's
+    and other publishers';
+  - its 1928 Psalter (`import_psalms_1928.py`): scraped from a web transcription, not page images
+    of an identified printing (AGENTS.md §6);
+  - the ESV and its cross references (`site/bible/esv/`) and the other translations in
+    `office_scripture`: licensed (D5);
+  - Lesser Feasts and Fasts 2024 (`site/churchcal/lff2024.csv` and the PDF in `site/`): Church
+    Publishing's (P17.5);
+  - hymn texts (`site/hymnal/`): Research finding 15;
+  - commemoration biographies and every `ai_*` field: generated prose and images, not sourced
+    texts (AGENTS.md §3, §6);
+  - audio and synthetic voices: not ours (D22);
+  - its look: Adobe Caslon Pro (commercial), icons, logo, and name (D15);
+  - user, session, and admin-log tables in the SQL dumps: other people's personal data; never
+    opened or loaded.
+- **Status:** `reference` (code under MIT; facts for cross-checks only; nothing served).
 
 ## Fonts
 

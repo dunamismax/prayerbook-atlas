@@ -25,6 +25,14 @@ class SectionsTest < ActionDispatch::IntegrationTest
     assert_select ".notice", /Nothing here is ready for prayer yet/
   end
 
+  test "About credits The Daily Office 2019 without claiming endorsement" do
+    [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
+      get about_path, headers: { "User-Agent" => user_agent }
+      assert_select "a[href='https://www.dailyoffice2019.com']", "The Daily Office 2019"
+      assert_select "p", /Inspired by The Daily Office 2019, by Benjamin Locher.*not affiliated with or endorsed by/
+    end
+  end
+
   test "pages load nothing from another site" do
     PAGES.each do |path|
       get path

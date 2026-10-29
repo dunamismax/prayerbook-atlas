@@ -145,6 +145,8 @@ en:
       heading: "About Prayerbook Atlas"
       purpose: "Prayerbook Atlas is for Anglican and Episcopal common prayer across the Books of Common Prayer. It sets each book before you on its own terms: its text, rubrics, calendar, and lectionary as printed, with the book, printing, and page beside every text."
       affiliation_html: "It is personal lay work and the sister project of %{link}. It is not an official publication of the Church of England, The Episcopal Church, the Anglican Church in North America, the Anglican Communion, or any other church, diocese, or parish, and it does not speak for any of them."
+      inspiration_html: "Inspired by %{link}, by Benjamin Locher, which makes the ACNA's 2019 prayer book easy to pray. This site learns from it and ports some of its open-source code, with thanks and with its notice kept; it is an independent project, not affiliated with or endorsed by The Daily Office 2019."
+      inspiration_link: "The Daily Office 2019"
       privacy: "It collects nothing about you: no analytics, advertising, or tracking. It sets only its own strictly necessary cookies: one that protects its forms, and, if you make a choice in Settings or between the phone site and the full site, one for each choice that remembers it."
       write_html: "Write to %{email}."
 

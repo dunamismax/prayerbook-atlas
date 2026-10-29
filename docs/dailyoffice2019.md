@@ -60,7 +60,8 @@ Check every point above against the code before relying on it: the project chang
   Vue into Ruby, ERB, CSS, and Stimulus, on one condition: the copyright notice and permission
   notice go with every copy or substantial portion. So:
   - The full MIT notice is kept in `THIRD_PARTY_NOTICES.md` at the repository root (created
-    with the first port, BUILD.md P2A.3).
+    on 2026-10-29, BUILD.md P2A.3), with a list of the ported files that
+    `test/lib/third_party_notices_test.rb` checks against the headers.
   - Every file that ports or adapts its code starts with a comment naming the source file and
     the commit, for example `# Adapted from The Daily Office 2019 (MIT),
     site/churchcal/utils.py at 51e6187.` Tests ported from it say so too.
