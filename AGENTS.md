@@ -344,6 +344,18 @@ owner (signing in with the owner's credentials, a payment, a message sent in
 the owner's name), prepare everything, ask for exactly that step, and
 continue with other work.
 
+**Developer tools (owner's standing permission, 2026-10-29).** On the
+owner's Mac, agents may install the developer tools the work needs, without
+asking: Homebrew formulae and casks (for example `fonttools`, `imagemagick`,
+`colima`, `docker`, `xcodegen`), Xcode simulator runtimes, and language
+packages in project-local or user-local environments (a Python virtual
+environment, `swift package` dependencies of build tools). Prefer
+well-known, maintained tools from their official sources. Record any tool a
+make target or script depends on in README.md's prerequisites. This does not
+cover changing macOS system or security settings, using `sudo`, paid
+software, or adding a runtime dependency to the app (AGENTS.md §5 and
+docs/decisions.md still govern those).
+
 Agents never:
 
 - change this repository's visibility, or fork or mirror it (D11);
