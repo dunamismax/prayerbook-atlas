@@ -108,13 +108,13 @@ GitHub's Linux runners, by manual dispatch.
 | `app/views/layouts/application.html.erb` | The full site: masthead, contents, reading column, margin |
 | `app/views/layouts/application.html+phone.erb` | The phone site: phone bar, one column, tab bar |
 | `app/views/sections/` | The five sections: Today, Pray, Bible, Kalendar, Atlas |
-| `app/models/` | `SiteSection`, and later the plain-Ruby engines (`ChurchYear::`, `Office::`, `Scripture::`, `Atlas::`) |
+| `app/models/` | `SiteSection`, `PrayerBook`, `Translation`, `Office`, and later the plain-Ruby engines (`ChurchYear::`, `Office::`, `Scripture::`, `Atlas::`) |
 | `app/assets/stylesheets/` | Vanilla CSS; `tokens.css` is generated |
 | `app/assets/fonts/` | Cardo (SIL OFL 1.1), self-hosted as WOFF2 |
 | `lib/design_tokens.rb`, `lib/tasks/design.rake` | The tokens-to-CSS generator |
 | `content/` | Sourced texts and tables, and `SOURCES.md`, the rights register |
 | `design/` | `tokens.json`, the owner's generated images and their prompts and registry |
-| `docs/` | Product rules, design, decisions, and deployment |
+| `docs/` | Product rules, design, URLs, decisions, and deployment |
 | `config/ci.rb` | The local CI steps `bin/ci` runs |
 | `script/webkit_snapshot.swift` | Snapshots a page with WebKit (Safari's engine) for browser checks |
 | `research/` | Gitignored downloads for rights research; never served |

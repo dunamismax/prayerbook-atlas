@@ -76,7 +76,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
-| 2 | Design system and site shell | M1 Foundation | 14 | 6 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 7 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
@@ -633,7 +633,8 @@ When the site is demoable:
   - *2026-10-29 result:* `ComponentsHelper` and `shared/_state`; ribbon edges generated as `--ribbon-<name>-edge`. Page numbers hang in a right gutter of `.with-page-marks` on the full site (the reading column is too narrow at common widths to use the margin column itself). Checked in Chrome at 1440 and 800 wide and the phone emulation, day and night, 200% text; the popover opened from its button. No console errors.
 - [x] **P2.6** Appearance: Automatic, Day, or Night, chosen from Settings by a plain form, kept in a preference cookie, and applied as `data-appearance` on `<html>` by the server (no flash, no script).
   - *2026-10-29 result:* `AppearancePreference`, `AppearancesController`, and a first `/settings` page with the Appearance form, linked from the masthead and the phone bar (P2.12 fills in the rest). Checked in Chrome: Night with the system light and Day with the system dark, on the full site and the phone, back to Automatic; system tests drive the form in both modes.
-- [ ] **P2.7** URLs: write `docs/urls.md` (readable, stable, shareable URLs for every destination: a day, an office in a book on a date, a prayer in the Atlas, a compare, a psalm, a passage) and route every placeholder destination by it.
+- [x] **P2.7** URLs: write `docs/urls.md` (readable, stable, shareable URLs for every destination: a day, an office in a book on a date, a prayer in the Atlas, a compare, a psalm, a passage) and route every placeholder destination by it.
+  - *2026-10-29 result:* `docs/urls.md`; `PrayerBook` and `Translation` ported from the retired Swift ids (`bcp1662`, `bcp1928us`, `bcp1979us`; `kjva`, `web`) and `Office::NAMES`. Every planned destination is routed to `DestinationsController`, an honest placeholder at its final address; impossible dates, months, books, offices, and translations are 404s. `UrlsTest` requests every URL the document lists, in both modes. Checked in Chrome on the full site and the phone.
 - [ ] **P2.8** The `LiturgicalBlock` model in Ruby, ported from the retired Swift ContentKit (tag `ios-archive`): heading, paragraph, rubric, role-labeled lines as each book labels them, versicle and response, Amen, the Gloria Patri marker, psalm verses with the half-verse mark as printed and both numberings where they differ, canticle references, collects, alternatives, seasonal and name insertion points, book, printing, and page, and page breaks; with its `problems` checks.
 - [ ] **P2.9** Render `LiturgicalBlock`s as semantic HTML: rubrics marked as instructions for screen readers, role labels announced, page numbers in the margin (full) or inline (phone), insertion points visible, and plain text selection and copy.
 - [ ] **P2.10** Reading settings, kept in a preference cookie and applied by the server: text size, line spacing, rubrics in colour or italic, show or hide rubrics, show page numbers, keep the screen awake while praying (the Screen Wake Lock API, where supported), and original or modernized spelling (historic books only, P12.6).
