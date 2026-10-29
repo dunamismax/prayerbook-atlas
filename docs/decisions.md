@@ -208,3 +208,25 @@ Beautiful Corner's decision log (entry 16 below).
   visible mattered more than a dedicated search tab. Alternatives, if the
   owner prefers: four tabs plus search (Atlas inside another tab), or Search
   under a sixth "More" tab.
+
+## 18. Design direction: Engraved Plate, set in Cardo
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner for the direction;
+  agent for the face, at the owner's direction)
+- **Decision:** The owner chose **B · Engraved Plate** (D15) over Ribbon and
+  Quiet Page in the design session (P2.2a): chart paper, iron-blue ink,
+  double-rule frames on cards, small-capital labels, square corners, and one
+  cartographer's blue for rubrics and actions. The book face is **Cardo**
+  (SIL OFL 1.1, David J. Perry). The owner first chose Libre Caslon Text;
+  fontTools showed it lacks ℣ ℟ ✠, Greek, and small caps, and the owner asked
+  an agent to find a fuller face. Of eight OFL candidates checked (Cardo,
+  Libertinus Serif from Google Fonts and upstream v7.051, Libre Caslon Text,
+  Baskervville, Cormorant Garamond, Alegreya, Crimson Pro, Sorts Mill Goudy),
+  only Cardo has ℣ ℟, polytonic Greek, true small caps (`smcp`), and
+  old-style figures (`onum`). None has ✠ (U+2720); it falls back to the
+  system's symbol font. EB Garamond stays avoided (Beautiful Corner's face).
+  The placeholder icon is redrawn in B's palette as original vector art.
+- **Why:** The owner preferred the atlas character throughout. The face must
+  carry the marks the prayer books print (AGENTS.md, BUILD.md P2.4) without
+  silent fallbacks; Cardo is an old-style face close to the Caslon look the
+  owner chose.

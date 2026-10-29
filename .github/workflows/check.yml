@@ -1,29 +1,20 @@
-# Runs `make check` on a macOS runner with Xcode 27.
-#
-# Triggers follow P0.10's recommendation (a working default until the owner
-# decides): by hand at any time, and on pushes to main only while the
-# repository is public. Hosted macOS minutes are free for public repositories
-# and billed for private ones (D11), so on a private repository the push run
-# is skipped before it starts a runner.
+# Runs `make check` on a macOS runner with Xcode 27, by hand only (owner
+# decision P0.10, 2026-10-29): Actions → Check → Run workflow.
 name: Check
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
-# A running check finishes; only the newest waiting push runs after it (older waiting
-# runs are replaced), so frequent pushes to main still get a completed check.
+# A running check finishes; a second run started meanwhile waits for it.
 concurrency:
   group: check-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   check:
-    if: github.event_name == 'workflow_dispatch' || !github.event.repository.private
     # GitHub's dedicated Xcode 27 image, as on Beautiful Corner.
     # https://github.com/actions/runner-images/issues/14404
     runs-on: xcode-27
