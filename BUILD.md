@@ -69,7 +69,7 @@ top-level items (sub-items roll up into their parent).
 
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
-| 0 | Owner foundations | — | 14 | 5 |
+| 0 | Owner foundations | — | 14 | 7 |
 | 1 | Repository and toolchain | M1 Foundation | 14 | 13 |
 | 2 | Design system and app shell | M1 Foundation | 14 | 6 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
@@ -581,7 +581,7 @@ Tools/ContentCompiler: content/ (sourced texts) → Content.sqlite (bundled)
 - [x] **P0.2 [OWNER]** Create the repository. *(Owner, 2026-10-28: `dunamismax/prayerbook-atlas`, created public; see D11.)*
 - [x] **P0.3 [OWNER] [GATE D11]** Set the repository's visibility and, if it stays public, its license. *(Owner, 2026-10-29: stays public, all rights reserved; `LICENSE` added.)*
 - [x] **P0.4 [OWNER]** Register the domain and support email (D12). *(Owner, 2026-10-28: prayerbookatlas.com and prayerbook-atlas.com at Cloudflare, DNS pointed at the Ubuntu server, catch-all Email Routing; checked by `dig` the same day.)*
-- [ ] **P0.5 [OWNER]** A trademark knockout search for "Prayerbook Atlas" (USPTO), recorded in `docs/decisions.md`; consider registering prayerbookatlas.app and .org defensively.
+- [x] **P0.5 [OWNER]** A trademark knockout search for "Prayerbook Atlas" (USPTO), recorded in `docs/decisions.md`; consider registering prayerbookatlas.app and .org defensively. *(2026-10-29: search by an agent at the owner's request, no conflict found, decision 19; the owner registered prayerbookatlas.org and chose not to buy .app.)*
 - [ ] **P0.6 [OWNER] [GATE D13]** Put the Team ID in `Config/Base.xcconfig` (a Team ID is not secret) before the first device or TestFlight build, and add the owner's Apple ID in Xcode's Settings → Accounts.
   - *2026-10-29 note:* the Team ID is committed (D13 decided); the Apple ID in Xcode is the owner's step, confirmed with the first archive (P1.14).
 - [ ] **P0.7 [OWNER]** Create the App Store Connect record with the bundle ID from D1, reserving the name, once P1.14 can upload a build.

@@ -230,3 +230,25 @@ Beautiful Corner's decision log (entry 16 below).
   carry the marks the prayer books print (AGENTS.md, BUILD.md P2.4) without
   silent fallbacks; Cardo is an old-style face close to the Caslon look the
   owner chose.
+
+## 19. Trademark knockout search for "Prayerbook Atlas"
+
+- **Date:** 2026-10-29 · **Status:** Recorded (agent, at the owner's request;
+  not legal advice and not a clearance opinion)
+- **Searched:** USPTO's public trademark search (tmsearch.uspto.gov), all
+  statuses, in the built-in browser, read-only.
+  - `prayerbookatlas`: no results.
+  - `prayerbook`: one result, SINGERSIDDUR (serial 78512747, IC 016,
+    customized prayer books), dead, cancelled 2012-10-19; "prayerbook"
+    appears only as its translation.
+  - `prayer atlas` and `"prayer book"` (the engine matches either word):
+    thousands of PRAYER and ATLAS marks. No live mark combines PRAYER or
+    PRAYER BOOK with ATLAS. ATLAS alone is heavily registered, including live
+    Class 9 and 42 software marks (for example serials 90431298, 90563097,
+    97330725), so ATLAS by itself would be weak; the app's name is the
+    composite.
+- **Conclusion:** no conflicting live US mark was found for "Prayerbook
+  Atlas". Trinity Broadcasting Network's "Atlas - Faith Journeys" app
+  (Research finding 1) remains the nearest name in the App Store. Filing a
+  registration is the owner's choice and has not been done. The domains held
+  are prayerbookatlas.com, prayerbook-atlas.com, and prayerbookatlas.org.
