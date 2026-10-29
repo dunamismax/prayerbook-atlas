@@ -8,6 +8,13 @@
   Your choices are kept in this browser only, as small cookies that hold nothing but the choice.
 </p>
 
+<%= plate_card "Prayer book", label: "the book you pray from" do %>
+  <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
+    <%= render "settings/book_choices", form: form %>
+    <%= form.submit "Save prayer book", class: "primary-action", name: nil %>
+  <% end %>
+<% end %>
+
 <%= plate_card "Appearance", label: "day and night" do %>
   <%# A full page load, not Turbo: Turbo swaps the body and keeps <html>, where the
       appearance is written. %>
@@ -55,7 +62,7 @@
 
 <% margin_note "More settings" do %>
   <p>
-    Your prayer book and the choice between the phone site and the full site will join this page
-    as they are built.
+    Choices for each office and the choice between the phone site and the full site will join
+    this page as they are built.
   </p>
 <% end %>

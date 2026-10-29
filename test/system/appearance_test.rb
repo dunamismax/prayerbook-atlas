@@ -9,6 +9,10 @@ class AppearanceSystemTest < ApplicationSystemTestCase
     click_button "Save appearance"
     assert_selector "html[data-appearance=night]", visible: :all
 
+    # Load the next page afresh: acting at once on the page the redirect drew
+    # has lost the race with the browser more than once (Selenium reported a
+    # node no longer in the document).
+    visit settings_path
     choose "Automatic: follow this device's light or dark setting"
     click_button "Save appearance"
     assert_no_selector "html[data-appearance]", visible: :all

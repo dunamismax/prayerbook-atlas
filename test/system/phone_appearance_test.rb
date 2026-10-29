@@ -9,7 +9,8 @@ class PhoneAppearanceSystemTest < PhoneSystemTestCase
     click_button "Save appearance"
     assert_selector "html[data-appearance=day]", visible: :all
 
-    within(".tab-bar") { click_link "Atlas" }
+    visit atlas_path
+    assert_selector ".tab-bar a[aria-current=page]", text: /\Aatlas\z/i
     assert_selector "html[data-appearance=day]", visible: :all
   end
 end

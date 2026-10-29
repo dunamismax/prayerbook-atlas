@@ -1,0 +1,18 @@
+<%# The first-visit card (D4, BUILD.md P2.11): skippable, never a modal, and
+    nothing is required before praying. %>
+<section class="plate-card first-visit" aria-labelledby="first-visit-title">
+  <%= eyebrow "welcome" %>
+  <h2 id="first-visit-title">Which prayer book does your church use?</h2>
+  <p>
+    The site follows one book at a time, on its own terms. Choose yours, or skip this and begin
+    with 1662; you can change it at any time in <%= link_to "Settings", settings_path %>.
+  </p>
+  <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
+    <%= render "settings/book_choices", form: form %>
+    <%= form.submit "Use this book", class: "primary-action", name: nil %>
+  <% end %>
+  <%= form_with url: book_preference_path, method: :patch, class: "skip-form" do |form| %>
+    <%= hidden_field_tag :book, PrayerBook::PRESET, id: nil %>
+    <%= form.submit "Skip for now", class: "quiet-action", name: nil %>
+  <% end %>
+</section>

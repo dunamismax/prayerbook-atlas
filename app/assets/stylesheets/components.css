@@ -455,6 +455,16 @@
   accent-color: var(--rubric);
 }
 
+.choice-note {
+  display: block;
+  color: var(--muted);
+  font-size: var(--type-source-size);
+}
+
+.first-visit .settings-form {
+  margin-bottom: var(--space-m);
+}
+
 /* The development type specimen (/dev/type). */
 .specimen-table {
   border-collapse: collapse;

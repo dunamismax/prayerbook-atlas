@@ -1,3 +1,5 @@
+<% content_for(:after_title) { render "first_visit" } unless prayer_book_chosen? %>
+
 <%= render "placeholder", planned: [
   "The day's name in your prayer book, with the other books' names beside it.",
   "The office for the hour, with its psalms, lessons, canticles, and collect in place.",
@@ -6,6 +8,9 @@
 ] %>
 
 <% content_for :margin do %>
+  <h2>Your prayer book</h2>
+  <p><%= prayer_book.title %>. <%= link_to "Change it in Settings", settings_path %>.</p>
+
   <h2>The books</h2>
   <p>
     The first books will be the three in the public domain in the United States: the Church of

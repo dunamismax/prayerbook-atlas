@@ -76,7 +76,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
-| 2 | Design system and site shell | M1 Foundation | 14 | 10 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 11 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
@@ -641,7 +641,8 @@ When the site is demoable:
   - *2026-10-29 result:* `LiturgyHelper#liturgy`, with `SampleBlocks` (bracketed placeholders, an unregistered "example" printing) on `/dev/liturgy`. Checked in Chrome at 1440 wide and the phone emulation, day and night, 200% text, and a copy of the whole text (no "Instruction:", page numbers, or KJV labels in it); with JavaScript off in headless Firefox. No console errors.
 - [x] **P2.10** Reading settings, kept in a preference cookie and applied by the server: text size, line spacing, rubrics in colour or italic, show or hide rubrics, show page numbers, keep the screen awake while praying (the Screen Wake Lock API, where supported), and original or modernized spelling (historic books only, P12.6).
   - *2026-10-29 result:* `ReadingSettings` in one cookie (`reading`, only the choices that differ from the defaults), written on `<html>` as data attributes and styled by `reading.css`; keep-awake is the `wake-lock` Stimulus controller, which asks only on pages with a `.liturgy` and does nothing where the API is missing. The spelling choice is stored now and says plainly that it waits for P12.6. Checked in Chrome on both modes with the settings applied, and back to the defaults; a system test drives the form.
-- [ ] **P2.11 [GATE D4]** The first visit: a skippable card on Today choosing the person's prayer book, with a line about each; the preset is 1662; nothing is required to begin praying.
+- [x] **P2.11 [GATE D4]** The first visit: a skippable card on Today choosing the person's prayer book, with a line about each; the preset is 1662; nothing is required to begin praying.
+  - *2026-10-29 result:* a card on Today after the title (never a dialog), with a plain line about each book (`PrayerBook#summary`), "Use this book" and "Skip for now"; skipping records the preset, 1662, so the card does not return. The choice is a cookie holding only the book's id (`BookPreference`), also chosen in Settings. Checked in Chrome on the full site (and Skip), and as a phone with JavaScript off in headless Firefox.
 - [ ] **P2.12** Settings (`/settings`): prayer book and per-office overrides, reading settings, appearance, the site mode, acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, about, support, and the running version (the deployed commit).
 - [ ] **P2.13** Route every interface string through Rails I18n (`config/locales/en.yml`), English only for now; a test finds untranslated literal text in views.
 - [ ] **P2.14** A system-test tour: every section and Settings, in both modes and both appearances, saving screenshots to `tmp/screenshots/`.

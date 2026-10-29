@@ -4,6 +4,8 @@
 <h1><%= @section.title %></h1>
 <hr class="title-rule">
 
+<%= yield :after_title %>
+
 <p><%= @section.summary %></p>
 
 <div class="notice">
