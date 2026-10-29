@@ -213,13 +213,23 @@ Run it once after setting up (done 2026-10-29, BUILD.md P5.5) and then quarterly
 
 ## 8. After each deploy
 
-`bin/deploy` checks `/up` and the home page itself. By hand:
+`bin/deploy` ends by running `bin/rails site:check_live` (BUILD.md P5.6), which checks the live
+site from the Mac, and prints only what fails (run it alone to see every check):
 
-- `https://prayerbookatlas.com/up` answers 200.
-- Each redirecting name answers 308 to the same path on `.com`.
-- The home page sends `Content-Security-Policy`, `Strict-Transport-Security`, `Feature-Policy`,
-  and `Vary: Sec-CH-UA-Mobile, User-Agent, Cookie`.
-- A phone user agent gets the phone site and a desktop one the full site.
-- The owner's other sites still answer as before.
+- `/up` answers 200, and every section, About, Sources, Settings, and Search answer 200 as the
+  full site to a desktop browser and as the phone site to a phone.
+- No page or stylesheet loads anything from another host: scripts, stylesheets, fonts, images,
+  frames, media, form targets, the import map, and CSS `url()`s (decision 31). Links people
+  follow may go anywhere.
+- The headers: a Content-Security-Policy of `'self'` only, with `frame-ancestors 'none'`,
+  `object-src 'none'`, and no `unsafe-*`; HSTS of at least a year with subdomains; `nosniff`; a
+  Referrer-Policy; the permissions policy (Rails 8.1 sends it as `Feature-Policy`); `Vary` on
+  `Sec-CH-UA-Mobile`, `User-Agent`, and `Cookie`; no `Server` header; cookies `secure` and
+  `httponly`.
+- Every other name, over HTTPS, answers 308 to the same path and query on `.com`; plain HTTP to
+  any name answers 308 to HTTPS.
+- TLS 1.2 or 1.3 with a certificate valid for more than 14 more days, on all six names.
+- The fingerprinted stylesheets are served with a year's `immutable` caching.
 
-`bin/rails site:check_live` (P5.6) will check all of this in one command.
+A failed check does not roll back (the release is live and answering); it says what is wrong.
+By hand, also confirm that the owner's other sites still answer as before.

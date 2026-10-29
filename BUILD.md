@@ -86,7 +86,7 @@ top-level items (sub-items roll up into their parent).
 | 2A | Learning from The Daily Office 2019 | M1 Foundation | 4 | 4 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 11 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
-| 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 5 |
+| 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 7 |
 | 6 | Today and the Kalendar | M2 The Daily Office | 7 | 0 |
 | 7 | The Daily Office engine and reader | M2 The Daily Office | 6 | 0 |
 | 8 | The 1662 Book of Common Prayer | M2 The Daily Office | 10 | 0 |
@@ -112,14 +112,16 @@ top-level items (sub-items roll up into their parent).
 | 28 | Future directions | M8 Ongoing | 8 | 0 |
 
 **Current state (2026-10-29):** the project is a Rails 8.1.4 website (D27);
-the iPhone app is retired (tag `ios-archive`). Phases 1 and 2 are complete:
-both modes, the Engraved Plate components, the liturgical block model and its
-renderer, Settings (book, offices, appearance, reading, mode), the first-visit
-card, every planned URL routed to an honest placeholder, all interface text in
-I18n, and system tests in both modes. `bin/ci` and the hosted workflow pass.
-No liturgical text is on the site. The site is live at
-https://prayerbookatlas.com (P5.2–P5.4, 2026-10-29), marked as in development
-and kept out of search indexes (P5.7); `bin/deploy` ships `origin/main`.
+the iPhone app is retired (tag `ios-archive`). Phases 1, 2, 2A, 3, and 5 are
+complete: both modes, the Engraved Plate components, the block model and its
+renderer, Settings, the study of The Daily Office 2019 folded into this plan
+(docs/dailyoffice2019.md §5), the content pipeline (`content/SOURCES.md` with
+its schema, `bin/rails content:compile` into a read-only, checked database,
+`/sources`, and `/search`), and hosting with nightly, off-server backups and a
+post-deploy check. No liturgical text is on the site yet. The site is live at
+https://prayerbookatlas.com, marked as in development and kept out of search
+indexes (P5.7); `bin/deploy` ships `origin/main` and checks it. Phase 4 (the
+church year engine) is next.
 
 ---
 
@@ -759,8 +761,10 @@ prepare everything.
 - [x] **P5.4 [OWNER]** The first deploy, then check every name: prayerbookatlas.com serves the site over HTTPS; www, prayerbook-atlas.com, prayerbookatlas.org, and their www names redirect permanently to it; the response headers are right.
   - *Result (2026-10-29):* DNS needed no change: all six names are A records for the server, not proxied, like the owner's other sites, so Caddy obtained its own certificates. `https://prayerbookatlas.com` serves the site; the five other names and plain HTTP answer 308 to it, keeping path and query; `/up` is 200; CSP, HSTS (two years, subdomains), nosniff, and immutable caching on `/assets/` are sent (Rails names the permissions policy `Feature-Policy`). Checked in the in-app browser: the full site, the phone site (mobile emulation), day and night, the appearance and book forms, 200% text, no console errors or CSP violations, nothing loaded from elsewhere. The service is enabled for boot and came back after `kill -9`. The owner's other sites answered the same before and after.
   - *Reboot (owner's authorization for one reboot, 2026-10-29):* before it, every name was recorded over HTTPS and HTTP (status, redirect target, certificate check, page title): dunamismax.com, graceandfootnotes.com, status.dunamismax.com, demo.xrayservice.net, xrayservice.net, prayerbookatlas.com, and their www names (www.status.dunamismax.com and www.demo.xrayservice.net have no DNS record and did not answer before or after). `ssh root@ubuntu-vm reboot` at 20:06 UTC; SSH was back within 30 seconds. Afterward every name answered exactly as before (the two recordings were identical), `prayerbookatlas.service` and Caddy were active, `https://prayerbookatlas.com/up` was 200, prayerbook-atlas.com, prayerbookatlas.org, and their www names answered 308 to .com keeping path and query, `systemctl --failed` listed nothing, `systemctl is-system-running` said `running`, and the owner's other services and its two containers were running again.
-- [ ] **P5.5** Backups: a nightly SQLite `.backup` of the app's databases in `storage/`, encrypted and kept off the server on owner-controlled storage, with a written restore drill run once. (The content database is rebuilt from the repository, not backed up.)
-- [ ] **P5.6** A post-deploy check (`bin/rails site:check_live`): status codes, redirects, TLS, the security headers, and no requests to other hosts.
+- [x] **P5.5** Backups: a nightly SQLite `.backup` of the app's databases in `storage/`, encrypted and kept off the server on owner-controlled storage, with a written restore drill run once. (The content database is rebuilt from the repository, not backed up.)
+  - *2026-10-29 result:* (owner's direction, 2026-10-29: backups go to the private `dunamismax/ubuntu-vm-backup` repository, not the Mac.) `prayerbookatlas-backup.timer` (nightly, 06:20 UTC) runs the live release's `deploy/backup.sh` inside the deploy lock: SQLite's online backup of every database in `shared/storage` as the service user, each copy checked, a manifest (integrity, SHA-256, row counts) and the live commit, into `/var/backups/prayerbookatlas` for 30 days. ubuntu-vm-backup (`fafea7c`) now carries the newest archive off the server, age-encrypted, in `data/prayerbookatlas/` (failing if it is missing, over 26 hours old, or fails its checksum), with this site's env file encrypted and its units; it also skips this Rails release in its Astro application archive, which would otherwise have failed its whole daily job from the 30th. The first live run made empty copies of three idle WAL databases (the sandbox could not create their `-shm` files, and the empty files still passed `integrity_check`); the copy now refuses an unfinished backup, a test reproduces it, and the service may create `-shm` files. Restore drill (`deploy/restore_drill.sh`) run twice, from the server's archive and from the off-site copy decrypted with ubuntu-vm-backup's key: the databases matched the manifest and the release booted on them and answered `/up`, `/`, `/settings`, and `/sources`. ubuntu-vm-backup's job ran once by hand and pushed (`e2c5987`).
+- [x] **P5.6** A post-deploy check (`bin/rails site:check_live`): status codes, redirects, TLS, the security headers, and no requests to other hosts.
+  - *2026-10-29 result:* `bin/rails site:check_live` (`SiteCheck`, stdlib HTTP and OpenSSL): `/up`; nine pages as the full and the phone site; nothing loaded from another host by any page, the import map, or a stylesheet; the CSP, HSTS, `nosniff`, Referrer-Policy, permissions policy, `Vary`, no `Server` header, secure cookies; 308s from every other name and from HTTP, keeping path and query; TLS 1.2+ with more than 14 days left on all six names; immutable asset caching. `bin/deploy` runs it after every deploy and prints only failures. Passed all 68 checks live; tests stand in for the network and catch each kind of fault.
 - [x] **P5.7** Robots and preview: until launch (P22), `robots.txt` disallows crawling and every page says the site is in development.
   - *Result (agent, 2026-10-29):* `public/robots.txt` disallows everything; both layouts carry `noindex, nofollow` and a quiet line saying the site is still being built (`shared/_development_notice`); `test/integration/prelaunch_test.rb` checks every page in both modes. P22 removes all three.
 
@@ -1020,26 +1024,26 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-29 session 3:** the site is live at https://prayerbookatlas.com
-  (P5.2–P5.4, P5.7). The owner then made The Daily Office 2019 the model
-  (D30). **Next: Phase 2A from P2A.1** (read docs/dailyoffice2019.md first),
-  then Phase 3, Phase 4, P5.5 (backups), and P5.6.
-- **Deploy loop:** `bin/ci`, commit, `git push origin main`, `bin/deploy`, then
-  try it live; `bin/deploy --rollback` returns to the previous release. It
-  needs `ssh root@ubuntu-vm` (Tailscale). docs/deploy.md §2 lists where
-  everything lives. Edit the unit and Caddy site in `deploy/`, never on the
-  server; any other server change goes through `/usr/local/sbin/with-deploy-lock`.
-- **On the server:** `/srv/www/prayerbookatlas.com` (releases, `shared/storage`,
-  `shared/env` with the master key, root 600); Puma on 127.0.0.1:4315 as
-  `prayerbookatlas.service`; `journalctl -u prayerbookatlas`. Ports 4311–4314
-  are the owner's other sites.
-- **Owner:** P0.6, P0.7 (optional), P0.8 (deferred), and the [GATE DEMO]
-  letters.
-- **Found:** Rails 8.1 sends the permissions policy as `Feature-Policy`; P5.6
-  or P21 may want `Permissions-Policy` too.
-- **Checks:** `bin/ci` must pass before a commit (hosted: `gh workflow run
-  ci.yml`). Browsers: the in-app Chrome; Firefox 159 for JavaScript off;
-  WebKit via `script/webkit_snapshot.swift`.
-- **Waiting:** Settings' acknowledgements (P3.8), the spelling setting (P12.6);
-  `/dev/*` pages are development aids. Cookies (all strictly necessary):
-  `site_mode`, `appearance`, `reading`, `book`, `office_books`, the session.
+- **2026-10-29 session 4:** finished Phase 2A (the Daily Office 2019 study:
+  docs/dailyoffice2019.md §5; items rewritten in P4, P6, P7, P8.4, P11.1, P18.4;
+  new P7.2a, P18.10, P18.11), Phase 3 (P3.1–P3.11), the authorized reboot
+  (recorded under P5.4), P5.5, and P5.6. The owner asked to stop before Phase 4.
+  **Next: Phase 4 from P4.1** (port Easter from Daily Office 2019 with the MIT
+  header, P2A.3); every port goes in THIRD_PARTY_NOTICES.md (a test checks).
+- **Content:** formats in docs/content-format.md (roles are `Role | words`;
+  1979 prints brackets); proofreading in docs/proofreading.md. Territories:
+  `config/content.yml` (US). The app will not boot without `db/content.sqlite3`.
+- **Deploy loop:** `bin/ci`, commit, `git push origin main`, `bin/deploy` (it
+  ends with `site:check_live`). Edit units and the Caddy site in `deploy/`.
+- **Backups:** nightly at 06:20 UTC to `/var/backups/prayerbookatlas`; off the
+  server through ubuntu-vm-backup (07:30 UTC, `data/prayerbookatlas/`). Its
+  daily job now fails if this site's archive is missing or stale. Drill:
+  `deploy/restore_drill.sh` (docs/deploy.md §7), quarterly from P27.1.
+- **Not done:** `record-job-success` on the server does not list
+  `prayerbookatlas-backup.service` (a root helper outside both repositories).
+- **Owner:** P0.6, P0.7 (optional), P0.8 (deferred), the [GATE DEMO] letters.
+- **Found:** Rails 8.1 sends the permissions policy as `Feature-Policy`; the
+  pre-existing `.setting-row select` uses an undefined `--face-interface`.
+- **Waiting:** the spelling setting (P12.6); `/dev/*` pages are development
+  aids. Cookies (all strictly necessary): `site_mode`, `appearance`,
+  `reading`, `book`, `office_books`, the session.

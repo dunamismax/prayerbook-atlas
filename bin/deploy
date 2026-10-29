@@ -9,7 +9,8 @@
 # (deploy/build.sh), then, inside the server's shared deploy lock, migrates,
 # checks the release on a spare port, switches `current`, restarts the
 # service, and checks the live site, restoring the previous release if any
-# step fails (deploy/cutover.sh). Only the built release is ever served.
+# step fails (deploy/cutover.sh), then checks the live site (bin/rails
+# site:check_live). Only the built release is ever served.
 set -Eeuo pipefail
 
 host=${DEPLOY_HOST:-root@ubuntu-vm}
@@ -65,3 +66,9 @@ remote "$lock bash $candidate/deploy/cutover.sh $commit $candidate"
 
 curl -fsS -o /dev/null https://prayerbookatlas.com/up
 echo "Live: https://prayerbookatlas.com (${commit:0:12})"
+
+# Status, both modes, redirects, TLS, headers, assets, and nothing loaded from
+# elsewhere (BUILD.md P5.6). A failure here does not roll back: the release is
+# live and answering, so say what is wrong and leave the choice to a person.
+echo "-> Checking the live site"
+QUIET=1 bin/rails site:check_live
