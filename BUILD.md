@@ -965,25 +965,29 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-28, first build session:** P1.1–P1.13, P2.1, P2.2b, P2.3, P2.6,
-  P2.7, P2.13, P2.14 done; `make check` passes with zero warnings (45 tests),
-  hosted CI passes, `make test-linux` passes in Colima (Docker CLI linked).
-- Working defaults used (open decisions): D2 iOS 26; D5 KJV+Apocrypha and WEB;
-  D10 reuse from Beautiful Corner commit 6f8bc4b; D15 Ribbon tokens (new ribbon
-  hues added, three with a gilt edge); P0.10 CI on manual and on pushes while
-  public (skipped if private); D13 team in ExportOptions, Team ID still
-  commented in `Config/Base.xcconfig`.
-- Rewritten: P1.11 uses copies of the generated icons A1–A3 (guarded
-  byte-identical; still `pending`). P1.2 was done after P1.10.
-- Decision 17: on iPhone, Search is a toolbar button, because the search tab
-  pushed Atlas and Search into "More".
-- SOUL.md drafted with the statement byte-identical to G&F §2; awaits P0.11.
-- **Blocked on the owner:** P1.14 (sign and upload; steps in `docs/release.md`,
-  then P0.6, P0.7); P2.2a (choose a design direction, D15); P2.4 (approve
-  downloading the two candidate fonts from github.com/google/fonts).
-- **Not done:** P2.5 (components; waits on P2.4's face), P2.8–P2.12, Phase 3.
-  Next agent: P2.8 (`LiturgicalBlock`, pure ContentKit) can start now.
-- Gotchas: iPhone Duo (iOS 27.1) is the default simulator and ignores Home in
-  UI tests; deep links via `simctl openurl` raise a system prompt (use
-  `XCUIApplication.open` or `-route`); ad-hoc `xcodebuild test` without
-  `-collect-test-diagnostics never` hangs 10 min on a failure.
+- **2026-10-29, owner decisions session:** the owner answered P0.1 (every D
+  recorded), P0.3, P0.5, P0.10, P0.11; P0.6 and P0.7 done. **D9: agents
+  decide** from now on; AGENTS.md §9 also gives standing permission to
+  install developer tools and to run the whole TestFlight process.
+- **D15 is B · Engraved Plate** (decision 18). `design/tokens.json`,
+  `docs/design.md`, and the colour assets are still Ribbon: **redo P2.2b for
+  B first**, then regenerate with `make tokens` (contrast tests must pass).
+  The design canvas (private claude.ai artifact) shows B's palette.
+- **Book face: Cardo** (decision 18). Its files and OFL.txt are in the
+  gitignored `research/fonts/cardo/`; P2.4 bundles them, records them in
+  `content/SOURCES.md`, and supplies ✠ from the system symbol font.
+- **Icon:** the placeholder is still the Ribbon-coloured generated set; the
+  owner asked for a B-palette icon. No image generator was available, so draw
+  it as original vector art (SVG rendered by script) and swap
+  `scripts/app-icon.sh` to it.
+- **TestFlight works:** app 6828358779; build 0.1.0 (20261029.0935) is in
+  internal testing; group Owner invites both team users. `make testflight`
+  and `make testflight-status` use the API key in `Config/Secrets.xcconfig`
+  (gitignored; key in `~/.appstoreconnect/private_keys`). P1.14 ticks when
+  the owner confirms the install.
+- CI is manual only (Actions → Check → Run workflow). The repo stays public,
+  all rights reserved (`LICENSE`).
+- Still the owner's: P0.8 (optional printed books), P0.9 (asking a priest,
+  deferred), and the [GATE DEMO] letters once M2 is demoable.
+- prayerbookatlas.org: registered 2026-10-29; DNS was not answering yet.
+- Next app work: P2.2b (B), P2.4 (Cardo), the icon, then P2.5 onward.
