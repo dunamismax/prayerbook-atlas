@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html <%= tag.attributes(lang: "en", data: { appearance: (appearance unless appearance == "automatic") }) %>>
+<html <%= tag.attributes(lang: "en", data: { appearance: (appearance unless appearance == "automatic"), **reading_settings.html_data }) %>>
   <head>
     <%= render "layouts/head" %>
   </head>
 
-  <body class="site site--full" data-site-mode="full">
+  <body <%= tag.attributes(class: "site site--full", data: { site_mode: "full", controller: ("wake-lock" if reading_settings[:keep_awake] == "yes") }) %>>
     <a class="skip-link" href="#main">Skip to the text</a>
 
     <header class="masthead">

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SiteMode
   include AppearancePreference
+  include ReadingPreference
 
   # Every browser is welcome: pages are semantic HTML that work without
   # JavaScript, so no browser is turned away (docs/decisions.md entry 25).

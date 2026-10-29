@@ -211,6 +211,16 @@ Automatic deletes it and writes no attribute. The Appearance form is a full page
 deep blue-black and pale ink, not pure black and white. Every token has both values; nothing is
 designed for one appearance only.
 
+## 9a. Reading settings
+
+The person's reading settings (P2.10, `ReadingSettings`) are written by the server as data
+attributes on `<html>` and styled in `reading.css`: `data-text-size` (smaller, larger, largest:
+93.75%, 112.5%, and 125% of the browser's own size, so they add to the browser's setting),
+`data-line-spacing` (the reading leading at 1.4 or 1.8), `data-rubrics="italic"` (rubrics in
+italic ink), `data-show-rubrics="no"`, and `data-page-numbers="hidden"`. Keeping the screen
+awake is the only one that needs script (the Screen Wake Lock API, through the `wake-lock`
+Stimulus controller); where the browser lacks it, the screen sleeps as usual.
+
 ## 10. Symbols and images
 
 Words first: the sections, the mode switch, and every control are labeled in words, so no icon

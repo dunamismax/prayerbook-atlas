@@ -13,4 +13,21 @@ class AppearanceSystemTest < ApplicationSystemTestCase
     click_button "Save appearance"
     assert_no_selector "html[data-appearance]", visible: :all
   end
+
+  test "reading settings apply across the site and can be undone" do
+    visit settings_path
+    choose "Largest"
+    choose "In italic only"
+    click_button "Save reading settings"
+    assert_selector "html[data-text-size=largest][data-rubrics=italic]", visible: :all
+
+    visit about_path
+    assert_selector "html[data-text-size=largest]", visible: :all
+
+    visit settings_path
+    choose "Standard: your browser's own size"
+    choose "In colour and italic"
+    click_button "Save reading settings"
+    assert_no_selector "html[data-text-size]", visible: :all
+  end
 end

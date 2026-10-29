@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html <%= tag.attributes(lang: "en", data: { appearance: (appearance unless appearance == "automatic") }) %>>
+<html <%= tag.attributes(lang: "en", data: { appearance: (appearance unless appearance == "automatic"), **reading_settings.html_data }) %>>
   <head>
     <%= render "layouts/head" %>
   </head>
 
-  <body class="site site--phone" data-site-mode="phone">
+  <body <%= tag.attributes(class: "site site--phone", data: { site_mode: "phone", controller: ("wake-lock" if reading_settings[:keep_awake] == "yes") }) %>>
     <a class="skip-link" href="#main">Skip to the text</a>
 
     <header class="phone-bar">

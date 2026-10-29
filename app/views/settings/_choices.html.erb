@@ -1,0 +1,11 @@
+<%# One setting as a fieldset of radio buttons. Locals: form, field, legend,
+    choices (value => label), and current (the chosen value). %>
+<fieldset>
+  <legend class="eyebrow"><%= legend %></legend>
+  <% choices.each do |value, label| %>
+    <div class="choice">
+      <%= form.radio_button field, value, checked: current == value %>
+      <%= form.label field, label, value: value %>
+    </div>
+  <% end %>
+</fieldset>

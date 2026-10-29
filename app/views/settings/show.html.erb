@@ -27,9 +27,35 @@
   <% end %>
 <% end %>
 
+<%= plate_card "Reading", label: "how texts are set" do %>
+  <%= liturgy SampleBlocks.all.values_at(1, 2, 4), heading_level: 3 %>
+
+  <%= form_with url: reading_settings_path, method: :patch, class: "settings-form", data: { turbo: false } do |form| %>
+    <%= render "settings/choices", form: form, field: :text_size, legend: "text size", current: reading_settings[:text_size],
+          choices: { "standard" => "Standard: your browser's own size", "smaller" => "Smaller", "larger" => "Larger", "largest" => "Largest" } %>
+    <%= render "settings/choices", form: form, field: :line_spacing, legend: "line spacing", current: reading_settings[:line_spacing],
+          choices: { "standard" => "Standard", "compact" => "Closer", "relaxed" => "More open" } %>
+    <%= render "settings/choices", form: form, field: :rubrics, legend: "rubrics", current: reading_settings[:rubrics],
+          choices: { "colour" => "In colour and italic", "italic" => "In italic only" } %>
+    <%= render "settings/choices", form: form, field: :show_rubrics, legend: "the book's instructions", current: reading_settings[:show_rubrics],
+          choices: { "yes" => "Show the rubrics", "no" => "Hide the rubrics while praying" } %>
+    <%= render "settings/choices", form: form, field: :page_numbers, legend: "printed page numbers", current: reading_settings[:page_numbers],
+          choices: { "shown" => "Show the page numbers of the printed book", "hidden" => "Hide them" } %>
+    <%= render "settings/choices", form: form, field: :keep_awake, legend: "the screen", current: reading_settings[:keep_awake],
+          choices: { "no" => "Let the screen sleep as usual", "yes" => "Keep the screen awake while a prayer page is open, where this browser allows it" } %>
+    <%= render "settings/choices", form: form, field: :spelling, legend: "spelling of the historic books", current: reading_settings[:spelling],
+          choices: { "original" => "Original spelling", "modernized" => "Modernized spelling" } %>
+    <p class="source">
+      The spelling choice is for the historic books in the Atlas, which are not on the site yet
+      (BUILD.md P12.6). The books for prayer are always shown as printed.
+    </p>
+    <%= form.submit "Save reading settings", class: "primary-action", name: nil %>
+  <% end %>
+<% end %>
+
 <% margin_note "More settings" do %>
   <p>
-    Your prayer book, reading settings, and the choice between the phone site and the full site
-    will join this page as they are built.
+    Your prayer book and the choice between the phone site and the full site will join this page
+    as they are built.
   </p>
 <% end %>

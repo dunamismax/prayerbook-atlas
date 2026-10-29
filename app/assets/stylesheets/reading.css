@@ -1,0 +1,43 @@
+/*
+ * Reading settings (BUILD.md P2.10), written by the server as data
+ * attributes on <html>. Text sizes are percentages of the browser's own
+ * size, so they add to the person's browser setting rather than replace it.
+ */
+
+:root[data-text-size="smaller"] {
+  font-size: 93.75%;
+}
+
+:root[data-text-size="larger"] {
+  font-size: 112.5%;
+}
+
+:root[data-text-size="largest"] {
+  font-size: 125%;
+}
+
+:root[data-line-spacing="compact"] {
+  --type-reading-leading: 1.4;
+}
+
+:root[data-line-spacing="relaxed"] {
+  --type-reading-leading: 1.8;
+}
+
+/* Rubrics in italic ink instead of colour. */
+:root[data-rubrics="italic"] .rubric,
+:root[data-rubrics="italic"] .alternative-label {
+  color: var(--ink);
+}
+
+:root[data-show-rubrics="no"] .liturgy .rubric {
+  display: none;
+}
+
+:root[data-page-numbers="hidden"] .liturgy .page-mark {
+  display: none;
+}
+
+:root[data-page-numbers="hidden"] .site--full .liturgy.with-page-marks {
+  padding-right: 0;
+}

@@ -76,7 +76,7 @@ top-level items (sub-items roll up into their parent).
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
-| 2 | Design system and site shell | M1 Foundation | 14 | 9 |
+| 2 | Design system and site shell | M1 Foundation | 14 | 10 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
@@ -639,7 +639,8 @@ When the site is demoable:
   - *2026-10-29 result:* `LiturgicalBlock` (twelve kinds as `Data` classes, inline runs, role lines, alternatives) and `SourceCitation`, ported from `Packages/ContentKit` at `ios-archive` (`a9be149`), with a stable hash form for the compiler (P3.3) and the Swift tests ported. Added checks the Swift lacked: an unknown book, an unknown insertion kind or half-verse mark, and a KJV verse number that duplicates the book's.
 - [x] **P2.9** Render `LiturgicalBlock`s as semantic HTML: rubrics marked as instructions for screen readers, role labels announced, page numbers in the margin (full) or inline (phone), insertion points visible, and plain text selection and copy.
   - *2026-10-29 result:* `LiturgyHelper#liturgy`, with `SampleBlocks` (bracketed placeholders, an unregistered "example" printing) on `/dev/liturgy`. Checked in Chrome at 1440 wide and the phone emulation, day and night, 200% text, and a copy of the whole text (no "Instruction:", page numbers, or KJV labels in it); with JavaScript off in headless Firefox. No console errors.
-- [ ] **P2.10** Reading settings, kept in a preference cookie and applied by the server: text size, line spacing, rubrics in colour or italic, show or hide rubrics, show page numbers, keep the screen awake while praying (the Screen Wake Lock API, where supported), and original or modernized spelling (historic books only, P12.6).
+- [x] **P2.10** Reading settings, kept in a preference cookie and applied by the server: text size, line spacing, rubrics in colour or italic, show or hide rubrics, show page numbers, keep the screen awake while praying (the Screen Wake Lock API, where supported), and original or modernized spelling (historic books only, P12.6).
+  - *2026-10-29 result:* `ReadingSettings` in one cookie (`reading`, only the choices that differ from the defaults), written on `<html>` as data attributes and styled by `reading.css`; keep-awake is the `wake-lock` Stimulus controller, which asks only on pages with a `.liturgy` and does nothing where the API is missing. The spelling choice is stored now and says plainly that it waits for P12.6. Checked in Chrome on both modes with the settings applied, and back to the defaults; a system test drives the form.
 - [ ] **P2.11 [GATE D4]** The first visit: a skippable card on Today choosing the person's prayer book, with a line about each; the preset is 1662; nothing is required to begin praying.
 - [ ] **P2.12** Settings (`/settings`): prayer book and per-office overrides, reading settings, appearance, the site mode, acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, about, support, and the running version (the deployed commit).
 - [ ] **P2.13** Route every interface string through Rails I18n (`config/locales/en.yml`), English only for now; a test finds untranslated literal text in views.
