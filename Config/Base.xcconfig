@@ -1,0 +1,14 @@
+// Settings shared by every target and configuration.
+// Simulator builds need no signing certificate. The owner's Team ID goes here
+// before the first device or TestFlight build (BUILD.md P0.6, D13). A Team ID
+// is not a secret: every signed build carries it. A gitignored
+// Secrets.xcconfig may override any setting on one machine (see
+// Secrets.xcconfig.example).
+
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+
+CODE_SIGN_STYLE = Automatic
+// DEVELOPMENT_TEAM = D9QMP3LP8H  // Uncomment at P0.6, once the owner confirms D13.
+
+#include? "Secrets.xcconfig"

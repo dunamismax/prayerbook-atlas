@@ -1,0 +1,101 @@
+# The Xcode project is generated from this file by XcodeGen (`make generate`).
+# Never hand-edit PrayerbookAtlas.xcodeproj; it is gitignored.
+name: PrayerbookAtlas
+
+options:
+  bundleIdPrefix: com.prayerbookatlas
+  # D2's working default (docs/decisions.md entry 13).
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+configFiles:
+  Debug: Config/Base.xcconfig
+  Release: Config/Base.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+
+targets:
+  App:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+    settings:
+      base:
+        PRODUCT_NAME: PrayerbookAtlas
+        PRODUCT_BUNDLE_IDENTIFIER: com.prayerbookatlas.app
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Prayerbook Atlas
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >-
+          UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
+          UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+        GCC_TREAT_WARNINGS_AS_ERRORS: YES
+        ENABLE_PREVIEWS: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+
+  AppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: AppTests
+    dependencies:
+      - target: App
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.prayerbookatlas.app.tests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/PrayerbookAtlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PrayerbookAtlas
+        BUNDLE_LOADER: $(TEST_HOST)
+
+  AppUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: AppUITests
+    dependencies:
+      - target: App
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.prayerbookatlas.app.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+        TEST_TARGET_NAME: App
+
+schemes:
+  PrayerbookAtlas:
+    build:
+      targets:
+        App: all
+        AppTests: [test]
+        AppUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: false
+      targets:
+        - AppTests
+        - AppUITests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
