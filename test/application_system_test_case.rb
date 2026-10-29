@@ -1,4 +1,5 @@
 require "test_helper"
+require_relative "support/tour_steps"
 
 # System tests drive headless Chrome against the running app (decision 29).
 # This base class is the full site in a desktop-sized window; the phone site
