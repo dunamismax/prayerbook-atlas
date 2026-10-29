@@ -74,7 +74,8 @@ deployed). Over `ssh root@ubuntu-vm` (Tailscale) it:
 2. **Installs Ruby** with mise if `.ruby-version` names one the server does not have yet.
 3. **Builds a candidate** as `sawyer`, outside the lock (`deploy/build.sh`): the commit's files
    from `git archive`, `REVISION` (Settings shows it), `bundle install` in deployment mode
-   (starting from the live release's gems), and `assets:precompile`. It needs no secret.
+   (starting from the live release's gems), `assets:precompile`, and `content:compile`. It needs
+   no secret.
 4. **Activates it** as root inside the server's shared deploy lock,
    `/usr/local/sbin/with-deploy-lock` (`deploy/cutover.sh`): moves the candidate into
    `releases/`, links `storage/` and `tmp/`, runs `bin/rails db:prepare` as the service user,
@@ -100,9 +101,10 @@ answer. It changes only the code that runs: migrations are not undone, and the i
 and Caddy site stay as they are, so a migration that an older release cannot run with needs a
 forward fix instead. Run `bin/deploy` to return to `origin/main`.
 
-**Content.** Once the content compiler exists (P3.3), the build will run
-`bin/rails content:compile` with release checks, so each release carries its own
-`db/content.sqlite3`.
+**Content.** The build runs `bin/rails content:compile` with release checks (P3.8): a source
+that is not `cleared` for the served territories fails the build, so it never reaches the
+server. Each release carries its own read-only `db/content.sqlite3`, and the app refuses to boot
+without it.
 
 ## 4. Provisioning (done 2026-10-29)
 

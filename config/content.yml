@@ -1,0 +1,7 @@
+# The territories whose readers the served texts must be cleared for
+# (BUILD.md D14, content/SOURCES.md). During development the site serves
+# texts that are public domain in the United States; the UK question for
+# 1662 and the KJV is settled before launch (P8.1, P17.7, P22.1).
+shared:
+  territories:
+    - US

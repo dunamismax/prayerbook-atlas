@@ -1,0 +1,9 @@
+id: note.example
+kind: note
+title: [An example note]
+source: original
+review: pending
+---
+# [An example heading]
+
+[An example paragraph of original prose about grace.]

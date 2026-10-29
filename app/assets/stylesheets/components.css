@@ -54,6 +54,17 @@
   font-size: var(--type-source-size);
 }
 
+/* Lists of sources and acknowledgements (the sources page, Settings). */
+.source-list,
+.acknowledgements {
+  padding-inline-start: var(--space-l);
+}
+
+.source-list li,
+.acknowledgements li {
+  margin-block: var(--space-s);
+}
+
 /* A plain notice in words; never colour alone. */
 .notice {
   border-left: 3px double var(--rubric);

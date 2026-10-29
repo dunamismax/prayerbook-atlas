@@ -8,6 +8,8 @@ CI.run do
   step "Security: Gem audit", "bin/bundler-audit"
   step "Security: Importmap vulnerability audit", "bin/importmap audit"
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
+  # The content compiles with release checks: no uncleared source (P3.8, P3.10).
+  step "Content: compile and check", "bin/rails content:compile"
   step "Tests: Rails", "bin/rails test"
   step "Tests: System", "bin/rails test:system"
   step "Tests: Seeds", "env RAILS_ENV=test bin/rails db:seed:replant"

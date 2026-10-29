@@ -1,0 +1,11 @@
+id: bcp1979us.example-prayer
+kind: prayer
+title: [An Example Prayer]
+book: bcp1979us
+printing: example-1979
+source: example-1979
+page: 101
+work: example-prayer
+---
+@paragraph id=text
+[Example prayer about grace and peace.]

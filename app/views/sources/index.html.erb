@@ -1,0 +1,27 @@
+<% content_for :title, t(".title") %>
+
+<%= eyebrow t(".eyebrow") %>
+<h1><%= t(".heading") %></h1>
+<%= title_rule %>
+
+<p><%= t(".intro") %></p>
+
+<% @sources.each do |status, sources| %>
+  <%= plate_card t(".statuses.#{status}"), label: t(".count", count: sources.size) do %>
+    <p><%= t(".status_notes.#{status}") %></p>
+    <ul class="source-list">
+      <% sources.each do |source| %>
+        <li id="<%= source.id %>">
+          <strong><%= source.title %></strong> <span class="source">(<%= t(".kinds.#{source.kind}") %>)</span>
+          <% if source.notice.present? %><br><%= source.notice %><% end %>
+          <% if status == "cleared" %>
+            <br><span class="source"><%= t(".cleared_in", territories: source.territories == %w[all] ? t(".everywhere") : source.territories.to_sentence) %></span>
+          <% else %>
+            <br><span class="source"><%= t(".rights_us", rights: source.fields["rights_us"]) %></span>
+            <br><span class="source"><%= t(".rights_uk", rights: source.fields["rights_uk"]) %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

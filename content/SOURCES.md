@@ -1,6 +1,38 @@
 # Sources
 
-The register of every non-original text, font, image, and dataset the site uses (AGENTS.md §6). So far it covers the book face, the owner's generated design images, and one reference source; BUILD.md P3.1 gives it its full schema and P3.6 its image registry. No liturgical text, Bible translation, scanned book page, or third-party illustration is in the repository yet.
+The register of every non-original text, font, image, and dataset the site uses or wants (AGENTS.md §6, D14). Nothing is served unless its entry here is `cleared` for the readers it reaches. The content compiler (`bin/rails content:compile`, BUILD.md P3.3) reads this file: content that names a source not registered here, or not cleared, is refused.
+
+No liturgical text or Bible translation is in the repository yet. The prayer books and Bibles below are `pending` candidates, researched and cleared in BUILD.md P8.1, P9.1, and P10.2.
+
+## Schema
+
+Each source is a level-three heading, a fenced block with the info string `source` holding `key: value` lines, and then the evidence in prose. The compiler reads only the fenced blocks; the prose is for people. One key per line; a value runs to the end of its line; `#` begins nothing special. Unknown keys are refused.
+
+| Key | Required | Meaning |
+|---|---|---|
+| `id` | always | Stable identifier, lower case with hyphens. Content files name it as `source:` (and, for a prayer-book text, as `printing:`). Never reused. |
+| `kind` | always | `printing` (a printing of a prayer book), `translation` (an edition of a Bible translation), `font`, `image`, `dataset` (calendar or lectionary facts, cross references), `quotation` (a book quoted from), `original` (the owner's original work), `code`, or `reference` (consulted, never served). |
+| `title` | always | The title as the source gives it. |
+| `book` | for `printing` | The prayer book's id (`bcp1662`, `bcp1928us`, `bcp1979us`, …). A printing belongs to one book (P3.4). |
+| `translation` | for `translation` | The translation's id (`kjva`, `web`, …), as `Translation` knows it. |
+| `printing` | for `printing`, `translation`, `quotation` | Which printing or edition: printer, place, year, impression. |
+| `year` | when known | Year of the printing or edition. |
+| `publisher` | when known | Publisher or printer. |
+| `obtained_from` | always | URL, scan, or physical copy the transcription or file was made from. |
+| `jurisdiction` | always | Where the source was published, and whose law governs its rights. |
+| `rights_us` | always | The rights basis for readers in the United States. |
+| `rights_uk` | always | The rights basis for readers in the United Kingdom (Research finding 4). |
+| `rights_elsewhere` | always | The rights basis elsewhere, or `unassessed`. |
+| `license` | always | `public-domain`, `open` (an open license, named in the rights keys), `permission` (written permission recorded), `none` (not yet available to us), or `not-applicable`. |
+| `ai_use` | always | `yes`, `no`, or `not-applicable`, then a reason after a semicolon. |
+| `status` | always | `wanted` (to be asked for, D6), `pending` (researched, not cleared), `cleared`, `reference` (consulted only; never served), or `refused`. |
+| `cleared_in` | when `cleared` | The territories it is cleared for: `US`, `UK`, … or `all`. A source cleared for one territory is not cleared for another (D14). |
+| `notice` | when the license requires one | The credit or notice that must appear wherever its text is shown. |
+| `verse_limit` | for licensed Scripture | The most verses the license allows, or `none` when the license sets no ceiling. |
+| `acknowledge` | optional | `yes` to list it in Settings' acknowledgements with its `notice` or title. |
+| `checked` | always | What was checked, by whom (agent or owner), and when. |
+
+The territories the site serves now are set in `config/content.yml` (`US` during development, D14). A release compile refuses any source a served text uses unless it is `cleared` in every one of them.
 
 ## Reference sources
 
@@ -8,6 +40,25 @@ Sources consulted, not served. Nothing from them reaches a page; they are record
 as a cross-check can be cited (D20) and so that what may not be taken is plain.
 
 ### The Daily Office 2019 (BUILD.md D30, P2A.4)
+
+```source
+id: dailyoffice2019
+kind: reference
+title: The Daily Office 2019 (blocher/dailyoffice2019), commit 51e61877c941705f7fc44d7801642c6e94c8bea4
+publisher: Benjamin Locher
+year: 2026
+obtained_from: https://github.com/blocher/dailyoffice2019 (cloned 2026-10-29 into research/dailyoffice2019/)
+jurisdiction: United States
+rights_us: code under the MIT License (Copyright 2020 Benjamin Locher); the texts it carries belong to their publishers
+rights_uk: as rights_us
+rights_elsewhere: as rights_us
+license: open
+ai_use: yes; its code and facts only, never the 2019 book's texts (Research finding 5)
+status: reference
+acknowledge: yes
+notice: Inspired by The Daily Office 2019, by Benjamin Locher (MIT License).
+checked: agent, 2026-10-29: LICENSE, import commands, SQL dump schema and row counts (BUILD.md P2A.1)
+```
 
 - **What:** the code and data of [The Daily Office 2019](https://www.dailyoffice2019.com), by
   Benjamin Locher; repository [blocher/dailyoffice2019](https://github.com/blocher/dailyoffice2019),
@@ -63,6 +114,26 @@ as a cross-check can be cited (D20) and so that what may not be taken is plain.
 
 ### Cardo (the book face, BUILD.md P2.3)
 
+```source
+id: cardo
+kind: font
+title: Cardo (Regular 1.0451, Italic 0.991, Bold 1.0011)
+publisher: David J. Perry
+year: 2011
+obtained_from: https://github.com/google/fonts/tree/main/ofl/cardo
+jurisdiction: United States
+rights_us: SIL Open Font License 1.1
+rights_uk: SIL Open Font License 1.1
+rights_elsewhere: SIL Open Font License 1.1
+license: open
+ai_use: not-applicable; a typeface
+status: cleared
+cleared_in: all
+acknowledge: yes
+notice: The book face is Cardo, by David J. Perry, under the SIL Open Font License 1.1.
+checked: agent, 2026-10-29: names, versions, licence, fsType, glyphs, and file hashes
+```
+
 - **Files:** `app/assets/fonts/Cardo-Regular.woff2`, `Cardo-Italic.woff2`, `Cardo-Bold.woff2`, and the licence `Cardo-OFL.txt`, self-hosted by the site. The WOFF2 files were made on 2026-10-29 from the TTFs below with fontTools' `ttLib.woff2 compress`, a lossless recompression that changes no outline, table, or name; the TTFs themselves stay in the gitignored `research/fonts/cardo/`. (Until 2026-10-29 the same TTFs were bundled in the retired iPhone app.)
 - **Source versions:** `Cardo-Regular.ttf` (version 1.0451), `Cardo-Italic.ttf` (0.991), `Cardo-Bold.ttf` (1.0011).
 - **Creator and holder:** David J. Perry; "Copyright (c) 2002-2011, David J. Perry (hospes02@scholarsfonts.net)", as each file's name table and OFL.txt state.
@@ -73,6 +144,23 @@ as a cross-check can be cited (D20) and so that what may not be taken is plain.
 - **Status:** `cleared` (documentary evidence: the OFL 1.1 in the files themselves).
 
 ## Generated design images
+
+```source
+id: generated-images
+kind: image
+title: The owner's generated design images (design/image-registry.json)
+publisher: the owner
+year: 2026
+obtained_from: design/image-prompts.md, generated at the owner's request on 2026-10-28
+jurisdiction: United States
+rights_us: pending release review
+rights_uk: pending release review
+rights_elsewhere: unassessed
+license: not-applicable
+ai_use: yes; generation authorized by the owner, no licensed text used
+status: pending
+checked: agent, 2026-10-28: decoding, transparency, subjects, sizes, recorded per image in the registry
+```
 
 - **Source:** [the owner-supplied image prompts](../design/image-prompts.md). The [image registry](../design/image-registry.json) records each exact prompt, generation prompt, supporting generated reference, file hash, dimensions, alpha checks, and limitations.
 - **Creator:** AI image generation tool, used at the owner's request.
@@ -142,3 +230,303 @@ as a cross-check can be cited (D20) and so that what may not be taken is plain.
 | E10 | Easter | [plate-easter.png](../design/generated/plate-easter.png) | pending |
 | E11 | Whitsunday or Pentecost | [plate-pentecost.png](../design/generated/plate-pentecost.png) | pending |
 | E12 | The season after Trinity or Pentecost | [plate-trinity.png](../design/generated/plate-trinity.png) | pending |
+
+## Original work
+
+```source
+id: original
+kind: original
+title: Original work of Prayerbook Atlas (notes, guides, glossary, interface text)
+publisher: the owner
+year: 2026
+obtained_from: this repository
+jurisdiction: United States
+rights_us: the owner's; all rights reserved (LICENSE)
+rights_uk: as rights_us
+rights_elsewhere: as rights_us
+license: not-applicable
+ai_use: yes; drafted with AI assistance and reviewed before release (AGENTS.md §3)
+status: cleared
+cleared_in: all
+checked: agent, 2026-10-29
+```
+
+Original texts are labeled as original in the data (`source: original`) and carry `review: pending` or `review: approved` (AGENTS.md §4, §6). Teaching pages say that they were researched and drafted with AI assistance and reviewed before release (P16.10).
+
+## Prayer books: public-domain candidates
+
+Each is `pending` until its printing is identified from page images, its title and copyright pages are read, and its rights are recorded per territory (BUILD.md P8.1, P9.1, P12.6, P17.2).
+
+### The Book of Common Prayer (1662), Church of England (Research finding 4)
+
+```source
+id: bcp1662-candidate
+kind: printing
+book: bcp1662
+title: The Book of Common Prayer (1662)
+printing: to be identified in P8.1: a printing carrying the 1871 Revised Table of Lessons, and the current Cambridge text for comparison
+obtained_from: to be identified (Internet Archive or HathiTrust page images)
+jurisdiction: England
+rights_us: public domain by age
+rights_uk: Crown prerogative (Letters Patent); Cambridge University Press acts as the Crown's patentee, and reproduction needs its permission (Research finding 4)
+rights_elsewhere: unassessed
+license: public-domain
+ai_use: yes; public domain in the US
+status: pending
+checked: agent, 2026-10-28: LibriVox's 1662 notice on the Crown's rights; no printing identified yet
+```
+
+### The Book of Common Prayer (1928), The Episcopal Church (Research finding 3)
+
+```source
+id: bcp1928us-candidate
+kind: printing
+book: bcp1928us
+title: The Book of Common Prayer (1928), Protestant Episcopal Church in the United States of America
+printing: to be identified in P9.1, with which revision of the tables of lessons it carries
+obtained_from: to be identified (page images)
+jurisdiction: United States
+rights_us: public domain by age for the 1928 text (US works of 1928 entered the public domain on 1 January 2024); later printings with the revised lectionary need their own check; Canon II.3.6 to be read in P9.1
+rights_uk: unassessed
+rights_elsewhere: unassessed
+license: public-domain
+ai_use: yes; public domain in the US
+status: pending
+checked: agent, 2026-10-28: the rule for US works published in 1928; no printing identified yet
+```
+
+### The Book of Common Prayer (1979), The Episcopal Church (Research finding 3)
+
+```source
+id: bcp1979us-candidate
+kind: printing
+book: bcp1979us
+title: The Book of Common Prayer (1979), The Episcopal Church
+printing: candidate: the Episcopal Church's PDF of the 2007 printing, to be checked against a printed copy in P9.1
+publisher: Church Publishing Incorporated, for The Episcopal Church
+year: 2007
+obtained_from: https://www.episcopalchurch.org/wp-content/uploads/2021/02/book-of-common-prayer-2006.pdf
+jurisdiction: United States
+rights_us: Canon II.3.6 makes authorized versions of the Book of Common Prayer public domain, per the explanation to General Convention 2024 resolution D038; the canon's own wording to be recorded in P9.1
+rights_uk: unassessed
+rights_elsewhere: unassessed
+license: public-domain
+ai_use: yes; if the canon makes it public domain
+status: pending
+checked: agent, 2026-10-28: resolution D038's explanation; the canon itself not yet read
+```
+
+### The Book of Common Prayer (1918), the Church of England in Canada (Research finding 7)
+
+```source
+id: bcp1918ca-candidate
+kind: printing
+book: bcp1918ca
+title: The Book of Common Prayer (1918), Church of England in Canada
+printing: to be identified (P17.2, the study layer)
+obtained_from: to be identified (page images)
+jurisdiction: Canada
+rights_us: public domain by age
+rights_uk: unassessed
+rights_elsewhere: unassessed
+license: public-domain
+ai_use: yes; public domain in the US
+status: pending
+checked: agent, 2026-10-28: publication date only
+```
+
+## Scripture: public-domain candidates (Research finding 9, D5)
+
+### The King James Version with the Apocrypha
+
+```source
+id: kjva-candidate
+kind: translation
+translation: kjva
+title: The Holy Bible, Authorized (King James) Version, with the Apocrypha
+printing: a digital edition to be identified and proofread on samples against a printed edition in P10.2
+obtained_from: to be identified (for example eBible.org)
+jurisdiction: England
+rights_us: public domain
+rights_uk: Crown prerogative (Letters Patent); Cambridge University Press acts as the Crown's patentee (Research finding 4)
+rights_elsewhere: unassessed
+license: public-domain
+ai_use: yes; public domain in the US
+status: pending
+checked: agent, 2026-10-28: the Crown's rights in the UK; no edition chosen yet
+```
+
+### The World English Bible
+
+```source
+id: web-candidate
+kind: translation
+translation: web
+title: World English Bible (with the deuterocanonical books)
+printing: an eBible.org edition, to be identified with its date in P10.2
+obtained_from: https://ebible.org (to be confirmed in P10.2)
+jurisdiction: United States
+rights_us: public domain, as its publisher dedicates it
+rights_uk: public domain, as its publisher dedicates it
+rights_elsewhere: public domain, as its publisher dedicates it
+license: public-domain
+ai_use: yes; public domain
+status: pending
+checked: agent, 2026-10-28: its public-domain dedication as reported; to be read at the source in P10.2
+```
+
+## Wanted (D6)
+
+Asked for once the site is demoable ([GATE DEMO]; BUILD.md P0.12–P0.14). Each stays `wanted` until a written answer is recorded; none may be used before.
+
+```source
+id: bcp2019-acna
+kind: printing
+book: bcp2019acna
+title: The Book of Common Prayer (2019), Anglican Church in North America, with the New Coverdale Psalter and its lectionaries
+publisher: Anglican House Publishers
+obtained_from: not yet; https://anglicanhousepublishers.org/permissions/
+jurisdiction: United States
+rights_us: copyright; apps and digital tools need the publisher's permission; no AI ingestion without written permission (Research finding 5)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; forbidden without written permission
+status: wanted
+notice: Excerpts from The Book of Common Prayer (2019), Anglican Church in North America. Used by permission of Anglican House.
+checked: agent, 2026-10-28: the permissions page
+```
+
+```source
+id: bas1962-canada
+kind: printing
+book: bcp1962ca
+title: The Book of Common Prayer (1962), Anglican Church of Canada
+publisher: General Synod of the Anglican Church of Canada
+obtained_from: not yet; https://www.anglican.ca/texts
+jurisdiction: Canada
+rights_us: copyright 1962, the General Synod (Research finding 7)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until permission says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: common-worship
+kind: printing
+book: cw
+title: Common Worship, Church of England (Daily Prayer and the lectionary)
+publisher: The Archbishops' Council
+obtained_from: not yet; https://www.churchofengland.org/copyright
+jurisdiction: England
+rights_us: copyright; no use in software or apps without written permission (Research finding 6)
+rights_uk: copyright; as rights_us
+rights_elsewhere: copyright
+license: none
+ai_use: no; until permission says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: cup-crown-texts
+kind: reference
+title: The 1662 Book of Common Prayer and the King James Version for readers in the UK
+publisher: Cambridge University Press, the Crown's patentee
+obtained_from: not yet
+jurisdiction: England
+rights_us: public domain (not needed)
+rights_uk: Crown prerogative; permission wanted (D14, P17.7)
+rights_elsewhere: unassessed
+license: none
+ai_use: not-applicable; a permission, not a text
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: rcl
+kind: dataset
+title: The Revised Common Lectionary
+publisher: Consultation on Common Texts
+obtained_from: not yet
+jurisdiction: United States
+rights_us: copyright; limited local non-commercial reproduction with a credit line; publishers and organizations ask permission (Research finding 8)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until permission says otherwise
+status: wanted
+checked: agent, 2026-10-28: the CCT sample notice
+```
+
+```source
+id: church-publishing-supplements
+kind: printing
+book: tec-supplements
+title: Lesser Feasts and Fasts, Enriching Our Worship, and the Book of Occasional Services
+publisher: Church Publishing Incorporated
+obtained_from: not yet
+jurisdiction: United States
+rights_us: presumed copyright until checked (Research finding 3)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until permission says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: rsv
+kind: translation
+translation: rsv
+title: The Revised Standard Version
+publisher: National Council of the Churches of Christ in the USA
+obtained_from: not yet
+jurisdiction: United States
+rights_us: copyright; license wanted (D5)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until the license says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: esv
+kind: translation
+translation: esv
+title: The English Standard Version
+publisher: Crossway
+obtained_from: not yet
+jurisdiction: United States
+rights_us: copyright; license wanted (D5)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until the license says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```
+
+```source
+id: nrsv
+kind: translation
+translation: nrsv
+title: The New Revised Standard Version (and Updated Edition)
+publisher: National Council of the Churches of Christ in the USA
+obtained_from: not yet
+jurisdiction: United States
+rights_us: copyright; license wanted (D5)
+rights_uk: copyright
+rights_elsewhere: copyright
+license: none
+ai_use: no; until the license says otherwise
+status: wanted
+checked: agent, 2026-10-28
+```

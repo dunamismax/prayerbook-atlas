@@ -79,6 +79,11 @@
   <p><%= t(".about.affiliation_html", link: link_to(t("shared.footer.grace_and_footnotes"), "https://graceandfootnotes.com"), more: link_to(t(".about.more"), about_path)) %></p>
   <p><%= t(".about.support_html", email: mail_to("support@prayerbookatlas.com")) %></p>
   <h3 class="eyebrow"><%= t(".about.acknowledgements") %></h3>
-  <p><%= t(".about.cardo") %></p>
+  <ul class="acknowledgements">
+    <% Content::Source.acknowledged.each do |source| %>
+      <li><%= source.notice.presence || source.title %></li>
+    <% end %>
+  </ul>
+  <p><%= t(".about.sources_html", link: link_to(t(".about.sources_link"), sources_path)) %></p>
   <p class="source"><%= t(".about.version", version: SiteVersion.current) %></p>
 <% end %>

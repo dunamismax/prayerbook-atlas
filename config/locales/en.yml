@@ -150,6 +150,42 @@ en:
       privacy: "It collects nothing about you: no analytics, advertising, or tracking. It sets only its own strictly necessary cookies: one that protects its forms, and, if you make a choice in Settings or between the phone site and the full site, one for each choice that remembers it."
       write_html: "Write to %{email}."
 
+  sources:
+    index:
+      title: "Sources"
+      eyebrow: "where everything comes from"
+      heading: "Sources"
+      intro: "Every text, font, image, and dataset the site uses or hopes to use, from its register of sources. Nothing is shown to you unless it is cleared for use, and every text carries its book, printing, and page."
+      count:
+        one: "one source"
+        other: "%{count} sources"
+      statuses:
+        cleared: "In use"
+        pending: "Being researched"
+        reference: "Consulted, never shown"
+        wanted: "Hoped for, by permission"
+        refused: "Not available"
+      status_notes:
+        cleared: "Cleared for use, with the territories each is cleared for."
+        pending: "Candidates whose printing and rights are still being checked. None is shown yet."
+        reference: "Studied or used to check facts. Nothing from them reaches a page."
+        wanted: "To be asked for once the site can be demonstrated; none is used before a written answer."
+        refused: "Asked for and declined."
+      cleared_in: "Cleared for: %{territories}"
+      everywhere: "every territory"
+      rights_us: "In the United States: %{rights}"
+      rights_uk: "In the United Kingdom: %{rights}"
+      kinds:
+        printing: "prayer book"
+        translation: "Bible translation"
+        font: "typeface"
+        image: "images"
+        dataset: "facts"
+        quotation: "quoted work"
+        original: "original work"
+        code: "code"
+        reference: "reference"
+
   settings:
     show:
       title: "Settings"
@@ -224,7 +260,8 @@ en:
         more: "More about the site"
         support_html: "Write to %{email} with a question, or to report an error in a text (the book, the page, and what is wrong)."
         acknowledgements: "acknowledgements"
-        cardo: "The book face is Cardo, by David J. Perry, under the SIL Open Font License 1.1. No prayer-book text is on the site yet; as texts arrive, each one's book, printing, and required credit will be listed here from the site's own sources register."
+        sources_html: "Every text, font, and image the site uses, and every one it hopes to use, is listed with its rights on %{link}."
+        sources_link: "the sources page"
         version: "Version %{version}"
 
   destinations:

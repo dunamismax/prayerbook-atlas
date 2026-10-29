@@ -1,0 +1,47 @@
+id: bcp1662.example-office
+kind: office
+title: [An Example Office]
+book: bcp1662
+printing: example-1662
+source: example-1662
+page: 3
+half_verse_mark: colon
+work: example-prayer
+---
+@heading level=1 id=title
+[EXAMPLE OFFICE]
+
+@rubric id=opening-rubric
+[An example rubric about kneeling.]
+
+@versicles id=preces
+℣ | [Example versicle.]
+℟ | [Example response.]
+
+@gloria_patri id=gloria full=bcp1662.example-office.gloria-full
+[Example Gloria, abbreviated.]
+
+@paragraph id=gloria-full
+[The full example Gloria.]
+
+@page 4
+
+@collect id=collect title="[The Collect for Example.]"
+[Example collect words about {i|grace},]
+[wrapped across lines.] {name|N.}
+
+@alternatives id=choice
+@option label="[Or this.]"
+@paragraph id=first
+[First example choice.]
+@option
+@paragraph id=second
+[Second example choice.]
+@end
+
+@psalm 150
+1 [Example first half] : [example second half]
+2 [kjv 3] [Example first half again] : [and {sc|LORD} in small capitals]
+
+@amen id=amen
+[Amen.]

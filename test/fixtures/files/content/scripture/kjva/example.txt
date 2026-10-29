@@ -1,0 +1,9 @@
+id: kjva.example.1
+kind: scripture
+title: [Example 1]
+source: example-kjva
+translation: kjva
+bible_book: GEN
+---
+1:1 [Example verse about grace.]
+1:2 [Another example verse.]

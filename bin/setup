@@ -20,6 +20,10 @@ FileUtils.chdir APP_ROOT do
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
   # end
 
+  # Before anything else boots the app, which needs it (BUILD.md P3.8).
+  puts "\n== Compiling the content database =="
+  system! "bin/rails content:compile"
+
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
   system! "bin/rails db:reset" if ARGV.include?("--reset")

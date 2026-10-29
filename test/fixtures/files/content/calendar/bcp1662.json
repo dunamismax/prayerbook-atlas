@@ -1,0 +1,8 @@
+{
+  "id": "bcp1662.calendar",
+  "book": "bcp1662",
+  "source": "example-1662",
+  "entries": [
+    { "name": "[An example holy day]", "month": 1, "day": 6, "page": "xx" }
+  ]
+}

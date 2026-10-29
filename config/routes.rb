@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "atlas", to: "sections#atlas"
 
   get "about", to: "pages#about"
+  get "sources", to: "sources#index"
 
   # Every destination in docs/urls.md, at its final address. Those whose phase
   # has not arrived are honest placeholders (DestinationsController).

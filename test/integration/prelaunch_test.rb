@@ -4,7 +4,7 @@ require "test_helper"
 # page that it is unfinished (P5.7).
 class PrelaunchTest < ActionDispatch::IntegrationTest
   test "every page says the site is in development and asks not to be indexed" do
-    %w[/ /pray /bible /kalendar /atlas /about /settings].each do |path|
+    %w[/ /pray /bible /kalendar /atlas /about /sources /settings].each do |path|
       [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
         get path, headers: { "User-Agent" => user_agent }
         assert_select "p.development-notice[role=note]", /still being built/, "#{path} for #{user_agent}"

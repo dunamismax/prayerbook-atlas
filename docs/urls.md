@@ -96,6 +96,7 @@ Works (`general-confession`) are named by the Atlas concordance (P12.1).
 | `/search?q=collect+for+purity` | Search | P3.9 |
 | `/settings` | Settings | P2.6, P2.12 |
 | `/about` | About the site | P1.8 |
-| `/support`, `/privacy`, `/terms`, `/sources`, `/accessibility` | Public pages, routed by their own phase | P20 |
+| `/sources` | The register of sources, from the content database | P3.8, P20.5 |
+| `/support`, `/privacy`, `/terms`, `/accessibility` | Public pages, routed by their own phase | P20 |
 | `/up` | Rails' health check, for the deploy | P5.2 |
 | `/dev/type`, `/dev/components` | Development aids, never routed in production | P2.4, P2.5 |
