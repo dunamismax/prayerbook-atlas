@@ -17,17 +17,28 @@ final class TourUITests: XCTestCase {
             XCUIDevice.shared.appearance = appearance
             app.launch()
             let mode = appearance == .dark ? "night" : "day"
-            for tab in ["today", "pray", "bible", "kalendar", "atlas"] {
-                let button = app.buttons["tab-\(tab)"]
+            for (tab, title) in Self.tabs {
+                let button = tabButton(app, tab, title)
                 XCTAssertTrue(button.waitForExistence(timeout: 5), "no \(tab) tab")
                 button.tap()
                 keepScreenshot(of: app, named: "\(tab)-\(mode)")
             }
-            app.buttons["tab-today"].tap()
+            tabButton(app, "today", "Today").tap()
             app.buttons["settings-button"].tap()
             XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 5))
             keepScreenshot(of: app, named: "settings-\(mode)")
         }
+    }
+
+    private static let tabs = [
+        ("today", "Today"), ("pray", "Pray"), ("bible", "Bible"), ("kalendar", "Kalendar"), ("atlas", "Atlas"),
+    ]
+
+    /// A tab's button by its identifier, or by its title: the iOS 27 tab bar sometimes drops the
+    /// tabs' identifiers (seen 2026-10-29 on iPhone 17 Pro, one run in two).
+    @MainActor
+    private func tabButton(_ app: XCUIApplication, _ tab: String, _ title: String) -> XCUIElement {
+        app.buttons.matching(NSPredicate(format: "identifier == %@ OR label == %@", "tab-\(tab)", title)).firstMatch
     }
 
     @MainActor
