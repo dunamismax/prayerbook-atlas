@@ -23,8 +23,8 @@
                     RubricText(text: "[A rubric: an instruction, not words to be said.]")
                     InitialParagraph(text: "[Reading text that opens with an initial, wrapping onto more lines.]")
                     VersicleResponse(lines: [
-                        RoleLine(role: "[Role]", text: "[The first line.]"),
-                        RoleLine(role: "[Role]", text: "[The answer.]"),
+                        RoleLine(role: "[Role]", text: [.text("[The first line.]")]),
+                        RoleLine(role: "[Role]", text: [.text("[The answer.]")]),
                     ])
                     HStack(alignment: .firstTextBaseline, spacing: Spacing.s) {
                         AmenLine(text: "[Amen]")

@@ -1,3 +1,4 @@
+import ContentKit
 import SwiftUI
 
 /// How rubrics are shown: italic in the accent, or italic in ink (a reading setting, P2.10).
@@ -43,15 +44,10 @@ struct InitialParagraph: View {
     }
 }
 
-/// A line with its role, as in versicles and responses: the label exactly as the book prints
-/// it ("℣", "Minister", "Answer") and the words that follow.
-struct RoleLine: Hashable, Sendable {
-    let role: String
-    let text: String
-}
-
-/// Versicles and responses, each line led by its role label. Side by side at ordinary sizes,
-/// stacked at accessibility sizes so neither column is squeezed.
+/// Versicles and responses, each line led by its role label exactly as the book prints it
+/// (`RoleLine` in ContentKit). Side by side at ordinary sizes, stacked at accessibility sizes so
+/// neither column is squeezed. Inline styling comes with P2.9's renderer; for now the words are
+/// set plainly.
 struct VersicleResponse: View {
     let lines: [RoleLine]
     @Environment(\.dynamicTypeSize) private var typeSize
@@ -62,7 +58,7 @@ struct VersicleResponse: View {
                 ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
                     VStack(alignment: .leading, spacing: Spacing.xs) {
                         RoleLabel(text: line.role)
-                        reading(line.text)
+                        reading(line.text.plainText)
                     }
                     .accessibilityElement(children: .combine)
                 }
@@ -72,7 +68,7 @@ struct VersicleResponse: View {
                 ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
                     GridRow {
                         RoleLabel(text: line.role)
-                        reading(line.text)
+                        reading(line.text.plainText)
                     }
                     .accessibilityElement(children: .combine)
                 }
