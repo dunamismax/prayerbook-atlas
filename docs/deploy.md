@@ -130,7 +130,8 @@ changed: it already imports every file in `/etc/caddy/sites/`.
 
 ## 5. Headers
 
-Rails sends HSTS (`config.force_ssl`), the Content Security Policy, the Permissions Policy, and
+Rails sends HSTS (`config.force_ssl`), the Content Security Policy, the permissions policy (under
+its older name, `Feature-Policy`, as Rails 8.1 sends it), and
 the other security headers; Caddy removes its `Server` header and adds `nosniff` and a year's
 immutable caching to the fingerprinted files under `/assets/`, which it serves straight from
 the release. Until launch (P5.7, P22), `robots.txt` disallows everything and every page carries
@@ -160,8 +161,8 @@ deploy. Personal data (intercessions, journals, confession notes) is never on th
 
 - `https://prayerbookatlas.com/up` answers 200.
 - Each redirecting name answers 308 to the same path on `.com`.
-- The home page sends `Content-Security-Policy`, `Strict-Transport-Security`,
-  `Permissions-Policy`, and `Vary: Sec-CH-UA-Mobile, User-Agent, Cookie`.
+- The home page sends `Content-Security-Policy`, `Strict-Transport-Security`, `Feature-Policy`,
+  and `Vary: Sec-CH-UA-Mobile, User-Agent, Cookie`.
 - A phone user agent gets the phone site and a desktop one the full site.
 - The owner's other sites still answer as before.
 

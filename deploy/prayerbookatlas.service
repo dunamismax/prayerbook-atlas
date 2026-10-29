@@ -11,7 +11,7 @@ User=prayerbookatlas
 Group=prayerbookatlas
 WorkingDirectory=/srv/www/prayerbookatlas.com/current
 Environment=RAILS_ENV=production PORT=4315 SOLID_QUEUE_IN_PUMA=true RAILS_LOG_LEVEL=info
-Environment=PATH=/opt/mise/installs/ruby/4.0.9/bin:/usr/bin:/bin
+Environment=PATH=/opt/mise/installs/ruby/4.0.9/bin:/usr/bin:/bin BUNDLE_USER_HOME=/srv/www/prayerbookatlas.com/shared/tmp/bundle
 # Only the secret: RAILS_MASTER_KEY, root-owned, mode 600.
 EnvironmentFile=/srv/www/prayerbookatlas.com/shared/env
 ExecStart=/opt/mise/installs/ruby/4.0.9/bin/bundle exec puma -C config/puma.rb

@@ -41,7 +41,8 @@ id "$name" >/dev/null 2>&1 || useradd --system --user-group --home-dir /nonexist
 install -d -o root -g root -m 0755 "$base" "$base/releases" "$shared"
 install -d -o "$name" -g "$name" -m 0750 "$shared/storage" "$shared/tmp"
 
-previous=$(readlink -f "$base/current" 2>/dev/null || true)
+previous=""
+if test -L "$base/current"; then previous=$(readlink -f "$base/current"); fi
 if test "$previous" = "$release"; then
   rm -rf "$candidate"
   echo "cutover: ${commit:0:12} is already live"
@@ -121,10 +122,11 @@ as_service() {
     --property=UMask=0077 --property=NoNewPrivileges=true --property=PrivateTmp=true \
     --property=ProtectSystem=strict --property=ProtectHome=true \
     --property=ReadWritePaths="$shared/storage $shared/tmp" \
-    --setenv=RAILS_ENV=production --setenv=PATH="$ruby_bin:/usr/bin:/bin" "$@"
+    --setenv=RAILS_ENV=production --setenv=PATH="$ruby_bin:/usr/bin:/bin" \
+    --setenv=BUNDLE_USER_HOME="$shared/tmp/bundle" "$@"
 }
 
-as_service --wait --pipe bin/rails db:prepare
+as_service --wait --pipe "$release/bin/rails" db:prepare
 
 # Boot the release on a spare port, without Solid Queue, and check it.
 systemctl stop "$check_unit" 2>/dev/null || true
