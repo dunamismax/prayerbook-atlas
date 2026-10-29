@@ -69,7 +69,7 @@ top-level items (sub-items roll up into their parent).
 
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
-| 0 | Owner foundations | — | 14 | 7 |
+| 0 | Owner foundations | — | 14 | 9 |
 | 1 | Repository and toolchain | M1 Foundation | 14 | 13 |
 | 2 | Design system and app shell | M1 Foundation | 14 | 6 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
@@ -582,9 +582,9 @@ Tools/ContentCompiler: content/ (sourced texts) → Content.sqlite (bundled)
 - [x] **P0.3 [OWNER] [GATE D11]** Set the repository's visibility and, if it stays public, its license. *(Owner, 2026-10-29: stays public, all rights reserved; `LICENSE` added.)*
 - [x] **P0.4 [OWNER]** Register the domain and support email (D12). *(Owner, 2026-10-28: prayerbookatlas.com and prayerbook-atlas.com at Cloudflare, DNS pointed at the Ubuntu server, catch-all Email Routing; checked by `dig` the same day.)*
 - [x] **P0.5 [OWNER]** A trademark knockout search for "Prayerbook Atlas" (USPTO), recorded in `docs/decisions.md`; consider registering prayerbookatlas.app and .org defensively. *(2026-10-29: search by an agent at the owner's request, no conflict found, decision 19; the owner registered prayerbookatlas.org and chose not to buy .app.)*
-- [ ] **P0.6 [OWNER] [GATE D13]** Put the Team ID in `Config/Base.xcconfig` (a Team ID is not secret) before the first device or TestFlight build, and add the owner's Apple ID in Xcode's Settings → Accounts.
-  - *2026-10-29 note:* the Team ID is committed (D13 decided); the Apple ID in Xcode is the owner's step, confirmed with the first archive (P1.14).
-- [ ] **P0.7 [OWNER]** Create the App Store Connect record with the bundle ID from D1, reserving the name, once P1.14 can upload a build.
+- [x] **P0.6 [OWNER] [GATE D13]** Put the Team ID in `Config/Base.xcconfig` (a Team ID is not secret) before the first device or TestFlight build, and add the owner's Apple ID in Xcode's Settings → Accounts.
+  - *2026-10-29 note:* the Team ID is committed (D13 decided); Xcode's account signed the first archive on 2026-10-29, and agents now also hold the App Store Connect API key (docs/release.md).
+- [x] **P0.7 [OWNER]** Create the App Store Connect record with the bundle ID from D1, reserving the name, once P1.14 can upload a build. *(2026-10-29: app 6828358779, "Prayerbook Atlas", created through Xcode's Organizer by an agent at the owner's direction.)*
 - [ ] **P0.8 [OWNER]** Have printed copies at hand for proofreading where scans fall short: a current 1662 (Cambridge), a 1928 (US), and a 1979 (US). *(Optional.)*
 - [ ] **P0.9 [OWNER] [GATE D18]** Ask a priest about reviewing original teaching.
   - *2026-10-29 note:* the owner chose to leave this for later. Original-teaching pages wait in `review: pending` until reviewed; no draft letter was written.
@@ -622,6 +622,7 @@ When the app is demoable:
 - [x] **P1.13** Make `make test-linux` run every package's tests in the `swift:6.4` container (install Colima or Docker first; Research finding 16), and add a static guard that packages import only Linux-available modules.
   - *2026-10-28 result:* the Docker CLI (29.9.2, Homebrew) was linked and Colima started (4 CPUs, 6 GB). `make test-linux` passes every package's tests in `swift:6.4` (aarch64 Linux). `scripts/check-package-imports.sh`, from Beautiful Corner, runs in `make guards`; probes importing UIKit, and SQLite3 without `#if canImport`, made it fail. `make check` does not run `test-linux` (the hosted macOS runner has no Docker).
 - [ ] **P1.14** The TestFlight path to the owner's iPhone: `make archive` and `make testflight` (a signed Release archive with release-checked content, uploaded to App Store Connect), the privacy manifest it needs, and `docs/release.md` with the one-time setup. Tick after the first build installs through TestFlight.
+  - *2026-10-29 result:* build 0.1.0 (20261029.0935, commit 513cccf) uploaded and in internal beta testing; group Owner created and both team users invited, through the App Store Connect API key. Tick when the owner confirms the install.
   - *2026-10-28 note:* prepared, waiting on the owner. `make archive`, `make testflight`, `Config/ExportOptions.plist`, the privacy manifest, and `docs/release.md` are in place; an unsigned device archive builds with zero warnings. Signing and uploading need the owner's account: P0.6, P0.7, and the steps in `docs/release.md`.
 
 ## Phase 2: Design system and app shell

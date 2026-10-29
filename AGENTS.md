@@ -344,6 +344,14 @@ owner (signing in with the owner's credentials, a payment, a message sent in
 the owner's name), prepare everything, ask for exactly that step, and
 continue with other work.
 
+**Apple distribution (owner's standing permission, 2026-10-29).** Agents run
+the whole TestFlight process themselves: archive and sign with the owner's
+team, create the App Store Connect record through Xcode when one is needed,
+upload, and manage internal tester groups, using Xcode's signed-in account or
+the owner's App Store Connect API key as `docs/release.md` describes. Never
+copy, print, or commit the key. Submitting a build to App Review or for
+external testing, and anything that costs money, still waits for the owner.
+
 **Developer tools (owner's standing permission, 2026-10-29).** On the
 owner's Mac, agents may install the developer tools the work needs, without
 asking: Homebrew formulae and casks (for example `fonttools`, `imagemagick`,

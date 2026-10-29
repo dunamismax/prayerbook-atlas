@@ -12,6 +12,7 @@
 #   screenshot     Relaunch the app and save a screenshot to screenshots/ (APPEARANCE, TEXT_SIZE)
 #   archive        Archive a signed Release build for devices, with release-checked content (BUILD_NUMBER)
 #   testflight     Archive, then upload the build to App Store Connect for TestFlight (docs/release.md)
+#   testflight-status  List the app's uploaded builds and their processing state (App Store Connect API)
 #   strings        Add the interface strings from the last build to the String Catalog
 #   tokens         Regenerate the asset catalog's colours from design/tokens.json
 #   icon           Copy the placeholder app icon from design/generated/ into the asset catalog
@@ -37,6 +38,16 @@ SWIFT_SOURCES := $(wildcard App AppTests AppUITests Packages Tools scripts)
 LINUX_IMAGE   := swift:6.4
 CONTENT_TOOL  := Tools/ContentCompiler
 ARCHIVE       := build/PrayerbookAtlas.xcarchive
+ASC_APP_ID    := 6828358779
+
+# The App Store Connect API key (docs/release.md), from the gitignored Config/Secrets.xcconfig.
+# When it is set, archive and upload sign in with the key instead of Xcode's account.
+asc_setting = $(subst ~,$(HOME),$(shell sed -n 's/^$(1) *= *//p' Config/Secrets.xcconfig 2>/dev/null))
+export ASC_KEY_ID    := $(call asc_setting,ASC_KEY_ID)
+export ASC_ISSUER_ID := $(call asc_setting,ASC_ISSUER_ID)
+export ASC_KEY_PATH  := $(call asc_setting,ASC_KEY_PATH)
+ASC_AUTH := $(if $(ASC_ISSUER_ID),-authenticationKeyPath "$(ASC_KEY_PATH)" -authenticationKeyID $(ASC_KEY_ID) \
+	-authenticationKeyIssuerID $(ASC_ISSUER_ID))
 BUILD_NUMBER  := $(or $(BUILD_NUMBER),$(shell date -u +%Y%m%d.%H%M))
 CONTENT_ARGS  := --content content --output App/Resources/Content.sqlite --verify
 
@@ -56,7 +67,7 @@ define compile_content
 endef
 
 .PHONY: help generate content content-release build build-release test-packages test-app test-linux run screenshot \
-	archive testflight strings tokens icon guards check format lint clean
+	archive testflight testflight-status strings tokens icon guards check format lint clean
 
 help:
 	@sed -n 's/^#   //p' $(MAKEFILE_LIST)
@@ -128,14 +139,18 @@ archive: generate content-release
 	rm -rf $(ARCHIVE)
 	xcodebuild -project $(PROJECT) -scheme $(SCHEME) -configuration Release \
 		-destination generic/platform=iOS -archivePath $(ARCHIVE) -derivedDataPath build/ArchiveData \
-		-allowProvisioningUpdates -quiet CURRENT_PROJECT_VERSION=$(BUILD_NUMBER) archive
+		-allowProvisioningUpdates $(ASC_AUTH) -quiet CURRENT_PROJECT_VERSION=$(BUILD_NUMBER) archive
 	@echo "archive: build $(BUILD_NUMBER) of $$(git rev-parse --short HEAD) at $(ARCHIVE)"
 
 testflight: archive
 	rm -rf build/Export
 	xcodebuild -exportArchive -archivePath $(ARCHIVE) -exportOptionsPlist Config/ExportOptions.plist \
-		-exportPath build/Export -allowProvisioningUpdates
-	@echo "testflight: uploaded build $(BUILD_NUMBER); it appears in App Store Connect's TestFlight tab once processed"
+		-exportPath build/Export -allowProvisioningUpdates $(ASC_AUTH)
+	@echo "testflight: uploaded build $(BUILD_NUMBER); make testflight-status shows when it is processed"
+
+testflight-status:
+	@xcrun swift scripts/asc.swift GET '/v1/apps/$(ASC_APP_ID)/builds?fields[builds]=version,processingState,uploadedDate' \
+		| python3 -c 'import json, sys; [print(b["attributes"]["version"], b["attributes"]["processingState"], b["attributes"]["uploadedDate"]) for b in json.load(sys.stdin)["data"]]'
 
 strings: build
 	scripts/sync-strings.sh $(DERIVED)

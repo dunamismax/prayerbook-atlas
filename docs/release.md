@@ -10,12 +10,36 @@ default): team `D9QMP3LP8H`, bundle ID `com.prayerbookatlas.app` (D1). Every ste
 in to Apple, accepts an agreement, or uploads is the owner's, or waits for the owner's go-ahead
 (AGENTS.md §4 and §9).
 
-**State (2026-10-28):** prepared, not yet run. An unsigned Release archive for devices
-(`CODE_SIGNING_ALLOWED=NO`) builds with zero warnings and carries the privacy manifest, the
-icon, version 0.1.0, and `ITSAppUsesNonExemptEncryption = NO`. Nothing has been signed or
-uploaded. The one-time setup below is still to do.
+**State (2026-10-29):** set up and working. The owner authorized agents to run the whole
+TestFlight process (AGENTS.md §9). App Store Connect app **6828358779**, "Prayerbook Atlas",
+bundle ID `com.prayerbookatlas.app`, SKU `com.prayerbookatlas.app`, created by Xcode's
+Organizer during the first distribution. Build **0.1.0 (20261029.0935)**, from commit
+`513cccf`, was uploaded on 2026-10-29 and is in internal beta testing (App Store Connect shows
+it as `20261029.935`; it drops the leading zero). The internal group **Owner** (id
+`e6bf5ab0-cc5b-4242-a773-c3c2e2332a55`) has access to every build; its testers are the team's
+two users, dunamismax@tutamail.com and stephenvsawyer@icloud.com, both invited. Installation on
+the owner's iPhone is not yet confirmed.
 
-## One-time setup (the owner)
+## Agent access: the App Store Connect API key
+
+Agents sign in to App Store Connect with the owner's API key, not a password:
+
+- The key file lives at `~/.appstoreconnect/private_keys/AuthKey_FL7FBMC22J.p8` (mode 600),
+  outside every repository. Never copy, print, or commit it.
+- The gitignored `Config/Secrets.xcconfig` on the owner's Mac holds `ASC_KEY_ID`,
+  `ASC_ISSUER_ID`, and `ASC_KEY_PATH`. The Makefile reads them, so `make archive` and
+  `make testflight` authenticate with the key (`-authenticationKey…`) instead of an Xcode
+  account session.
+- `xcrun swift scripts/asc.swift METHOD /v1/path [json]` calls the API directly with a
+  short-lived token (CryptoKit, no dependencies): tester groups, testers, build state.
+  `make testflight-status` lists the builds and their processing state.
+- The API cannot create an app record. For a new app, distribute once from Xcode's Organizer
+  (Distribute App → App Store Connect), which creates it; if Organizer then reports
+  `DistributionAppRecordProviderError` although the record was made (its log shows a 201 for
+  `POST /v1/apps`), close it and run `make testflight` again. App Store Connect also answers
+  some requests with a transient HTTP 500; retry.
+
+## One-time setup (done 2026-10-29)
 
 1. **Agreements.** Accept the current Program License Agreement at
    [developer.apple.com/account](https://developer.apple.com/account) and any agreement shown at
