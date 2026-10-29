@@ -84,7 +84,7 @@ top-level items (sub-items roll up into their parent).
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
 | 2 | Design system and site shell | M1 Foundation | 14 | 14 |
 | 2A | Learning from The Daily Office 2019 | M1 Foundation | 4 | 4 |
-| 3 | Content pipeline and rights registry | M1 Foundation | 11 | 9 |
+| 3 | Content pipeline and rights registry | M1 Foundation | 11 | 11 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 5 |
 | 6 | Today and the Kalendar | M2 The Daily Office | 7 | 0 |
@@ -719,8 +719,10 @@ module map, the data inventory, and what we do differently.
   - *2026-10-29 result:* `bin/setup` compiles first; `bin/ci` has a "Content: compile and check" step (strict); `deploy/build.sh` compiles with release checks; the app refuses to boot without the database, saying how to make it. Settings' acknowledgements and the new `/sources` page come from the database.
 - [x] **P3.9** Search (`/search`): ranked FTS5 results with highlighted snippets and filters by book and kind (office, prayer, collect, psalm, Scripture, lesson, rubric). On the full site the search field is in the masthead and the filters in the contents column; on the phone, a search page with the filters folded.
   - *2026-10-29 result:* `/search` (`SearchesController`, `Content::Search`): FTS5 ranked by bm25 with the title weighted, snippets with the matched words in `<mark>` (built from sentinel characters, never raw HTML), filters by book and by kind (offices, prayers, collects, psalms, Scripture, rubrics; *lessons* wait for the lectionaries, P11.1). The person's words are quoted term by term, so nothing is read as FTS5 syntax. Full site: a field in the masthead and the filters in the contents column; phone: a Search link in the phone bar and the filters folded under the field. Results do not link yet: the pages they will open arrive with P7 and P10. Checked in the in-app browser (full site by night and by day, the phone emulation) on the fixture content; no console errors.
-- [ ] **P3.10** A content-integrity suite in `bin/ci`: unique ids, resolved references, registered sources, no empty blocks, every block with a book, printing, and page.
-- [ ] **P3.11** Write `docs/proofreading.md`: two independent passes against the page images, a word-level diff between them, how differences are settled, the record in `SOURCES.md`, and the errata process for readers' reports (support@prayerbookatlas.com).
+- [x] **P3.10** A content-integrity suite in `bin/ci`: unique ids, resolved references, registered sources, no empty blocks, every block with a book, printing, and page.
+  - *2026-10-29 result:* `test/lib/content/integrity_test.rb` compiles the repository's `content/` and the fixture content and reads the databases back: unique ids, resolved references and works, no orphan blocks, every document's source registered and cleared for the served territories, no empty block, and every book's block with its book, printing, and page. With the compiler's own refusals and `bin/ci`'s strict "Content: compile and check" step.
+- [x] **P3.11** Write `docs/proofreading.md`: two independent passes against the page images, a word-level diff between them, how differences are settled, the record in `SOURCES.md`, and the errata process for readers' reports (support@prayerbookatlas.com).
+  - *2026-10-29 result:* `docs/proofreading.md`: two independent passes (the second kept in the gitignored `research/proofreading/`), OCR and other sites' copies never counting as a pass, the word-level comparison with `git diff --no-index --word-diff` (no new tool), every difference settled against the image, the record line in `SOURCES.md`, and errata for the printing's own errors and for readers' reports.
 
 ## Phase 4: Church year engine (ChurchYear)
 
