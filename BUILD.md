@@ -645,7 +645,8 @@ When the app is demoable:
 - [ ] **P2.12** Settings: prayer book and per-office overrides, reading settings, notifications, appearance (Automatic, Day, Night), acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, "About this app" (sister of Grace & Footnotes), support (support@prayerbookatlas.com), and version and build.
 - [x] **P2.13** Create a String Catalog (`Localizable.xcstrings`) and route every interface string through it (English only for now).
   - *2026-10-28 result:* `make strings` syncs the compiler-extracted strings into the catalog (`scripts/sync-strings.sh`, from Beautiful Corner); `make check` fails when it is stale (probed). 17 strings so far. English-only entries compile to nothing in the bundle, as expected; `.lproj` files appear with the first translation.
-- [ ] **P2.14** A UI test that launches, visits every tab, opens Settings, and switches appearance, capturing screenshots as attachments.
+- [x] **P2.14** A UI test that launches, visits every tab, opens Settings, and switches appearance, capturing screenshots as attachments.
+  - *2026-10-28 result:* `TourUITests` keeps 12 screenshots (five tabs and Settings, day and night). It switches the device appearance; when P2.12 adds the in-app Appearance setting, extend the test to switch that too. It relaunches per appearance because iOS 27 does not expose the navigation bar's back button to UI tests as a button.
 
 ## Phase 3: Content pipeline and rights registry
 
