@@ -15,6 +15,14 @@ configFiles:
   Debug: Config/Base.xcconfig
   Release: Config/Base.xcconfig
 
+packages:
+  ChurchYear:
+    path: Packages/ChurchYear
+  ContentKit:
+    path: Packages/ContentKit
+  ScriptureKit:
+    path: Packages/ScriptureKit
+
 settings:
   base:
     SWIFT_VERSION: "6.0"
@@ -28,6 +36,10 @@ targets:
     platform: iOS
     sources:
       - path: App
+    dependencies:
+      - package: ChurchYear
+      - package: ContentKit
+      - package: ScriptureKit
     settings:
       base:
         PRODUCT_NAME: PrayerbookAtlas
