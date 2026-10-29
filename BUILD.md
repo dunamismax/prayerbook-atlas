@@ -79,7 +79,7 @@ top-level items (sub-items roll up into their parent).
 | 2 | Design system and site shell | M1 Foundation | 14 | 14 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
-| 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 1 |
+| 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 5 |
 | 6 | Today and the Kalendar | M2 The Daily Office | 7 | 0 |
 | 7 | The Daily Office engine and reader | M2 The Daily Office | 6 | 0 |
 | 8 | The 1662 Book of Common Prayer | M2 The Daily Office | 10 | 0 |
@@ -110,7 +110,9 @@ both modes, the Engraved Plate components, the liturgical block model and its
 renderer, Settings (book, offices, appearance, reading, mode), the first-visit
 card, every planned URL routed to an honest placeholder, all interface text in
 I18n, and system tests in both modes. `bin/ci` and the hosted workflow pass.
-No liturgical text is on the site, and nothing is deployed yet.
+No liturgical text is on the site. The site is live at
+https://prayerbookatlas.com (P5.2–P5.4, 2026-10-29), marked as in development
+and kept out of search indexes (P5.7); `bin/deploy` ships `origin/main`.
 
 ---
 
@@ -693,12 +695,16 @@ server, DNS, or Caddy is the owner's to approve (AGENTS.md §4); agents
 prepare everything.
 
 - [x] **P5.1** Write `docs/deploy.md`: the server layout (`/srv/prayerbookatlas` with releases, a shared `storage/`, and an environment file holding `RAILS_MASTER_KEY`), Ruby on the server through mise, the systemd unit for Puma (with Solid Queue in Puma), the Caddy site for prayerbookatlas.com with redirects from www, prayerbook-atlas.com, and prayerbookatlas.org (and how to make .org serve directly as the backup), security headers, logs, and rollback.
-- [ ] **P5.2** `bin/deploy`: build a release from a clean `git archive` of `main`, copy it to the server, `bundle install` (deployment mode), precompile assets, compile the content with release checks, migrate, switch the `current` link, restart Puma, check `/up`, and roll back on failure. Never makes the checkout or the repository a web root.
-- [ ] **P5.3 [OWNER]** Provision the server as `docs/deploy.md` says: a `prayerbookatlas` user, Ruby 4.0.9 through mise, the directories, the environment file with the master key (from the owner's `config/master.key`), the systemd unit, and the Caddy site beside the existing ones (never replacing them).
-- [ ] **P5.4 [OWNER]** The first deploy, then check every name: prayerbookatlas.com serves the site over HTTPS; www, prayerbook-atlas.com, prayerbookatlas.org, and their www names redirect permanently to it; the response headers are right.
+- [x] **P5.2** `bin/deploy`: build a release from a clean `git archive` of `main`, copy it to the server, `bundle install` (deployment mode), precompile assets, compile the content with release checks, migrate, switch the `current` link, restart Puma, check `/up`, and roll back on failure. Never makes the checkout or the repository a web root.
+  - *Result (agent, 2026-10-29):* `bin/deploy` (Mac) with `deploy/build.sh` (an unprivileged build from `git archive`: REVISION, gems, assets) and `deploy/cutover.sh` (root, inside the server's shared deploy lock: migrate, boot-check on port 4395, install the unit and Caddy site when they change, switch, restart, check live, restore on failure); `bin/deploy --rollback` uses `deploy/rollback.sh`. Tried live: the first run failed safely and restored (two bugs, fixed in `8b81ca8`); the second deploy took 10 s; a rollback to `9928cd8` and the roll forward both worked; redeploying the live commit is a no-op. The content compile waits for P3.3.
+- [x] **P5.3 [OWNER]** Provision the server as `docs/deploy.md` says: a `prayerbookatlas` user, Ruby 4.0.9 through mise, the directories, the environment file with the master key (from the owner's `config/master.key`), the systemd unit, and the Caddy site beside the existing ones (never replacing them).
+  - *Result (owner's approval, 2026-10-29; done by an agent the same day):* the owner authorized SSH as root to `ubuntu-vm` to create the service user, directories, environment file, unit, and Caddy site, install mise and Ruby, clone, and deploy. It follows the server's conventions for the owner's other sites: `/srv/www/prayerbookatlas.com` (not `/srv/prayerbookatlas`), port 4315, the clone in `/home/sawyer/github/prayerbook-atlas`, Ruby 4.0.9 (precompiled) in `/opt/mise`, the system user `prayerbookatlas`, and `shared/env` (root, 600) holding only the master key. `/etc/caddy` was archived first; the main Caddyfile is unchanged. docs/deploy.md §2 lists where everything lives.
+- [x] **P5.4 [OWNER]** The first deploy, then check every name: prayerbookatlas.com serves the site over HTTPS; www, prayerbook-atlas.com, prayerbookatlas.org, and their www names redirect permanently to it; the response headers are right.
+  - *Result (2026-10-29):* DNS needed no change: all six names are A records for the server, not proxied, like the owner's other sites, so Caddy obtained its own certificates. `https://prayerbookatlas.com` serves the site; the five other names and plain HTTP answer 308 to it, keeping path and query; `/up` is 200; CSP, HSTS (two years, subdomains), nosniff, and immutable caching on `/assets/` are sent (Rails names the permissions policy `Feature-Policy`). Checked in the in-app browser: the full site, the phone site (mobile emulation), day and night, the appearance and book forms, 200% text, no console errors or CSP violations, nothing loaded from elsewhere. The service is enabled for boot and came back after `kill -9`; a full reboot waits for the owner, since it restarts the other sites too. The owner's other sites answered the same before and after.
 - [ ] **P5.5** Backups: a nightly SQLite `.backup` of the app's databases in `storage/`, encrypted and kept off the server on owner-controlled storage, with a written restore drill run once. (The content database is rebuilt from the repository, not backed up.)
 - [ ] **P5.6** A post-deploy check (`bin/rails site:check_live`): status codes, redirects, TLS, the security headers, and no requests to other hosts.
-- [ ] **P5.7** Robots and preview: until launch (P22), `robots.txt` disallows crawling and every page says the site is in development.
+- [x] **P5.7** Robots and preview: until launch (P22), `robots.txt` disallows crawling and every page says the site is in development.
+  - *Result (agent, 2026-10-29):* `public/robots.txt` disallows everything; both layouts carry `noindex, nofollow` and a quiet line saying the site is still being built (`shared/_development_notice`); `test/integration/prelaunch_test.rb` checks every page in both modes. P22 removes all three.
 
 ## Phase 6: Today and the Kalendar
 
@@ -953,26 +959,27 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-29 session 2:** finished P1.10–P1.12 and all of Phase 2
-  (P2.4–P2.14). Next: Phase 3 from P3.1, then Phase 4 and P5.2 (`bin/deploy`;
-  it must write `REVISION`, which Settings shows via `SiteVersion`).
-- **Hosted CI:** `gh workflow run ci.yml`, then `gh run watch <id>`; it now
-  needs the committed empty `db/schema.rb` and runs the system tests.
-- **Commits are gated:** run `bin/ci` and commit only if it passes. The P2.9
-  commit was pushed after a red run (a system-test race); `ea33fa4` and
-  `9f14f3d` fixed it. Tests must load the next page afresh after a full-page
-  form submission rather than act on the redirected page.
-- **Browsers:** Chrome in the in-app browser; Firefox 159 installed with
-  Homebrew for headless and JavaScript-off checks; WebKit through
-  `script/webkit_snapshot.swift`. The owner declined screen access to Safari
-  this session, so Safari itself and phone browsers wait for P21.5.
-- **Cookies the site sets** (all strictly necessary preferences): `site_mode`,
-  `appearance`, `reading`, `book`, `office_books`, and Rails' session.
-  P20.4 must list them.
-- **Waiting on later items:** the acknowledgements in Settings come from the
-  content database at P3.8; the spelling setting waits for P12.6;
-  `/dev/type`, `/dev/components`, and `/dev/liturgy` are development aids.
-- **This Mac:** mise's Ruby 4.0.9 is global; `config/master.key` is local and
-  gitignored (the server will need it as `RAILS_MASTER_KEY`, P5.3).
-- **Owner:** P0.6 (the retired App Store Connect record), P0.7 (optional),
-  P0.8 (deferred), the [GATE DEMO] letters, and Phase 5's server steps.
+- **2026-10-29 session 3:** the site is live at https://prayerbookatlas.com
+  (P5.2–P5.4, P5.7). Next: Phase 3 from P3.1, then Phase 4, P5.5 (backups:
+  the server's own backup job does not cover this site), and P5.6.
+- **Deploy loop:** `bin/ci`, commit, `git push origin main`, `bin/deploy`, then
+  try it live; `bin/deploy --rollback` returns to the previous release. It
+  needs `ssh root@ubuntu-vm` (Tailscale). docs/deploy.md §2 lists where
+  everything lives. Edit the unit and Caddy site in `deploy/`, never on the
+  server; any other server change goes through `/usr/local/sbin/with-deploy-lock`.
+- **On the server:** `/srv/www/prayerbookatlas.com` (releases, `shared/storage`,
+  `shared/env` with the master key, root 600); Puma on 127.0.0.1:4315 as
+  `prayerbookatlas.service`; `journalctl -u prayerbookatlas`. Ports 4311–4314
+  are the owner's other sites.
+- **Owner:** a full reboot of `ubuntu-vm` is untried (it restarts the other
+  sites too); the service is enabled for boot and came back after a crash.
+  Also P0.6, P0.7 (optional), P0.8 (deferred), and the [GATE DEMO] letters.
+- **Found:** Rails 8.1 sends the permissions policy as `Feature-Policy`; P5.6
+  or P21 may want `Permissions-Policy` too.
+- **Commits are gated:** `bin/ci` must pass first. Hosted CI:
+  `gh workflow run ci.yml`, then `gh run watch <id>`.
+- **Browsers:** Chrome in the in-app browser; Firefox 159 (Homebrew) for
+  JavaScript-off checks; WebKit via `script/webkit_snapshot.swift`.
+- **Waiting:** Settings' acknowledgements (P3.8), the spelling setting (P12.6);
+  `/dev/*` pages are development aids. Cookies (all strictly necessary):
+  `site_mode`, `appearance`, `reading`, `book`, `office_books`, the session.

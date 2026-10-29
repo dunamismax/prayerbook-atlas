@@ -389,7 +389,8 @@ replace are marked superseded. The retired app's code is at the Git tag
   www names redirect permanently to prayerbookatlas.com, and .org can be
   switched to serve the site directly as the backup domain. Deploys copy a
   built release from a clean `git archive`, never the checkout, into
-  `/srv/prayerbookatlas/releases/` with a shared `storage/`
+  `/srv/www/prayerbookatlas.com/releases/` with a shared `storage/`, following
+  the server's conventions for the owner's other sites
   (docs/deploy.md). No Docker, Kamal, or Thruster.
 - **Why:** Caddy already serves the owner's other sites on that machine, and
   kamal-proxy would want ports 80 and 443 for itself. A systemd unit is the

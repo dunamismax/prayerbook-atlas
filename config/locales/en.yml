@@ -112,7 +112,7 @@ en:
 
   shared:
     development_notice:
-      text: "Prayerbook Atlas is still being built. Its pages are unfinished and will change; please do not rely on it yet for prayer or worship."
+      text: "Prayerbook Atlas is still being built; its pages are unfinished and will change."
     footer:
       about_nav: "About this site"
       about: "About"
