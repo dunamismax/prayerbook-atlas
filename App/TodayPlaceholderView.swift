@@ -11,15 +11,15 @@ struct TodayPlaceholderView: View {
         VStack(spacing: 8) {
             Text(date, format: .dateTime.weekday(.wide))
                 .font(.title3)
-                .foregroundStyle(Color("Muted"))
+                .foregroundStyle(Color.muted)
             Text(date, format: .dateTime.day().month(.wide).year())
                 .font(.system(.largeTitle, design: .serif))
-                .foregroundStyle(Color("Ink"))
+                .foregroundStyle(Color.ink)
                 .multilineTextAlignment(.center)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Paper"))
+        .background(Color.paper)
         .accessibilityElement(children: .combine)
     }
 }
