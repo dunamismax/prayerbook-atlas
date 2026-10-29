@@ -149,13 +149,67 @@ names already. Move it back when `.com` returns.
 
 ## 7. Backups
 
-The app's own databases are the files in `/srv/www/prayerbookatlas.com/shared/storage/`. Back
-them up nightly with SQLite's online backup (`sqlite3 <db> ".backup '<copy>'"`), encrypt the
-copies, and keep them off the server on owner-controlled storage; run a restore drill once and
-then quarterly (P5.5, P27.1). The server's own `ubuntu-vm-backup` job does not cover this site
-yet. The content database is never backed up: it is rebuilt from the repository on every
-deploy. Personal data (intercessions, journals, confession notes) is never on the server at all
-(D29).
+The app's own databases are the SQLite files in `/srv/www/prayerbookatlas.com/shared/storage/`
+(the primary, cache, queue, and cable databases). The content database is never backed up: every
+deploy rebuilds it from the repository. Personal data (intercessions, journals, confession
+notes) is never on the server at all (D29). (BUILD.md P5.5.)
+
+**Two layers, as for the owner's other sites:**
+
+| Layer | What | Where | When |
+|---|---|---|---|
+| The site's archive | every database, copied with SQLite's online backup and checked, with a manifest and the live commit | `/var/backups/prayerbookatlas/prayerbookatlas-<UTC stamp>.tar.gz` and `.sha256`, `root:sawyer` 0640, kept 30 days | nightly, 06:20 UTC (±15 min), `prayerbookatlas-backup.timer` |
+| Off the server | the newest archive, encrypted with age to the ubuntu-vm-backup key | the private repository [dunamismax/ubuntu-vm-backup](https://github.com/dunamismax/ubuntu-vm-backup) (GitHub and Codeberg), `data/prayerbookatlas/prayerbookatlas-latest.tar.gz.age`; its Git history keeps each day's | daily, 07:30 UTC, `ubuntu-vm-backup.timer` |
+
+- **The nightly job** (`deploy/prayerbookatlas-backup.service` and `.timer`, installed by each
+  deploy when they change) runs the live release's `deploy/backup.sh` as root inside the server's
+  deploy lock, so it never races a deploy. The copies are made as the service user with
+  `deploy/backup_databases.rb`, which uses SQLite's online backup (consistent while the site
+  runs, WAL included), runs `PRAGMA integrity_check` on each copy, and writes the manifest: each
+  file's integrity, SHA-256, and the row count of every table. Nothing in `storage/` changes
+  owner. The server has no `sqlite3` command; the release's own sqlite3 gem does the work.
+- **Off the server**: ubuntu-vm-backup's `bin/backup` checks that the newest archive is under
+  26 hours old and matches its checksum, encrypts it to the repository's age recipient, and
+  pushes it with the rest of the server's backup. A missing or stale archive fails that job,
+  so a broken backup is seen rather than silently skipped. Its key's off-server copy is in the
+  owner's Bitwarden (ubuntu-vm-backup `docs/SECRETS.md`). It does not archive this site's release
+  the way it does the Astro sites': the release is rebuilt from its Git commit by `bin/deploy`,
+  and the archive records that commit.
+
+```bash
+ssh root@ubuntu-vm systemctl start prayerbookatlas-backup.service
+```
+
+runs the backup now; `journalctl -u prayerbookatlas-backup` shows the last run.
+
+**Restoring.** Take an archive from `/var/backups/prayerbookatlas`, or from the ubuntu-vm-backup
+repository (`age -d -i <its identity> -o archive.tar.gz data/prayerbookatlas/prayerbookatlas-latest.tar.gz.age`).
+Rehearse it first with the drill below. Then, as root on the server, inside the lock:
+
+```bash
+/usr/local/sbin/with-deploy-lock bash -c '
+  systemctl stop prayerbookatlas
+  mkdir -p /root/prayerbookatlas-restore && tar -xzf ARCHIVE -C /root/prayerbookatlas-restore
+  cd /srv/www/prayerbookatlas.com/shared/storage && mkdir -p ../storage-before-restore && mv *.sqlite3* ../storage-before-restore/
+  install -o prayerbookatlas -g prayerbookatlas -m 0600 /root/prayerbookatlas-restore/databases/*.sqlite3 .
+  systemctl start prayerbookatlas'
+curl -fsS https://prayerbookatlas.com/up
+```
+
+The databases being replaced are kept in `shared/storage-before-restore/` until the restore is
+checked. If the archive came from an older commit than the live one, `bin/deploy` again runs any
+newer migrations against it.
+
+**The restore drill.** `deploy/restore_drill.sh` restores an archive into a scratch copy of the
+live release, checks every database against the manifest, boots the release on port 4396 with
+the restored databases, checks `/up`, `/`, `/settings`, and `/sources`, and removes everything,
+never touching the live databases:
+
+```bash
+ssh root@ubuntu-vm /usr/local/sbin/with-deploy-lock bash /srv/www/prayerbookatlas.com/current/deploy/restore_drill.sh
+```
+
+Run it once after setting up (done 2026-10-29, BUILD.md P5.5) and then quarterly (P27.1).
 
 ## 8. After each deploy
 

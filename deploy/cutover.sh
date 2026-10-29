@@ -6,9 +6,10 @@
 #
 # It moves the candidate into releases/, links the shared storage, migrates,
 # boots the release on a spare port and checks it, installs this commit's
-# systemd unit and Caddy site if they changed, switches `current`, restarts
-# the service, and checks the live site. If any step fails it puts back the
-# previous release, unit, and Caddy site, and exits non-zero.
+# systemd units (the app, and the nightly backup's service and timer) and
+# Caddy site if they changed, switches `current`, restarts the service, and
+# checks the live site. If any step fails it puts back the previous release,
+# units, and Caddy site, and exits non-zero.
 set -Eeuo pipefail
 
 # Returns rather than exits, so that after the trap is set a failure restores.
@@ -29,6 +30,7 @@ shared=$base/shared
 release=$base/releases/$commit
 site=/etc/caddy/sites/$name.caddy
 unit=/etc/systemd/system/$service
+backup_units="$name-backup.service $name-backup.timer"
 caddy=/usr/local/lib/caddy/caddy
 port=4315
 check_port=4395
@@ -56,6 +58,9 @@ printf '%s\n' "$previous" > "$rollback/previous"
 cp -a /etc/caddy/Caddyfile "$rollback/Caddyfile"
 if test -f "$site"; then cp -a "$site" "$rollback/site.caddy"; fi
 if test -f "$unit"; then cp -a "$unit" "$rollback/app.service"; fi
+for file in $backup_units; do
+  if test -f "/etc/systemd/system/$file"; then cp -a "/etc/systemd/system/$file" "$rollback/$file"; fi
+done
 
 fresh=0
 check_unit=$name-release-check
@@ -68,6 +73,14 @@ recover() {
   systemctl stop "$check_unit" 2>/dev/null
   if test -f "$rollback/site.caddy"; then install -m 0644 "$rollback/site.caddy" "$site"; else rm -f "$site"; fi
   if test -f "$rollback/app.service"; then install -m 0644 "$rollback/app.service" "$unit"; else rm -f "$unit"; fi
+  for file in $backup_units; do
+    if test -f "$rollback/$file"; then
+      install -m 0644 "$rollback/$file" "/etc/systemd/system/$file"
+    else
+      systemctl disable --now "$file" 2>/dev/null
+      rm -f "/etc/systemd/system/$file"
+    fi
+  done
   systemctl daemon-reload
   if test -n "$previous"; then
     ln -sfn "$previous" "$base/current.next" && mv -Tf "$base/current.next" "$base/current"
@@ -153,6 +166,19 @@ if ! cmp -s "$release/deploy/$name.service" "$unit"; then
   systemctl daemon-reload
 fi
 systemctl enable --quiet "$service"
+# The nightly backup (docs/deploy.md §7), run from whichever release is live.
+backup_changed=0
+for file in $backup_units; do
+  if ! cmp -s "$release/deploy/$file" "/etc/systemd/system/$file"; then
+    install -m 0644 "$release/deploy/$file" "/etc/systemd/system/$file"
+    backup_changed=1
+  fi
+done
+if test "$backup_changed" = 1; then
+  systemd-analyze verify /etc/systemd/system/$name-backup.service /etc/systemd/system/$name-backup.timer
+  systemctl daemon-reload
+fi
+systemctl enable --quiet --now "$name-backup.timer"
 
 # Switch, restart, and check.
 ln -sfn "$release" "$base/current.next"

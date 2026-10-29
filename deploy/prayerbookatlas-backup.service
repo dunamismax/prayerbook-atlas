@@ -1,0 +1,20 @@
+# Installed by deploy/cutover.sh as /etc/systemd/system/prayerbookatlas-backup.service
+# (docs/deploy.md §7, BUILD.md P5.5). Runs the live release's backup script
+# inside the server's shared deploy lock, as the other sites' backups do.
+[Unit]
+Description=Back up Prayerbook Atlas's databases
+After=prayerbookatlas.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/with-deploy-lock bash /srv/www/prayerbookatlas.com/current/deploy/backup.sh
+UMask=0077
+Nice=10
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/backups /run/astro-deploy /srv/www/prayerbookatlas.com/shared/tmp
+MemoryHigh=256M
+MemoryMax=512M
+TasksMax=64

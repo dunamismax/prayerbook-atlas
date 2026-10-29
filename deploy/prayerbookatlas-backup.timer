@@ -1,0 +1,12 @@
+# Installed by deploy/cutover.sh as /etc/systemd/system/prayerbookatlas-backup.timer
+# (docs/deploy.md §7, BUILD.md P5.5).
+[Unit]
+Description=Nightly Prayerbook Atlas backup
+
+[Timer]
+OnCalendar=*-*-* 06:20:00 UTC
+RandomizedDelaySec=15m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
