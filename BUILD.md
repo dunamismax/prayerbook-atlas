@@ -624,7 +624,7 @@ When the app is demoable:
 
 ## Phase 2: Design system and app shell
 
-- [ ] **P2.1** Write `docs/product.md`: the information architecture (from the proposal above), navigation rules, the tone rules from AGENTS.md §3, "each book on its own terms", no guilt mechanics, privacy by design, and the newcomer principle.
+- [x] **P2.1** Write `docs/product.md`: the information architecture (from the proposal above), navigation rules, the tone rules from AGENTS.md §3, "each book on its own terms", no guilt mechanics, privacy by design, and the newcomer principle.
 - [ ] **P2.2 [GATE D15]** The design system.
   - [ ] **P2.2a** Hold the design session: render the Ribbon direction and two alternatives as real screens (Today, an office, the Atlas compare view) in day and night; the owner chooses (D15).
   - [ ] **P2.2b** Write `docs/design.md` (tokens, contrast, type scale, motifs, ribbons, the atlas plate, layout and Liquid Glass, appearance, symbols, components, accessibility, the app icon, and the research behind them), `design/tokens.json`, and the icon sources in `design/icon/`.
