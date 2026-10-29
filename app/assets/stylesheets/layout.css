@@ -200,11 +200,6 @@
 
 /* The phone site */
 
-.site--phone {
-  /* Room for the tab bar, which sits above the home indicator. */
-  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
-}
-
 .site--phone .phone-bar {
   position: sticky;
   top: 0;
@@ -217,9 +212,10 @@
 
 .site--phone .phone-bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-m);
+  gap: 0 var(--space-m);
 }
 
 .phone-bar-tools a {
@@ -229,6 +225,7 @@
 }
 
 .site--phone .wordmark {
+  white-space: normal;
   font-size: var(--type-ui-size);
 }
 
@@ -265,9 +262,13 @@
   padding: var(--space-l) var(--space-margin);
 }
 
+/* The tab bar is the last thing on the page and sticks to the bottom of the
+   screen, so it never covers text and needs no padding guessed for it. With
+   large text its labels wrap onto a second row rather than run off the
+   screen. */
 .tab-bar {
-  position: fixed;
-  inset: auto 0 0;
+  position: sticky;
+  bottom: 0;
   z-index: 3;
   background: var(--card);
   border-top: 3px double var(--line);
@@ -275,11 +276,15 @@
 }
 
 .tab-bar ul {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.tab-bar li {
+  flex: 1 1 20%;
 }
 
 .tab-bar a {

@@ -6,9 +6,11 @@ module BookPreference
   extend ActiveSupport::Concern
 
   COOKIE = :book
+  # Per-office choices (P2.12): "compline:bcp1979us,litany:bcp1928us".
+  OFFICE_COOKIE = :office_books
 
   included do
-    helper_method :prayer_book, :prayer_book_chosen?
+    helper_method :prayer_book, :prayer_book_chosen?, :office_book_overrides, :prayer_book_for
   end
 
   private
@@ -19,4 +21,21 @@ module BookPreference
     def prayer_book_chosen?
       cookies[COOKIE].presence_in(PrayerBook.ids).present?
     end
+
+    # { "compline" => "bcp1979us" }: offices the person prays from another book.
+    def office_book_overrides
+      @office_book_overrides ||= self.class.parse_office_books(cookies[OFFICE_COOKIE])
+    end
+
+    # The book for an office: its override, or the person's prayer book.
+    def prayer_book_for(office)
+      office_book_overrides[office.to_s].then { _1 ? PrayerBook.find(_1) : prayer_book }
+    end
+
+  class_methods do
+    def parse_office_books(value)
+      value.to_s.split(",").filter_map { _1.split(":", 2) if _1.include?(":") }.to_h
+        .select { |office, book| Office::NAMES.key?(office) && book.in?(PrayerBook.ids) }
+    end
+  end
 end

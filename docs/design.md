@@ -183,9 +183,11 @@ atlas without a compass rose is deliberate.
 - A sticky phone bar on `--card` with the wordmark.
 - One column with side margins of 1.375rem or the screen's safe area, whichever is larger.
 - `h1` at the title size and `h2` at the heading size: display and title a step smaller.
-- A tab bar fixed to the bottom, five equal cells at least 3.5rem tall in small capitals, the
-  current one in rubric with a rule along its top edge, padded for the home indicator
-  (`env(safe-area-inset-bottom)`). The page is padded so the tab bar never covers text.
+- A tab bar along the bottom (`position: sticky` as the page's last element, so it never covers
+  text), five equal cells at least 3.5rem tall in small capitals, the current one in rubric with
+  a rule along its top edge, padded for the home indicator (`env(safe-area-inset-bottom)`). With
+  large text the labels wrap onto a second row rather than run off the screen, and the phone bar
+  wraps the same way.
 - The margin's content folds into a "Notes and sources" disclosure at the end of the text.
 
 Both:

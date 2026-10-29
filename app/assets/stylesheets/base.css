@@ -66,6 +66,11 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* A long address may break rather than push the page sideways at large text sizes. */
+a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
 :focus-visible {
   outline: 2px solid var(--rubric);
   outline-offset: 2px;

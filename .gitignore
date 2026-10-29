@@ -31,3 +31,6 @@
 # Candidate files downloaded for rights research (D21); never served, never
 # committed. content/SOURCES.md records where each came from.
 /research/
+
+# The deployed commit, written into each release by bin/deploy (P5.2).
+/REVISION

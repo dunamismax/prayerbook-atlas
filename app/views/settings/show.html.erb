@@ -11,7 +11,26 @@
 <%= plate_card "Prayer book", label: "the book you pray from" do %>
   <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
     <%= render "settings/book_choices", form: form %>
-    <%= form.submit "Save prayer book", class: "primary-action", name: nil %>
+    <%= form.button "Save prayer book", type: "submit", class: "primary-action", name: nil %>
+  <% end %>
+<% end %>
+
+<%= plate_card "Offices from another book", label: "for particular offices" do %>
+  <p>
+    Pray a particular office from another book: for example, Compline, which the 1662 book does
+    not have. Each book is shown on its own terms; nothing from one book fills a gap in another.
+  </p>
+  <%= form_with url: book_preference_path, method: :patch, class: "settings-form" do |form| %>
+    <% Office::NAMES.each do |office, name| %>
+      <div class="setting-row">
+        <%= label_tag "office_books_#{office}", name %>
+        <%= select_tag "office_books[#{office}]",
+              options_for_select([ [ "My prayer book (#{prayer_book.year})", "same" ] ] + PrayerBook.all.map { [ _1.title, _1.id ] },
+                office_book_overrides.fetch(office, "same")),
+              id: "office_books_#{office}" %>
+      </div>
+    <% end %>
+    <%= form.button "Save offices", type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
@@ -30,7 +49,7 @@
         </div>
       <% end %>
     </fieldset>
-    <%= form.submit "Save appearance", class: "primary-action", name: nil %>
+    <%= form.button "Save appearance", type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
@@ -56,13 +75,44 @@
       The spelling choice is for the historic books in the Atlas, which are not on the site yet
       (BUILD.md P12.6). The books for prayer are always shown as printed.
     </p>
-    <%= form.submit "Save reading settings", class: "primary-action", name: nil %>
+    <%= form.button "Save reading settings", type: "submit", class: "primary-action", name: nil %>
   <% end %>
 <% end %>
 
-<% margin_note "More settings" do %>
+<%= plate_card "Phone site or full site", label: "this device" do %>
+  <%= form_with url: site_mode_path, method: :patch, class: "settings-form" do |form| %>
+    <fieldset>
+      <legend class="visually-hidden">Phone site or full site</legend>
+      <% current = site_mode_chosen? ? site_mode : "automatic" %>
+      <% { "automatic" => "Choose for this device automatically",
+           "full" => "The full site, with the contents and the margin beside the text",
+           "phone" => "The phone site, one column with the sections along the bottom" }.each do |value, label| %>
+        <div class="choice">
+          <%= form.radio_button :mode, value, checked: current == value %>
+          <%= form.label :mode, label, value: value %>
+        </div>
+      <% end %>
+    </fieldset>
+    <%= form.button "Save", type: "submit", class: "primary-action", name: nil %>
+  <% end %>
+<% end %>
+
+<%= plate_card "About this site", label: "sources and support" do %>
   <p>
-    Choices for each office and the choice between the phone site and the full site will join
-    this page as they are built.
+    Prayerbook Atlas is personal lay work, the sister project of
+    <a href="https://graceandfootnotes.com">Grace &amp; Footnotes</a>. It is not an official
+    publication of any church, diocese, or parish, and it does not speak for any of them.
+    <%= link_to "More about the site", about_path %>.
   </p>
+  <p>
+    Write to <a href="mailto:support@prayerbookatlas.com">support@prayerbookatlas.com</a> with a
+    question, or to report an error in a text (the book, the page, and what is wrong).
+  </p>
+  <h3 class="eyebrow">acknowledgements</h3>
+  <p>
+    The book face is Cardo, by David J. Perry, under the SIL Open Font License 1.1. No prayer-book
+    text is on the site yet; as texts arrive, each one's book, printing, and required credit will
+    be listed here from the site's own sources register.
+  </p>
+  <p class="source">Version <%= SiteVersion.current %></p>
 <% end %>
