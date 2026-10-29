@@ -2,7 +2,7 @@ require "test_helper"
 
 class DevPagesTest < ActionDispatch::IntegrationTest
   test "the type specimen renders in both modes with every mark" do
-    [ SiteModeTest::IPHONE, SiteModeTest::DESKTOP_CHROME ].each do |user_agent|
+    [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
       get dev_type_path, headers: { "User-Agent" => user_agent }
       assert_response :success
       assert_select "main#main h1", "Type specimen"
@@ -19,7 +19,7 @@ class DevPagesTest < ActionDispatch::IntegrationTest
   end
 
   test "the component gallery renders in both modes" do
-    [ SiteModeTest::IPHONE, SiteModeTest::DESKTOP_CHROME ].each do |user_agent|
+    [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
       get dev_components_path, headers: { "User-Agent" => user_agent }
       assert_response :success
       assert_select "main#main h1", "Components"

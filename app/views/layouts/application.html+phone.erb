@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <%= tag.attributes(lang: "en", data: { appearance: (appearance unless appearance == "automatic") }) %>>
   <head>
     <%= render "layouts/head" %>
   </head>
@@ -9,6 +9,9 @@
 
     <header class="phone-bar">
       <%= render "shared/wordmark" %>
+      <nav class="phone-bar-tools" aria-label="Tools">
+        <%= link_to "Settings", settings_path, aria: { current: ("page" if current_page?(settings_path)) } %>
+      </nav>
     </header>
 
     <main id="main" class="reading">

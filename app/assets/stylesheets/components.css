@@ -354,6 +354,24 @@
   margin-bottom: 0;
 }
 
+/* Settings' plain forms: a fieldset of choices and one primary action. */
+.settings-form fieldset {
+  margin: 0 0 var(--space-l);
+  padding: 0;
+  border: 0;
+}
+
+.choice {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-s);
+  padding: var(--space-xs) 0;
+}
+
+.choice input {
+  accent-color: var(--rubric);
+}
+
 /* The development type specimen (/dev/type). */
 .specimen-table {
   border-collapse: collapse;

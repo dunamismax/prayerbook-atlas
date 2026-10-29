@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   get "about", to: "pages#about"
 
-  # The footer's choice between the phone site and the full site.
+  # Settings, and the choices made from it or from the footer.
+  resource :settings, only: :show
+  resource :appearance, only: :update
   resource :site_mode, only: :update
 
   # Development aids, never routed in production: the type specimen (P2.4)

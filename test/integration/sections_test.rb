@@ -1,11 +1,11 @@
 require "test_helper"
 
 class SectionsTest < ActionDispatch::IntegrationTest
-  PAGES = %w[/ /pray /bible /kalendar /atlas /about].freeze
+  PAGES = %w[/ /pray /bible /kalendar /atlas /about /settings].freeze
 
   test "every page renders in both modes" do
     PAGES.each do |path|
-      [ SiteModeTest::IPHONE, SiteModeTest::DESKTOP_CHROME ].each do |user_agent|
+      [ UserAgents::IPHONE, UserAgents::DESKTOP_CHROME ].each do |user_agent|
         get path, headers: { "User-Agent" => user_agent }
         assert_response :success, "#{path} failed for #{user_agent}"
         assert_select "main#main h1", 1
@@ -16,7 +16,7 @@ class SectionsTest < ActionDispatch::IntegrationTest
   end
 
   test "the current section is marked for assistive technology" do
-    get kalendar_path, headers: { "User-Agent" => SiteModeTest::DESKTOP_CHROME }
+    get kalendar_path, headers: { "User-Agent" => UserAgents::DESKTOP_CHROME }
     assert_select ".section-nav a[aria-current=page]", text: "Kalendar"
   end
 

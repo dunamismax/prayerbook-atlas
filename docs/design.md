@@ -205,7 +205,9 @@ Automatic (follow the system), Day, or Night. `tokens.css` sets the day values o
 night values under `@media (prefers-color-scheme: dark)` unless `<html data-appearance="day">`,
 and the night values again for `data-appearance="night"`. The server writes `data-appearance`
 from the person's choice in Settings (P2.6), so a chosen appearance never flashes the other
-first. `color-scheme` follows, so form controls and scrollbars match. Night is a night chart,
+first. The choice is a cookie holding only "day" or "night" (`AppearancePreference`);
+Automatic deletes it and writes no attribute. The Appearance form is a full page load
+(`data-turbo="false"`), because Turbo swaps the body and would leave `<html>` unchanged. `color-scheme` follows, so form controls and scrollbars match. Night is a night chart,
 deep blue-black and pale ink, not pure black and white. Every token has both values; nothing is
 designed for one appearance only.
 

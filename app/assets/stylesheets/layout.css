@@ -84,6 +84,23 @@
   background: var(--card);
 }
 
+.masthead-tools {
+  margin-left: auto;
+}
+
+.masthead-tools a,
+.phone-bar-tools a {
+  font-size: var(--type-eyebrow-size);
+  letter-spacing: var(--type-eyebrow-tracking);
+  text-transform: lowercase;
+  font-variant-caps: small-caps;
+}
+
+.masthead-tools a[aria-current="page"],
+.phone-bar-tools a[aria-current="page"] {
+  text-decoration-style: double;
+}
+
 .section-nav ul {
   display: flex;
   flex-wrap: wrap;
@@ -196,6 +213,19 @@
   padding-top: calc(var(--space-m) + env(safe-area-inset-top));
   border-bottom: 3px double var(--line);
   background: var(--card);
+}
+
+.site--phone .phone-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+}
+
+.phone-bar-tools a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
 }
 
 .site--phone .wordmark {
