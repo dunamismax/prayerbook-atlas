@@ -75,7 +75,7 @@ top-level items (sub-items roll up into their parent).
 | Phase | Name | Milestone | Items | Done |
 |---|---|---|---|---|
 | 0 | Owner foundations | — | 14 | 8 |
-| 1 | Rails foundation | M1 Foundation | 12 | 10 |
+| 1 | Rails foundation | M1 Foundation | 12 | 12 |
 | 2 | Design system and site shell | M1 Foundation | 14 | 3 |
 | 3 | Content pipeline and rights registry | M1 Foundation | 11 | 0 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
@@ -183,8 +183,8 @@ site as a substitute.
 
 ### Feature map: what others offer, and our answer
 
-From the App Store listings checked on 2026-10-28 (Research finding 1); the
-web resources in that finding are still to be checked (P1.12).
+From the App Store listings checked on 2026-10-28 and the websites checked on
+2026-10-29 (Research finding 1).
 
 | Seen in | What it offers | Our answer (phase) |
 |---|---|---|
@@ -195,6 +195,11 @@ web resources in that finding are still to be checked (P1.12).
 | Book of Common Prayer - BCP | The 1979 book, WEB and KJV, notes and bookmarks | The same, plus every other book and the Atlas (P9, P14) |
 | Common Prayer App | 1979 Rite II offices, fasting, KJV offline, licensed modern translations | Fasts and abstinence per book as information, never as a rule (P4.7) |
 | The Book of Common Prayer (1789 text) | A historic American book with a KJV reader | The historic books as an honest study layer (P12.6) |
+| The Daily Office (web) | The 2019 offices, a "Book view", audio, settings kept in the browser | The same calm for every book, as HTML that works with no script (P7, P2.10) |
+| Venite and Forward Movement (web) | 1979 offices with many liturgies, Bible versions, psalters, and display settings | Each book's own Psalter and lectionary, labeled; reading settings applied by the server (P2.10, P10.4, P11) |
+| Mission St. Clare (web) | A static page per day for the 1979 offices | Static-fast pages for every book, with sources and page numbers (P7, P2.9) |
+| justus.anglican.org, Lynda Howell's 1662 (web) | Public-domain prayer books in plain HTML, with notes on sources | Every printing identified and proofread, and compared in the Atlas (P3, P8, P12) |
+| Oremus (web) | Daily prayer, a Bible browser, an almanac | The same, with no affiliate links or analytics (D7, decision 31) |
 
 **What none of them does:** every major prayer book in one place, honest
 sourcing with printed page numbers, side-by-side comparison of the same
@@ -287,10 +292,51 @@ on and record what they checked.
    (1979 Rite II, fasting). [The Book of Common Prayer](https://apps.apple.com/us/app/id1570678346)
    (a 1789 text). Each serves one book or one church; none spans 1662, 1928,
    1979, and 2019 together, compares editions, or cites printed pages.
-   **Websites** to survey in P1.12 (not yet checked): the Daily Office's own
-   site, Venite on the web, Mission St. Clare, Forward Movement's daily
-   office, the Society of Archbishop Justus's online prayer books
-   (justus.anglican.org), Lynda Howell's 1662 transcriptions, and oremus.org.
+   **Websites** (P1.12, checked 2026-10-29 in the in-app browser and by
+   fetching each page; "no script" means the page's text arrived with
+   JavaScript off):
+   - [The Daily Office](https://www.dailyoffice2019.com/) (a personal project
+     sponsored by Anglican House): the 2019 book's offices, Family Prayer,
+     readings, a "Book view", audio, many settings kept in the browser. ESV
+     and NRSV by permission, with their notices; the New Coverdale Psalter
+     or the Traditional Language Edition's Coverdale. Names the book, not
+     its pages. A script-drawn app (the HTML holds only a loader).
+   - [Venite](https://www.venite.app/) (sponsored by Forward Movement): 1979
+     Rite I and II, Enriching Our Worship, the Daily Devotions, Lesser Feasts
+     and Fasts, nineteen liturgies; eight Bible versions; four psalters
+     (1979, Coverdale, Common Worship, an inclusive psalter); the 1979, 1662,
+     and RCL lectionaries; Spanish. A script-drawn app.
+   - [Forward Movement's Daily Prayer](https://prayer.forwardmovement.org/):
+     1979 Rite I and II, Daily Devotions, readings, a prayer list,
+     reminders; NRSV, RSV, or KJV; the 1979 or Coverdale Psalter; display
+     settings (four modes, five sizes, two faces). A script-drawn app.
+   - [Mission St. Clare](https://www.missionstclare.com/english/): 1979 Rite
+     II Morning and Evening Prayer as one static HTML page per day (works
+     with no script), Noonday and Compline, a Spanish edition, an iPhone
+     app. Neither the book's pages nor the Bible translation is named on the
+     office page.
+   - [The Society of Archbishop Justus](http://justus.anglican.org/resources/bcp/)
+     (Charles Wohlers; last updated 2018): several dozen prayer books by
+     province, public-domain texts only, with a copyright note on its basis
+     (age, missing notices, unrenewed copyrights); copyrighted books are
+     linked to their publishers. No script; no phone layout.
+   - [Lynda Howell's 1662](http://www.eskimo.com/~lhowell/bcp1662/): the
+     whole book in HTML, its base text the 1987 Cambridge edition, with
+     the 1662 King's Printers' copy (EEBO, Wing B3622) for the Act of
+     Uniformity and the state services; a sources page, search, and an
+     Easter almanac; printers' errors corrected, and the author does not
+     recommend it for scholarly use. No script; no phone layout.
+   - [Oremus](https://www.oremus.org/) (Steve Benner and Simon Kershaw,
+     since 1993): daily prayer, a Bible browser, Common Worship and 1662
+     links, a calendar and almanac. Its home page carries an Amazon
+     affiliate search and a third-party analytics image. No phone layout.
+   **What the survey shows:** the 1979 and 2019 are well served, and the
+   best of them are script-drawn apps; no site sets the books side by side,
+   cites a printed page, or keeps 1662 and 1928 as complete daily offices
+   with their own calendars; the static sites that work everywhere are old,
+   desktop-only, and single-purpose. Prayerbook Atlas's place is the
+   honesty of the old sites with the ease of the new apps, in HTML that
+   needs no script.
 2. **Name and domains.** No App Store app is named "Prayerbook Atlas"
    (search API, US store). The owner holds **prayerbookatlas.com**
    (registered 2026-10-28 21:43 UTC) and **prayerbook-atlas.com**
@@ -569,10 +615,11 @@ When the site is demoable:
 - [x] **P1.8** The five sections and the About page as honest placeholders, in both modes; no `allow_browser` gate (decision 25); a strict Content Security Policy and a Permissions Policy (decision 31); production hosts for both domains.
   - *2026-10-29 result:* checked in the in-app browser at 1440×900 (light and dark), 800×900, and the mobile preset (375×812 with a phone user agent): both layouts, the tab bar, the folded margin, and the mode switch both ways; no console errors or CSP violations.
 - [x] **P1.9** `bin/ci` passes: setup, RuboCop, bundler-audit, importmap audit, Brakeman, tests, and seeds.
-- [ ] **P1.10** GitHub Actions: the generated workflow (`.github/workflows/ci.yml`), on manual dispatch only (P0.9). Tick after the first hosted run passes.
+- [x] **P1.10** GitHub Actions: the generated workflow (`.github/workflows/ci.yml`), on manual dispatch only (P0.9). Tick after the first hosted run passes.
+  - *2026-10-29 result:* the first runs failed in the test jobs (no `db/schema.rb`, which `db:test:prepare` needs; then no `test/system/`). After both were added, run [40890263834](https://github.com/dunamismax/prayerbook-atlas/actions/runs/40890263834) passed all five jobs (39 tests, 4 system tests). GitHub warns that `ubuntu-latest` moves to Ubuntu 26 from 2026-10-19.
 - [x] **P1.11** System tests with Capybara and headless Chrome: a phone-sized window with a phone user agent and a desktop-sized window, each visiting every section; `bin/rails test:system` added to `config/ci.rb` and the workflow. Screenshots go to `tmp/screenshots/`, never committed.
   - *2026-10-29 result:* `ApplicationSystemTestCase` (1440×900) and `PhoneSystemTestCase` (Chrome's mobile emulation at 390×844: a phone user agent and `Sec-CH-UA-Mobile: ?1`, since a bare user-agent override still sends `?0`, which `SiteMode` reads first). Each driver is registered under its own name; with one shared name the last class's driver wins. Small-capital labels render lower-case, so visible-text assertions match case-insensitively.
-- [ ] **P1.12** Survey the Anglican prayer websites Research finding 1 lists (what each offers, which books, how it sources texts, how it works on a phone), and update finding 1 and the feature map.
+- [x] **P1.12** Survey the Anglican prayer websites Research finding 1 lists (what each offers, which books, how it sources texts, how it works on a phone), and update finding 1 and the feature map.
 
 ## Phase 2: Design system and site shell
 
