@@ -2,6 +2,18 @@
 
 This initial register covers the generated visual design sources requested on 2026-10-28. It does not complete the content pipeline or rights validation in P3.1 or P3.6. No liturgical text, Bible translation, scanned book page, or third-party illustration is included in this image set.
 
+## Fonts
+
+### Cardo (the book face, P2.4)
+
+- **Files:** `App/Resources/Fonts/Cardo-Regular.ttf` (version 1.0451), `Cardo-Italic.ttf` (0.991), `Cardo-Bold.ttf` (1.0011), and the licence `Cardo-OFL.txt`, bundled in the app.
+- **Creator and holder:** David J. Perry; "Copyright (c) 2002-2011, David J. Perry (hospes02@scholarsfonts.net)", as each file's name table and OFL.txt state.
+- **Obtained from:** Google Fonts' repository, `https://github.com/google/fonts/tree/main/ofl/cardo` (latest commit touching the folder: `5f99a56`, 2026-02-26). Checked 2026-10-29 by downloading the four files again and comparing SHA-256: byte-identical to the copies in the gitignored `research/fonts/cardo/` that were bundled. Regular `bcb81f37…7988261`, Italic `52c51cfd…1880f9c`, Bold `6c9383b1…5a272e36`, OFL.txt `8e28b778…0e45bb`.
+- **Rights basis (all territories):** SIL Open Font License 1.1, stated in each font's name table (ID 13) and in OFL.txt; `fsType` 0 (installable embedding). The OFL permits bundling in software, free or sold, provided the licence travels with the font and the font is not sold by itself. The fonts are unmodified, so the Reserved Font Name clause does not bite. The licence ships in the app bundle and will be listed in Settings → Acknowledgements (P2.12, P3.8).
+- **AI use:** not applicable (a typeface, not text).
+- **Checked:** names, versions, copyright, licence, and `fsType` with fontTools 4.68; glyphs ℣ ℟ † ¶ and polytonic Greek present in all three faces and ✠ absent (it falls back to the system's symbol font); OpenType features: Regular has `smcp` and `onum`, Italic has `onum` but no `smcp`, Bold has no GSUB features. `TypographyTests` re-checks registration, glyphs, `smcp`, and `onum` in the simulator.
+- **Status:** `cleared` (documentary evidence: the OFL 1.1 in the files themselves).
+
 ## Generated design images
 
 - **Source:** [the owner-supplied image prompts](../design/image-prompts.md). The [image registry](../design/image-registry.json) records each exact prompt, generation prompt, supporting generated reference, file hash, dimensions, alpha checks, and limitations.

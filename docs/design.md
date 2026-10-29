@@ -86,7 +86,8 @@ rubric mark.
 ## 5. Type
 
 - **The book face is Cardo** (SIL Open Font License 1.1, David J. Perry), bundled in Regular,
-  Italic, and Bold (P2.4). It sets liturgical text, Scripture, titles, headings, small-capital
+  Italic, and Bold (P2.4, `App/Resources/Fonts/`, recorded in `content/SOURCES.md`). Views set
+  it with `.typeStyle(_:)` (`App/Design/TypeStyle.swift`), never by font name. It sets liturgical text, Scripture, titles, headings, small-capital
   labels, role labels, and page numbers. It has true small capitals (`smcp`, the 1979 Psalter's
   LORD), old-style figures (`onum`), ℣ ℟ † ¶, and polytonic Greek. It has no ✠ (U+2720),
   which falls back to the system's symbol font. EB Garamond is Beautiful Corner's face and is

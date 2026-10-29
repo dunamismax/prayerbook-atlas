@@ -17,5 +17,12 @@
 			</array>
 		</dict>
 	</array>
+	<!-- The book face, Cardo (SIL OFL 1.1; licence in Fonts/Cardo-OFL.txt, docs/design.md §5). -->
+	<key>UIAppFonts</key>
+	<array>
+		<string>Cardo-Regular.ttf</string>
+		<string>Cardo-Italic.ttf</string>
+		<string>Cardo-Bold.ttf</string>
+	</array>
 </dict>
 </plist>
