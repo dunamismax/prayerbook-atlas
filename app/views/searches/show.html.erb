@@ -1,0 +1,13 @@
+<% content_for :title, @search.blank? ? t(".title") : "#{t(".title")}: #{@search.query}" %>
+<% content_for :contents do %>
+  <h2><%= t("searches.filters.title") %></h2>
+  <%= render "searches/filters", search: @search %>
+<% end %>
+
+<%= eyebrow t(".eyebrow") %>
+<h1><%= t(".heading") %></h1>
+<%= title_rule %>
+
+<p><%= t(".intro") %></p>
+<%= render "searches/form", search: @search, field_id: "search-page-q" %>
+<%= render "searches/results", search: @search %>

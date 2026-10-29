@@ -19,6 +19,7 @@ en:
     skip_link: "Skip to the text"
     tools: "Tools"
     settings: "Settings"
+    search: "Search"
     sections: "Sections"
     in_this_section: "In this section"
     margin: "Margin"
@@ -149,6 +150,52 @@ en:
       inspiration_link: "The Daily Office 2019"
       privacy: "It collects nothing about you: no analytics, advertising, or tracking. It sets only its own strictly necessary cookies: one that protects its forms, and, if you make a choice in Settings or between the phone site and the full site, one for each choice that remembers it."
       write_html: "Write to %{email}."
+
+  searches:
+    form:
+      label: "Search the books"
+      button: "Search"
+    filters:
+      title: "Filters"
+      book: "Prayer book"
+      any_book: "Every book"
+      kind: "Kind"
+      any_kind: "Everything"
+      apply: "Apply filters"
+      kinds:
+        office: "Offices"
+        prayer: "Prayers"
+        collect: "Collects"
+        psalm: "Psalms"
+        scripture: "Scripture"
+        rubric: "Rubrics"
+    show:
+      title: "Search"
+      eyebrow: "search"
+      heading: "Search"
+      intro: "Search the texts the site carries: the prayer books, Scripture, and its own notes. Only texts that have been transcribed, proofread, and cleared are here, so some searches will find nothing yet."
+      results:
+        one: "One result for “%{query}”"
+        other: "%{count} results for “%{query}”"
+      limited: "Showing the first %{limit}; add a word or a filter to narrow them."
+      none: "nothing found for “%{query}”"
+      none_note: "No text on the site matches every word. Few texts are on the site yet; each arrives only after it has been transcribed from an identified printing and proofread."
+      page: "page %{page}"
+      scripture: "Scripture"
+      original: "original note"
+      kinds:
+        office: "office"
+        prayer: "prayer"
+        collect: "collect"
+        psalm: "psalm"
+        canticle: "canticle"
+        litany: "litany"
+        service: "service"
+        scripture: "Scripture"
+        note: "note"
+        guide: "guide"
+        glossary: "glossary"
+        quotation: "quotation"
 
   sources:
     index:
@@ -345,6 +392,3 @@ en:
     learn_page:
       title: "Learn: %{key}"
       summary: "A page of Learn, researched and drafted with AI assistance and reviewed before release."
-    search:
-      title: "Search"
-      summary: "Search across the books, Scripture, and the Atlas."

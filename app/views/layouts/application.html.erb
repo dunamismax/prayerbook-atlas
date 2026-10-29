@@ -12,6 +12,7 @@
       <%= render "shared/wordmark" %>
       <%= render "shared/section_nav" %>
       <nav class="masthead-tools" aria-label="<%= t("site.tools") %>">
+        <%= render "searches/form", search: nil, field_id: "masthead-q" unless current_page?(search_path) %>
         <%= link_to t("site.settings"), settings_path, aria: { current: ("page" if current_page?(settings_path)) } %>
       </nav>
     </header>

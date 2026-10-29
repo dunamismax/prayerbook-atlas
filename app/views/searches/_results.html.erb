@@ -1,0 +1,26 @@
+<% unless search.blank? %>
+  <% results = search.results %>
+  <% if results.empty? %>
+    <%= render "shared/state", kind: :empty, title: t("searches.show.none", query: search.query), message: t("searches.show.none_note") %>
+  <% else %>
+    <h2 class="eyebrow"><%= t("searches.show.results", count: results.size, query: search.query) %></h2>
+    <% if results.size == Content::Search::LIMIT %>
+      <p class="source"><%= t("searches.show.limited", limit: Content::Search::LIMIT) %></p>
+    <% end %>
+    <ol class="search-results">
+      <% results.each do |result| %>
+        <li>
+          <h3><%= result.title %><% if result.verse %> <%= result.verse %><% end %></h3>
+          <p><%= safe_join(result.snippet_parts.map { |text, matched| matched ? tag.mark(text) : text }) %></p>
+          <p class="source">
+            <% if result.prayer_book %>
+              <%= result.prayer_book.title %> · <%= t("searches.show.kinds.#{result.kind}") %><% if result.page %> · <%= t("searches.show.page", page: result.page) %><% end %>
+            <% else %>
+              <%= t("searches.show.kinds.#{result.kind}") %>
+            <% end %>
+          </p>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+<% end %>

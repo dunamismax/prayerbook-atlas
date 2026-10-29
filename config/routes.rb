@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "about", to: "pages#about"
   get "sources", to: "sources#index"
+  get "search", to: "searches#show", as: :search
 
   # Every destination in docs/urls.md, at its final address. Those whose phase
   # has not arrived are honest placeholders (DestinationsController).
@@ -54,7 +55,6 @@ Rails.application.routes.draw do
     planned.("learn/:key", "learn_page", as: :learn_page, key: slug)
   end
 
-  planned.("search", "search", as: :search)
 
   # Settings, and the choices made from it or from the footer.
   resource :settings, only: :show

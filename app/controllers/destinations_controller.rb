@@ -15,7 +15,6 @@ class DestinationsController < ApplicationController
   private
     def section_key
       case @destination || params[:destination]
-      when "search" then nil
       when /\Aatlas_|\Acompare|\Alineage|\Alearn/ then "atlas"
       when /\Akalendar_|\Aeaster/ then "kalendar"
       when /\Apsalter|\Apsalm|\Alectionary|\Areading_plan|\Apassage/ then "bible"
@@ -37,7 +36,7 @@ class DestinationsController < ApplicationController
       "lectionary" => "P11", "reading_plan" => "P11.3", "passage" => "P10.3", "kalendar_day" => "P6.5",
       "kalendar_month" => "P6.4", "kalendar_year" => "P6.4", "easter" => "P6.6", "atlas_book" => "P12.3",
       "atlas_prayer" => "P12.5", "compare" => "P12.2", "lineage" => "P12.4", "learn" => "P16",
-      "learn_page" => "P16", "search" => "P3.9"
+      "learn_page" => "P16"
     }.freeze
 
     # The title, the summary, and the phase, from config/locales (destinations.*).

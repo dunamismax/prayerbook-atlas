@@ -11,6 +11,7 @@
     <header class="phone-bar">
       <%= render "shared/wordmark" %>
       <nav class="phone-bar-tools" aria-label="<%= t("site.tools") %>">
+        <%= link_to t("site.search"), search_path, aria: { current: ("page" if current_page?(search_path)) } %>
         <%= link_to t("site.settings"), settings_path, aria: { current: ("page" if current_page?(settings_path)) } %>
       </nav>
     </header>

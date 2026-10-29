@@ -1,0 +1,14 @@
+<%= form_with url: search_path, method: :get, class: "search-filters" do |form| %>
+  <%= hidden_field_tag :q, search.query, id: nil %>
+  <div class="setting-row">
+    <%= form.label :book, t("searches.filters.book"), for: "search-book" %>
+    <%= form.select :book, options_for_select([ [ t("searches.filters.any_book"), "" ] ] + PrayerBook.all.map { [ _1.title, _1.id ] }, search.book),
+      {}, id: "search-book" %>
+  </div>
+  <div class="setting-row">
+    <%= form.label :kind, t("searches.filters.kind"), for: "search-kind" %>
+    <%= form.select :kind, options_for_select([ [ t("searches.filters.any_kind"), "" ] ] + Content::Search::KINDS.map { [ t("searches.filters.kinds.#{_1}"), _1 ] }, search.kind),
+      {}, id: "search-kind" %>
+  </div>
+  <%= form.button t("searches.filters.apply"), type: "submit", name: nil, class: "quiet-action" %>
+<% end %>

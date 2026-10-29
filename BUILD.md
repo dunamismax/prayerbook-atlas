@@ -84,7 +84,7 @@ top-level items (sub-items roll up into their parent).
 | 1 | Rails foundation | M1 Foundation | 12 | 12 |
 | 2 | Design system and site shell | M1 Foundation | 14 | 14 |
 | 2A | Learning from The Daily Office 2019 | M1 Foundation | 4 | 4 |
-| 3 | Content pipeline and rights registry | M1 Foundation | 11 | 8 |
+| 3 | Content pipeline and rights registry | M1 Foundation | 11 | 9 |
 | 4 | Church year engine | M1 Foundation | 13 | 0 |
 | 5 | Hosting at prayerbookatlas.com | M1 Foundation | 7 | 5 |
 | 6 | Today and the Kalendar | M2 The Daily Office | 7 | 0 |
@@ -717,7 +717,8 @@ module map, the data inventory, and what we do differently.
   - *2026-10-29 result:* a `content` database in `config/database.yml` (read-only, `database_tasks: false`, `journal_mode` delete), `ContentRecord`, and `Content::Source`, `Document`, `Block`, `Work`, `ScriptureVerse`, `FactTable`; tests read a fixture database that `test_helper.rb` compiles (each parallel worker gets a copy). Writes are refused, and a missing file is an error, never a new empty database.
 - [x] **P3.8** Build integration: `bin/setup`, `bin/ci`, and the deploy compile the content; a missing content database fails clearly; the acknowledgements and the sources page are generated from it.
   - *2026-10-29 result:* `bin/setup` compiles first; `bin/ci` has a "Content: compile and check" step (strict); `deploy/build.sh` compiles with release checks; the app refuses to boot without the database, saying how to make it. Settings' acknowledgements and the new `/sources` page come from the database.
-- [ ] **P3.9** Search (`/search`): ranked FTS5 results with highlighted snippets and filters by book and kind (office, prayer, collect, psalm, Scripture, lesson, rubric). On the full site the search field is in the masthead and the filters in the contents column; on the phone, a search page with the filters folded.
+- [x] **P3.9** Search (`/search`): ranked FTS5 results with highlighted snippets and filters by book and kind (office, prayer, collect, psalm, Scripture, lesson, rubric). On the full site the search field is in the masthead and the filters in the contents column; on the phone, a search page with the filters folded.
+  - *2026-10-29 result:* `/search` (`SearchesController`, `Content::Search`): FTS5 ranked by bm25 with the title weighted, snippets with the matched words in `<mark>` (built from sentinel characters, never raw HTML), filters by book and by kind (offices, prayers, collects, psalms, Scripture, rubrics; *lessons* wait for the lectionaries, P11.1). The person's words are quoted term by term, so nothing is read as FTS5 syntax. Full site: a field in the masthead and the filters in the contents column; phone: a Search link in the phone bar and the filters folded under the field. Results do not link yet: the pages they will open arrive with P7 and P10. Checked in the in-app browser (full site by night and by day, the phone emulation) on the fixture content; no console errors.
 - [ ] **P3.10** A content-integrity suite in `bin/ci`: unique ids, resolved references, registered sources, no empty blocks, every block with a book, printing, and page.
 - [ ] **P3.11** Write `docs/proofreading.md`: two independent passes against the page images, a word-level diff between them, how differences are settled, the record in `SOURCES.md`, and the errata process for readers' reports (support@prayerbookatlas.com).
 
