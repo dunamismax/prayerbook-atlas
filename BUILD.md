@@ -104,11 +104,13 @@ top-level items (sub-items roll up into their parent).
 | 27 | Operations and annual maintenance | M8 Ongoing | 8 | 0 |
 | 28 | Future directions | M8 Ongoing | 8 | 0 |
 
-**Current state (2026-10-29):** the project is now a Rails 8.1.4 website
-(D27). The iPhone app is retired (tag `ios-archive`). The Rails app runs in
-both modes (the full site and the phone site) with placeholder sections, the
-Engraved Plate tokens as CSS, and self-hosted Cardo; `bin/ci` passes. No
-liturgical text is on the site, and nothing is deployed yet.
+**Current state (2026-10-29):** the project is a Rails 8.1.4 website (D27);
+the iPhone app is retired (tag `ios-archive`). Phases 1 and 2 are complete:
+both modes, the Engraved Plate components, the liturgical block model and its
+renderer, Settings (book, offices, appearance, reading, mode), the first-visit
+card, every planned URL routed to an honest placeholder, all interface text in
+I18n, and system tests in both modes. `bin/ci` and the hosted workflow pass.
+No liturgical text is on the site, and nothing is deployed yet.
 
 ---
 
@@ -951,21 +953,26 @@ The owner decides priority; promoted items become full phases.
 
 *Replaced each session; keep under 25 lines. History lives in Git.*
 
-- **2026-10-29 pivot session:** the owner made the project a website only,
-  in Ruby on Rails (D27). The iPhone app is removed and tagged
-  `ios-archive` (`a9be149`); this plan was rewritten for the web.
-- **This Mac:** mise's Ruby 4.0.9 is global, Rails 8.1.4 installed, Homebrew
-  Ruby off the PATH (P1.1 has the details and the dotfile backups).
-- **The app:** Rails 8.1.4 in the repository root. `SiteMode` picks the phone
-  site or the full site; layouts `application.html.erb` (full) and
-  `application.html+phone.erb`; five placeholder sections and About; tokens
-  CSS generated from `design/tokens.json`; Cardo self-hosted as WOFF2; strict
-  CSP. `bin/ci` passes. Run it with `bin/dev`.
-- **Secrets:** `config/master.key` is local and gitignored; the server will
-  need it as `RAILS_MASTER_KEY` (P5.3). Keep a copy somewhere safe.
-- **Not deployed.** `docs/deploy.md` is written; P5.2 (`bin/deploy`) is next
-  in that phase, and every server step waits for the owner.
-- **Next:** P1.10 (dispatch the hosted workflow), P1.11 (system tests),
-  P1.12 (web survey), then Phase 2 from P2.4, Phase 3, Phase 4, and P5.2.
+- **2026-10-29 session 2:** finished P1.10–P1.12 and all of Phase 2
+  (P2.4–P2.14). Next: Phase 3 from P3.1, then Phase 4 and P5.2 (`bin/deploy`;
+  it must write `REVISION`, which Settings shows via `SiteVersion`).
+- **Hosted CI:** `gh workflow run ci.yml`, then `gh run watch <id>`; it now
+  needs the committed empty `db/schema.rb` and runs the system tests.
+- **Commits are gated:** run `bin/ci` and commit only if it passes. The P2.9
+  commit was pushed after a red run (a system-test race); `ea33fa4` and
+  `9f14f3d` fixed it. Tests must load the next page afresh after a full-page
+  form submission rather than act on the redirected page.
+- **Browsers:** Chrome in the in-app browser; Firefox 159 installed with
+  Homebrew for headless and JavaScript-off checks; WebKit through
+  `script/webkit_snapshot.swift`. The owner declined screen access to Safari
+  this session, so Safari itself and phone browsers wait for P21.5.
+- **Cookies the site sets** (all strictly necessary preferences): `site_mode`,
+  `appearance`, `reading`, `book`, `office_books`, and Rails' session.
+  P20.4 must list them.
+- **Waiting on later items:** the acknowledgements in Settings come from the
+  content database at P3.8; the spelling setting waits for P12.6;
+  `/dev/type`, `/dev/components`, and `/dev/liturgy` are development aids.
+- **This Mac:** mise's Ruby 4.0.9 is global; `config/master.key` is local and
+  gitignored (the server will need it as `RAILS_MASTER_KEY`, P5.3).
 - **Owner:** P0.6 (the retired App Store Connect record), P0.7 (optional),
   P0.8 (deferred), the [GATE DEMO] letters, and Phase 5's server steps.

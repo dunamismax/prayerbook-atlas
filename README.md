@@ -38,6 +38,10 @@ Confirmed on the owner's Mac (macOS 27.2, Apple silicon) on 2026-10-29:
 - **fontTools** (`brew install fonttools`), only to convert a font to WOFF2,
   and **ImageMagick** (`brew install imagemagick`), only to resize the
   owner's images.
+- For checking pages in other engines, optionally: **Firefox** (`brew install
+  --cask firefox`), whose `--headless --screenshot` mode can run with
+  JavaScript off through a profile's `user.js`, and the **Swift** compiler
+  from Xcode, for `script/webkit_snapshot.swift` (WebKit, Safari's engine).
 
 SQLite needs nothing installed: the sqlite3 gem bundles SQLite 3.54.1 with
 FTS5. No Node, no CSS build, and no Docker.
