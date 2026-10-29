@@ -12,10 +12,11 @@
 #   screenshot     Relaunch the app and save a screenshot to screenshots/ (APPEARANCE, TEXT_SIZE)
 #   archive        Archive a signed Release build for devices, with release-checked content (BUILD_NUMBER)
 #   testflight     Archive, then upload the build to App Store Connect for TestFlight (docs/release.md)
+#   strings        Add the interface strings from the last build to the String Catalog
 #   tokens         Regenerate the asset catalog's colours from design/tokens.json
 #   icon           Copy the placeholder app icon from design/generated/ into the asset catalog
 #   guards         Check package imports, that colours match the tokens, and the icon matches its sources
-#   check          Lint, guards, package tests, content, app tests, and a Release build
+#   check          Lint, guards, package tests, content, app tests, Release build, strings
 #   format         Format every Swift file in place with swift format
 #   lint           Check formatting and style with swift format (fails on any finding)
 #   clean          Remove build output and the generated project
@@ -55,7 +56,7 @@ define compile_content
 endef
 
 .PHONY: help generate content content-release build build-release test-packages test-app test-linux run screenshot \
-	archive testflight tokens icon guards check format lint clean
+	archive testflight strings tokens icon guards check format lint clean
 
 help:
 	@sed -n 's/^#   //p' $(MAKEFILE_LIST)
@@ -136,6 +137,9 @@ testflight: archive
 		-exportPath build/Export -allowProvisioningUpdates
 	@echo "testflight: uploaded build $(BUILD_NUMBER); it appears in App Store Connect's TestFlight tab once processed"
 
+strings: build
+	scripts/sync-strings.sh $(DERIVED)
+
 tokens:
 	xcrun swift scripts/generate-color-assets.swift
 
@@ -148,6 +152,7 @@ guards:
 	scripts/app-icon.sh --check
 
 check: lint guards test-packages content test-app build-release
+	scripts/sync-strings.sh --check $(DERIVED)
 
 format:
 	swift format format --in-place --recursive --parallel $(SWIFT_SOURCES)

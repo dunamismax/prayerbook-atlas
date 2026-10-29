@@ -643,7 +643,8 @@ When the app is demoable:
 - [ ] **P2.10** Reading settings: text size, line spacing, rubrics in red or italic, show or hide rubrics, show page numbers, keep the screen awake while praying, and original or modernized spelling (historic books only, P11.6).
 - [ ] **P2.11 [GATE D4]** First-launch setup, skippable and changeable in Settings: the person's prayer book, with a line about each; nothing is required to begin praying.
 - [ ] **P2.12** Settings: prayer book and per-office overrides, reading settings, notifications, appearance (Automatic, Day, Night), acknowledgements and sources (generated from the content database once P3.8 lands), the non-affiliation statement, "About this app" (sister of Grace & Footnotes), support (support@prayerbookatlas.com), and version and build.
-- [ ] **P2.13** Create a String Catalog (`Localizable.xcstrings`) and route every interface string through it (English only for now).
+- [x] **P2.13** Create a String Catalog (`Localizable.xcstrings`) and route every interface string through it (English only for now).
+  - *2026-10-28 result:* `make strings` syncs the compiler-extracted strings into the catalog (`scripts/sync-strings.sh`, from Beautiful Corner); `make check` fails when it is stale (probed). 17 strings so far. English-only entries compile to nothing in the bundle, as expected; `.lproj` files appear with the first translation.
 - [ ] **P2.14** A UI test that launches, visits every tab, opens Settings, and switches appearance, capturing screenshots as attachments.
 
 ## Phase 3: Content pipeline and rights registry
