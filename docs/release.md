@@ -72,10 +72,10 @@ the App Store.
 - **Export compliance.** The app uses no encryption beyond Apple's own (HTTPS through the
   system), so `ITSAppUsesNonExemptEncryption` is `NO` in `project.yml`.
 - **The privacy manifest.** `App/Resources/PrivacyInfo.xcprivacy` declares no tracking and no
-  collected data (decision 15). It declares no required-reason API, because the app calls
-  none yet. App Store Connect rejects an upload that calls one undeclared, so add the entry
-  when the app first uses `UserDefaults` (`CA92.1`), file timestamps, disk space, system boot
-  time, or the active keyboards.
+  collected data (decision 15), and the one required-reason API the app calls: `UserDefaults`
+  (`CA92.1`), for its own navigation state and settings. App Store Connect rejects an upload
+  that calls one undeclared, so add an entry when the app starts using file timestamps, disk
+  space, system boot time, or the active keyboards.
 - **The app icon.** The placeholder is the generated Ribbon icon (P1.11), still `pending`
   release review; it is acceptable for internal TestFlight builds. The final icon is P21.8.
 

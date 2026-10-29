@@ -8,8 +8,8 @@ follows its recommendation until the owner answers.
 
 ## 1. Information architecture
 
-Five tabs, each with its own navigation stack, plus the system search tab. Settings opens from
-a toolbar button on every tab's root screen; it is not a tab.
+Five tabs, each with its own navigation stack, plus search. Settings opens from a toolbar
+button on every tab's root screen; it is not a tab.
 
 | Tab | SF Symbol (placeholder until P2.5) | Holds |
 | --- | --- | --- |
@@ -23,8 +23,10 @@ a toolbar button on every tab's root screen; it is not a tab.
 "Kalendar" keeps the prayer books' own spelling as the tab's name; its screens explain the word
 once, in plain English, for the newcomer.
 
-On iPhone the tab bar shows all six (five tabs and search). On iPad a sidebar shows the same
-destinations in the same order. Nothing important lives only in a gesture or a long press.
+On iPhone the tab bar shows the five content tabs, and Search is a toolbar button beside
+Settings on every root, because the system counts a search tab toward the iPhone's five and
+would hide two tabs under "More" (decision 17). On iPad, Search is the system search tab beside
+the other five. Nothing important lives only in a gesture or a long press.
 
 ## 2. Navigation
 

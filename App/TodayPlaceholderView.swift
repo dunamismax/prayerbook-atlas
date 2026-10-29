@@ -21,6 +21,7 @@ struct TodayPlaceholderView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.paper)
         .accessibilityElement(children: .combine)
+        .rootToolbar()
     }
 }
 

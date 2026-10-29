@@ -4,7 +4,7 @@ import SwiftUI
 struct PrayerbookAtlasApp: App {
     var body: some Scene {
         WindowGroup {
-            TodayPlaceholderView()
+            RootView()
         }
     }
 }

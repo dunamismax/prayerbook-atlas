@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
   The app's privacy manifest. Prayerbook Atlas tracks no one and collects nothing
-  (docs/decisions.md entry 15): no tracking domains and no collected data types. It calls no
-  API from Apple's required-reason list yet. Add an entry here the moment it does, for
-  example UserDefaults (reason CA92.1) when settings arrive (P2.6, P2.10); docs/release.md
-  explains why.
+  (docs/decisions.md entry 15): no tracking domains and no collected data types. The one
+  required-reason API it calls is UserDefaults, for the app's own state and settings on this
+  device (CA92.1). Add an entry whenever the app starts calling another API from Apple's
+  required-reason list (docs/release.md).
 -->
 <plist version="1.0">
 <dict>
@@ -16,6 +16,15 @@
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array/>
 	<key>NSPrivacyAccessedAPITypes</key>
-	<array/>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

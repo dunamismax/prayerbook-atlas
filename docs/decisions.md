@@ -190,3 +190,21 @@ Beautiful Corner's decision log (entry 16 below).
 - **Why:** The two apps share a stack; reinventing tested tooling wastes
   time and invites new bugs. Naming the source commit lets a later agent
   compare and carry fixes across.
+
+## 17. On iPhone, Search is a toolbar button
+
+- **Date:** 2026-10-28 · **Status:** Accepted (agent, found in testing; the
+  owner may revisit it)
+- **Decision:** On regular widths (iPad), Search is the system search tab
+  beside the five content tabs. On compact widths (iPhone), the tab bar holds
+  the five content tabs (Today, Pray, Bible, Kalendar, Atlas), and Search is a
+  toolbar button beside Settings on every tab's root, pushing Search onto the
+  current tab. Deep links and restored state that name the search tab do the
+  same on iPhone.
+- **Why:** In the iOS 27 simulator, SwiftUI counts the search tab toward the
+  iPhone's five-item limit, so six tabs collapse into the system "More" list,
+  hiding Atlas and Search (seen on iPhone 17 Pro, 2026-10-28; Beautiful
+  Corner met the same, its decision 16). Keeping all five content tabs
+  visible mattered more than a dedicated search tab. Alternatives, if the
+  owner prefers: four tabs plus search (Atlas inside another tab), or Search
+  under a sixth "More" tab.
