@@ -10,6 +10,8 @@
 #   test-linux     Run every package's tests on Linux in the swift:6.4 container
 #   run            Build, boot the simulator, install, and launch the app
 #   screenshot     Relaunch the app and save a screenshot to screenshots/ (APPEARANCE, TEXT_SIZE)
+#   archive        Archive a signed Release build for devices, with release-checked content (BUILD_NUMBER)
+#   testflight     Archive, then upload the build to App Store Connect for TestFlight (docs/release.md)
 #   icon           Copy the placeholder app icon from design/generated/ into the asset catalog
 #   guards         Check package imports are Linux-safe and the app icon matches its sources
 #   check          Lint, guards, package tests, content, app tests, and a Release build
@@ -20,7 +22,8 @@
 # SIM_DEVICE picks the simulator by name or UDID (default: the newest iPhone).
 # APPEARANCE (light or dark) and TEXT_SIZE (a simctl content size, for example
 # accessibility-extra-extra-extra-large) apply to `run` and `screenshot`, and
-# LAUNCH_ARGS passes launch arguments to the app.
+# LAUNCH_ARGS passes launch arguments to the app. BUILD_NUMBER sets the archive's build
+# number (default: the UTC date and time, 20261028.2230, so every upload is newer than the last).
 
 PROJECT       := PrayerbookAtlas.xcodeproj
 SCHEME        := PrayerbookAtlas
@@ -31,6 +34,8 @@ PACKAGES      := $(sort $(dir $(wildcard Packages/*/Package.swift)))
 SWIFT_SOURCES := $(wildcard App AppTests AppUITests Packages Tools scripts)
 LINUX_IMAGE   := swift:6.4
 CONTENT_TOOL  := Tools/ContentCompiler
+ARCHIVE       := build/PrayerbookAtlas.xcarchive
+BUILD_NUMBER  := $(or $(BUILD_NUMBER),$(shell date -u +%Y%m%d.%H%M))
 CONTENT_ARGS  := --content content --output App/Resources/Content.sqlite --verify
 
 # Resolved only by the targets that use a simulator.
@@ -49,7 +54,7 @@ define compile_content
 endef
 
 .PHONY: help generate content content-release build build-release test-packages test-app test-linux run screenshot \
-	icon guards check format lint clean
+	archive testflight icon guards check format lint clean
 
 help:
 	@sed -n 's/^#   //p' $(MAKEFILE_LIST)
@@ -114,6 +119,21 @@ screenshot:
 	file=screenshots/$$(date +%Y%m%d-%H%M%S)-$(or $(APPEARANCE),current)$(if $(TEXT_SIZE),-$(TEXT_SIZE)).png; \
 	xcrun simctl io $$udid screenshot "$$file" 2> /dev/null; \
 	echo "$$file"
+
+# Signing is automatic with the owner's team (Config/Base.xcconfig, P0.6); -allowProvisioningUpdates
+# lets Xcode create the certificate and profiles through the Apple ID signed in to Xcode.
+archive: generate content-release
+	rm -rf $(ARCHIVE)
+	xcodebuild -project $(PROJECT) -scheme $(SCHEME) -configuration Release \
+		-destination generic/platform=iOS -archivePath $(ARCHIVE) -derivedDataPath build/ArchiveData \
+		-allowProvisioningUpdates -quiet CURRENT_PROJECT_VERSION=$(BUILD_NUMBER) archive
+	@echo "archive: build $(BUILD_NUMBER) of $$(git rev-parse --short HEAD) at $(ARCHIVE)"
+
+testflight: archive
+	rm -rf build/Export
+	xcodebuild -exportArchive -archivePath $(ARCHIVE) -exportOptionsPlist Config/ExportOptions.plist \
+		-exportPath build/Export -allowProvisioningUpdates
+	@echo "testflight: uploaded build $(BUILD_NUMBER); it appears in App Store Connect's TestFlight tab once processed"
 
 icon:
 	scripts/app-icon.sh

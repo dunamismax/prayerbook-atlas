@@ -620,6 +620,7 @@ When the app is demoable:
 - [x] **P1.13** Make `make test-linux` run every package's tests in the `swift:6.4` container (install Colima or Docker first; Research finding 16), and add a static guard that packages import only Linux-available modules.
   - *2026-10-28 result:* the Docker CLI (29.9.2, Homebrew) was linked and Colima started (4 CPUs, 6 GB). `make test-linux` passes every package's tests in `swift:6.4` (aarch64 Linux). `scripts/check-package-imports.sh`, from Beautiful Corner, runs in `make guards`; probes importing UIKit, and SQLite3 without `#if canImport`, made it fail. `make check` does not run `test-linux` (the hosted macOS runner has no Docker).
 - [ ] **P1.14** The TestFlight path to the owner's iPhone: `make archive` and `make testflight` (a signed Release archive with release-checked content, uploaded to App Store Connect), the privacy manifest it needs, and `docs/release.md` with the one-time setup. Tick after the first build installs through TestFlight.
+  - *2026-10-28 note:* prepared, waiting on the owner. `make archive`, `make testflight`, `Config/ExportOptions.plist`, the privacy manifest, and `docs/release.md` are in place; an unsigned device archive builds with zero warnings. Signing and uploading need the owner's account: P0.6, P0.7, and the steps in `docs/release.md`.
 
 ## Phase 2: Design system and app shell
 
