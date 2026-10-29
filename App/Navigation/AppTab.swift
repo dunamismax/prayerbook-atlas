@@ -21,8 +21,8 @@ enum AppTab: String, CaseIterable, Codable, Hashable, Sendable {
         }
     }
 
-    /// Placeholder SF Symbols until P2.5 traces the app's own (docs/product.md §1). No
-    /// compass rose and no church emblem.
+    /// SF Symbols until the owner supplies custom symbols (docs/design.md §10). No compass rose
+    /// and no church emblem.
     var systemImage: String {
         switch self {
         case .today: "sun.horizon"

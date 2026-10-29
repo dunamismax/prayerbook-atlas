@@ -170,10 +170,10 @@ nothing is designed for one appearance only.
 
 ## 10. Symbols
 
-SF Symbols for the interface while the app's own glyphs are traced (P2.5). The generated
-symbol sources (B1–B16 in `design/generated/`, `pending`) were drawn for Ribbon and become
-custom SF Symbols only after tracing, restyling as engraved line work, weight-matching, and
-release review. No symbol imitates a church's seal, shield, or logo.
+SF Symbols for the interface. The generated symbol sources (B1–B16 in `design/generated/`,
+`pending`) were made for Ribbon. Custom symbols come only from images the owner generates and
+supplies (decision 20); agents write the prompts and never draw, redraw, or restyle a symbol.
+Until then the app keeps SF Symbols. No symbol imitates a church's seal, shield, or logo.
 
 ## 11. Accessibility
 
@@ -188,10 +188,21 @@ release review. No symbol imitates a church's seal, shield, or logo.
 
 ## 12. Components
 
-Built in P2.5 from these tokens: card (double-rule frame), eyebrow, initial, rubric, role
-label, versicle and response, Amen, repetition, name chip, ribbon marker, title rule, atlas
-plate, page-number mark, `SourceFootnote` and its source sheet, margin note, the outlined
-primary action, and the empty, loading, and error states.
+Built in P2.5 from these tokens, in `App/Design/`:
+
+| Component | File | Notes |
+|---|---|---|
+| `DoubleRule`, `Hairline`, `.doubleRuleFrame(_:)` | `Rules.swift` | Hidden from VoiceOver |
+| `PlateCard`, `AtlasPlate`, `Spacing` | `Components/PlateCard.swift` | Frames in `line` and `ink` |
+| `Eyebrow`, `RoleLabel`, `PageNumberMark`, `RibbonMarker` | `Components/Labels.swift` | Eyebrows are lower-cased for `smcp`; role labels keep the book's words |
+| `RubricText`, `InitialParagraph`, `VersicleResponse`, `AmenLine`, `RepetitionMark`, `NameChip`, `MarginNote` | `Components/LiturgicalParts.swift` | Rubrics read as instructions; `rubricPresentation` in the environment |
+| `SourceFootnote`, `SourceSheet`, `SourceDetails` | `Components/SourceFootnote.swift` | "1662, p. 45" opens book, printing, page |
+| `ShareableText`, `AttributedShareLink` | `Components/Sharing.swift` | The source line is always attached |
+| `PrimaryActionStyle` (`.primaryAction`), `StatusView`, `Haptics` | `Components/States.swift` | Empty, loading, and error states in words |
+
+The initial is inline (an enlarged capital on the first line); the two-line drop initial needs
+text wrapped around it and comes with P2.9's TextKit renderer. Debug builds show every component
+on one screen with `-componentGallery`, using bracketed placeholders only.
 
 ## 13. The app icon
 

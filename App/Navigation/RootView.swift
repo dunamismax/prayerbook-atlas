@@ -78,7 +78,16 @@ struct RootView: View {
     @ViewBuilder
     private func root(for tab: AppTab) -> some View {
         switch tab {
-        case .today: TodayPlaceholderView()
+        case .today:
+            #if DEBUG
+                if ProcessInfo.processInfo.arguments.contains(ComponentGallery.launchArgument) {
+                    ComponentGallery()
+                } else {
+                    TodayPlaceholderView()
+                }
+            #else
+                TodayPlaceholderView()
+            #endif
         case .pray, .bible, .kalendar, .atlas, .search: PlaceholderTabView(tab: tab)
         }
     }

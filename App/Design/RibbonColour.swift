@@ -36,12 +36,16 @@ enum RibbonColour: String, CaseIterable, Sendable {
         }
     }
 
-    /// Ribbons below 3:1 against paper in either appearance are drawn with a hairline edge in
-    /// `muted` (`edge: muted` in design/tokens.json; checked by `ColorContrastTests`).
-    var needsEdge: Bool {
+    /// The appearance in which the ribbon falls below 3:1 against paper and is drawn with a
+    /// hairline edge in `muted` (`edge: muted` in design/tokens.json; checked by
+    /// `ColorContrastTests`), or nil if it is visible in both.
+    var edgeScheme: ColorScheme? {
         switch self {
-        case .white, .black, .array: true
-        default: false
+        case .white, .array: .light
+        case .black: .dark
+        default: nil
         }
     }
+
+    var needsEdge: Bool { edgeScheme != nil }
 }

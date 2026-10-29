@@ -11,7 +11,7 @@ follows its recommendation until the owner answers.
 Five tabs, each with its own navigation stack, plus search. Settings opens from a toolbar
 button on every tab's root screen; it is not a tab.
 
-| Tab | SF Symbol (placeholder until P2.5) | Holds |
+| Tab | SF Symbol (until the owner supplies custom symbols) | Holds |
 | --- | --- | --- |
 | **Today** | `sun.horizon` | The day's name in the chosen book (other books one tap away), the season's ribbon, holy days, fasts and abstinence, the office for the hour, the collect, the psalms and lessons, my rule, the reading-plan portion, the next holy day |
 | **Pray** | `book.closed` | The offices, the Litany, prayers and thanksgivings, Holy Communion, the pastoral offices, devotions, my prayers, intercessions, confession preparation |

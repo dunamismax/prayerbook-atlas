@@ -23,7 +23,7 @@ The tinted icon (`icon-app-tinted.png`) has a rebuilt mask: the generated outlin
 ## Next uses
 
 - Assemble A4 and A5 over the solid day/night background in Icon Composer (P21.8).
-- Trace B1–B16 to SVG and custom SF Symbols, harmonizing weight and padding (P2.5).
+- Custom SF Symbols from B1–B16 wait on the owner (decision 20): agents do not trace, redraw, or restyle them. The app uses SF Symbols meanwhile.
 - Add only selected, cleared assets to the app and website; review the registry before release (P3.6).
 
 No app, website, or release integration is claimed. `make check` and simulator flows are not available because this repository has no Makefile or app targets yet. The gallery was checked in a browser over local HTTP on 2026-10-28: all 54 images load at their recorded sizes, and the 31 night samples render.

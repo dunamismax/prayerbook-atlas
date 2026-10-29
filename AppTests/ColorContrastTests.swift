@@ -30,15 +30,17 @@ struct ColorContrastTests {
     /// Where a ribbon is faint against paper, its edge in muted must be visible against both.
     @Test(arguments: RibbonColour.allCases.filter(\.needsEdge), styles)
     func faintRibbonEdgeIsVisible(ribbon: RibbonColour, style: UIUserInterfaceStyle) throws {
-        guard try contrast(assetName(ribbon), "paper", style) < 3 else { return }
+        guard ribbon.edgeScheme == (style == .dark ? .dark : .light) else { return }
         #expect(try contrast("muted", assetName(ribbon), style) >= 3)
         #expect(try contrast("muted", "paper", style) >= 3)
     }
 
-    @Test(arguments: RibbonColour.allCases)
-    func ribbonIsVisibleOrEdged(ribbon: RibbonColour) throws {
-        let faint = try Self.styles.contains { try contrast(assetName(ribbon), "paper", $0) < 3 }
-        #expect(faint == ribbon.needsEdge, "\(ribbon.rawValue): faint against paper is \(faint)")
+    /// A ribbon is edged in exactly the appearance where it is faint against paper.
+    @Test(arguments: RibbonColour.allCases, styles)
+    func ribbonIsVisibleOrEdged(ribbon: RibbonColour, style: UIUserInterfaceStyle) throws {
+        let faint = try contrast(assetName(ribbon), "paper", style) < 3
+        let edged = ribbon.edgeScheme == (style == .dark ? .dark : .light)
+        #expect(faint == edged, "\(ribbon.rawValue) in \(name(style)): faint \(faint), edged \(edged)")
     }
 
     @Test func ribbonRawValuesNeverChange() {
