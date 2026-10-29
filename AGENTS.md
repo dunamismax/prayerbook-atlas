@@ -288,6 +288,11 @@ BUILD.md's "Engineering foundations" section records the reasoning;
   traced to a primary source.
 - **Images** are used only with a recorded source and rights basis. Never
   generate an image of Christ, Mary, or a saint with AI.
+- **Agents never draw, redraw, or generate images or icons** (owner,
+  2026-10-29). When the app or website needs one, write a prompt in
+  `design/image-prompts.md` and give it to the owner, who generates the image
+  in ChatGPT and supplies the file. Agents may resize, export, and register
+  the owner's files, but never alter what they depict.
 - Never invent parish data, service times, clergy names, or contact details.
   Finding a church links to each church's own official finder (D24).
 - Drafts of permission requests and licenses go in `docs/owner-drafts/` and

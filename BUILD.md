@@ -249,11 +249,14 @@ a better shape.
 
 ---
 
-## Design system: Ribbon (proposal for D15)
+## Design system: Ribbon (proposal for D15, not chosen)
 
-D15 is open; this is the recommended direction, to be settled in a design
-session that also shows two alternatives. `docs/design.md` and
-`design/tokens.json` (P2.2) become the authority once written.
+*2026-10-29 note:* the owner chose **B · Engraved Plate** instead (D15).
+`docs/design.md` and `design/tokens.json` are the authority; this section
+records the original proposal for history only.
+
+D15 was open; this was the recommended direction, to be settled in a design
+session that also showed two alternatives.
 
 The materials come from a well-kept prayer book: India paper, lamp-black ink,
 a single rubric red for rubrics, red-letter days, red initials, source marks,
@@ -461,7 +464,7 @@ decide, and record its consequences in `docs/decisions.md`.
 | D12 | Domain and support email | prayerbookatlas.com as the canonical domain | **prayerbookatlas.com** (owner, 2026-10-28): DNS at Cloudflare, pointing at the owner's Ubuntu server; Cloudflare Email Routing with a **catch-all** forwarding every address at the domain to the owner's inbox. Support email **support@prayerbookatlas.com**; other addresses (privacy@, permissions@) arrive the same way. Receive-only: replies come from the owner's own address unless a sending service is added. **prayerbook-atlas.com** is also the owner's (same day, same server and mail setup) and is to redirect permanently to prayerbookatlas.com (P19.2). **prayerbookatlas.org** was added by the owner on 2026-10-29 (Cloudflare, created 09:28 UTC) and redirects the same way; its DNS was not yet answering when first checked that day. |
 | D13 | Legal entity and Apple account | Develop and ship under the owner's existing individual Apple Developer membership (Team ID `D9QMP3LP8H`, renews March 13; Beautiful Corner D11), transferring later to a nonprofit if the owner forms one. Settle the EU Digital Services Act trader declaration before any EU storefront | **The owner's individual account**, team `D9QMP3LP8H` (owner, 2026-10-29), committed in `Config/Base.xcconfig`. |
 | D14 | App Store territories | The United States first (1662 and KJV carry Crown rights in the UK); others after a rights review per territory, the UK after Cambridge University Press answers | **As recommended** (owner, 2026-10-29). |
-| D15 | Visual identity | The **Ribbon** direction above, settled in a design session that also shows two alternatives, recorded in `docs/design.md` and `design/tokens.json` | **B · Engraved Plate** (owner, 2026-10-29), chosen in the design session (P2.2a) over Ribbon and Quiet Page: chart paper, iron-blue ink, double-rule frames, small capitals, square corners, one cartographer's blue. Book face: the owner chose Libre Caslon Text, which lacks ℣ ℟ ✠, Greek, and small caps; at the owner's direction an agent chose **Cardo** for full coverage (agent, 2026-10-29; docs/decisions.md entry 18). The icon is redrawn to match. |
+| D15 | Visual identity | The **Ribbon** direction above, settled in a design session that also shows two alternatives, recorded in `docs/design.md` and `design/tokens.json` | **B · Engraved Plate** (owner, 2026-10-29), chosen in the design session (P2.2a) over Ribbon and Quiet Page: chart paper, iron-blue ink, double-rule frames, small capitals, square corners, one cartographer's blue. Book face: the owner chose Libre Caslon Text, which lacks ℣ ℟ ✠, Greek, and small caps; at the owner's direction an agent chose **Cardo** for full coverage (agent, 2026-10-29; docs/decisions.md entry 18). The icon stays the owner's generated set; any new image comes from the owner's image generator, from a prompt an agent writes (owner, 2026-10-29; decision 20). |
 | D16 | Office record and streaks | A private record of offices prayed, off by default, with no count of consecutive days | **As recommended** (owner, 2026-10-29). |
 | D17 | Relationship to Grace & Footnotes | Separate name and design; shared voice and source mark; an offline reader for the website's feed; links to its gospel pages; an app page on the website only when the owner authorizes it | **As recommended** (owner, 2026-10-29). |
 | D18 | Clergy review | Ask the owner's own priest about reviewing original teaching and about the app generally; record only what actually happens | **As recommended** (owner, 2026-10-29); the asking is P0.9. |
@@ -628,11 +631,12 @@ When the app is demoable:
 ## Phase 2: Design system and app shell
 
 - [x] **P2.1** Write `docs/product.md`: the information architecture (from the proposal above), navigation rules, the tone rules from AGENTS.md §3, "each book on its own terms", no guilt mechanics, privacy by design, and the newcomer principle.
-- [ ] **P2.2 [GATE D15]** The design system.
+- [x] **P2.2 [GATE D15]** The design system.
   - [x] **P2.2a** Hold the design session: render the Ribbon direction and two alternatives as real screens (Today, an office, the Atlas compare view) in day and night; the owner chooses (D15).
     - *2026-10-29 result:* rendered on a private design canvas (claude.ai artifact) with placeholder lines for all prayer text; the owner chose B · Engraved Plate. P2.2b is redone for B.
-  - [ ] **P2.2b** Write `docs/design.md` (tokens, contrast, type scale, motifs, ribbons, the atlas plate, layout and Liquid Glass, appearance, symbols, components, accessibility, the app icon, and the research behind them), `design/tokens.json`, and the icon sources in `design/icon/`.
+  - [x] **P2.2b** Write `docs/design.md` (tokens, contrast, type scale, motifs, ribbons, the atlas plate, layout and Liquid Glass, appearance, symbols, components, accessibility, the app icon, and the research behind them), `design/tokens.json`, and the icon sources in `design/icon/`.
     - *2026-10-28 result:* written on the Ribbon working default (D15 open; P2.2a not held). Adds ribbon hues, which BUILD.md did not specify, with computed contrast: white and Lenten array by day and black by night fall below 3:1 on paper and get a gilt edge. The icon sources are the generated A1–A5 in `design/generated/`; `design/icon/` is reserved for P21.8's Icon Composer file. Revisit both files if the owner chooses another direction.
+    - *2026-10-29 result (redone for B):* `docs/design.md` and `design/tokens.json` now describe Engraved Plate with the canvas's exact day and night values; every text pair passes AA (lowest 5.60:1, `muted` on `wash` by day), tested from the compiled assets. Changes from Ribbon: no `gilt` (ornament is drawn with double rules), faint ribbons get a `muted` edge, square corners, small-capital labels in Cardo, an outlined primary action, and Sarum blue moved to `#3A5CC0`/`#4F6CC8` so it is not mistaken for the accent. The icon stays the owner's generated set (A1–A3): an agent-drawn vector icon was rejected by the owner the same day and reverted (decision 20).
   - [x] **P2.2c** Prepare the owner's requested image set from `design/image-prompts.md`: all 54 PNGs, master-referenced icon variants and layers, genuine alpha masks, the local gallery, and image provenance. This preparation may precede P2.2a at the owner's request; it does not settle D15 or complete Icon Composer/SF Symbols integration.
     - *2026-10-28 result:* all 54 PNGs generated and registered in `design/image-registry.json` and `content/SOURCES.md`. The generator returned the 38 square files at 1254×1254; they are now exact 1024×1024 exports (ImageMagick, Lanczos), and the tinted icon's mask was rebuilt from its 50% outline in pure white, without the haze or the partial alpha in the cross. The 15 landscape files and the portrait frame met their sizes as generated. The native squares, with their C2PA Content Credentials, stay in commit 2232e7f. Checked: sizes, alpha ranges, no pale pixels in the ink masks, registry hashes, and the gallery in a browser over local HTTP.
 - [x] **P2.3** Generate the colour tokens in the asset catalog (day and night) from `design/tokens.json` by a script, so they cannot drift; expose them as named `Color` values; add the ribbon colours with their words; and test that every text pair in `docs/design.md` meets WCAG AA in both modes.

@@ -252,3 +252,17 @@ Beautiful Corner's decision log (entry 16 below).
   (Research finding 1) remains the nearest name in the App Store. Filing a
   registration is the owner's choice and has not been done. The domains held
   are prayerbookatlas.com, prayerbook-atlas.com, and prayerbookatlas.org.
+
+## 20. Images come from the owner's generator, never from agents
+
+- **Date:** 2026-10-29 · **Status:** Accepted (owner)
+- **Decision:** Agents never draw, redraw, or generate images or icons,
+  including vector art written as SVG. When an image is needed, an agent
+  writes a prompt in `design/image-prompts.md` and gives it to the owner, who
+  generates the image with ChatGPT's native image generation and supplies the
+  file. Agents may resize, export, register, and integrate the owner's files
+  without changing what they depict. This supersedes entry 18's line that
+  the placeholder icon would be redrawn as original vector art.
+- **Why:** An agent-drawn Engraved Plate icon was made on 2026-10-29 and the
+  owner rejected it; it was reverted the same day, and the owner's generated
+  icon (A1–A3) is the placeholder again.

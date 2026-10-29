@@ -36,9 +36,9 @@ enum RibbonColour: String, CaseIterable, Sendable {
         }
     }
 
-    /// Ribbons below 3:1 against paper in either appearance are drawn with a gilt hairline edge
-    /// (`edge: gilt` in design/tokens.json; checked by `ColorContrastTests`).
-    var needsGiltEdge: Bool {
+    /// Ribbons below 3:1 against paper in either appearance are drawn with a hairline edge in
+    /// `muted` (`edge: muted` in design/tokens.json; checked by `ColorContrastTests`).
+    var needsEdge: Bool {
         switch self {
         case .white, .black, .array: true
         default: false

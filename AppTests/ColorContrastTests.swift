@@ -6,7 +6,7 @@ import UIKit
 
 /// Every text pair in docs/design.md §3 meets WCAG 2 AA (4.5:1) in day and night, measured on
 /// the colours actually compiled into the asset catalog, and every ribbon either reaches 3:1
-/// against paper or is drawn with a gilt edge.
+/// against paper or is drawn with an edge in muted that does.
 struct ColorContrastTests {
     struct Pair: CustomTestStringConvertible, Sendable {
         let text: String
@@ -27,17 +27,18 @@ struct ColorContrastTests {
         #expect(ratio >= 4.5, "\(pair.testDescription) is \(ratio):1 in \(name(style))")
     }
 
-    /// Gilt is ornament: visible against paper (3:1), but never text.
-    @Test(arguments: styles)
-    func giltIsOrnament(style: UIUserInterfaceStyle) throws {
-        #expect(try contrast("gilt", "paper", style) >= 3)
-        #expect(try contrast("gilt", "paper", .light) < 4.5)
+    /// Where a ribbon is faint against paper, its edge in muted must be visible against both.
+    @Test(arguments: RibbonColour.allCases.filter(\.needsEdge), styles)
+    func faintRibbonEdgeIsVisible(ribbon: RibbonColour, style: UIUserInterfaceStyle) throws {
+        guard try contrast(assetName(ribbon), "paper", style) < 3 else { return }
+        #expect(try contrast("muted", assetName(ribbon), style) >= 3)
+        #expect(try contrast("muted", "paper", style) >= 3)
     }
 
     @Test(arguments: RibbonColour.allCases)
     func ribbonIsVisibleOrEdged(ribbon: RibbonColour) throws {
         let faint = try Self.styles.contains { try contrast(assetName(ribbon), "paper", $0) < 3 }
-        #expect(faint == ribbon.needsGiltEdge, "\(ribbon.rawValue): faint against paper is \(faint)")
+        #expect(faint == ribbon.needsEdge, "\(ribbon.rawValue): faint against paper is \(faint)")
     }
 
     @Test func ribbonRawValuesNeverChange() {

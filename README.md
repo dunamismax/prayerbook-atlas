@@ -20,9 +20,10 @@ that has it, with the differences marked and the page number of each.
 
 It is the sister project of [Grace & Footnotes](https://graceandfootnotes.com),
 the owner's website. It shares the website's Anglican faith, its plain and
-careful voice, and its sources one tap away, and it has a look of its own: a
-well-kept prayer book by lamplight, India paper and lamp-black ink, one
-rubric red, a gilt edge, and the season's colour carried by a ribbon marker.
+careful voice, and its sources one tap away, and it has a look of its own: an
+engraved plate from an old atlas, chart paper and iron-blue ink, double-rule
+frames and small capitals, one cartographer's blue, and the season's colour
+carried by a ribbon marker.
 
 ## Status
 
@@ -31,7 +32,8 @@ placeholder Today that shows the date; the three foundation packages, the
 Makefile, and `make check` are in place. No liturgical text is in the app
 yet. The [image gallery](design/generated/index.html) contains 54 generated
 PNG design sources; [its README](design/generated/README.md) records how
-they were exported and the remaining work. D15 is still open. This README, [AGENTS.md](AGENTS.md), and
+they were exported and the remaining work. D15 is decided: Engraved Plate
+([docs/design.md](docs/design.md)). This README, [AGENTS.md](AGENTS.md), and
 [BUILD.md](BUILD.md) set out the finished app, the owner decisions, the
 research behind them, and thirty phases of checklists. The app name (D1) and
 the domains and support email (D12) are decided; the other decisions carry
