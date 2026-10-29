@@ -55,6 +55,8 @@ targets:
           UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
+        # No icon until P1.11 adds the AppIcon set; XcodeGen would otherwise expect one.
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
         SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
         GCC_TREAT_WARNINGS_AS_ERRORS: YES
         ENABLE_PREVIEWS: YES
