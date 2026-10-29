@@ -131,7 +131,7 @@ Checked on the owner's Mac on 2026-10-28 (macOS 27.2) by running `make check`:
 | XcodeGen | 2.46.0 | `brew install xcodegen` |
 | `swift format` | bundled with the Xcode 27 toolchain | Run as `swift format` |
 | iOS simulators | iOS 26.5, 27.0, 27.1 | Any iPhone; `scripts/sim-destination.sh` picks the newest |
-| Colima and Docker | Colima installed; Docker CLI not yet | Optional, for `make test-linux` in the `swift:6.4` container (P1.13) |
+| Colima and Docker | Docker CLI 29.9.2 (Homebrew), Colima | For `make test-linux`, which runs the package tests in the `swift:6.4` container; `brew install colima docker`, then `colima start` |
 
 ## Quick start
 

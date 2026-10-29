@@ -11,7 +11,7 @@
 #   run            Build, boot the simulator, install, and launch the app
 #   screenshot     Relaunch the app and save a screenshot to screenshots/ (APPEARANCE, TEXT_SIZE)
 #   icon           Copy the placeholder app icon from design/generated/ into the asset catalog
-#   guards         Check that the app icon matches its design sources
+#   guards         Check package imports are Linux-safe and the app icon matches its sources
 #   check          Lint, guards, package tests, content, app tests, and a Release build
 #   format         Format every Swift file in place with swift format
 #   lint           Check formatting and style with swift format (fails on any finding)
@@ -119,6 +119,7 @@ icon:
 	scripts/app-icon.sh
 
 guards:
+	scripts/check-package-imports.sh
 	scripts/app-icon.sh --check
 
 check: lint guards test-packages content test-app build-release
